@@ -1,8 +1,10 @@
+import fs from 'fs';
 import { App, LogLevel } from '@slack/bolt';
 import type { GenericMessageEvent, BotMessageEvent } from '@slack/types';
 
 import { ASSISTANT_NAME, TRIGGER_PATTERN } from '../config.js';
 import { updateChatName } from '../db.js';
+import { resolveGroupIpcPath } from '../group-folder.js';
 import { readEnvFile } from '../env.js';
 import { logger } from '../logger.js';
 import { registerChannel, ChannelOpts } from './registry.js';
@@ -26,6 +28,7 @@ export interface SlackChannelOpts {
   onMessage: OnInboundMessage;
   onChatMetadata: OnChatMetadata;
   registeredGroups: () => Record<string, RegisteredGroup>;
+  groupFolder?: string;
 }
 
 export class SlackChannel implements Channel {
@@ -33,6 +36,7 @@ export class SlackChannel implements Channel {
 
   private app: App;
   private botUserId: string | undefined;
+  private botToken: string = '';
   private connected = false;
   private outgoingQueue: Array<{ jid: string; text: string }> = [];
   private flushing = false;
@@ -47,6 +51,7 @@ export class SlackChannel implements Channel {
     // so they don't leak to child processes, matching NanoClaw's security pattern)
     const env = readEnvFile(['SLACK_BOT_TOKEN', 'SLACK_APP_TOKEN']);
     const botToken = env.SLACK_BOT_TOKEN;
+    this.botToken = botToken ?? '';
     const appToken = env.SLACK_APP_TOKEN;
 
     if (!botToken || !appToken) {
@@ -72,12 +77,13 @@ export class SlackChannel implements Channel {
       // Bolt's event type is the full MessageEvent union (17+ subtypes).
       // We filter on subtype first, then narrow to the two types we handle.
       const subtype = (event as { subtype?: string }).subtype;
-      if (subtype && subtype !== 'bot_message') return;
+      if (subtype && subtype !== 'bot_message' && subtype !== 'file_share') return;
 
       // After filtering, event is either GenericMessageEvent or BotMessageEvent
       const msg = event as HandledMessageEvent;
 
-      if (!msg.text) return;
+      const hasFiles = !!(msg as unknown as Record<string, unknown>).files;
+      if (!msg.text && !hasFiles) return;
 
       // Threaded replies are flattened into the channel conversation.
       // The agent sees them alongside channel-level messages; responses
@@ -94,8 +100,7 @@ export class SlackChannel implements Channel {
       const groups = this.opts.registeredGroups();
       if (!groups[jid]) return;
 
-      const isBotMessage =
-        !!msg.bot_id || msg.user === this.botUserId;
+      const isBotMessage = !!msg.bot_id || msg.user === this.botUserId;
 
       let senderName: string;
       if (isBotMessage) {
@@ -110,10 +115,25 @@ export class SlackChannel implements Channel {
       // Translate Slack <@UBOTID> mentions into TRIGGER_PATTERN format.
       // Slack encodes @mentions as <@U12345>, which won't match TRIGGER_PATTERN
       // (e.g., ^@<ASSISTANT_NAME>\b), so we prepend the trigger when the bot is @mentioned.
-      let content = msg.text;
+      let content = msg.text ?? '';
+      // Download any attached files and save to IPC files dir
+      if (!isBotMessage) {
+        const rawFiles = (msg as unknown as Record<string, unknown>).files as Array<{
+          id?: string;
+          name?: string;
+          mimetype?: string;
+          url_private_download?: string;
+        }> | undefined;
+        if (rawFiles?.length) {
+          content += await this.downloadSlackFiles(rawFiles, jid);
+        }
+      }
       if (this.botUserId && !isBotMessage) {
         const mentionPattern = `<@${this.botUserId}>`;
-        if (content.includes(mentionPattern) && !TRIGGER_PATTERN.test(content)) {
+        if (
+          content.includes(mentionPattern) &&
+          !TRIGGER_PATTERN.test(content)
+        ) {
           content = `@${ASSISTANT_NAME} ${content}`;
         }
       }
@@ -142,10 +162,7 @@ export class SlackChannel implements Channel {
       this.botUserId = auth.user_id as string;
       logger.info({ botUserId: this.botUserId }, 'Connected to Slack');
     } catch (err) {
-      logger.warn(
-        { err },
-        'Connected to Slack but failed to get bot user ID',
-      );
+      logger.warn({ err }, 'Connected to Slack but failed to get bot user ID');
     }
 
     this.connected = true;
@@ -245,9 +262,7 @@ export class SlackChannel implements Channel {
     }
   }
 
-  private async resolveUserName(
-    userId: string,
-  ): Promise<string | undefined> {
+  private async resolveUserName(userId: string): Promise<string | undefined> {
     if (!userId) return undefined;
 
     const cached = this.userNameCache.get(userId);
@@ -262,6 +277,73 @@ export class SlackChannel implements Channel {
       logger.debug({ userId, err }, 'Failed to resolve Slack user name');
       return undefined;
     }
+  }
+
+  private async downloadSlackFiles(
+    files: Array<{ id?: string; name?: string; mimetype?: string; url_private_download?: string }>,
+    jid: string,
+  ): Promise<string> {
+    // Find the group folder for this JID so we can write to its IPC files dir
+    const groups = this.opts.registeredGroups();
+    const group = groups[jid];
+    if (!group) return '';
+
+    const groupIpcPath = resolveGroupIpcPath(group.folder);
+    const filesDir = `${groupIpcPath}/files`;
+    fs.mkdirSync(filesDir, { recursive: true });
+
+    let refs = '';
+    for (const file of files) {
+      if (!file.url_private_download || !file.name) continue;
+      try {
+        logger.info({ file: file.name, url: file.url_private_download }, 'Attempting Slack file download');
+
+        // Fetch with manual redirect handling — Node's fetch drops Authorization
+        // on cross-domain redirects (slack.com → files.slack.com), causing a 200 login page.
+        let res = await fetch(file.url_private_download, {
+          headers: { Authorization: `Bearer ${this.botToken}` },
+          redirect: 'manual',
+        });
+
+        // Follow redirect manually, re-attaching the Authorization header
+        if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
+          const location = res.headers.get('location');
+          logger.info({ file: file.name, location, status: res.status }, 'Following Slack file redirect');
+          if (location) {
+            res = await fetch(location, {
+              headers: { Authorization: `Bearer ${this.botToken}` },
+            });
+          }
+        }
+
+        if (!res.ok) {
+          logger.warn({ file: file.name, status: res.status }, 'Failed to download Slack file');
+          continue;
+        }
+
+        // Guard against receiving HTML (login page) instead of the actual file
+        const contentType = res.headers.get('content-type') ?? '';
+        if (contentType.includes('text/html')) {
+          logger.warn(
+            { file: file.name, contentType, tokenSet: !!this.botToken },
+            'Slack file download returned HTML — likely auth failure or bad token',
+          );
+          continue;
+        }
+
+        const buffer = Buffer.from(await res.arrayBuffer());
+        // Sanitize filename
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+        const dest = `${filesDir}/${safeName}`;
+        fs.writeFileSync(dest, buffer);
+        // Agent sees this path as /workspace/ipc/files/<name>
+        refs += `\n[SLACK FILE: /workspace/ipc/files/${safeName} (${file.mimetype ?? 'application/octet-stream'})]`;
+        logger.info({ file: file.name, dest, size: buffer.length }, 'Slack file downloaded');
+      } catch (err) {
+        logger.error({ file: file.name, err }, 'Error downloading Slack file');
+      }
+    }
+    return refs;
   }
 
   private async flushOutgoingQueue(): Promise<void> {
