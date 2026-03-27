@@ -77,7 +77,8 @@ export class SlackChannel implements Channel {
       // Bolt's event type is the full MessageEvent union (17+ subtypes).
       // We filter on subtype first, then narrow to the two types we handle.
       const subtype = (event as { subtype?: string }).subtype;
-      if (subtype && subtype !== 'bot_message' && subtype !== 'file_share') return;
+      if (subtype && subtype !== 'bot_message' && subtype !== 'file_share')
+        return;
 
       // After filtering, event is either GenericMessageEvent or BotMessageEvent
       const msg = event as HandledMessageEvent;
@@ -118,12 +119,14 @@ export class SlackChannel implements Channel {
       let content = msg.text ?? '';
       // Download any attached files and save to IPC files dir
       if (!isBotMessage) {
-        const rawFiles = (msg as unknown as Record<string, unknown>).files as Array<{
-          id?: string;
-          name?: string;
-          mimetype?: string;
-          url_private_download?: string;
-        }> | undefined;
+        const rawFiles = (msg as unknown as Record<string, unknown>).files as
+          | Array<{
+              id?: string;
+              name?: string;
+              mimetype?: string;
+              url_private_download?: string;
+            }>
+          | undefined;
         if (rawFiles?.length) {
           content += await this.downloadSlackFiles(rawFiles, jid);
         }
@@ -280,7 +283,12 @@ export class SlackChannel implements Channel {
   }
 
   private async downloadSlackFiles(
-    files: Array<{ id?: string; name?: string; mimetype?: string; url_private_download?: string }>,
+    files: Array<{
+      id?: string;
+      name?: string;
+      mimetype?: string;
+      url_private_download?: string;
+    }>,
     jid: string,
   ): Promise<string> {
     // Find the group folder for this JID so we can write to its IPC files dir
@@ -296,7 +304,10 @@ export class SlackChannel implements Channel {
     for (const file of files) {
       if (!file.url_private_download || !file.name) continue;
       try {
-        logger.info({ file: file.name, url: file.url_private_download }, 'Attempting Slack file download');
+        logger.info(
+          { file: file.name, url: file.url_private_download },
+          'Attempting Slack file download',
+        );
 
         // Fetch with manual redirect handling — Node's fetch drops Authorization
         // on cross-domain redirects (slack.com → files.slack.com), causing a 200 login page.
@@ -306,9 +317,17 @@ export class SlackChannel implements Channel {
         });
 
         // Follow redirect manually, re-attaching the Authorization header
-        if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
+        if (
+          res.status === 301 ||
+          res.status === 302 ||
+          res.status === 307 ||
+          res.status === 308
+        ) {
           const location = res.headers.get('location');
-          logger.info({ file: file.name, location, status: res.status }, 'Following Slack file redirect');
+          logger.info(
+            { file: file.name, location, status: res.status },
+            'Following Slack file redirect',
+          );
           if (location) {
             res = await fetch(location, {
               headers: { Authorization: `Bearer ${this.botToken}` },
@@ -317,7 +336,10 @@ export class SlackChannel implements Channel {
         }
 
         if (!res.ok) {
-          logger.warn({ file: file.name, status: res.status }, 'Failed to download Slack file');
+          logger.warn(
+            { file: file.name, status: res.status },
+            'Failed to download Slack file',
+          );
           continue;
         }
 
@@ -338,7 +360,10 @@ export class SlackChannel implements Channel {
         fs.writeFileSync(dest, buffer);
         // Agent sees this path as /workspace/ipc/files/<name>
         refs += `\n[SLACK FILE: /workspace/ipc/files/${safeName} (${file.mimetype ?? 'application/octet-stream'})]`;
-        logger.info({ file: file.name, dest, size: buffer.length }, 'Slack file downloaded');
+        logger.info(
+          { file: file.name, dest, size: buffer.length },
+          'Slack file downloaded',
+        );
       } catch (err) {
         logger.error({ file: file.name, err }, 'Error downloading Slack file');
       }
