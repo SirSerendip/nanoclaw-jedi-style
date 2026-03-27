@@ -557,7 +557,6 @@ async function main(): Promise<void> {
     prompt += '\n' + pending.join('\n');
   }
 
-<<<<<<< HEAD
   // Script phase: run script before waking agent
   if (containerInput.script && containerInput.isScheduledTask) {
     log('Running task script...');
@@ -577,7 +576,7 @@ async function main(): Promise<void> {
     log(`Script wakeAgent=true, enriching prompt with data`);
     prompt = `[SCHEDULED TASK]\n\nScript output:\n${JSON.stringify(scriptResult.data, null, 2)}\n\nInstructions:\n${containerInput.prompt}`;
   }
-=======
+
   // --- Slash command handling ---
   // Only known session slash commands are handled here. This prevents
   // accidental interception of user prompts that happen to start with '/'.
@@ -677,7 +676,6 @@ async function main(): Promise<void> {
     return;
   }
   // --- End slash command handling ---
->>>>>>> upstream/skill/compact
 
   // Query loop: run query → wait for IPC message → run new query → repeat
   let resumeAt: string | undefined;
