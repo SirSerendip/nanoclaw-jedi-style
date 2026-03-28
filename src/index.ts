@@ -10,6 +10,7 @@ import {
   IDLE_TIMEOUT,
   MAX_MESSAGES_PER_PROMPT,
   POLL_INTERVAL,
+  SESSION_COMPACT_THRESHOLD,
   TIMEZONE,
   TRIGGER_PATTERN,
 } from './config.js';
@@ -389,12 +390,16 @@ async function runAgent(
     new Set(Object.keys(registeredGroups)),
   );
 
-  // Wrap onOutput to track session ID from streamed results
+  // Wrap onOutput to track session ID and message count from streamed results
+  let lastMessageCount = 0;
   const wrappedOnOutput = onOutput
     ? async (output: ContainerOutput) => {
         if (output.newSessionId) {
           sessions[group.folder] = output.newSessionId;
           setSession(group.folder, output.newSessionId);
+        }
+        if (output.messageCount) {
+          lastMessageCount = output.messageCount;
         }
         await onOutput(output);
       }
@@ -427,6 +432,64 @@ async function runAgent(
         'Container agent error',
       );
       return 'error';
+    }
+
+    // Auto-compact: if session context is getting large, trigger /compact
+    // This preserves a summary of the conversation instead of hard-resetting.
+    const msgCount = lastMessageCount || output.messageCount || 0;
+    if (msgCount >= SESSION_COMPACT_THRESHOLD) {
+      logger.info(
+        {
+          group: group.name,
+          messageCount: msgCount,
+          threshold: SESSION_COMPACT_THRESHOLD,
+        },
+        'Session context large, triggering auto-compact',
+      );
+
+      // Close current container so compact gets a fresh one
+      queue.closeStdin(chatJid);
+
+      // Small delay to let container close cleanly
+      await new Promise((r) => setTimeout(r, 2000));
+
+      // Run /compact through the normal agent path
+      const compactResult = await runContainerAgent(
+        group,
+        {
+          prompt: '/compact',
+          sessionId: sessions[group.folder],
+          groupFolder: group.folder,
+          chatJid,
+          isMain,
+          assistantName: ASSISTANT_NAME,
+        },
+        (proc, containerName) =>
+          queue.registerProcess(
+            chatJid,
+            proc,
+            containerName,
+            group.folder,
+          ),
+        async (compactOutput) => {
+          if (compactOutput.newSessionId) {
+            sessions[group.folder] = compactOutput.newSessionId;
+            setSession(group.folder, compactOutput.newSessionId);
+          }
+        },
+      );
+
+      if (compactResult.status === 'success') {
+        logger.info(
+          { group: group.name },
+          'Auto-compact completed, session context reduced',
+        );
+      } else {
+        logger.warn(
+          { group: group.name, error: compactResult.error },
+          'Auto-compact failed, session unchanged',
+        );
+      }
     }
 
     return 'success';

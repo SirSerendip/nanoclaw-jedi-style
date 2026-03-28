@@ -35,6 +35,7 @@ interface ContainerOutput {
   status: 'success' | 'error';
   result: string | null;
   newSessionId?: string;
+  messageCount?: number;
   error?: string;
 }
 
@@ -462,7 +463,8 @@ async function runQuery(
       writeOutput({
         status: 'success',
         result: textResult || null,
-        newSessionId
+        newSessionId,
+        messageCount,
       });
     }
   }
