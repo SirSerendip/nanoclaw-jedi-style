@@ -465,12 +465,7 @@ async function runAgent(
           assistantName: ASSISTANT_NAME,
         },
         (proc, containerName) =>
-          queue.registerProcess(
-            chatJid,
-            proc,
-            containerName,
-            group.folder,
-          ),
+          queue.registerProcess(chatJid, proc, containerName, group.folder),
         async (compactOutput) => {
           if (compactOutput.newSessionId) {
             sessions[group.folder] = compactOutput.newSessionId;
