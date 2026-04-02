@@ -393,9 +393,7 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
   }
 
   const elapsed = Math.round((Date.now() - agentStartTime) / 1000);
-  notifyOps(
-    `✅ ${group.name} — agent completed in ${elapsed}s`,
-  );
+  notifyOps(`✅ ${group.name} — agent completed in ${elapsed}s`);
   return true;
 }
 
