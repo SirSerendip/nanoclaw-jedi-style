@@ -395,7 +395,7 @@ async function runQuery(
   for await (const message of query({
     prompt: stream,
     options: {
-      model: 'opus',
+      model: 'claude-opus-4-6',
       cwd: '/workspace/group',
       additionalDirectories: extraDirs.length > 0 ? extraDirs : undefined,
       resume: sessionId,
@@ -413,6 +413,7 @@ async function runQuery(
         'NotebookEdit',
         'mcp__nanoclaw__*',
         'mcp__gmail__*',
+        'mcp__slack__*',
       ],
       env: sdkEnv,
       permissionMode: 'bypassPermissions',
@@ -431,6 +432,14 @@ async function runQuery(
         gmail: {
           command: 'npx',
           args: ['-y', '@gongrzhe/server-gmail-autoauth-mcp'],
+        },
+        slack: {
+          command: 'npx',
+          args: ['-y', '@modelcontextprotocol/server-slack'],
+          env: {
+            SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN || '',
+            SLACK_TEAM_ID: process.env.SLACK_TEAM_ID || '',
+          },
         },
       },
       hooks: {

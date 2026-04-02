@@ -43,10 +43,12 @@ import {
   initDatabase,
   setRegisteredGroup,
   setRouterState,
+  deleteSession,
   setSession,
   storeChatMetadata,
   storeMessage,
 } from './db.js';
+import { readEnvFile } from './env.js';
 import { GroupQueue } from './group-queue.js';
 import { resolveGroupFolderPath } from './group-folder.js';
 import { startIpcWatcher } from './ipc.js';
@@ -83,6 +85,25 @@ let messageLoopRunning = false;
 
 const channels: Channel[] = [];
 const queue = new GroupQueue();
+
+/**
+ * Send a notification to the ops channel (if configured).
+ * Non-blocking — logs a warning if delivery fails.
+ */
+async function notifyOps(text: string): Promise<void> {
+  const opsChannelId = readEnvFile(['OPS_CHANNEL_ID']).OPS_CHANNEL_ID;
+  if (!opsChannelId) return;
+
+  const opsJid = `slack:${opsChannelId}`;
+  const channel = findChannel(channels, opsJid);
+  if (!channel) return;
+
+  try {
+    await channel.sendMessage(opsJid, text);
+  } catch (err) {
+    logger.warn({ err, opsChannelId }, 'Failed to send ops notification');
+  }
+}
 
 function loadState(): void {
   lastTimestamp = getRouterState('last_timestamp') || '';
@@ -251,6 +272,11 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
               isTriggerAllowed(chatJid, msg.sender, loadSenderAllowlist())))
         );
       },
+      clearSession: () => {
+        delete sessions[group.folder];
+        deleteSession(group.folder);
+      },
+      notifyOps,
     },
   });
   if (cmdResult.handled) return cmdResult.success;
@@ -282,6 +308,10 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
   logger.info(
     { group: group.name, messageCount: missedMessages.length },
     'Processing messages',
+  );
+  const agentStartTime = Date.now();
+  notifyOps(
+    `▶️ Agent started for ${group.name} — ${missedMessages.length} message(s), session: ${sessions[group.folder] ? 'resuming' : 'new'}`,
   );
 
   // Track idle timer for closing stdin when agent is idle
@@ -315,6 +345,9 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
       if (text) {
         await channel.sendMessage(chatJid, text);
         outputSentToUser = true;
+        notifyOps(
+          `💬 ${group.name} — delivered ${text.length} chars (${Math.round((Date.now() - agentStartTime) / 1000)}s elapsed)`,
+        );
       }
       // Only reset idle timer on actual results, not session-update markers (result: null)
       resetIdleTimer();
@@ -335,10 +368,14 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
   if (output === 'error' || hadError) {
     // If we already sent output to the user, don't roll back the cursor —
     // the user got their response and re-processing would send duplicates.
+    const elapsed = Math.round((Date.now() - agentStartTime) / 1000);
     if (outputSentToUser) {
       logger.warn(
         { group: group.name },
         'Agent error after output was sent, skipping cursor rollback to prevent duplicates',
+      );
+      notifyOps(
+        `⚠️ ${group.name} — agent error after ${elapsed}s (output was partially delivered, no rollback)`,
       );
       return true;
     }
@@ -349,9 +386,16 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
       { group: group.name },
       'Agent error, rolled back message cursor for retry',
     );
+    notifyOps(
+      `❌ ${group.name} — agent error after ${elapsed}s, cursor rolled back for retry`,
+    );
     return false;
   }
 
+  const elapsed = Math.round((Date.now() - agentStartTime) / 1000);
+  notifyOps(
+    `✅ ${group.name} — agent completed in ${elapsed}s`,
+  );
   return true;
 }
 
@@ -431,6 +475,9 @@ async function runAgent(
         { group: group.name, error: output.error },
         'Container agent error',
       );
+      notifyOps(
+        `🔴 ${group.name} — container error: ${output.error?.slice(0, 200) || 'unknown'}`,
+      );
       return 'error';
     }
 
@@ -445,6 +492,9 @@ async function runAgent(
           threshold: SESSION_COMPACT_THRESHOLD,
         },
         'Session context large, triggering auto-compact',
+      );
+      notifyOps(
+        `⚡ Auto-compact triggered for ${group.name} (${msgCount} messages, threshold: ${SESSION_COMPACT_THRESHOLD})`,
       );
 
       // Close current container so compact gets a fresh one
@@ -479,10 +529,14 @@ async function runAgent(
           { group: group.name },
           'Auto-compact completed, session context reduced',
         );
+        notifyOps(`✅ Auto-compact completed for ${group.name}`);
       } else {
         logger.warn(
           { group: group.name, error: compactResult.error },
           'Auto-compact failed, session unchanged',
+        );
+        notifyOps(
+          `⚠️ Auto-compact failed for ${group.name}: ${compactResult.error?.slice(0, 200) || 'unknown'}`,
         );
       }
     }
@@ -490,6 +544,9 @@ async function runAgent(
     return 'success';
   } catch (err) {
     logger.error({ group: group.name, err }, 'Agent error');
+    notifyOps(
+      `🔴 ${group.name} — agent exception: ${err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200)}`,
+    );
     return 'error';
   }
 }

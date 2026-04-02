@@ -11,7 +11,8 @@ export function extractSessionCommand(
 ): string | null {
   let text = content.trim();
   text = text.replace(triggerPattern, '').trim();
-  if (text === '/compact') return '/compact';
+  if (text === '/compact' || text === 'compact') return '/compact';
+  if (text === '/fresh' || text === 'fresh') return '/fresh';
   return null;
 }
 
@@ -45,6 +46,10 @@ export interface SessionCommandDeps {
   formatMessages: (msgs: NewMessage[], timezone: string) => string;
   /** Whether the denied sender would normally be allowed to interact (for denial messages). */
   canSenderInteract: (msg: NewMessage) => boolean;
+  /** Clear the session for the group (used by /fresh). */
+  clearSession?: () => void;
+  /** Send a notification to the ops channel. */
+  notifyOps?: (text: string) => Promise<void>;
 }
 
 function resultToText(result: string | object | null | undefined): string {
@@ -139,6 +144,58 @@ export async function handleSessionCommand(opts: {
       }
       return { handled: true, success: false };
     }
+  }
+
+  // /fresh: save context to memory, then wipe session entirely (no compact)
+  if (command === '/fresh') {
+    await deps.setTyping(true);
+
+    // Ask the agent to save important context before we wipe the session
+    const savePrompt =
+      'SYSTEM: This session is about to be wiped for a fresh start. ' +
+      'Before it ends, save anything important:\n' +
+      '- Key facts, decisions, and lessons → hot memory\n' +
+      '- Session summary and work-in-progress → warm memory (journal)\n' +
+      '- Completed work details → cold memory (archive)\n' +
+      'Be concise. Do NOT respond to the user — just write to memory files silently.';
+
+    let saveError = false;
+    await deps.runAgent(savePrompt, async (result) => {
+      if (result.status === 'error') saveError = true;
+      // Close stdin when done so container exits — close on any success
+      // (the result may contain text or be null, either way we're done)
+      if (result.status === 'success') {
+        deps.closeStdin();
+      }
+    });
+
+    if (saveError) {
+      logger.warn(
+        { group: groupName },
+        '/fresh memory save failed, wiping session anyway',
+      );
+    }
+
+    // Wipe the session — next message starts with a full context window
+    if (deps.clearSession) {
+      deps.clearSession();
+      logger.info({ group: groupName }, '/fresh: session wiped');
+    }
+
+    deps.advanceCursor(cmdMsg.timestamp);
+    await deps.setTyping(false);
+    await deps.sendMessage(
+      'Session wiped — fresh context window ready. Memory preserved.',
+    );
+
+    // Notify ops channel
+    if (deps.notifyOps) {
+      await deps.notifyOps(
+        `🔄 /fresh — session wiped for ${groupName}. Memory saved, full context window available.`,
+      );
+    }
+
+    return { handled: true, success: true };
   }
 
   // Forward the literal slash command as the prompt (no XML formatting)

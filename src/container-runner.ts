@@ -288,7 +288,13 @@ function buildContainerArgs(
     // Pass SMTP credentials to main-group containers only.
     // Non-main containers never receive these — the smtp-send skill
     // checks for their presence and fails gracefully without them.
-    const smtpEnv = readEnvFile(['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'SMTP_FROM']);
+    const smtpEnv = readEnvFile([
+      'SMTP_HOST',
+      'SMTP_PORT',
+      'SMTP_USER',
+      'SMTP_PASS',
+      'SMTP_FROM',
+    ]);
     if (smtpEnv.SMTP_HOST) args.push('-e', `SMTP_HOST=${smtpEnv.SMTP_HOST}`);
     if (smtpEnv.SMTP_PORT) args.push('-e', `SMTP_PORT=${smtpEnv.SMTP_PORT}`);
     if (smtpEnv.SMTP_USER) args.push('-e', `SMTP_USER=${smtpEnv.SMTP_USER}`);
@@ -299,6 +305,14 @@ function buildContainerArgs(
     // gh CLI uses GH_TOKEN for authentication automatically.
     const ghEnv = readEnvFile(['GH_TOKEN']);
     if (ghEnv.GH_TOKEN) args.push('-e', `GH_TOKEN=${ghEnv.GH_TOKEN}`);
+
+    // Pass Slack credentials to main-group containers only.
+    // Used by @modelcontextprotocol/server-slack MCP inside the container.
+    const slackMcpEnv = readEnvFile(['SLACK_BOT_TOKEN', 'SLACK_TEAM_ID']);
+    if (slackMcpEnv.SLACK_BOT_TOKEN)
+      args.push('-e', `SLACK_BOT_TOKEN=${slackMcpEnv.SLACK_BOT_TOKEN}`);
+    if (slackMcpEnv.SLACK_TEAM_ID)
+      args.push('-e', `SLACK_TEAM_ID=${slackMcpEnv.SLACK_TEAM_ID}`);
   }
 
   for (const mount of mounts) {
