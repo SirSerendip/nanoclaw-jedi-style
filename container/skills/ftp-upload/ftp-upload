@@ -1,0 +1,93 @@
+#!/bin/bash
+set -euo pipefail
+
+VERSION="1.0.0"
+
+# --- credential check ---------------------------------------------------
+
+check_creds() {
+  local missing=()
+  [[ -z "${FTP_HOST:-}" ]] && missing+=(FTP_HOST)
+  [[ -z "${FTP_USER:-}" ]] && missing+=(FTP_USER)
+  [[ -z "${FTP_PASS:-}" ]] && missing+=(FTP_PASS)
+  if [[ ${#missing[@]} -gt 0 ]]; then
+    echo "Error: FTP credentials not available (missing: ${missing[*]})." >&2
+    echo "This tool is only available in the main channel." >&2
+    exit 1
+  fi
+}
+
+# --- commands ------------------------------------------------------------
+
+cmd_upload() {
+  local file="${1:-}"
+  local remote_dir="${2:-/}"
+
+  if [[ -z "$file" ]]; then
+    echo "Error: No file specified." >&2
+    echo "Usage: ftp-upload upload <local-file> [remote-dir]" >&2
+    exit 1
+  fi
+
+  if [[ ! -f "$file" ]]; then
+    echo "Error: File not found: $file" >&2
+    exit 1
+  fi
+
+  check_creds
+
+  local filename
+  filename="$(basename "$file")"
+
+  # Ensure remote_dir has trailing slash for curl
+  [[ "$remote_dir" != */ ]] && remote_dir="${remote_dir}/"
+
+  local url="ftp://${FTP_HOST}${remote_dir}"
+
+  echo "Uploading: $filename -> $url" >&2
+  if curl -T "$file" \
+       --ssl-reqd \
+       --ftp-create-dirs \
+       -u "${FTP_USER}:${FTP_PASS}" \
+       "${url}${filename}" \
+       --silent --show-error; then
+    echo "Success: $filename uploaded to ${url}${filename}"
+  else
+    echo "Error: Upload failed." >&2
+    exit 1
+  fi
+}
+
+cmd_check() {
+  check_creds
+  echo "FTP credentials configured for: $FTP_HOST"
+}
+
+# --- dispatch ------------------------------------------------------------
+
+command="${1:-help}"
+shift || true
+
+case "$command" in
+  upload)  cmd_upload "$@" ;;
+  check)   cmd_check ;;
+  help|--help|-h)
+    cat <<'USAGE'
+ftp-upload — Upload files via FTP
+
+Usage:
+  ftp-upload upload <file> [remote-dir]   Upload a file
+  ftp-upload check                        Verify FTP credentials
+  ftp-upload help                         Show this help
+
+Examples:
+  ftp-upload upload page.html /collisions
+  ftp-upload upload style.css /collisions/css
+USAGE
+    ;;
+  version|--version|-v) echo "ftp-upload $VERSION" ;;
+  *)
+    echo "Error: Unknown command: $command" >&2
+    exit 1
+    ;;
+esac

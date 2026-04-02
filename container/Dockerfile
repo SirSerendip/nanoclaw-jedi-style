@@ -25,7 +25,12 @@ RUN apt-get update && apt-get install -y \
     curl \
     git \
     poppler-utils \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+       -o /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+       > /etc/apt/sources.list.d/github-cli.list \
+    && apt-get update && apt-get install -y gh && rm -rf /var/lib/apt/lists/*
 
 # Set Chromium path for agent-browser
 ENV AGENT_BROWSER_EXECUTABLE_PATH=/usr/bin/chromium
@@ -52,6 +57,14 @@ RUN npm run build
 # Install pdf-reader CLI
 COPY skills/pdf-reader/pdf-reader /usr/local/bin/pdf-reader
 RUN chmod +x /usr/local/bin/pdf-reader
+
+# Install ftp-upload CLI
+COPY skills/ftp-upload/ftp-upload /usr/local/bin/ftp-upload
+RUN chmod +x /usr/local/bin/ftp-upload
+
+# Install smtp-send CLI
+COPY skills/smtp-send/smtp-send /usr/local/bin/smtp-send
+RUN chmod +x /usr/local/bin/smtp-send
 
 # Create workspace directories
 RUN mkdir -p /workspace/group /workspace/global /workspace/extra /workspace/ipc/messages /workspace/ipc/tasks /workspace/ipc/input

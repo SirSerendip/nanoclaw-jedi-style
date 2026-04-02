@@ -27,6 +27,7 @@ import {
   stopContainer,
 } from './container-runtime.js';
 import { detectAuthMode } from './credential-proxy.js';
+import { readEnvFile } from './env.js';
 import { validateAdditionalMounts } from './mount-security.js';
 import { RegisteredGroup } from './types.js';
 
@@ -238,6 +239,7 @@ function buildVolumeMounts(
 function buildContainerArgs(
   mounts: VolumeMount[],
   containerName: string,
+  isMain: boolean,
 ): string[] {
   const args: string[] = ['run', '-i', '--rm', '--name', containerName];
 
@@ -274,6 +276,31 @@ function buildContainerArgs(
     args.push('-e', 'HOME=/home/node');
   }
 
+  // Pass FTP credentials to main-group containers only.
+  // Non-main containers never receive these — the ftp-upload skill
+  // checks for their presence and fails gracefully without them.
+  if (isMain) {
+    const ftpEnv = readEnvFile(['FTP_HOST', 'FTP_USER', 'FTP_PASS']);
+    if (ftpEnv.FTP_HOST) args.push('-e', `FTP_HOST=${ftpEnv.FTP_HOST}`);
+    if (ftpEnv.FTP_USER) args.push('-e', `FTP_USER=${ftpEnv.FTP_USER}`);
+    if (ftpEnv.FTP_PASS) args.push('-e', `FTP_PASS=${ftpEnv.FTP_PASS}`);
+
+    // Pass SMTP credentials to main-group containers only.
+    // Non-main containers never receive these — the smtp-send skill
+    // checks for their presence and fails gracefully without them.
+    const smtpEnv = readEnvFile(['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'SMTP_FROM']);
+    if (smtpEnv.SMTP_HOST) args.push('-e', `SMTP_HOST=${smtpEnv.SMTP_HOST}`);
+    if (smtpEnv.SMTP_PORT) args.push('-e', `SMTP_PORT=${smtpEnv.SMTP_PORT}`);
+    if (smtpEnv.SMTP_USER) args.push('-e', `SMTP_USER=${smtpEnv.SMTP_USER}`);
+    if (smtpEnv.SMTP_PASS) args.push('-e', `SMTP_PASS=${smtpEnv.SMTP_PASS}`);
+    if (smtpEnv.SMTP_FROM) args.push('-e', `SMTP_FROM=${smtpEnv.SMTP_FROM}`);
+
+    // Pass GitHub token to main-group containers only.
+    // gh CLI uses GH_TOKEN for authentication automatically.
+    const ghEnv = readEnvFile(['GH_TOKEN']);
+    if (ghEnv.GH_TOKEN) args.push('-e', `GH_TOKEN=${ghEnv.GH_TOKEN}`);
+  }
+
   for (const mount of mounts) {
     if (mount.readonly) {
       args.push(...readonlyMountArgs(mount.hostPath, mount.containerPath));
@@ -301,7 +328,7 @@ export async function runContainerAgent(
   const mounts = buildVolumeMounts(group, input.isMain);
   const safeName = group.folder.replace(/[^a-zA-Z0-9-]/g, '-');
   const containerName = `nanoclaw-${safeName}-${Date.now()}`;
-  const containerArgs = buildContainerArgs(mounts, containerName);
+  const containerArgs = buildContainerArgs(mounts, containerName, input.isMain);
 
   logger.debug(
     {

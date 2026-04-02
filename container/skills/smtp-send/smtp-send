@@ -1,0 +1,155 @@
+#!/bin/bash
+set -euo pipefail
+
+VERSION="1.0.0"
+DEFAULT_FROM="hello@jedionthefly.com"
+DEFAULT_PORT="587"
+
+# --- credential check ---------------------------------------------------
+
+check_creds() {
+  local missing=()
+  [[ -z "${SMTP_HOST:-}" ]] && missing+=(SMTP_HOST)
+  [[ -z "${SMTP_USER:-}" ]] && missing+=(SMTP_USER)
+  [[ -z "${SMTP_PASS:-}" ]] && missing+=(SMTP_PASS)
+  if [[ ${#missing[@]} -gt 0 ]]; then
+    echo "Error: SMTP credentials not available (missing: ${missing[*]})." >&2
+    echo "This tool is only available in the main channel." >&2
+    exit 1
+  fi
+}
+
+# --- commands ------------------------------------------------------------
+
+cmd_send() {
+  local to="" subject="" body=""
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --to)      to="$2"; shift 2 ;;
+      --subject) subject="$2"; shift 2 ;;
+      --body)    body="$2"; shift 2 ;;
+      *) echo "Error: Unknown flag: $1" >&2; exit 1 ;;
+    esac
+  done
+
+  if [[ -z "$to" ]]; then
+    echo "Error: --to is required." >&2
+    echo "Usage: smtp-send send --to <email> --subject <subject> --body <body>" >&2
+    exit 1
+  fi
+  if [[ -z "$subject" ]]; then
+    echo "Error: --subject is required." >&2
+    exit 1
+  fi
+  if [[ -z "$body" ]]; then
+    echo "Error: --body is required." >&2
+    exit 1
+  fi
+
+  check_creds
+
+  local from="${SMTP_FROM:-$DEFAULT_FROM}"
+  local port="${SMTP_PORT:-$DEFAULT_PORT}"
+  local boundary="nanoclaw-$(date +%s)-$$"
+  local date_header
+  date_header="$(date -R 2>/dev/null || date '+%a, %d %b %Y %H:%M:%S %z')"
+
+  # Strip HTML tags for plain-text part
+  local plain_body
+  plain_body="$(echo "$body" | sed 's/<[^>]*>//g')"
+
+  # Build MIME message
+  local msg_file
+  msg_file="$(mktemp /tmp/smtp-msg-XXXXXX.eml)"
+  cat > "$msg_file" <<MIME
+From: ${from}
+To: ${to}
+Subject: ${subject}
+Date: ${date_header}
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="${boundary}"
+
+--${boundary}
+Content-Type: text/plain; charset="UTF-8"
+
+${plain_body}
+
+--${boundary}
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+${body}
+<hr style="border: none; border-top: 1px solid #e0e0e0; margin: 30px 0 15px;">
+<p style="font-size: 12px; color: #999;">Sent by Jedi Claw</p>
+</body>
+</html>
+
+--${boundary}--
+MIME
+
+  # Determine TLS mode based on port
+  local url
+  if [[ "$port" == "465" ]]; then
+    url="smtps://${SMTP_HOST}:${port}"
+  else
+    url="smtp://${SMTP_HOST}:${port}"
+  fi
+
+  echo "Sending to: ${to} (subject: ${subject})" >&2
+  if curl --url "$url" \
+       --ssl-reqd \
+       --mail-from "$from" \
+       --mail-rcpt "$to" \
+       --upload-file "$msg_file" \
+       --user "${SMTP_USER}:${SMTP_PASS}" \
+       --silent --show-error; then
+    rm -f "$msg_file"
+    echo "Success: Email sent to ${to}"
+  else
+    rm -f "$msg_file"
+    echo "Error: Failed to send email." >&2
+    exit 1
+  fi
+}
+
+cmd_check() {
+  check_creds
+  local port="${SMTP_PORT:-$DEFAULT_PORT}"
+  local from="${SMTP_FROM:-$DEFAULT_FROM}"
+  echo "SMTP credentials configured:"
+  echo "  Host: ${SMTP_HOST}:${port}"
+  echo "  From: ${from}"
+}
+
+# --- dispatch ------------------------------------------------------------
+
+command="${1:-help}"
+shift || true
+
+case "$command" in
+  send)  cmd_send "$@" ;;
+  check) cmd_check ;;
+  help|--help|-h)
+    cat <<'USAGE'
+smtp-send — Send emails via SMTP
+
+Usage:
+  smtp-send send --to <email> --subject <subject> --body <body>
+  smtp-send check                        Verify SMTP credentials
+  smtp-send help                         Show this help
+
+Examples:
+  smtp-send send --to colleague@example.com --subject "Check this out" --body "<p>Here's the latest report: <a href='https://example.com/report'>View Report</a></p>"
+  smtp-send send --to hamid@example.com --subject "Hamid's Smoke Break" --body "<h2>Today's Highlights</h2><p>Top stories curated for you.</p><p><a href='https://link'>Read in Slack</a></p>"
+USAGE
+    ;;
+  version|--version|-v) echo "smtp-send $VERSION" ;;
+  *)
+    echo "Error: Unknown command: $command" >&2
+    exit 1
+    ;;
+esac
