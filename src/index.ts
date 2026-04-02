@@ -105,6 +105,26 @@ async function notifyOps(text: string): Promise<void> {
   }
 }
 
+/**
+ * Build a visual context window meter.
+ * Returns null if usage is below threshold or data is missing.
+ */
+function contextMeter(
+  inputTokens: number | undefined,
+  contextWindow: number | undefined,
+  threshold = 60,
+): string | null {
+  if (!inputTokens || !contextWindow || contextWindow === 0) return null;
+  const pct = Math.round((inputTokens / contextWindow) * 100);
+  if (pct < threshold) return null;
+  const filled = Math.min(10, Math.round(pct / 10));
+  const empty = 10 - filled;
+  const bar = '█'.repeat(filled) + '░'.repeat(empty);
+  const tokensK = Math.round(inputTokens / 1000);
+  const windowK = Math.round(contextWindow / 1000);
+  return `📊 ${bar} ${pct}% (${tokensK}K/${windowK}K)`;
+}
+
 function loadState(): void {
   lastTimestamp = getRouterState('last_timestamp') || '';
   const agentTs = getRouterState('last_agent_timestamp');
@@ -331,8 +351,15 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
   await channel.setTyping?.(chatJid, true);
   let hadError = false;
   let outputSentToUser = false;
+  let lastContextTokens: number | undefined;
+  let lastContextWindow: number | undefined;
+  let lastCostUsd: number | undefined;
 
   const output = await runAgent(group, prompt, chatJid, async (result) => {
+    // Track latest context stats for completion notification
+    if (result.inputTokens) lastContextTokens = result.inputTokens;
+    if (result.contextWindow) lastContextWindow = result.contextWindow;
+    if (result.costUsd) lastCostUsd = result.costUsd;
     // Streaming output callback — called for each agent result
     if (result.result) {
       const raw =
@@ -345,9 +372,10 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
       if (text) {
         await channel.sendMessage(chatJid, text);
         outputSentToUser = true;
-        notifyOps(
-          `💬 ${group.name} — delivered ${text.length} chars (${Math.round((Date.now() - agentStartTime) / 1000)}s elapsed)`,
-        );
+        let deliveryNote = `💬 ${group.name} — delivered ${text.length} chars (${Math.round((Date.now() - agentStartTime) / 1000)}s elapsed)`;
+        const meter = contextMeter(result.inputTokens, result.contextWindow);
+        if (meter) deliveryNote += `\n${meter}`;
+        notifyOps(deliveryNote);
       }
       // Only reset idle timer on actual results, not session-update markers (result: null)
       resetIdleTimer();
@@ -393,7 +421,11 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
   }
 
   const elapsed = Math.round((Date.now() - agentStartTime) / 1000);
-  notifyOps(`✅ ${group.name} — agent completed in ${elapsed}s`);
+  let completionNote = `✅ ${group.name} — agent completed in ${elapsed}s`;
+  if (lastCostUsd) completionNote += ` ($${lastCostUsd.toFixed(2)})`;
+  const meter = contextMeter(lastContextTokens, lastContextWindow);
+  if (meter) completionNote += `\n${meter}`;
+  notifyOps(completionNote);
   return true;
 }
 

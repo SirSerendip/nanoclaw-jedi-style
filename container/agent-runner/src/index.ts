@@ -37,6 +37,9 @@ interface ContainerOutput {
   newSessionId?: string;
   messageCount?: number;
   error?: string;
+  inputTokens?: number;
+  contextWindow?: number;
+  costUsd?: number;
 }
 
 interface SessionEntry {
@@ -368,6 +371,8 @@ async function runQuery(
   let lastAssistantUuid: string | undefined;
   let messageCount = 0;
   let resultCount = 0;
+  let lastInputTokens = 0;
+  let contextWindow = 0;
 
   // Load global CLAUDE.md as additional system context (shared across all groups)
   const globalClaudeMdPath = '/workspace/global/CLAUDE.md';
@@ -453,6 +458,11 @@ async function runQuery(
 
     if (message.type === 'assistant' && 'uuid' in message) {
       lastAssistantUuid = (message as { uuid: string }).uuid;
+      // Track per-turn input tokens — the last value = current context window fill
+      const usage = (message as { message?: { usage?: { input_tokens?: number } } }).message?.usage;
+      if (usage?.input_tokens) {
+        lastInputTokens = usage.input_tokens;
+      }
     }
 
     if (message.type === 'system' && message.subtype === 'init') {
@@ -469,11 +479,29 @@ async function runQuery(
       resultCount++;
       const textResult = 'result' in message ? (message as { result?: string }).result : null;
       log(`Result #${resultCount}: subtype=${message.subtype}${textResult ? ` text=${textResult.slice(0, 200)}` : ''}`);
+
+      // Extract context window size and cost from result message
+      // modelUsage is Record<string, ModelUsage> keyed by model name
+      const modelUsage = (message as unknown as { modelUsage?: Record<string, { contextWindow?: number }> }).modelUsage;
+      if (modelUsage) {
+        const first = Object.values(modelUsage)[0];
+        if (first?.contextWindow) contextWindow = first.contextWindow;
+      }
+      const costUsd = (message as unknown as { total_cost_usd?: number }).total_cost_usd;
+
+      if (lastInputTokens > 0) {
+        const pct = contextWindow > 0 ? Math.round((lastInputTokens / contextWindow) * 100) : 0;
+        log(`Context usage: ${lastInputTokens} input tokens, ${contextWindow} window, ${pct}%${costUsd ? `, $${costUsd.toFixed(4)}` : ''}`);
+      }
+
       writeOutput({
         status: 'success',
         result: textResult || null,
         newSessionId,
         messageCount,
+        inputTokens: lastInputTokens || undefined,
+        contextWindow: contextWindow || undefined,
+        costUsd: costUsd || undefined,
       });
     }
   }

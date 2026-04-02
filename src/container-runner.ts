@@ -52,6 +52,9 @@ export interface ContainerOutput {
   newSessionId?: string;
   error?: string;
   messageCount?: number;
+  inputTokens?: number;
+  contextWindow?: number;
+  costUsd?: number;
 }
 
 interface VolumeMount {
