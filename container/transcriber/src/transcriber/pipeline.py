@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import gc
 import logging
+import math
 import os
 import tempfile
 from dataclasses import dataclass, field
@@ -145,30 +147,26 @@ class TranscriptionPipeline:
                 "(accept conditions at https://huggingface.co/pyannote/speaker-diarization-3.1)."
             ) from exc
 
+        # Free Whisper model memory before diarization
+        del whisper_model
+        gc.collect()
+
         self.on_progress(55, "Speaker diarization in progress...")
         wav_path = convert_to_wav(audio_path)
 
-        diarize_last_pct = 55
-
-        def diarize_hook(*args, **kwargs) -> None:
-            nonlocal diarize_last_pct
-            completed = kwargs.get("completed")
-            total = kwargs.get("total")
-            if completed is not None and total is not None and total > 0:
-                pct = 55 + int((completed / total) * 35)
-                pct = min(pct, 90)
-                if pct >= diarize_last_pct + 5:
-                    diarize_last_pct = pct
-                    self.on_progress(pct, "Speaker diarization...")
-
         try:
-            diarization_annotation: Annotation = diarization_pipeline(
-                str(wav_path), hook=diarize_hook
+            diarization_segments = chunked_diarize(
+                wav_path,
+                total_duration,
+                diarization_pipeline,
+                on_progress=self.on_progress,
             )
         finally:
             wav_path.unlink(missing_ok=True)
 
-        diarization_segments = _annotation_to_segments(diarization_annotation)
+        # Free diarization model memory before merge
+        del diarization_pipeline
+        gc.collect()
 
         # Phase 4: Merge and format (90-100%)
         self.on_progress(90, "Merging transcription with speakers...")
@@ -269,6 +267,192 @@ def _annotation_to_segments(annotation: Annotation) -> List[Dict[str, float]]:
             }
         )
     return results
+
+
+# --- Chunked diarization for long audio ---
+
+CHUNK_DURATION_S = 600  # 10-minute chunks
+OVERLAP_S = 30  # 30-second overlap for speaker matching
+
+
+def chunked_diarize(
+    wav_path: Path,
+    total_duration: float,
+    diarization_pipeline: object,
+    on_progress: ProgressCallback = _noop_progress,
+) -> List[Dict[str, float]]:
+    """Run diarization in memory-safe chunks with speaker matching across boundaries.
+
+    Short audio (<=CHUNK_DURATION_S) runs in a single pass.
+    Longer audio is split into overlapping chunks, diarized independently,
+    and speakers are matched across boundaries using temporal overlap.
+    """
+    if total_duration <= CHUNK_DURATION_S + OVERLAP_S:
+        # Short audio — single pass
+        logger.info("Audio %.0fs, running diarization in single pass", total_duration)
+
+        def single_hook(*args, **kwargs) -> None:
+            completed = kwargs.get("completed")
+            total = kwargs.get("total")
+            if completed is not None and total is not None and total > 0:
+                pct = 55 + int((completed / total) * 35)
+                on_progress(min(pct, 89), "Speaker diarization...")
+
+        annotation = diarization_pipeline(str(wav_path), hook=single_hook)
+        return _annotation_to_segments(annotation)
+
+    # Long audio — chunked processing
+    num_chunks = math.ceil((total_duration - OVERLAP_S) / CHUNK_DURATION_S)
+    num_chunks = max(num_chunks, 1)
+    logger.info(
+        "Audio %.0fs, running chunked diarization (%d chunks of %ds with %ds overlap)",
+        total_duration,
+        num_chunks,
+        CHUNK_DURATION_S,
+        OVERLAP_S,
+    )
+
+    all_segments: List[Dict[str, float]] = []
+    global_speakers: Dict[str, str] = {}  # local label -> global label
+    next_speaker_id = 0
+
+    for chunk_idx in range(num_chunks):
+        start_s = chunk_idx * CHUNK_DURATION_S
+        end_s = min(start_s + CHUNK_DURATION_S + OVERLAP_S, total_duration)
+
+        pct = 55 + int((chunk_idx / num_chunks) * 35)
+        on_progress(
+            min(pct, 89),
+            f"Speaker diarization... chunk {chunk_idx + 1}/{num_chunks}",
+        )
+
+        # Extract chunk audio
+        chunk_wav = _extract_audio_chunk(wav_path, start_s, end_s)
+        try:
+            annotation = diarization_pipeline(str(chunk_wav))
+        finally:
+            chunk_wav.unlink(missing_ok=True)
+
+        chunk_segments = _annotation_to_segments(annotation)
+
+        # Offset to absolute times
+        for seg in chunk_segments:
+            seg["start"] += start_s
+            seg["end"] += start_s
+
+        # Free memory between chunks
+        del annotation
+        gc.collect()
+
+        if chunk_idx == 0:
+            # First chunk: assign global speaker IDs directly
+            for seg in chunk_segments:
+                local = seg["speaker"]
+                if local not in global_speakers:
+                    global_speakers[local] = f"SPEAKER_{next_speaker_id:02d}"
+                    next_speaker_id += 1
+                seg["speaker"] = global_speakers[local]
+            all_segments.extend(chunk_segments)
+        else:
+            # Match speakers using the overlap region
+            overlap_start = start_s
+            overlap_end = start_s + OVERLAP_S
+
+            chunk_map = _match_overlap_speakers(
+                all_segments, chunk_segments, overlap_start, overlap_end
+            )
+
+            # Assign global IDs to any new speakers not seen in overlap
+            for seg in chunk_segments:
+                local = seg["speaker"]
+                if local not in chunk_map:
+                    chunk_map[local] = f"SPEAKER_{next_speaker_id:02d}"
+                    next_speaker_id += 1
+
+            # Add segments AFTER the overlap (overlap is already covered by prev chunk)
+            for seg in chunk_segments:
+                if seg["end"] > overlap_end:
+                    seg["speaker"] = chunk_map.get(seg["speaker"], seg["speaker"])
+                    if seg["start"] < overlap_end:
+                        seg["start"] = overlap_end
+                    all_segments.append(seg)
+
+        logger.info(
+            "Chunk %d/%d done, %d segments so far, %d global speakers",
+            chunk_idx + 1,
+            num_chunks,
+            len(all_segments),
+            next_speaker_id,
+        )
+
+    return all_segments
+
+
+def _match_overlap_speakers(
+    prev_segments: List[Dict[str, float]],
+    curr_segments: List[Dict[str, float]],
+    overlap_start: float,
+    overlap_end: float,
+) -> Dict[str, str]:
+    """Match speakers between chunks using temporal overlap in the shared region."""
+    prev_in_overlap = [
+        s for s in prev_segments if s["end"] > overlap_start and s["start"] < overlap_end
+    ]
+    curr_in_overlap = [
+        s for s in curr_segments if s["end"] > overlap_start and s["start"] < overlap_end
+    ]
+
+    if not prev_in_overlap or not curr_in_overlap:
+        return {}
+
+    mapping: Dict[str, str] = {}
+    used_prev: set = set()
+    curr_speakers = sorted(
+        set(s["speaker"] for s in curr_in_overlap),
+        key=lambda sp: sum(
+            s["end"] - s["start"] for s in curr_in_overlap if s["speaker"] == sp
+        ),
+        reverse=True,
+    )
+
+    for curr_spk in curr_speakers:
+        curr_segs = [s for s in curr_in_overlap if s["speaker"] == curr_spk]
+        best_overlap = 0.0
+        best_prev = None
+
+        for prev_spk in set(s["speaker"] for s in prev_in_overlap):
+            if prev_spk in used_prev:
+                continue
+            prev_segs = [s for s in prev_in_overlap if s["speaker"] == prev_spk]
+            total = sum(
+                _overlap(c["start"], c["end"], p["start"], p["end"])
+                for c in curr_segs
+                for p in prev_segs
+            )
+            if total > best_overlap:
+                best_overlap = total
+                best_prev = prev_spk
+
+        if best_prev is not None and best_overlap > 0:
+            mapping[curr_spk] = best_prev
+            used_prev.add(best_prev)
+
+    return mapping
+
+
+def _extract_audio_chunk(source_path: Path, start_s: float, end_s: float) -> Path:
+    """Extract a chunk of audio to a temp WAV file."""
+    fd, tmp_path = tempfile.mkstemp(suffix=".wav", prefix="chunk-")
+    os.close(fd)
+    output_path = Path(tmp_path)
+    duration = end_s - start_s
+    (
+        ffmpeg.input(str(source_path), ss=start_s, t=duration)
+        .output(str(output_path), format="wav", ac=1, ar=16000)
+        .overwrite_output()
+        .run(quiet=True)
+    )
+    return output_path
 
 
 def convert_to_wav(source_path: Path) -> Path:
