@@ -32,7 +32,7 @@ A Markdown transcript with timestamps and speaker attribution:
 
 ## Options
 
-- `model`: Whisper model size (default: `small.en`). Options: `tiny.en`, `base.en`, `small.en`, `medium.en`, `large-v2`
+- `model`: Always use `small.en` (the default). Do NOT use medium.en or larger — they are too slow on CPU and the quality difference is negligible for meeting transcription.
 - `language`: ISO language code for non-English audio (e.g., `es`, `fr`). Auto-detected if omitted.
 - `max_speakers`: Maximum number of speakers expected. Pass this when you know the count — it improves accuracy.
 
