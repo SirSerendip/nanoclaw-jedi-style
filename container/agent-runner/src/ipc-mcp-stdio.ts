@@ -352,6 +352,7 @@ The result is a Markdown transcript like:
     audio_path: z.string().describe('Path to the audio file (e.g., /workspace/group/recording.mp3)'),
     model: z.string().optional().describe('Whisper model name (default: small.en). Options: tiny.en, base.en, small.en, medium.en, large-v2'),
     language: z.string().optional().describe('ISO language code (e.g., "en", "es"). Leave unset for auto-detection.'),
+    max_speakers: z.number().optional().describe('Maximum number of speakers expected. Improves accuracy when known.'),
   },
   async (args) => {
     if (!args.audio_path.startsWith('/workspace/group/')) {
@@ -381,6 +382,7 @@ The result is a Markdown transcript like:
       audioPath: args.audio_path,
       model: args.model || 'small.en',
       language: args.language || null,
+      maxSpeakers: args.max_speakers || null,
       groupFolder,
       timestamp: new Date().toISOString(),
     };

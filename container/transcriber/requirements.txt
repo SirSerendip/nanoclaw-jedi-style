@@ -1,8 +1,5 @@
 faster-whisper>=1.0.3
-torch>=2.2.0,<2.5.0
-torchaudio>=2.2.0,<2.4.0
-pyannote.audio==3.1.1
-huggingface_hub<0.24.0
+diarize>=0.1.0
 ffmpeg-python>=0.2.0
-numpy>=1.26.0,<2.0.0
+numpy>=1.26.0
 soundfile>=0.12.0

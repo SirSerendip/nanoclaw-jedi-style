@@ -11,7 +11,6 @@ import {
   CONTAINER_RUNTIME_BIN,
   hostGatewayArgs,
 } from './container-runtime.js';
-import { readEnvFile } from './env.js';
 import { resolveGroupFolderPath } from './group-folder.js';
 import { logger } from './logger.js';
 
@@ -24,6 +23,7 @@ export interface TranscribeRequest {
   audioPath: string; // path inside agent container (e.g. /workspace/group/audio.mp3)
   model?: string;
   language?: string;
+  maxSpeakers?: number;
 }
 
 export interface TranscribeResult {
@@ -55,18 +55,6 @@ export async function runTranscription(
     };
   }
 
-  const hfToken =
-    readEnvFile(['HUGGINGFACE_TOKEN']).HUGGINGFACE_TOKEN ||
-    readEnvFile(['HF_TOKEN']).HF_TOKEN;
-  if (!hfToken) {
-    return {
-      requestId: request.requestId,
-      status: 'error',
-      error:
-        'HUGGINGFACE_TOKEN not set in .env — required for speaker diarization',
-    };
-  }
-
   const ext = path.extname(hostAudioPath) || '.mp3';
   const containerAudioPath = `/input/audio${ext}`;
   const containerName = `nanoclaw-transcriber-${Date.now()}`;
@@ -82,8 +70,6 @@ export async function runTranscription(
     '-v',
     `${MODEL_CACHE_VOLUME}:/models`,
     '-e',
-    `HUGGINGFACE_TOKEN=${hfToken}`,
-    '-e',
     'HF_HOME=/models',
     '-e',
     'TORCH_HOME=/models/torch',
@@ -98,6 +84,10 @@ export async function runTranscription(
 
   if (request.language) {
     args.push('--language', request.language);
+  }
+
+  if (request.maxSpeakers) {
+    args.push('--max-speakers', String(request.maxSpeakers));
   }
 
   logger.info(

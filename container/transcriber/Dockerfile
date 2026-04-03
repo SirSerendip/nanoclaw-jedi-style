@@ -20,5 +20,7 @@ ENV PYTHONPATH=/app/src
 # Models cache at /models (mount a volume for persistence)
 ENV HF_HOME=/models
 ENV TORCH_HOME=/models/torch
+ENV XDG_CACHE_HOME=/models
+ENV HOME=/models
 
 ENTRYPOINT ["python", "-m", "transcriber.cli"]

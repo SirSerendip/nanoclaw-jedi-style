@@ -1,6 +1,6 @@
 ---
 name: Audio Transcription
-description: Transcribe audio files to text with speaker diarization using Whisper + pyannote
+description: Transcribe audio files to text with speaker diarization using Whisper + diarize
 tools:
   - mcp__nanoclaw__transcribe_audio
 ---
@@ -32,6 +32,7 @@ A Markdown transcript with timestamps and speaker attribution:
 
 - `model`: Whisper model size (default: `small.en`). Options: `tiny.en`, `base.en`, `small.en`, `medium.en`, `large-v2`
 - `language`: ISO language code for non-English audio (e.g., `es`, `fr`). Auto-detected if omitted.
+- `max_speakers`: Maximum number of speakers expected. Pass this when you know the count — it improves accuracy.
 
 ## Important: Always post transcript in chat
 
@@ -43,5 +44,6 @@ If the transcript is very long, use `send_message` to post it immediately, then 
 
 - Transcription runs in a separate container — it may take a few minutes for long audio
 - Progress is reported to the ops channel automatically
-- First run downloads ML models (~2GB) which are cached for subsequent runs
-- Runs on CPU (no GPU required)
+- First run downloads ML models which are cached for subsequent runs
+- Runs on CPU (no GPU required), ~8x faster than real-time
+- No HuggingFace token needed

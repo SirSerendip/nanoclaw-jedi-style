@@ -54,10 +54,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Compute type (int8, float16). Auto-selected if omitted.",
     )
     parser.add_argument(
-        "--hf-token",
-        dest="hf_token",
+        "--max-speakers",
+        dest="max_speakers",
+        type=int,
         default=None,
-        help="Hugging Face access token. If omitted, reads HUGGINGFACE_TOKEN env var.",
+        help="Maximum number of speakers expected. Improves accuracy when known.",
     )
     parser.add_argument(
         "--language",
@@ -87,8 +88,8 @@ def main(argv: list[str] | None = None) -> int:
         audio_path=audio_path,
         model_name=args.model,
         compute_type=args.compute_type,
-        diarization_token=args.hf_token,
         language=args.language,
+        max_speakers=args.max_speakers,
     )
 
     pipeline = TranscriptionPipeline(config, on_progress=emit_progress)
