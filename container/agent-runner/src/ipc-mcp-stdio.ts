@@ -337,6 +337,98 @@ Use available_groups.json to find the JID for a group. The folder name must be c
   },
 );
 
+server.tool(
+  'transcribe_audio',
+  `Transcribe an audio file to text with speaker diarization. Returns a Markdown transcript with timestamps and speaker labels.
+
+The audio file must be accessible at a path under /workspace/group/ (the group's working directory). Supports mp3, m4a, wav, mp4, ogg, and other formats ffmpeg can read.
+
+This tool triggers a separate transcriber container on the host. It may take several minutes for long audio files. Progress is reported to the ops channel.
+
+The result is a Markdown transcript like:
+  [00:00:02.520 --> 00:00:16.900] **Speaker 1**: Hello there...
+  [00:00:17.820 --> 00:00:20.980] **Speaker 2**: I'm going to be...`,
+  {
+    audio_path: z.string().describe('Path to the audio file (e.g., /workspace/group/recording.mp3)'),
+    model: z.string().optional().describe('Whisper model name (default: medium.en). Options: tiny.en, base.en, small.en, medium.en, large-v2'),
+    language: z.string().optional().describe('ISO language code (e.g., "en", "es"). Leave unset for auto-detection.'),
+  },
+  async (args) => {
+    if (!args.audio_path.startsWith('/workspace/group/')) {
+      return {
+        content: [{ type: 'text' as const, text: 'Audio path must be under /workspace/group/.' }],
+        isError: true,
+      };
+    }
+
+    // Verify file exists
+    if (!fs.existsSync(args.audio_path)) {
+      return {
+        content: [{ type: 'text' as const, text: `Audio file not found: ${args.audio_path}` }],
+        isError: true,
+      };
+    }
+
+    const requestId = `transcribe-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+    const TRANSCRIBE_DIR = path.join(IPC_DIR, 'transcribe');
+    fs.mkdirSync(TRANSCRIBE_DIR, { recursive: true });
+
+    // Write request for host to pick up
+    const requestData = {
+      type: 'transcribe_audio',
+      requestId,
+      audioPath: args.audio_path,
+      model: args.model || 'medium.en',
+      language: args.language || null,
+      groupFolder,
+      timestamp: new Date().toISOString(),
+    };
+    writeIpcFile(TRANSCRIBE_DIR, requestData);
+
+    // Poll for result (host writes result-{id}.json when done)
+    const resultPath = path.join(TRANSCRIBE_DIR, `result-${requestId}.json`);
+    const POLL_INTERVAL_MS = 3000;
+    const TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+    const startTime = Date.now();
+
+    while (Date.now() - startTime < TIMEOUT_MS) {
+      if (fs.existsSync(resultPath)) {
+        try {
+          const result = JSON.parse(fs.readFileSync(resultPath, 'utf-8'));
+          fs.unlinkSync(resultPath);
+
+          if (result.status === 'error') {
+            return {
+              content: [{ type: 'text' as const, text: `Transcription failed: ${result.error}` }],
+              isError: true,
+            };
+          }
+
+          const summary = `Transcription complete: ${result.speakers} speaker(s), ${result.words} words, ${result.duration}s audio`;
+          return {
+            content: [
+              { type: 'text' as const, text: summary },
+              { type: 'text' as const, text: result.transcript },
+            ],
+          };
+        } catch (err) {
+          return {
+            content: [{ type: 'text' as const, text: `Error reading result: ${err}` }],
+            isError: true,
+          };
+        }
+      }
+      await new Promise(r => setTimeout(r, POLL_INTERVAL_MS));
+    }
+
+    return {
+      content: [{ type: 'text' as const, text: 'Transcription timed out after 30 minutes.' }],
+      isError: true,
+    };
+  },
+);
+
 // Start the stdio transport
 const transport = new StdioServerTransport();
 await server.connect(transport);

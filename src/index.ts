@@ -918,6 +918,7 @@ async function main(): Promise<void> {
         writeTasksSnapshot(group.folder, group.isMain === true, taskRows);
       }
     },
+    notifyOps,
   });
   queue.setProcessMessagesFn(processGroupMessages);
   recoverPendingMessages();

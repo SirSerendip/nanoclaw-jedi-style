@@ -6,8 +6,12 @@ import { CronExpressionParser } from 'cron-parser';
 import { DATA_DIR, IPC_POLL_INTERVAL, TIMEZONE } from './config.js';
 import { AvailableGroup } from './container-runner.js';
 import { createTask, deleteTask, getTaskById, updateTask } from './db.js';
-import { isValidGroupFolder } from './group-folder.js';
+import { isValidGroupFolder, resolveGroupIpcPath } from './group-folder.js';
 import { logger } from './logger.js';
+import {
+  runTranscription,
+  TranscribeRequest,
+} from './transcriber-runner.js';
 import { RegisteredGroup } from './types.js';
 
 export interface IpcDeps {
@@ -23,6 +27,7 @@ export interface IpcDeps {
     registeredJids: Set<string>,
   ) => void;
   onTasksChanged: () => void;
+  notifyOps: (text: string) => Promise<void>;
 }
 
 let ipcWatcherRunning = false;
@@ -144,6 +149,57 @@ export function startIpcWatcher(deps: IpcDeps): void {
         }
       } catch (err) {
         logger.error({ err, sourceGroup }, 'Error reading IPC tasks directory');
+      }
+
+      // Process transcription requests from this group's IPC directory
+      const transcribeDir = path.join(
+        ipcBaseDir,
+        sourceGroup,
+        'transcribe',
+      );
+      try {
+        if (fs.existsSync(transcribeDir)) {
+          const requestFiles = fs
+            .readdirSync(transcribeDir)
+            .filter(
+              (f) =>
+                f.endsWith('.json') &&
+                !f.startsWith('result-') &&
+                !f.startsWith('progress-'),
+            );
+          for (const file of requestFiles) {
+            const filePath = path.join(transcribeDir, file);
+            try {
+              const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+              fs.unlinkSync(filePath);
+
+              if (data.type === 'transcribe_audio' && data.requestId && data.audioPath) {
+                // Fire-and-forget — transcription runs in background
+                processTranscribeRequest(
+                  sourceGroup,
+                  data as TranscribeRequest & { type: string },
+                  transcribeDir,
+                  deps,
+                ).catch((err) =>
+                  logger.error(
+                    { err, requestId: data.requestId },
+                    'Transcription handler error',
+                  ),
+                );
+              }
+            } catch (err) {
+              logger.error(
+                { file, sourceGroup, err },
+                'Error processing transcription request',
+              );
+            }
+          }
+        }
+      } catch (err) {
+        logger.error(
+          { err, sourceGroup },
+          'Error reading IPC transcribe directory',
+        );
       }
     }
 
@@ -464,5 +520,66 @@ export async function processTaskIpc(
 
     default:
       logger.warn({ type: data.type }, 'Unknown IPC task type');
+  }
+}
+
+/**
+ * Build a progress bar for transcription ops notifications.
+ */
+function transcriptionMeter(percent: number): string {
+  const filled = Math.min(10, Math.round(percent / 10));
+  const empty = 10 - filled;
+  return '█'.repeat(filled) + '░'.repeat(empty);
+}
+
+/**
+ * Handle a transcription request from the agent.
+ * Spawns the transcriber container, streams progress to ops,
+ * and writes the result back to IPC for the agent to pick up.
+ */
+async function processTranscribeRequest(
+  groupFolder: string,
+  request: TranscribeRequest & { type: string },
+  transcribeDir: string,
+  deps: IpcDeps,
+): Promise<void> {
+  const { requestId, audioPath } = request;
+  const audioName = path.basename(audioPath);
+
+  deps.notifyOps(`📝 Transcription started — ${audioName}`);
+
+  let lastReportedPct = -1;
+
+  const result = await runTranscription(groupFolder, request, (percent, detail) => {
+    // Report to ops at meaningful intervals (every ~10% or phase change)
+    const shouldReport =
+      percent >= lastReportedPct + 10 ||
+      percent === 100 ||
+      (percent === 50 && lastReportedPct < 50) || // whisper → diarization boundary
+      (percent === 90 && lastReportedPct < 90);    // diarization → merge boundary
+
+    if (shouldReport) {
+      lastReportedPct = percent;
+      deps.notifyOps(`📝 ${transcriptionMeter(percent)} ${percent}% — ${detail}`);
+    }
+  });
+
+  // Write result for agent MCP tool to pick up
+  const resultPath = path.join(transcribeDir, `result-${requestId}.json`);
+  const tempPath = `${resultPath}.tmp`;
+  fs.writeFileSync(tempPath, JSON.stringify(result, null, 2));
+  fs.renameSync(tempPath, resultPath);
+
+  if (result.status === 'success') {
+    const dur = result.duration
+      ? `${Math.floor(result.duration / 60)}m ${Math.round(result.duration % 60)}s`
+      : 'unknown duration';
+    deps.notifyOps(
+      `📝 ██████████ 100% — Transcription complete (${result.speakers} speakers, ${result.words} words, ${dur})`,
+    );
+  } else {
+    deps.notifyOps(
+      `📝 ❌ Transcription failed — ${result.error?.slice(0, 200) || 'unknown error'}`,
+    );
   }
 }
