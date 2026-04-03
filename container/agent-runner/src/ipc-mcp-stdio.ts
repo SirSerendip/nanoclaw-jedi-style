@@ -389,7 +389,7 @@ The result is a Markdown transcript like:
     // Poll for result (host writes result-{id}.json when done)
     const resultPath = path.join(TRANSCRIBE_DIR, `result-${requestId}.json`);
     const POLL_INTERVAL_MS = 3000;
-    const TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+    const TIMEOUT_MS = 90 * 60 * 1000; // 90 minutes
     const startTime = Date.now();
 
     while (Date.now() - startTime < TIMEOUT_MS) {

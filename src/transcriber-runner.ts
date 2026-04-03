@@ -17,7 +17,7 @@ import { logger } from './logger.js';
 
 const TRANSCRIBER_IMAGE = 'nanoclaw-transcriber:latest';
 const MODEL_CACHE_VOLUME = 'nanoclaw-transcriber-models';
-const TRANSCRIBER_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+const TRANSCRIBER_TIMEOUT_MS = 90 * 60 * 1000; // 90 minutes
 
 export interface TranscribeRequest {
   requestId: string;
