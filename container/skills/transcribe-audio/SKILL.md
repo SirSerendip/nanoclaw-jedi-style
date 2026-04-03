@@ -33,6 +33,12 @@ A Markdown transcript with timestamps and speaker attribution:
 - `model`: Whisper model size (default: `small.en`). Options: `tiny.en`, `base.en`, `small.en`, `medium.en`, `large-v2`
 - `language`: ISO language code for non-English audio (e.g., `es`, `fr`). Auto-detected if omitted.
 
+## Important: Always post transcript in chat
+
+When transcription completes, you MUST post the full transcript text directly in your response so it appears in the chat conversation. Do NOT just save it to a file. The transcript needs to be in the conversation context so users can discuss it and follow-up skills (like meeting analysis) can access it.
+
+If the transcript is very long, use `send_message` to post it immediately, then summarize in your final response.
+
 ## Notes
 
 - Transcription runs in a separate container — it may take a few minutes for long audio
