@@ -45,7 +45,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     parser.add_argument(
         "--model",
-        default="medium.en",
+        default="small.en",
         help="Whisper model name (e.g., small.en, medium.en, large-v2).",
     )
     parser.add_argument(

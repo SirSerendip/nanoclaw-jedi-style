@@ -30,7 +30,7 @@ A Markdown transcript with timestamps and speaker attribution:
 
 ## Options
 
-- `model`: Whisper model size (default: `medium.en`). Options: `tiny.en`, `base.en`, `small.en`, `medium.en`, `large-v2`
+- `model`: Whisper model size (default: `small.en`). Options: `tiny.en`, `base.en`, `small.en`, `medium.en`, `large-v2`
 - `language`: ISO language code for non-English audio (e.g., `es`, `fr`). Auto-detected if omitted.
 
 ## Notes

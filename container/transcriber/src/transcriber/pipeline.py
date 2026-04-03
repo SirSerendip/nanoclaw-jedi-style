@@ -35,7 +35,7 @@ def resolve_device() -> str:
 @dataclass
 class TranscriptionPipelineConfig:
     audio_path: Path
-    model_name: str = "medium.en"
+    model_name: str = "small.en"
     compute_type: Optional[str] = None
     diarization_token: Optional[str] = None
     language: Optional[str] = None
@@ -150,19 +150,16 @@ class TranscriptionPipeline:
 
         diarize_last_pct = 55
 
-        def diarize_hook(
-            step_name: str,
-            step_artefact: object,
-            completed: Optional[int],
-            total: Optional[int],
-        ) -> None:
+        def diarize_hook(*args, **kwargs) -> None:
             nonlocal diarize_last_pct
+            completed = kwargs.get("completed")
+            total = kwargs.get("total")
             if completed is not None and total is not None and total > 0:
                 pct = 55 + int((completed / total) * 35)
                 pct = min(pct, 90)
                 if pct >= diarize_last_pct + 5:
                     diarize_last_pct = pct
-                    self.on_progress(pct, f"Speaker diarization... {step_name}")
+                    self.on_progress(pct, "Speaker diarization...")
 
         try:
             diarization_annotation: Annotation = diarization_pipeline(

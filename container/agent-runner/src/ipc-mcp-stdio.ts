@@ -350,7 +350,7 @@ The result is a Markdown transcript like:
   [00:00:17.820 --> 00:00:20.980] **Speaker 2**: I'm going to be...`,
   {
     audio_path: z.string().describe('Path to the audio file (e.g., /workspace/group/recording.mp3)'),
-    model: z.string().optional().describe('Whisper model name (default: medium.en). Options: tiny.en, base.en, small.en, medium.en, large-v2'),
+    model: z.string().optional().describe('Whisper model name (default: small.en). Options: tiny.en, base.en, small.en, medium.en, large-v2'),
     language: z.string().optional().describe('ISO language code (e.g., "en", "es"). Leave unset for auto-detection.'),
   },
   async (args) => {
@@ -379,7 +379,7 @@ The result is a Markdown transcript like:
       type: 'transcribe_audio',
       requestId,
       audioPath: args.audio_path,
-      model: args.model || 'medium.en',
+      model: args.model || 'small.en',
       language: args.language || null,
       groupFolder,
       timestamp: new Date().toISOString(),

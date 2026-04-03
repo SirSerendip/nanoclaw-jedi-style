@@ -8,10 +8,7 @@ import { AvailableGroup } from './container-runner.js';
 import { createTask, deleteTask, getTaskById, updateTask } from './db.js';
 import { isValidGroupFolder, resolveGroupIpcPath } from './group-folder.js';
 import { logger } from './logger.js';
-import {
-  runTranscription,
-  TranscribeRequest,
-} from './transcriber-runner.js';
+import { runTranscription, TranscribeRequest } from './transcriber-runner.js';
 import { RegisteredGroup } from './types.js';
 
 export interface IpcDeps {
@@ -152,11 +149,7 @@ export function startIpcWatcher(deps: IpcDeps): void {
       }
 
       // Process transcription requests from this group's IPC directory
-      const transcribeDir = path.join(
-        ipcBaseDir,
-        sourceGroup,
-        'transcribe',
-      );
+      const transcribeDir = path.join(ipcBaseDir, sourceGroup, 'transcribe');
       try {
         if (fs.existsSync(transcribeDir)) {
           const requestFiles = fs
@@ -173,7 +166,11 @@ export function startIpcWatcher(deps: IpcDeps): void {
               const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
               fs.unlinkSync(filePath);
 
-              if (data.type === 'transcribe_audio' && data.requestId && data.audioPath) {
+              if (
+                data.type === 'transcribe_audio' &&
+                data.requestId &&
+                data.audioPath
+              ) {
                 // Fire-and-forget — transcription runs in background
                 processTranscribeRequest(
                   sourceGroup,
@@ -550,19 +547,25 @@ async function processTranscribeRequest(
 
   let lastReportedPct = -1;
 
-  const result = await runTranscription(groupFolder, request, (percent, detail) => {
-    // Report to ops at meaningful intervals (every ~10% or phase change)
-    const shouldReport =
-      percent >= lastReportedPct + 10 ||
-      percent === 100 ||
-      (percent === 50 && lastReportedPct < 50) || // whisper → diarization boundary
-      (percent === 90 && lastReportedPct < 90);    // diarization → merge boundary
+  const result = await runTranscription(
+    groupFolder,
+    request,
+    (percent, detail) => {
+      // Report to ops at meaningful intervals (every ~10% or phase change)
+      const shouldReport =
+        percent >= lastReportedPct + 10 ||
+        percent === 100 ||
+        (percent === 50 && lastReportedPct < 50) || // whisper → diarization boundary
+        (percent === 90 && lastReportedPct < 90); // diarization → merge boundary
 
-    if (shouldReport) {
-      lastReportedPct = percent;
-      deps.notifyOps(`📝 ${transcriptionMeter(percent)} ${percent}% — ${detail}`);
-    }
-  });
+      if (shouldReport) {
+        lastReportedPct = percent;
+        deps.notifyOps(
+          `📝 ${transcriptionMeter(percent)} ${percent}% — ${detail}`,
+        );
+      }
+    },
+  );
 
   // Write result for agent MCP tool to pick up
   const resultPath = path.join(transcribeDir, `result-${requestId}.json`);

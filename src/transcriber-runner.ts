@@ -70,7 +70,7 @@ export async function runTranscription(
   const ext = path.extname(hostAudioPath) || '.mp3';
   const containerAudioPath = `/input/audio${ext}`;
   const containerName = `nanoclaw-transcriber-${Date.now()}`;
-  const model = request.model || 'medium.en';
+  const model = request.model || 'small.en';
 
   const args: string[] = [
     'run',
@@ -101,7 +101,12 @@ export async function runTranscription(
   }
 
   logger.info(
-    { requestId: request.requestId, groupFolder, model, audioPath: audioRelPath },
+    {
+      requestId: request.requestId,
+      groupFolder,
+      model,
+      audioPath: audioRelPath,
+    },
     'Starting transcription',
   );
 

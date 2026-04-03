@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 # Install ffmpeg for audio conversion
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ffmpeg && \
+    apt-get install -y --no-install-recommends ffmpeg libsndfile1 && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -13,6 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY src/ src/
+
+# Python module path
+ENV PYTHONPATH=/app/src
 
 # Models cache at /models (mount a volume for persistence)
 ENV HF_HOME=/models
