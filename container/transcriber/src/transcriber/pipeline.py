@@ -5,6 +5,7 @@ import logging
 import math
 import os
 import tempfile
+import warnings
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Optional, Tuple
@@ -298,7 +299,9 @@ def chunked_diarize(
                 pct = 55 + int((completed / total) * 35)
                 on_progress(min(pct, 89), "Speaker diarization...")
 
-        annotation = diarization_pipeline(str(wav_path), hook=single_hook)
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="std\\(\\): degrees of freedom")
+            annotation = diarization_pipeline(str(wav_path), hook=single_hook)
         return _annotation_to_segments(annotation)
 
     # Long audio — chunked processing
@@ -329,11 +332,27 @@ def chunked_diarize(
         # Extract chunk audio
         chunk_wav = _extract_audio_chunk(wav_path, start_s, end_s)
         try:
-            annotation = diarization_pipeline(str(chunk_wav))
+            with warnings.catch_warnings():
+                warnings.filterwarnings("ignore", message="std\\(\\): degrees of freedom")
+                annotation = diarization_pipeline(str(chunk_wav))
+            chunk_segments = _annotation_to_segments(annotation)
+            del annotation
+        except Exception as exc:
+            logger.warning(
+                "Chunk %d/%d failed (%.0fs-%.0fs): %s — skipping, segments will get 'Unknown' speaker",
+                chunk_idx + 1,
+                num_chunks,
+                start_s,
+                end_s,
+                exc,
+            )
+            on_progress(
+                min(pct, 89),
+                f"Chunk {chunk_idx + 1}/{num_chunks} failed (quiet segment?), continuing...",
+            )
+            chunk_segments = []
         finally:
             chunk_wav.unlink(missing_ok=True)
-
-        chunk_segments = _annotation_to_segments(annotation)
 
         # Offset to absolute times
         for seg in chunk_segments:
@@ -341,7 +360,6 @@ def chunked_diarize(
             seg["end"] += start_s
 
         # Free memory between chunks
-        del annotation
         gc.collect()
 
         if chunk_idx == 0:
