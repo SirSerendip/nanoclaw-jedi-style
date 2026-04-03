@@ -11,10 +11,12 @@ You can transcribe audio files to Markdown with speaker labels and timestamps.
 
 ## How to use
 
-Call the `transcribe_audio` MCP tool with the path to an audio file:
+**Before transcribing, always ask the user how many people were in the meeting/recording.** Speaker count dramatically improves diarization accuracy. Without it, the model tends to over-segment and invent extra speakers. If the user isn't sure, ask for an approximate range.
+
+Then call the `transcribe_audio` MCP tool:
 
 ```
-transcribe_audio(audio_path="/workspace/group/recording.mp3")
+transcribe_audio(audio_path="/workspace/group/recording.mp3", max_speakers=2)
 ```
 
 The tool supports mp3, m4a, wav, mp4, ogg, and any format ffmpeg can read.
