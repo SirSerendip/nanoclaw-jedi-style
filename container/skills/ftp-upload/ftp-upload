@@ -12,7 +12,7 @@ check_creds() {
   [[ -z "${FTP_PASS:-}" ]] && missing+=(FTP_PASS)
   if [[ ${#missing[@]} -gt 0 ]]; then
     echo "Error: FTP credentials not available (missing: ${missing[*]})." >&2
-    echo "This tool is only available in the main channel." >&2
+    echo "FTP credentials not configured for this channel." >&2
     exit 1
   fi
 }

@@ -99,8 +99,7 @@ function buildVolumeMounts(
     if (fs.existsSync(linuxModulesDir)) {
       mounts.push({
         hostPath: linuxModulesDir,
-        containerPath:
-          '/workspace/project/groups/global/library/node_modules',
+        containerPath: '/workspace/project/groups/global/library/node_modules',
         readonly: true,
       });
     }
@@ -177,10 +176,13 @@ function buildVolumeMounts(
   }
 
   // Sync skills from container/skills/ into each group's .claude/skills/
+  // If allowedSkills is set, only those skills are synced.
   const skillsSrc = path.join(process.cwd(), 'container', 'skills');
   const skillsDst = path.join(groupSessionsDir, 'skills');
+  const allowedSkills = group.containerConfig?.allowedSkills;
   if (fs.existsSync(skillsSrc)) {
     for (const skillDir of fs.readdirSync(skillsSrc)) {
+      if (allowedSkills && !allowedSkills.includes(skillDir)) continue;
       const srcDir = path.join(skillsSrc, skillDir);
       if (!fs.statSync(srcDir).isDirectory()) continue;
       const dstDir = path.join(skillsDst, skillDir);
@@ -268,6 +270,7 @@ function buildContainerArgs(
   mounts: VolumeMount[],
   containerName: string,
   isMain: boolean,
+  group: RegisteredGroup,
 ): string[] {
   const args: string[] = ['run', '-i', '--rm', '--name', containerName];
 
@@ -343,6 +346,21 @@ function buildContainerArgs(
       args.push('-e', `SLACK_TEAM_ID=${slackMcpEnv.SLACK_TEAM_ID}`);
   }
 
+  // Per-group credential injection via credentialKeys map.
+  // Maps container env var names → .env key names. Values are read from .env
+  // at spawn time, never stored in the database.
+  if (group.containerConfig?.credentialKeys) {
+    const envKeyNames = Object.values(group.containerConfig.credentialKeys);
+    const envValues = readEnvFile(envKeyNames);
+    for (const [containerEnvName, dotenvKey] of Object.entries(
+      group.containerConfig.credentialKeys,
+    )) {
+      if (envValues[dotenvKey]) {
+        args.push('-e', `${containerEnvName}=${envValues[dotenvKey]}`);
+      }
+    }
+  }
+
   for (const mount of mounts) {
     if (mount.readonly) {
       args.push(...readonlyMountArgs(mount.hostPath, mount.containerPath));
@@ -370,7 +388,7 @@ export async function runContainerAgent(
   const mounts = buildVolumeMounts(group, input.isMain);
   const safeName = group.folder.replace(/[^a-zA-Z0-9-]/g, '-');
   const containerName = `nanoclaw-${safeName}-${Date.now()}`;
-  const containerArgs = buildContainerArgs(mounts, containerName, input.isMain);
+  const containerArgs = buildContainerArgs(mounts, containerName, input.isMain, group);
 
   logger.debug(
     {

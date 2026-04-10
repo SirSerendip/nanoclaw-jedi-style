@@ -206,9 +206,7 @@ export function startIpcWatcher(deps: IpcDeps): void {
         if (fs.existsSync(libraryDir)) {
           const requestFiles = fs
             .readdirSync(libraryDir)
-            .filter(
-              (f) => f.endsWith('.json') && !f.startsWith('result-'),
-            );
+            .filter((f) => f.endsWith('.json') && !f.startsWith('result-'));
           for (const file of requestFiles) {
             const filePath = path.join(libraryDir, file);
             try {
@@ -223,16 +221,12 @@ export function startIpcWatcher(deps: IpcDeps): void {
                 data.category
               ) {
                 // Fire-and-forget — ingestion runs in background
-                processLibraryIngest(
-                  sourceGroup,
-                  data,
-                  libraryDir,
-                  deps,
-                ).catch((err) =>
-                  logger.error(
-                    { err, requestId: data.requestId },
-                    'Library ingestion handler error',
-                  ),
+                processLibraryIngest(sourceGroup, data, libraryDir, deps).catch(
+                  (err) =>
+                    logger.error(
+                      { err, requestId: data.requestId },
+                      'Library ingestion handler error',
+                    ),
                 );
               }
             } catch (err) {
@@ -726,8 +720,10 @@ async function processLibraryIngest(
         [ingestScript, '--file', `sources/${relFile}`],
         { cwd: libraryDir, timeout: 120_000 },
         (error, stdout, stderr) => {
-          if (stdout) logger.info({ stdout: stdout.trim() }, 'Library ingest output');
-          if (stderr) logger.warn({ stderr: stderr.trim() }, 'Library ingest stderr');
+          if (stdout)
+            logger.info({ stdout: stdout.trim() }, 'Library ingest output');
+          if (stderr)
+            logger.warn({ stderr: stderr.trim() }, 'Library ingest stderr');
           if (error) {
             reject(error);
           } else {
@@ -744,9 +740,7 @@ async function processLibraryIngest(
       message: `Ingested "${safeName}" into the shared library.`,
     });
 
-    deps.notifyOps(
-      `📚 Library ingest complete — "${safeName}" [${category}]`,
-    );
+    deps.notifyOps(`📚 Library ingest complete — "${safeName}" [${category}]`);
   } catch (err) {
     const errorMsg =
       err instanceof Error ? err.message : 'Unknown ingestion error';
@@ -757,9 +751,7 @@ async function processLibraryIngest(
       error: errorMsg,
     });
 
-    deps.notifyOps(
-      `📚 ❌ Library ingest failed — ${errorMsg.slice(0, 200)}`,
-    );
+    deps.notifyOps(`📚 ❌ Library ingest failed — ${errorMsg.slice(0, 200)}`);
   }
 }
 

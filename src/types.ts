@@ -30,6 +30,12 @@ export interface AllowedRoot {
 export interface ContainerConfig {
   additionalMounts?: AdditionalMount[];
   timeout?: number; // Default: 300000 (5 minutes)
+  // Maps container env var name → .env key name. Secrets stay in .env;
+  // only key references are stored in the database.
+  credentialKeys?: Record<string, string>;
+  // If set, only these skills are synced to the group's container.
+  // If absent, all skills are synced (backward compatible).
+  allowedSkills?: string[];
 }
 
 export interface RegisteredGroup {

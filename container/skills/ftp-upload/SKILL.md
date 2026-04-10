@@ -1,12 +1,12 @@
 ---
 name: ftp-upload
-description: Upload files to jedionthefly.com via FTP. Use when publishing HTML pages, images, or assets to the web. Only available in the main channel.
+description: Upload files via FTP. Use when publishing HTML pages, images, or assets to the web. Available in any channel with FTP credentials configured.
 allowed-tools: Bash(ftp-upload:*)
 ---
 
 # FTP Upload
 
-Upload files to jedionthefly.com via FTP. **Main channel only** — credentials are not available in other groups.
+Upload files via FTP. Available in any channel where FTP credentials are configured via `credentialKeys`.
 
 ## Quick start
 
@@ -35,25 +35,8 @@ ftp-upload check
 
 Confirms that FTP_HOST, FTP_USER, and FTP_PASS are available. Run this first if unsure whether FTP is configured.
 
-## InnoLead Newsletter Publishing
-
-The primary use case is publishing InnoLead bi-weekly newsletter pages to jedionthefly.com/collisions.
-
-### Typical workflow
-
-1. Generate or prepare the HTML file(s) in the workspace
-2. Upload to the `/collisions` directory:
-
-```bash
-ftp-upload upload newsletter.html /collisions
-ftp-upload upload styles.css /collisions/css
-ftp-upload upload logo.png /collisions/images
-```
-
-The files will be accessible at `https://jedionthefly.com/collisions/<filename>`.
-
 ## Error handling
 
-- **"FTP credentials not available"** — This tool only works in the main channel. FTP credentials are not passed to other groups.
+- **"FTP credentials not available"** — FTP credentials are not configured for this channel. The admin must add `credentialKeys` to the group's `containerConfig`.
 - **"File not found"** — Check the file path. Use an absolute path or path relative to the working directory.
 - **"Upload failed"** — Check network connectivity and verify credentials with `ftp-upload check`.
