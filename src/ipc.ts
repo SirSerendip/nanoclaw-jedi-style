@@ -716,7 +716,7 @@ async function processLibraryIngest(
 
     await new Promise<void>((resolve, reject) => {
       execFile(
-        'node',
+        process.execPath,
         [ingestScript, '--file', `sources/${relFile}`],
         { cwd: libraryDir, timeout: 120_000 },
         (error, stdout, stderr) => {
