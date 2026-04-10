@@ -177,9 +177,14 @@ function buildVolumeMounts(
 
   // Sync skills from container/skills/ into each group's .claude/skills/
   // If allowedSkills is set, only those skills are synced.
+  // Always clear first to remove stale skills from prior runs.
   const skillsSrc = path.join(process.cwd(), 'container', 'skills');
   const skillsDst = path.join(groupSessionsDir, 'skills');
   const allowedSkills = group.containerConfig?.allowedSkills;
+  if (fs.existsSync(skillsDst)) {
+    fs.rmSync(skillsDst, { recursive: true, force: true });
+  }
+  fs.mkdirSync(skillsDst, { recursive: true });
   if (fs.existsSync(skillsSrc)) {
     for (const skillDir of fs.readdirSync(skillsSrc)) {
       if (allowedSkills && !allowedSkills.includes(skillDir)) continue;
@@ -388,7 +393,12 @@ export async function runContainerAgent(
   const mounts = buildVolumeMounts(group, input.isMain);
   const safeName = group.folder.replace(/[^a-zA-Z0-9-]/g, '-');
   const containerName = `nanoclaw-${safeName}-${Date.now()}`;
-  const containerArgs = buildContainerArgs(mounts, containerName, input.isMain, group);
+  const containerArgs = buildContainerArgs(
+    mounts,
+    containerName,
+    input.isMain,
+    group,
+  );
 
   logger.debug(
     {

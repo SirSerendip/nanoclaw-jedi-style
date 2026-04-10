@@ -16,7 +16,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { execFile } from 'child_process';
+import { execFile, execSync } from 'child_process';
 import { query, HookCallback, PreCompactHookInput } from '@anthropic-ai/claude-agent-sdk';
 import { fileURLToPath } from 'url';
 
@@ -146,7 +146,26 @@ function getSessionSummary(sessionId: string, transcriptPath: string): string | 
 }
 
 /**
- * Archive the full transcript to conversations/ before compaction.
+ * Detect the currently active project from the multi-project system.
+ * Returns the slug of the active project, or null if none found.
+ */
+function detectActiveProject(): string | null {
+  const dbPath = '/workspace/group/projects/memory.db';
+  try {
+    if (!fs.existsSync(dbPath)) return null;
+    const result = execSync(
+      `sqlite3 "${dbPath}" "SELECT slug FROM projects WHERE status='active' LIMIT 1;"`,
+      { encoding: 'utf8', timeout: 3000 },
+    ).trim();
+    return result || null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Archive the full transcript to conversations/ before compaction,
+ * then write a re-injection marker so the agent reloads project context.
  */
 function createPreCompactHook(assistantName?: string): HookCallback {
   return async (input, _toolUseId, _context) => {
@@ -184,6 +203,44 @@ function createPreCompactHook(assistantName?: string): HookCallback {
       log(`Archived conversation to ${filePath}`);
     } catch (err) {
       log(`Failed to archive transcript: ${err instanceof Error ? err.message : String(err)}`);
+    }
+
+    // Git checkpoint — opt-in: only runs if the group folder has been git-initialized
+    try {
+      if (fs.existsSync('/workspace/group/.git')) {
+        execSync('bash /workspace/group/projects/project.sh git-checkpoint', {
+          timeout: 15000,
+          encoding: 'utf8',
+        });
+        log('Git checkpoint committed');
+      }
+    } catch (err) {
+      log(
+        `Git checkpoint failed (non-fatal): ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+
+    // Write re-injection marker for post-compaction context reload
+    try {
+      const activeProject = detectActiveProject();
+      const reinjectionPath = '/workspace/group/.needs-context-reload';
+      fs.writeFileSync(
+        reinjectionPath,
+        JSON.stringify({
+          reason: 'post-compaction',
+          active_project: activeProject,
+          timestamp: new Date().toISOString(),
+          instruction:
+            'Run project.sh context for the active project',
+        }),
+      );
+      log(
+        `Wrote re-injection marker: active_project=${activeProject || 'none'}`,
+      );
+    } catch (err) {
+      log(
+        `Failed to write re-injection marker: ${err instanceof Error ? err.message : String(err)}`,
+      );
     }
 
     return {};
@@ -579,7 +636,10 @@ async function main(): Promise<void> {
 
   // Credentials are injected by the host's credential proxy via ANTHROPIC_BASE_URL.
   // No real secrets exist in the container environment.
-  const sdkEnv: Record<string, string | undefined> = { ...process.env };
+  const sdkEnv: Record<string, string | undefined> = {
+    ...process.env,
+    CLAUDE_CODE_AUTO_COMPACT_WINDOW: '300000',
+  };
 
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const mcpServerPath = path.join(__dirname, 'ipc-mcp-stdio.js');
