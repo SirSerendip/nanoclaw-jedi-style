@@ -3,13 +3,14 @@ import path from 'path';
 
 import { CronExpressionParser } from 'cron-parser';
 
-import { DATA_DIR, IPC_POLL_INTERVAL, TIMEZONE } from './config.js';
+import { DATA_DIR, GROUPS_DIR, IPC_POLL_INTERVAL, TIMEZONE } from './config.js';
 import { AvailableGroup } from './container-runner.js';
 import { createTask, deleteTask, getTaskById, updateTask } from './db.js';
 import { isValidGroupFolder, resolveGroupIpcPath } from './group-folder.js';
 import { logger } from './logger.js';
 import { runTranscription, TranscribeRequest } from './transcriber-runner.js';
 import { RegisteredGroup } from './types.js';
+import { execFile } from 'child_process';
 
 export interface IpcDeps {
   sendMessage: (jid: string, text: string) => Promise<void>;
@@ -196,6 +197,56 @@ export function startIpcWatcher(deps: IpcDeps): void {
         logger.error(
           { err, sourceGroup },
           'Error reading IPC transcribe directory',
+        );
+      }
+
+      // Process library ingestion requests from this group's IPC directory
+      const libraryDir = path.join(ipcBaseDir, sourceGroup, 'library');
+      try {
+        if (fs.existsSync(libraryDir)) {
+          const requestFiles = fs
+            .readdirSync(libraryDir)
+            .filter(
+              (f) => f.endsWith('.json') && !f.startsWith('result-'),
+            );
+          for (const file of requestFiles) {
+            const filePath = path.join(libraryDir, file);
+            try {
+              const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+              fs.unlinkSync(filePath);
+
+              if (
+                data.type === 'library_ingest' &&
+                data.requestId &&
+                data.content &&
+                data.filename &&
+                data.category
+              ) {
+                // Fire-and-forget — ingestion runs in background
+                processLibraryIngest(
+                  sourceGroup,
+                  data,
+                  libraryDir,
+                  deps,
+                ).catch((err) =>
+                  logger.error(
+                    { err, requestId: data.requestId },
+                    'Library ingestion handler error',
+                  ),
+                );
+              }
+            } catch (err) {
+              logger.error(
+                { file, sourceGroup, err },
+                'Error processing library ingest request',
+              );
+            }
+          }
+        }
+      } catch (err) {
+        logger.error(
+          { err, sourceGroup },
+          'Error reading IPC library directory',
         );
       }
     }
@@ -585,4 +636,140 @@ async function processTranscribeRequest(
       `📝 ❌ Transcription failed — ${result.error?.slice(0, 200) || 'unknown error'}`,
     );
   }
+}
+
+// ── Library ingestion ─────────────────────────────────────────────────────
+
+/** JOTF channels allowed to ingest into the shared library. */
+const JOTF_LIBRARY_GROUPS = new Set([
+  'slack_main',
+  'slack_meetos',
+  'slack_random',
+  'main',
+]);
+
+interface LibraryIngestRequest {
+  type: 'library_ingest';
+  requestId: string;
+  content: string;
+  filename: string;
+  category: string;
+  tags?: string;
+  author?: string;
+  contentDate?: string;
+  originChannel?: string;
+}
+
+/**
+ * Process a library ingestion request from a container agent.
+ * Writes the content to the shared library sources directory,
+ * runs the ingestion script, and writes a result file back to IPC.
+ */
+async function processLibraryIngest(
+  groupFolder: string,
+  request: LibraryIngestRequest,
+  libraryIpcDir: string,
+  deps: IpcDeps,
+): Promise<void> {
+  const { requestId, content, filename, category, tags, author, contentDate } =
+    request;
+  const originChannel = request.originChannel || groupFolder;
+
+  // Authorization: only JOTF channels can ingest
+  if (!JOTF_LIBRARY_GROUPS.has(groupFolder)) {
+    logger.warn(
+      { groupFolder, requestId },
+      'Non-JOTF group attempted library ingestion — blocked',
+    );
+    writeLibraryResult(libraryIpcDir, requestId, {
+      status: 'error',
+      error: 'Library ingestion is restricted to JOTF business channels.',
+    });
+    return;
+  }
+
+  deps.notifyOps(`📚 Library ingest — "${filename}" from ${groupFolder}`);
+
+  const libraryDir = path.join(GROUPS_DIR, 'global', 'library');
+  const sourcesDir = path.join(libraryDir, 'sources');
+  const categoryDir = path.join(sourcesDir, category);
+
+  // Ensure category directory exists
+  fs.mkdirSync(categoryDir, { recursive: true });
+
+  // Build markdown with frontmatter
+  const frontmatter = [
+    '---',
+    `origin_channel: ${originChannel}`,
+    author ? `author: ${author}` : null,
+    contentDate ? `contentDate: ${contentDate}` : null,
+    tags ? `tags: ${tags}` : null,
+    '---',
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  const safeName = filename.replace(/[^a-zA-Z0-9._-]/g, '-');
+  const filePath = path.join(categoryDir, safeName);
+  const fileContent = `${frontmatter}\n\n${content}`;
+
+  try {
+    fs.writeFileSync(filePath, fileContent, 'utf-8');
+
+    // Run ingestion script
+    const relFile = path.relative(sourcesDir, filePath);
+    const ingestScript = path.join(libraryDir, 'ingest.mjs');
+
+    await new Promise<void>((resolve, reject) => {
+      execFile(
+        'node',
+        [ingestScript, '--file', `sources/${relFile}`],
+        { cwd: libraryDir, timeout: 120_000 },
+        (error, stdout, stderr) => {
+          if (stdout) logger.info({ stdout: stdout.trim() }, 'Library ingest output');
+          if (stderr) logger.warn({ stderr: stderr.trim() }, 'Library ingest stderr');
+          if (error) {
+            reject(error);
+          } else {
+            resolve();
+          }
+        },
+      );
+    });
+
+    writeLibraryResult(libraryIpcDir, requestId, {
+      status: 'success',
+      filename: safeName,
+      category,
+      message: `Ingested "${safeName}" into the shared library.`,
+    });
+
+    deps.notifyOps(
+      `📚 Library ingest complete — "${safeName}" [${category}]`,
+    );
+  } catch (err) {
+    const errorMsg =
+      err instanceof Error ? err.message : 'Unknown ingestion error';
+    logger.error({ err, requestId }, 'Library ingestion failed');
+
+    writeLibraryResult(libraryIpcDir, requestId, {
+      status: 'error',
+      error: errorMsg,
+    });
+
+    deps.notifyOps(
+      `📚 ❌ Library ingest failed — ${errorMsg.slice(0, 200)}`,
+    );
+  }
+}
+
+function writeLibraryResult(
+  libraryIpcDir: string,
+  requestId: string,
+  result: Record<string, unknown>,
+): void {
+  const resultPath = path.join(libraryIpcDir, `result-${requestId}.json`);
+  const tempPath = `${resultPath}.tmp`;
+  fs.writeFileSync(tempPath, JSON.stringify(result, null, 2));
+  fs.renameSync(tempPath, resultPath);
 }

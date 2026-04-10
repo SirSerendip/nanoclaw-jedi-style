@@ -94,6 +94,17 @@ function buildVolumeMounts(
       });
     }
 
+    // Shadow the library's macOS node_modules with Linux-compiled ones.
+    const linuxModulesDir = path.join(DATA_DIR, 'library-linux-modules');
+    if (fs.existsSync(linuxModulesDir)) {
+      mounts.push({
+        hostPath: linuxModulesDir,
+        containerPath:
+          '/workspace/project/groups/global/library/node_modules',
+        readonly: true,
+      });
+    }
+
     // Main also gets its group folder as the working directory
     mounts.push({
       hostPath: groupDir,
@@ -117,6 +128,18 @@ function buildVolumeMounts(
         containerPath: '/workspace/global',
         readonly: true,
       });
+
+      // Shadow the library's macOS node_modules with Linux-compiled ones.
+      // The host npm-installs for macOS; containers need Linux binaries.
+      // build.sh pre-builds Linux modules into data/library-linux-modules/.
+      const linuxModulesDir = path.join(DATA_DIR, 'library-linux-modules');
+      if (fs.existsSync(linuxModulesDir)) {
+        mounts.push({
+          hostPath: linuxModulesDir,
+          containerPath: '/workspace/global/library/node_modules',
+          readonly: true,
+        });
+      }
     }
   }
 
@@ -188,6 +211,7 @@ function buildVolumeMounts(
   fs.mkdirSync(path.join(groupIpcDir, 'tasks'), { recursive: true });
   fs.mkdirSync(path.join(groupIpcDir, 'input'), { recursive: true });
   fs.mkdirSync(path.join(groupIpcDir, 'transcribe'), { recursive: true });
+  fs.mkdirSync(path.join(groupIpcDir, 'library'), { recursive: true });
   mounts.push({
     hostPath: groupIpcDir,
     containerPath: '/workspace/ipc',

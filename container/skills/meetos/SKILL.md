@@ -98,19 +98,6 @@ Map the emotional and attentional arc of the conversation:
 - What questions *should* have been asked but weren't?
 - Were any commitments made with body-language-level hedging (qualifiers, deflections, "we'll see" energy) that suggest the commitment may not hold?
 
-### Enneagram Speculation
-
-Based on each participant's communication patterns, motivational cues, and behavioral signals in the transcript, offer a speculative Enneagram typing. This is explicitly framed as informed speculation — a hypothesis, not a diagnosis — but it's useful because it surfaces likely motivational drivers, stress reactions, and interpersonal dynamics that pure content analysis misses.
-
-For each participant (or at minimum the 3-4 most active), provide:
-- **Likely type** (with a confidence qualifier: "strong signal," "moderate signal," or "tentative")
-- **Evidence from the transcript**: What specific patterns point to this type? Look at their language choices, what they advocate for, what they resist, how they respond under pressure, and what seems to motivate their contributions.
-- **What this means for the group dynamic**: How does this typing interact with others in the room? Are there predictable friction points or natural alliances based on type?
-
-Keep this grounded in observable behavior from the transcript. Good Enneagram speculation says "Karen's insistence on getting the data foundation right before moving to analytics — plus her discomfort with the MuleSoft ambiguity — reads as a strong One pattern: the need for things to be done correctly before proceeding." Bad speculation just assigns types without evidence.
-
-If the transcript doesn't provide enough behavioral signal for meaningful typing (e.g., very short exchanges, heavily facilitated with little personal expression), say so rather than forcing it.
-
 ```
 
 ### 3. Save and Share
