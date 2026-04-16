@@ -332,7 +332,7 @@ function buildContainerArgs(
   }
 
   // Pass FTP credentials to main-group containers only.
-  // Non-main containers never receive these — the ftp-upload skill
+  // Non-main containers never receive these — the jotf.publish.ftp skill
   // checks for their presence and fails gracefully without them.
   if (isMain) {
     const ftpEnv = readEnvFile(['FTP_HOST', 'FTP_USER', 'FTP_PASS']);
@@ -341,7 +341,7 @@ function buildContainerArgs(
     if (ftpEnv.FTP_PASS) args.push('-e', `FTP_PASS=${ftpEnv.FTP_PASS}`);
 
     // Pass SMTP credentials to main-group containers only.
-    // Non-main containers never receive these — the smtp-send skill
+    // Non-main containers never receive these — the jotf.publish.smtp skill
     // checks for their presence and fails gracefully without them.
     const smtpEnv = readEnvFile([
       'SMTP_HOST',

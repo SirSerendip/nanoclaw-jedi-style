@@ -1,7 +1,29 @@
 ---
-name: smtp-send
+name: jotf.publish.smtp
 description: Send emails via SMTP. Use when directing output to colleagues not on Slack — teasers, reports, artifact links. Only available in the main channel.
+domain: publish
+version: 0.1.0
 allowed-tools: Bash(smtp-send:*)
+env_keys:
+  - SMTP_HOST
+  - SMTP_PORT
+  - SMTP_USER
+  - SMTP_PASS
+  - SMTP_FROM
+inputs:
+  - name: to
+    type: email
+    description: Recipient email address
+  - name: subject
+    type: text
+    description: Email subject line
+  - name: body
+    type: text
+    description: Email body (HTML supported)
+outputs:
+  - name: send_result
+    type: json
+    description: Send confirmation with message ID
 ---
 
 # SMTP Send

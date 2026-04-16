@@ -1,8 +1,18 @@
 ---
-name: Audio Transcription
+name: jotf.intel.transcribe
 description: Transcribe audio files to text with speaker diarization using Whisper + diarize
+domain: intel
+version: 0.1.0
 tools:
   - mcp__nanoclaw__transcribe_audio
+inputs:
+  - name: audio_path
+    type: file:*
+    description: Path to audio file (mp3, m4a, wav, mp4, ogg)
+outputs:
+  - name: transcript
+    type: file:md
+    description: Markdown transcript with timestamps and speaker labels
 ---
 
 # Audio Transcription

@@ -1,7 +1,24 @@
 ---
-name: ftp-upload
+name: jotf.publish.ftp
 description: Upload files via FTP. Use when publishing HTML pages, images, or assets to the web. Available in any channel with FTP credentials configured.
+domain: publish
+version: 0.1.0
 allowed-tools: Bash(ftp-upload:*)
+env_keys:
+  - FTP_HOST
+  - FTP_USER
+  - FTP_PASS
+inputs:
+  - name: local_file
+    type: file:*
+    description: Path to the file to upload
+  - name: remote_dir
+    type: text
+    description: Remote directory path (default /)
+outputs:
+  - name: upload_url
+    type: url
+    description: Public URL of the uploaded file (when deterministic)
 ---
 
 # FTP Upload

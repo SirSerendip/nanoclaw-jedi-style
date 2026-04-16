@@ -1,6 +1,8 @@
 ---
-name: mind-trick
+name: jotf.marketing.coach
 description: Marketing coach for JOTF — strategy, positioning, campaigns, content, promotions, and GEO. Use when asked about brand messaging, go-to-market, audience targeting, competitive positioning, campaign planning, social media, email marketing, content strategy, promotional copy, or AI citability audits.
+domain: marketing
+version: 0.1.0
 allowed-tools: Bash, Read, Grep, Glob, Write, WebFetch, WebSearch
 ---
 

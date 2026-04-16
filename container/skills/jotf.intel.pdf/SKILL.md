@@ -1,7 +1,17 @@
 ---
-name: pdf-reader
+name: jotf.intel.pdf
 description: Read and extract text from PDF files — documents, reports, contracts, spreadsheets. Use whenever you need to read PDF content, not just when explicitly asked. Handles local files, URLs, and WhatsApp attachments.
+domain: intel
+version: 0.1.0
 allowed-tools: Bash(pdf-reader:*)
+inputs:
+  - name: pdf_source
+    type: file:pdf
+    description: Local file path, URL, or attachment path
+outputs:
+  - name: text
+    type: text
+    description: Extracted text content from the PDF
 ---
 
 # PDF Reader
