@@ -1,6 +1,8 @@
 ---
-name: slack-formatting
+name: jotf.marketing.slack-format
 description: Format messages for Slack using mrkdwn syntax. Use when responding to Slack channels (folder starts with "slack_" or JID contains slack identifiers).
+domain: marketing
+version: 0.1.0
 ---
 
 # Slack Message Formatting (mrkdwn)

@@ -1,6 +1,16 @@
 ---
-name: JOTF Shared Library
+name: jotf.intel.library
 description: Search and contribute to the JOTF shared knowledge library — curated institutional memory across all JOTF business channels.
+domain: intel
+version: 0.1.0
+inputs:
+  - name: query
+    type: text
+    description: Search query or content to ingest
+outputs:
+  - name: results
+    type: json
+    description: Matching library entries with scores
 ---
 
 # JOTF Shared Library

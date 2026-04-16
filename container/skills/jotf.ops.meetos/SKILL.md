@@ -1,7 +1,17 @@
 ---
-name: meetos
+name: jotf.ops.meetos
 description: |
   Analyze business meeting transcripts — extracting decisions, action items, power dynamics, and strategic implications. Use this skill whenever the user uploads a meeting transcript, recording summary, call notes, or asks to analyze a conversation from a meeting, webinar, workshop, or client call. Also trigger when the user mentions "meeting analysis", "transcript analysis", "meeting notes", "MeetOS", or wants to turn a raw meeting transcript into structured insights. Handles any transcript format: plain text, markdown, .docx, .vtt, .srt, or pasted text. Adapts its analysis depth and focus based on the type of meeting detected (strategy, client, cross-functional, standup, etc.).
+domain: ops
+version: 0.1.0
+inputs:
+  - name: transcript
+    type: text
+    description: Meeting transcript in any format (plain text, markdown, .vtt, .srt)
+outputs:
+  - name: analysis
+    type: file:md
+    description: Structured MeetOS analysis with decisions, action items, dynamics
 ---
 
 # MeetOS — Business Meeting Intelligence

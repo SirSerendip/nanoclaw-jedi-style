@@ -1,6 +1,8 @@
 ---
-name: github-ops
+name: jotf.ops.github
 description: Provides comprehensive GitHub operations using gh CLI and GitHub API. Activates when working with pull requests, issues, repositories, workflows, or GitHub API operations including creating/viewing/merging PRs, managing issues, querying API endpoints, and handling GitHub workflows in enterprise or public GitHub environments.
+domain: ops
+version: 0.1.0
 ---
 
 # GitHub Operations

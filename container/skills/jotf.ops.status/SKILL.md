@@ -1,6 +1,8 @@
 ---
-name: status
+name: jotf.ops.status
 description: Quick read-only health check — session context, workspace mounts, tool availability, and task snapshot. Use when the user asks for system status or runs /status.
+domain: ops
+version: 0.1.0
 ---
 
 # /status — System Status Check

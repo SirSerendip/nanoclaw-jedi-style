@@ -1,7 +1,17 @@
 ---
-name: agent-browser
+name: jotf.intel.browse
 description: Browse the web for any task — research topics, read articles, interact with web apps, fill forms, take screenshots, extract data, and test web pages. Use whenever a browser would be useful, not just when the user explicitly asks.
+domain: intel
+version: 0.1.0
 allowed-tools: Bash(agent-browser:*)
+inputs:
+  - name: url_or_task
+    type: text
+    description: URL to visit or browsing task description
+outputs:
+  - name: result
+    type: text
+    description: Extracted content, screenshot, or task outcome
 ---
 
 # Browser Automation with agent-browser

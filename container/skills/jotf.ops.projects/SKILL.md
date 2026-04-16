@@ -1,6 +1,8 @@
 ---
-name: multi-project
+name: jotf.ops.projects
 description: Multi-project management system with session continuity, task tracking, lens personas, and git checkpoints. Use when the user wants to manage multiple projects in a single group with persistent context across sessions.
+domain: ops
+version: 0.1.0
 env_keys: []
 ---
 

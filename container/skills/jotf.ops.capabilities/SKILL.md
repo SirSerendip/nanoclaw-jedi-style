@@ -1,6 +1,8 @@
 ---
-name: capabilities
+name: jotf.ops.capabilities
 description: Show what this NanoClaw instance can do — installed skills, available tools, and system info. Read-only. Use when the user asks what the bot can do, what's installed, or runs /capabilities.
+domain: ops
+version: 0.1.0
 ---
 
 # /capabilities — System Capabilities Report
