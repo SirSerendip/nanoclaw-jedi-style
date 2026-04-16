@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Raw Signals Corpus",
+  "description": "Output of jotf.signal.fetch — raw intelligence signals with metadata wrapper.",
+  "type": "object",
+  "required": ["metadata", "signals"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["fetched_at", "lookback_hours", "sources", "total_signals"],
+      "properties": {
+        "fetched_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp of when the fetch was executed"
+        },
+        "lookback_hours": {
+          "type": "integer",
+          "description": "Number of hours back this fetch covered"
+        },
+        "sources": {
+          "type": "object",
+          "properties": {
+            "web_search": { "type": "integer" },
+            "local_file": { "type": "integer" }
+          }
+        },
+        "total_signals": {
+          "type": "integer"
+        },
+        "domain_distribution": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        }
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "company", "announcement", "theme", "summary", "tags", "source_url"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Publication date of the signal"
+          },
+          "company": {
+            "type": "string",
+            "description": "Source organization or publication"
+          },
+          "announcement": {
+            "type": "string",
+            "description": "Headline or title"
+          },
+          "theme": {
+            "type": "string",
+            "description": "Primary thematic category"
+          },
+          "summary": {
+            "type": "string",
+            "description": "Multi-paragraph summary with bullet points"
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Kebab-case topic tags"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Original source URL"
+          }
+        }
+      }
+    }
+  }
+}

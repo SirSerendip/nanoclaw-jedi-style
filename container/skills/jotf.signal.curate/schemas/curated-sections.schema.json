@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Curated Sections",
+  "description": "Output of jotf.signal.curate — themed editorial sections with pre-rendered HTML card fragments.",
+  "type": "object",
+  "required": ["metadata", "sections"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["persona", "edition_date", "edition_title", "section_count", "signal_count", "thinkers_used"],
+      "properties": {
+        "persona": { "type": "string" },
+        "edition_date": { "type": "string", "format": "date" },
+        "edition_title": { "type": "string", "description": "Provocative edition title for the masthead" },
+        "section_count": { "type": "integer" },
+        "signal_count": { "type": "integer" },
+        "thinkers_used": { "type": "array", "items": { "type": "string" } },
+        "collision_pairs": { "type": "integer" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": ["title", "narrative", "color_var", "cards"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Provocative section title — an editorial angle, not a category"
+          },
+          "narrative": {
+            "type": "string",
+            "description": "Section-level narrative introducing the theme, written in persona's voice"
+          },
+          "color_var": {
+            "type": "string",
+            "pattern": "^--section-[1-6]$",
+            "description": "CSS variable for section theming"
+          },
+          "cards": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": ["company", "headline", "source_url", "html_fragment"],
+              "properties": {
+                "company": { "type": "string" },
+                "headline": { "type": "string" },
+                "source_url": { "type": "string", "format": "uri" },
+                "thinker_lens": { "type": "string", "description": "Name of thinker used to frame this card" },
+                "collision_partner": { "type": "string", "description": "Identifier of the paired signal, if collision" },
+                "html_fragment": { "type": "string", "description": "Pre-rendered HTML for this signal card" },
+                "signal_ref": {
+                  "type": "object",
+                  "description": "Original signal data for reference"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

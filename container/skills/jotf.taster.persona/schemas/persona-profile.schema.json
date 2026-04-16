@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Taster Persona Profile",
+  "description": "Thinker persona profile driving the full Taster pipeline — filter lens, design palette, voice calibration, and delivery config.",
+  "type": "object",
+  "required": ["slug", "name", "created", "intellectual_profile", "mile_zero", "design_palette", "filter_lens", "voice_calibration", "delivery"],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Kebab-case identifier derived from thinker name"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full display name of the thinker"
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date when profile was created"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date of last update"
+    },
+    "intellectual_profile": {
+      "type": "object",
+      "required": ["background", "domains", "methodology", "signature_concepts", "distinction"],
+      "properties": {
+        "background": { "type": "string" },
+        "domains": { "type": "array", "items": { "type": "string" } },
+        "methodology": { "type": "string" },
+        "signature_concepts": { "type": "array", "items": { "type": "string" } },
+        "distinction": { "type": "string" }
+      }
+    },
+    "mile_zero": {
+      "type": "object",
+      "required": ["name", "metaphor", "description", "mood"],
+      "properties": {
+        "name": { "type": "string", "description": "Publication name (e.g., MileZero)" },
+        "metaphor": { "type": "string" },
+        "description": { "type": "string" },
+        "mood": { "type": "string" }
+      }
+    },
+    "design_palette": {
+      "type": "object",
+      "required": ["colors", "typography", "mood"],
+      "properties": {
+        "colors": {
+          "type": "object",
+          "description": "CSS custom properties for theming",
+          "properties": {
+            "--bg": { "type": "string" },
+            "--bg-card": { "type": "string" },
+            "--bg-card-hover": { "type": "string" },
+            "--accent": { "type": "string" },
+            "--gold": { "type": "string" },
+            "--text": { "type": "string" },
+            "--text-muted": { "type": "string" },
+            "--section-1": { "type": "string" },
+            "--section-2": { "type": "string" },
+            "--section-3": { "type": "string" },
+            "--section-4": { "type": "string" },
+            "--section-5": { "type": "string" },
+            "--section-6": { "type": "string" }
+          }
+        },
+        "typography": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "body": { "type": "string" },
+            "mono": { "type": "string" }
+          }
+        },
+        "mood": { "type": "string" }
+      }
+    },
+    "filter_lens": {
+      "type": "object",
+      "required": ["domains", "blind_spots", "complexity_level", "thinker_preferences"],
+      "properties": {
+        "domains": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Primary signal domains of interest"
+        },
+        "blind_spots": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Domains the thinker normally ignores — editorial differentiator, these get bonus filter scores"
+        },
+        "complexity_level": {
+          "type": "string",
+          "enum": ["general", "informed", "expert", "academic"],
+          "description": "Reader's expected intellectual depth"
+        },
+        "thinker_preferences": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Preferred thinkers from the portfolio for citation and lens framing"
+        }
+      }
+    },
+    "voice_calibration": {
+      "type": "object",
+      "required": ["tone", "sentence_length", "thinker_usage", "la_force_voice"],
+      "properties": {
+        "tone": { "type": "string" },
+        "sentence_length": { "type": "string" },
+        "thinker_usage": { "type": "string" },
+        "la_force_voice": { "type": "string" }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "required": ["format", "channels"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["email-inline", "email-link", "slack", "multi"],
+          "description": "Primary delivery format"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Recipient email address"
+        },
+        "cadence": {
+          "type": "string",
+          "description": "Preferred delivery frequency (daily, weekly, twice-weekly, M-W-F, weekends, custom)"
+        },
+        "channels": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["email", "slack", "web"] },
+          "description": "Active delivery channels"
+        },
+        "subject_template": {
+          "type": "string",
+          "description": "Email subject line template with {edition_title} and {date} placeholders"
+        }
+      }
+    }
+  }
+}
