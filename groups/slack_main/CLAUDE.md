@@ -98,6 +98,9 @@ The host relays each message to the ops channel and deletes the file. Use this p
 
 Include the pipeline name, step number/total, and a brief description. This is how Curtis monitors pipeline health in real time.
 
+### Skill creation
+When creating any new skill, invoke the `jotf.ops.skill-creator` skill first. Do not create SKILL.md files directly. The skill-creator enforces the JOTF Manifest standard, injects domain-appropriate guardrails, wires progress reporting, and runs a pre-flight checklist before the skill is considered done.
+
 ### Verify before reporting success
 After wiring or modifying a pipeline stage, test it with a real call before telling Curtis it works. For signal fetch: confirm the curl returns data. For email delivery: confirm the SMTP call succeeds. If you cannot verify, say so explicitly.
 
