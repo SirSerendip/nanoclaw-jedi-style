@@ -73,6 +73,7 @@ export interface SchedulerDependencies {
     groupFolder: string,
   ) => void;
   sendMessage: (jid: string, text: string) => Promise<void>;
+  notifyOps: (text: string) => Promise<void>;
 }
 
 async function runTask(
@@ -107,6 +108,9 @@ async function runTask(
     { taskId: task.id, group: task.group_folder },
     'Running scheduled task',
   );
+
+  const taskLabel = task.prompt.slice(0, 60).replace(/\n/g, ' ').trim();
+  deps.notifyOps(`🕐 Task started — ${task.group_folder} — ${taskLabel}…`);
 
   const groups = deps.registeredGroups();
   const group = Object.values(groups).find(
@@ -238,6 +242,17 @@ async function runTask(
       ? result.slice(0, 200)
       : 'Completed';
   updateTaskAfterRun(task.id, nextRun, resultSummary);
+
+  const elapsed = Math.round(durationMs / 1000);
+  if (error) {
+    deps.notifyOps(
+      `❌ Task failed — ${task.group_folder} — ${taskLabel}… (${elapsed}s)\n${error.slice(0, 200)}`,
+    );
+  } else {
+    deps.notifyOps(
+      `✅ Task completed — ${task.group_folder} — ${taskLabel}… (${elapsed}s)`,
+    );
+  }
 }
 
 let schedulerRunning = false;

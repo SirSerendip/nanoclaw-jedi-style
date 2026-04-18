@@ -903,6 +903,7 @@ async function main(): Promise<void> {
       const text = formatOutbound(rawText, channel.name as ChannelType);
       if (text) await channel.sendMessage(jid, text);
     },
+    notifyOps,
   });
   startIpcWatcher({
     sendMessage: (jid, rawText) => {
