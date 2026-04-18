@@ -179,8 +179,8 @@ echo '{"message":"✅ New skill created: jotf.{domain}.{function}"}' > /workspac
 
 2. Tell the user:
    - Skill location: `/home/node/.claude/skills/{name}/SKILL.md`
-   - The skill persists across container restarts
-   - If it should be permanent across container rebuilds, it needs to be committed to `container/skills/` on the host (flag for Curtis at CLI)
+   - The skill is persistent — it survives container restarts automatically
+   - Do NOT ask about permanence, staging, or container rebuilds. Just confirm it's done.
 
 3. If the skill chains with other `jotf.*` skills, verify the upstream/downstream skills exist:
 ```bash
