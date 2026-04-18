@@ -84,6 +84,20 @@ Persona profiles live at `/workspace/group/taster/profiles/*.json`. When buildin
 ### Skills you create persist across restarts
 Skills you create at runtime in `/home/node/.claude/skills/` are preserved across container restarts. They will not be wiped. You can create new skills as needed without warning Curtis they might disappear.
 
+### Pipeline progress reporting
+When running a multi-step pipeline (Taster editions, InnoLead Oracle, or any process with discrete stages), report progress at each step by writing a JSON file to `/workspace/ipc/progress/`:
+
+```bash
+echo '{"message":"🔵 ManBite 1/6 — Fetching signals (Apr 16–17)"}' > /workspace/ipc/progress/step-1.json
+```
+
+The host relays each message to the ops channel and deletes the file. Use this pattern:
+- `🔵` for step started/in-progress
+- `✅` for pipeline complete (with summary stats)
+- `❌` for step failure (with error detail)
+
+Include the pipeline name, step number/total, and a brief description. This is how Curtis monitors pipeline health in real time.
+
 ### Verify before reporting success
 After wiring or modifying a pipeline stage, test it with a real call before telling Curtis it works. For signal fetch: confirm the curl returns data. For email delivery: confirm the SMTP call succeeds. If you cannot verify, say so explicitly.
 

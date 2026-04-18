@@ -286,6 +286,7 @@ function buildVolumeMounts(
   fs.mkdirSync(path.join(groupIpcDir, 'input'), { recursive: true });
   fs.mkdirSync(path.join(groupIpcDir, 'transcribe'), { recursive: true });
   fs.mkdirSync(path.join(groupIpcDir, 'library'), { recursive: true });
+  fs.mkdirSync(path.join(groupIpcDir, 'progress'), { recursive: true });
   mounts.push({
     hostPath: groupIpcDir,
     containerPath: '/workspace/ipc',

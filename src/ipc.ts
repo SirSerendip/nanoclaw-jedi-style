@@ -243,6 +243,36 @@ export function startIpcWatcher(deps: IpcDeps): void {
           'Error reading IPC library directory',
         );
       }
+
+      // Relay pipeline progress updates to ops channel
+      const progressDir = path.join(ipcBaseDir, sourceGroup, 'progress');
+      try {
+        if (fs.existsSync(progressDir)) {
+          const progressFiles = fs
+            .readdirSync(progressDir)
+            .filter((f) => f.endsWith('.json'));
+          for (const file of progressFiles) {
+            const filePath = path.join(progressDir, file);
+            try {
+              const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+              fs.unlinkSync(filePath);
+              if (data.message) {
+                deps.notifyOps(data.message);
+              }
+            } catch (err) {
+              logger.error(
+                { file, sourceGroup, err },
+                'Error processing progress update',
+              );
+            }
+          }
+        }
+      } catch (err) {
+        logger.error(
+          { err, sourceGroup },
+          'Error reading IPC progress directory',
+        );
+      }
     }
 
     setTimeout(processIpcFiles, IPC_POLL_INTERVAL);
