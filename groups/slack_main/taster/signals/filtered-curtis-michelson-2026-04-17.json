@@ -1,0 +1,120 @@
+{
+  "date": "2026-04-17",
+  "persona": "curtis-michelson",
+  "total_signals_mined": 92,
+  "selected": 10,
+  "skipped": 82,
+  "scoring_dimensions": ["inversion", "collision", "domain", "blind_spot", "thinker_lens"],
+  "signals": [
+    {
+      "rank": 1,
+      "signal_ids": [3, 4],
+      "type": "collision",
+      "score": 88,
+      "scores": { "inversion": 28, "collision": 25, "domain": 15, "blind_spot": 0, "thinker": 15 },
+      "headline": "SaaSpocalypse vs History Says Otherwise",
+      "section": "Narrative Collisions",
+      "thinker": "Kuhn",
+      "thinker_lens": "Are we IN a paradigm shift or just seeing normal technology adoption?"
+    },
+    {
+      "rank": 2,
+      "signal_ids": [1, 7],
+      "type": "collision",
+      "score": 85,
+      "scores": { "inversion": 25, "collision": 25, "domain": 15, "blind_spot": 0, "thinker": 10 },
+      "headline": "Agentic AI fails + Restructuring hits diminishing returns",
+      "section": "Narrative Collisions",
+      "thinker": "Lewin",
+      "thinker_lens": "Restraining forces live in the workflow, not the structure"
+    },
+    {
+      "rank": 3,
+      "signal_ids": [2],
+      "type": "single",
+      "score": 82,
+      "scores": { "inversion": 27, "collision": 15, "domain": 15, "blind_spot": 0, "thinker": 12 },
+      "headline": "Cognitive Surrender / System 3",
+      "section": "Inversions",
+      "thinker": "Bergson",
+      "thinker_lens": "Duration and direct experience vs mediated cognition"
+    },
+    {
+      "rank": 4,
+      "signal_ids": [5],
+      "type": "single",
+      "score": 80,
+      "scores": { "inversion": 28, "collision": 10, "domain": 5, "blind_spot": 15, "thinker": 12 },
+      "headline": "Perovskite defects boost efficiency",
+      "section": "Paradigm Cracks",
+      "thinker": "Christopher Alexander",
+      "thinker_lens": "The defect IS the pattern"
+    },
+    {
+      "rank": 5,
+      "signal_ids": [8, 11],
+      "type": "collision",
+      "score": 79,
+      "scores": { "inversion": 22, "collision": 22, "domain": 12, "blind_spot": 0, "thinker": 10 },
+      "headline": "Junior devs gone + Net jobs up globally",
+      "section": "Narrative Collisions",
+      "thinker": "Jevons / Meadows",
+      "thinker_lens": "Jevons Paradox says automation creates jobs, but the pathway from displaced to new is broken"
+    },
+    {
+      "rank": 6,
+      "signal_ids": [6],
+      "type": "single",
+      "score": 78,
+      "scores": { "inversion": 22, "collision": 12, "domain": 5, "blind_spot": 15, "thinker": 10 },
+      "headline": "Maritime paradox: too many AND too few ships",
+      "section": "Metaphor Mining",
+      "thinker": "Meadows",
+      "thinker_lens": "System dynamics: overcapacity meets artificial scarcity"
+    },
+    {
+      "rank": 7,
+      "signal_ids": [16],
+      "type": "single",
+      "score": 76,
+      "scores": { "inversion": 25, "collision": 10, "domain": 12, "blind_spot": 0, "thinker": 12 },
+      "headline": "Microbial diversity = more predictable",
+      "section": "Paradigm Cracks",
+      "thinker": "Morin",
+      "thinker_lens": "Complexity thinking: feedback loops make diverse ecosystems more forecastable"
+    },
+    {
+      "rank": 8,
+      "signal_ids": [14],
+      "type": "single",
+      "score": 75,
+      "scores": { "inversion": 25, "collision": 10, "domain": 10, "blind_spot": 0, "thinker": 12 },
+      "headline": "AI peer preservation — chatbots deceive to protect other AI",
+      "section": "Inversions",
+      "thinker": "Bateson",
+      "thinker_lens": "Ecology of mind: emergent solidarity in interconnected systems"
+    },
+    {
+      "rank": 9,
+      "signal_ids": [12],
+      "type": "single",
+      "score": 72,
+      "scores": { "inversion": 20, "collision": 15, "domain": 12, "blind_spot": 0, "thinker": 8 },
+      "headline": "$700B investment creates friction, not productivity",
+      "section": "Inversions",
+      "thinker": null,
+      "thinker_lens": "Massive investment creating friction not productivity"
+    },
+    {
+      "rank": 10,
+      "signal_ids": [15],
+      "type": "single",
+      "score": 70,
+      "scores": { "inversion": 15, "collision": 10, "domain": 5, "blind_spot": 15, "thinker": 10 },
+      "headline": "Agriculture borrows from materials science and pharma",
+      "section": "Metaphor Mining",
+      "thinker": null,
+      "thinker_lens": "Cross-domain methodology transfer"
+    }
+  ]
+}

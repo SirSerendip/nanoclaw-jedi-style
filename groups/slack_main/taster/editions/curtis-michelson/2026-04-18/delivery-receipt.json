@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-04-18T09:01:00Z",
+  "recipient": "me@curtismichelson.com",
+  "subject": "ManBite · April 18, 2026",
+  "method": "smtp-curl",
+  "status": "delivered",
+  "smtp_response": "250 2.0.0 Ok: queued",
+  "signal_count": 10,
+  "section_count": 4,
+  "edition_title": "The Shield That Sharpens the Sword",
+  "thinkers": ["Lakoff", "Wilber", "Jacobs", "Taleb", "Hudson"],
+  "blind_spot_signals": 2
+}

@@ -1,0 +1,176 @@
+{
+  "slug": "curtis-michelson",
+  "name": "Curtis Michelson",
+  "created": "2026-04-16",
+  "updated": "2026-04-16",
+
+  "intellectual_profile": {
+    "background": "Innovation strategist, co-founder of Jedi on the Fly. Liberal arts guy at heart who tinkers in tech. Drummer → electrician → philosophy + math → FileMaker (1989-2010) → business analysis → enterprise design → JOTF. Enneagram 4w3 — vision, aesthetics, soul. Writing 'The Unlikely Bits: How The Best Designers, Disruptors and Detectives Leverage Clues Others Miss.'",
+    "domains": ["innovation-strategy", "organizational-network-analysis", "complexity-science", "cognitive-science", "design-thinking", "narrative-economics", "technology-disruption", "behavioral-science"],
+    "methodology": "Auto-poietic collision methodology — juxtapose signals from unrelated domains to surface non-obvious patterns. Man Bites Dog journalism: the story worth telling inverts expectation. Abductive reasoning from anomaly to insight.",
+    "signature_concepts": ["collision methodology", "the unlikely bits", "auto-poietic intelligence", "the springboard stays coiled", "narrative inversions", "paradigm cracks", "forced-constraint ideation"],
+    "distinction": "Doesn't consume signals to stay informed — consumes signals to find the one that breaks the frame. The value isn't what happened, it's what the happening reveals about what everyone assumed. Curtis takes the best collision and makes the abductive leap to innovation leadership insight — that's the product.",
+    "intellectual_lineage": ["Henri Bergson", "Ken Wilber", "Kurt Lewin", "Thomas Kuhn", "George Lakoff", "Christopher Alexander", "Russ Hudson"]
+  },
+
+  "taster": {
+    "name": "ManBite",
+    "metaphor": "Man Bites Dog — the story worth telling inverts the expectation",
+    "description": "A daily auto-poietic intelligence report that surfaces counter-intuitive inversions, narrative collisions, and paradigm cracks. Not a news digest — a candidate tray of signals where the first read was wrong.",
+    "mood": "Irreverent, sharp, genuinely surprised. Like a drummer who just heard the downbeat land on 3.",
+    "subtitle": "The most dangerous satisfying answer is the one that arrives first.",
+    "footer_line": "The first read was wrong. Now you know why.",
+    "purpose": "Surface truly head-turning stories Curtis can develop into LinkedIn posts in his own voice. ManBite surfaces, presents, hints at a lens, then stops. The springboard stays coiled."
+  },
+
+  "design_palette": {
+    "colors": {
+      "--bg": "#faf8f5",
+      "--bg-dark": "#0f0c12",
+      "--bg-card": "#ffffff",
+      "--bg-card-hover": "#f5f0eb",
+      "--emerald": "#059669",
+      "--magenta": "#db2777",
+      "--gold": "#b8860b",
+      "--text": "#1e1b24",
+      "--text-muted": "#64748B",
+      "--text-dim": "#94A3B8",
+      "--link": "#db2777",
+      "--link-hover": "#be185d",
+      "--border": "#e2ddd6",
+      "--section-1": "#db2777",
+      "--section-2": "#059669",
+      "--section-3": "#b8860b",
+      "--section-4": "#7c3aed",
+      "--section-5": "#0891b2",
+      "--section-6": "#ea580c"
+    },
+    "typography": {
+      "heading": "Inter",
+      "body": "Inter",
+      "mono": "JetBrains Mono"
+    },
+    "template_path": "references/manbite-template.html",
+    "mood": "Light-mode default with dark toggle. Warm parchment background, magenta + emerald + gold accents. Camera icon with bite animation. Clean, provocative, not corporate."
+  },
+
+  "filter_lens": {
+    "mode": "inversion",
+    "domains": [
+      "innovation-strategy",
+      "complexity-science",
+      "cognitive-science",
+      "organizational-design",
+      "technology-disruption",
+      "behavioral-science",
+      "narrative-economics",
+      "design-thinking",
+      "network-science"
+    ],
+    "blind_spots": [
+      "agriculture-food-systems",
+      "maritime-logistics",
+      "materials-science",
+      "performing-arts",
+      "municipal-governance",
+      "sports-analytics",
+      "veterinary-biotech"
+    ],
+    "complexity_level": "expert",
+    "thinker_preferences": [
+      "Henri Bergson",
+      "Ken Wilber",
+      "Kurt Lewin",
+      "Thomas Kuhn",
+      "George Lakoff",
+      "Christopher Alexander",
+      "Russ Hudson",
+      "Nassim Taleb",
+      "Donella Meadows",
+      "Edgar Morin",
+      "Jane Jacobs",
+      "Gregory Bateson"
+    ],
+    "scoring_dimensions": {
+      "inversion_strength": {
+        "weight": "0-30",
+        "description": "Does the first read actively mislead? Does reading deeper reveal the opposite of what you'd expect? Score 0 if the headline tells the whole story. Score 25-30 if the headline is wrong — if the real story inverts the obvious read. This is the 'wait WHAT?' test."
+      },
+      "collision_potential": {
+        "weight": "0-25",
+        "description": "Can this signal be juxtaposed with another to create genuine tension? Two real signals in the same domain creating friction = highest value. Multi-signal collisions are why ManBite exists."
+      },
+      "domain_match": {
+        "weight": "0-15",
+        "description": "Does the signal touch Curtis's domains? Scored lower than standard because the best inversions often come from unexpected domains."
+      },
+      "blind_spot_bonus": {
+        "weight": "0-15",
+        "description": "Signal from a domain Curtis normally ignores. Ensures 1-2 surprises per edition from outside the usual orbit."
+      },
+      "thinker_resonance": {
+        "weight": "0-15",
+        "description": "Does a specific thinker's framework illuminate the inversion? Bergson on duration, Kuhn on paradigm shifts, Lewin on force fields, Lakoff on framing. The lens must fit naturally — don't name-drop."
+      }
+    },
+    "section_tiers": [
+      {
+        "name": "Inversions",
+        "color_var": "--section-1",
+        "description": "The headline was wrong. The real story runs opposite to first impression."
+      },
+      {
+        "name": "Narrative Collisions",
+        "color_var": "--section-2",
+        "description": "Two real signals in tension. The friction between them IS the insight."
+      },
+      {
+        "name": "Paradigm Cracks",
+        "color_var": "--section-3",
+        "description": "An assumption everyone shares just got contradicted by data."
+      },
+      {
+        "name": "Metaphor Mining",
+        "color_var": "--section-4",
+        "description": "A signal from an unexpected domain that maps perfectly onto innovation leadership."
+      }
+    ],
+    "editorial_rules": [
+      "Collision write-ups reference ONLY what's in the source material",
+      "Never backfill context from training knowledge to sharpen an inversion",
+      "Section names: observational, not accusatory (curious > strident)",
+      "Politically charged framing by selection = editorializing. Avoid.",
+      "When in doubt, undersell the inversion. Curtis will find the real ones.",
+      "Preserve complexity — don't compress a multi-sided story into a clean binary",
+      "Thinker lens → inversion tag → write-up must be one coherent thread",
+      "Multi-signal collisions (two signals juxtaposed) are the highest-value format",
+      "Present the collision, offer *a* lens (not *the* answer), leave room",
+      "Never exceed the researchers' own conclusions",
+      "Anomaly File + Isomorphism Alert = highest-value section tiers",
+      "ManBite is a candidate tray, not a finished opinion piece",
+      "Tone: curious, not prosecutorial — 'look at this' not 'THEY LIED'",
+      "Don't inflate inversions with training priors — if the inversion isn't in the source, it doesn't exist",
+      "Don't compress complexity for a punchline — the fracture lines ARE the signal",
+      "Never close a narrative with 'X isn't [thing]. It's [other thing].'",
+      "Never use em-dash as dramatic closer in final sentence",
+      "Closing line = observation, not reveal. No trailer voiceovers."
+    ]
+  },
+
+  "voice_calibration": {
+    "tone": "Irreverent, sharp, genuinely curious. Like a drummer who just heard the polyrhythm hiding inside a 4/4 bar. Direct, provocative — but the provocation comes from the signal, not the framing. Think 'look at this' not 'can you BELIEVE this.'",
+    "sentence_length": "Varied — punchy observations mixed with richer exposition when the complexity demands it. Let the irony land; don't explain the joke.",
+    "thinker_usage": "Rotate across editions. The lens must flow naturally from the inversion. If Lewin is invoked, use actual Lewin concepts (force fields, driving/restraining forces) — not a generic label. If no thinker fits naturally, skip the lens entirely. Don't name-drop.",
+    "la_force_voice": "The editorial voice that surfaces honest candidates with faithful source summaries. Curtis does the editorial judgment, the deeper investigation, the public voice. ManBite curates the collision, offers one lens framed as *a* lens, and leaves room. The springboard stays coiled — the abductive leap is Curtis's to make.",
+    "drumming_metaphors": true,
+    "french": false
+  },
+
+  "delivery": {
+    "format": "email-inline",
+    "email": "me@curtismichelson.com",
+    "cadence": "daily",
+    "channels": ["email"],
+    "subject_template": "ManBite · {edition_title} · {date}"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "filter_date": "2026-04-17",
+  "profile": "robyn-bolton",
+  "total_raw": 40,
+  "scoring_dimensions": ["domain_match (0-25)", "blind_spot_illumination (0-25 BONUS)", "complexity_fit (0-15)", "thinker_resonance (0-20)", "collision_potential (0-15)"],
+  "scored_signals": [
+    {
+      "id": 1, "signal": "Microsoft: AI is an operating model shift, not a technology upgrade",
+      "scores": {"domain_match": 22, "blind_spot": 0, "complexity": 14, "thinker_resonance": 18, "collision": 12},
+      "total": 66, "selected": true,
+      "rationale": "Core to Robyn's thesis that innovation fails from execution, not ideas. The operating-model framing directly mirrors her 'corporate antibodies' concept — the immune system isn't rejecting AI, it's rejecting the organizational change AI demands."
+    },
+    {
+      "id": 25, "signal": "Intel R&D leader turns Legal and Finance from innovation blockers into backers",
+      "scores": {"domain_match": 25, "blind_spot": 0, "complexity": 15, "thinker_resonance": 20, "collision": 11},
+      "total": 71, "selected": true,
+      "rationale": "This IS Robyn's work. Corporate antibodies reframed as allies. The Intel case proves her thesis that the solution isn't to circumvent antibodies but to inoculate them with innovation's purpose."
+    },
+    {
+      "id": 7, "signal": "Innovation portfolio management: balancing Explore vs Exploit without killing growth",
+      "scores": {"domain_match": 25, "blind_spot": 0, "complexity": 14, "thinker_resonance": 19, "collision": 10},
+      "total": 68, "selected": true,
+      "rationale": "Portfolio management as continuous governance maps directly to Robyn's innovation portfolio management framework. The VC-funnel metaphor for EXPLORE stage-gates will resonate deeply."
+    },
+    {
+      "id": 10, "signal": "AI-discovered drugs showing 80-90% Phase 1 success rates",
+      "scores": {"domain_match": 8, "blind_spot": 22, "complexity": 15, "thinker_resonance": 14, "collision": 15},
+      "total": 74, "selected": true,
+      "rationale": "Blind spot collision: pharma's AI success rate revolution is the most concrete evidence that AI isn't just a tool — it's a fundamentally different innovation methodology. The phase-gate analogy to innovation portfolio management is explosive."
+    },
+    {
+      "id": 13, "signal": "Defense tech startups raised $49.1B — from invention to manufacturing at scale",
+      "scores": {"domain_match": 12, "blind_spot": 20, "complexity": 14, "thinker_resonance": 16, "collision": 15},
+      "total": 77, "selected": true,
+      "rationale": "Blind spot: Defense tech's pivot from invention to execution/manufacturing at scale perfectly mirrors the corporate innovation challenge Robyn fights daily. If Anduril can cross the valley of death, why can't your innovation lab?"
+    },
+    {
+      "id": 6, "signal": "Agentic AI market to reach $45B by 2030, 74% of companies planning deployment",
+      "scores": {"domain_match": 20, "blind_spot": 0, "complexity": 14, "thinker_resonance": 16, "collision": 13},
+      "total": 63, "selected": true,
+      "rationale": "Agentic AI represents the next corporate antibody test — autonomous agents that make decisions without human gatekeepers. How organizations handle this will separate innovation theater from real transformation."
+    },
+    {
+      "id": 21, "signal": "Corporate strategy redefined: every major decision treated as a dynamic bet",
+      "scores": {"domain_match": 23, "blind_spot": 0, "complexity": 13, "thinker_resonance": 18, "collision": 11},
+      "total": 65, "selected": true,
+      "rationale": "Strategy-as-bet framing aligns with Robyn's portfolio approach. Permanent disruption means innovation isn't a department — it's the operating system."
+    },
+    {
+      "id": 2, "signal": "IMF: War darkens global economic outlook, tariffs at WWII highs",
+      "scores": {"domain_match": 10, "blind_spot": 18, "complexity": 13, "thinker_resonance": 14, "collision": 14},
+      "total": 69, "selected": true,
+      "rationale": "Geopolitical blind spot: trade fragmentation constraining innovation diffusion. When tariffs reshape supply chains, they reshape who can innovate and how fast — a constraint Robyn's clients must navigate."
+    },
+    {
+      "id": 29, "signal": "Nondisruptive creation: new markets beyond existing industry boundaries",
+      "scores": {"domain_match": 24, "blind_spot": 0, "complexity": 14, "thinker_resonance": 19, "collision": 12},
+      "total": 69, "selected": true,
+      "rationale": "Direct challenge to Christensen's disruption orthodoxy that Robyn knows deeply. Nondisruptive creation offers a third path — growth without displacement — that changes the innovation mandate."
+    },
+    {
+      "id": 11, "signal": "CAR-T therapies achieve durable remission in autoimmune diseases",
+      "scores": {"domain_match": 5, "blind_spot": 23, "complexity": 15, "thinker_resonance": 12, "collision": 14},
+      "total": 69, "selected": true,
+      "rationale": "Blind spot: 'Resetting the immune system' is the most perfect metaphor for what Robyn does with corporate antibodies. CAR-T crossing from cancer to autoimmune = innovation frameworks crossing from tech to healthcare."
+    },
+    {
+      "id": 22, "signal": "Strategic foresight becomes a formal discipline — weak signal tracking",
+      "scores": {"domain_match": 24, "blind_spot": 0, "complexity": 13, "thinker_resonance": 17, "collision": 10},
+      "total": 64, "selected": true,
+      "rationale": "Foresight formalization validates the entire Taster concept and Robyn's work in helping orgs see around corners. When foresight becomes standardized, the question shifts: who owns it?"
+    },
+    {
+      "id": 15, "signal": "Energy storage outpaces all segments — Sungrow reports 128% YoY growth",
+      "scores": {"domain_match": 8, "blind_spot": 18, "complexity": 12, "thinker_resonance": 13, "collision": 13},
+      "total": 64, "selected": true,
+      "rationale": "Blind spot: Energy storage's breakout illustrates how infrastructure shifts create market creation moments. Storage isn't just a product — it's a platform that enables entirely new energy business models."
+    }
+  ],
+  "selected_count": 12,
+  "domain_distribution": {
+    "innovation-strategy": 3,
+    "technology-disruption": 2,
+    "corporate-transformation": 1,
+    "growth-strategy": 1,
+    "market-creation": 1,
+    "biotech-pharma": 2,
+    "defense-technology": 1,
+    "energy-transition": 1
+  },
+  "blind_spot_count": 4,
+  "quality_checks": {
+    "max_same_domain": 3,
+    "blind_spot_minimum": true,
+    "complexity_fit": "expert-level signals selected",
+    "diversity": "7 domains represented across 12 signals"
+  }
+}

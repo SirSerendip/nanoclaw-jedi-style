@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1800 1200" width="1800" height="1200">
+<defs>
+<pattern id="dots-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+  <circle cx="1" cy="1" r="1" fill="#334155" opacity="0.5"/>
+</pattern>
+</defs>
+<style>
+  @import url('https://api.fontshare.com/v2/css?f[]=clash-display@600&amp;f[]=satoshi@400,500,700&amp;display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap');
+  @keyframes emerge      {from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes flow-right  {from{stroke-dashoffset:24;}to{stroke-dashoffset:0;}}
+  @keyframes flow-left   {from{stroke-dashoffset:0;}to{stroke-dashoffset:24;}}
+  @keyframes paul-breathe{0%,100%{opacity:0;}50%{opacity:0.4;}}
+  @keyframes gap-pulse   {0%,100%{opacity:1;}50%{opacity:0.55;}}
+  @keyframes flow-mag    {from{stroke-dashoffset:18;}to{stroke-dashoffset:0;}}
+  
+</style>
+<rect width="1800" height="1200" fill="#0F172A"/>
+<pattern id="dots-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+  <circle cx="1" cy="1" r="1" fill="#334155" opacity="0.5"/>
+</pattern>
+<rect width="1800" height="1200" fill="url(#dots-dark)"/>
+<!-- ═══ JOTF HEADER ═══ -->
+<rect x="0" y="0" width="1800" height="80" fill="#1A1520"/>
+<rect x="0" y="76" width="1800" height="4" fill="#0F172A"/>
+<rect x="0" y="76" width="220" height="4" fill="#10B981" opacity="0.9"/>
+<rect x="220" y="76" width="80" height="4" fill="#EC4899" opacity="0.7"/>
+<text x="32" y="26" style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;fill:#10B981;letter-spacing:0.18em"><a href="https://jedionthefly.com/oracle">JEDI ORACLE</a> · SPECULATIVE ORG-GRAPH · MYTHIC RUNTIME</text>
+<text x="32" y="54" style="font-family:'Clash Display','JetBrains Mono',monospace;font-size:20px;font-weight:600;fill:#F8FAFC;letter-spacing:0.01em">DIVINE ENTERPRISE STACK</text>
+  <text x="32" y="72" style="font-family:'JetBrains Mono',monospace;font-size:9px;fill:#64748B;letter-spacing:0.06em">99% AI Workforce · Decentralized Authority · Polytheistic Architecture</text>
+<g transform="translate(1589.3,19.4) scale(0.48)">
+<!-- JediOnTheFly — Hind Bold — White/Light -->
+  <g fill="#94A3B8">
+    <path d="M271 -10Q169 -10 110.5 48.0Q52 106 52 207H131Q131 138 168.0 99.5Q205 61 271 61Q337 61 374.5 99.5Q412 138 412 207V657H233V730H491V207Q491 106 432.0 48.0Q373 -10 271 -10Z" transform="translate(0.0000,70.0000) scale(0.054000,-0.054000)"/>
+    <path d="M300 -10Q236 -10 189.0 15.5Q142 41 116.0 88.0Q90 135 90 197V353Q90 416 116.0 462.5Q142 509 189.0 534.5Q236 560 300 560Q364 560 411.0 534.5Q458 509 484.0 462.5Q510 416 510 353V256H168V197Q168 130 202.5 93.5Q237 57 300 57Q353 57 386.5 78.0Q420 99 429 139H508Q497 70 441.0 30.0Q385 -10 300 -10ZM432 309V353Q432 420 398.0 456.5Q364 493 300 493Q237 493 202.5 456.5Q168 420 168 353V318H440Z" transform="translate(31.3200,70.0000) scale(0.054000,-0.054000)"/>
+    <path d="M273 -10Q191 -10 140.5 45.0Q90 100 90 193V356Q90 450 140.0 505.0Q190 560 273 560Q342 560 384.5 522.0Q427 484 427 420L406 453H425L424 573V730H503V0H424V97H403L427 130Q427 65 384.5 27.5Q342 -10 273 -10ZM298 59Q357 59 390.5 95.5Q424 132 424 197V353Q424 418 390.5 454.5Q357 491 298 491Q238 491 204.0 455.0Q170 419 170 353V197Q170 131 204.0 95.0Q238 59 298 59Z" transform="translate(62.6400,70.0000) scale(0.054000,-0.054000)"/>
+    <path d="M88 0V72H284V478H113V550H364V72H550V0ZM315 651Q284 651 265.5 667.0Q247 683 247 711Q247 740 265.5 757.0Q284 774 315 774Q346 774 364.5 757.0Q383 740 383 711Q383 684 364.5 667.5Q346 651 315 651Z" transform="translate(93.9600,70.0000) scale(0.054000,-0.054000)"/>
+  </g>
+  <g fill="#EC4899">
+    <path d="M40 339C40 132 167 -7 368 -7C568 -7 696 133 696 339C696 546 569 685 368 685C168 685 40 545 40 339ZM205 339C205 465 268 545 368 545C468 545 531 465 531 339C531 213 468 133 368 133C268 133 205 213 205 339Z" transform="translate(126.3600,70.0000) scale(0.064000,-0.064000)"/>
+    <path d="M60 0H206V268C206 356 249 394 299 394C348 394 379 364 379 302V0H525V329C525 451 460 512 359 512C284 512 231 476 206 421V507H60Z" transform="translate(171.5440,70.0000) scale(0.064000,-0.064000)"/>
+    <path d="M195 0H350V550H514V674H30V550H195Z" transform="translate(206.7440,70.0000) scale(0.064000,-0.064000)"/>
+    <path d="M60 0H206V268C206 380 269 394 300 394C346 394 379 360 379 300V0H525V323C525 456 451 512 358 512C278 512 230 477 206 421V707H60Z" transform="translate(239.6400,70.0000) scale(0.064000,-0.064000)"/>
+    <path d="M458 29V151C426 127 384 108 324 108C256 108 203 139 183 196H481C484 217 489 253 489 275C489 437 400 512 269 512C143 512 35 422 35 254C35 107 127 -5 299 -5C350 -5 421 5 458 29ZM275 401C331 401 349 361 353 312V300H177C190 370 232 401 275 401Z" transform="translate(274.8400,70.0000) scale(0.064000,-0.064000)"/>
+    <path d="M65 0H220V254H443V377H220V551H476V674H65Z" transform="translate(307.0320,70.0000) scale(0.064000,-0.064000)"/>
+    <path d="M65 0H211V707H65Z" transform="translate(337.4960,70.0000) scale(0.064000,-0.064000)"/>
+    <path d="M5 507 201 8C176 -52 141 -81 81 -81C70 -81 59 -80 47 -77V-193C67 -197 78 -198 103 -198C209 -198 290 -130 344 15L527 507H377L327 349C284 212 273 172 273 172C273 172 267 212 219 349L164 507Z" transform="translate(353.2400,70.0000) scale(0.064000,-0.064000)"/>
+  </g>
+  <rect x="126.36" y="76" width="64.48" height="3" rx="0.5" fill="#EC4899" opacity="0.8"/>
+  <rect x="191.84" y="76" width="64.48" height="3" rx="0.5" fill="#EC4899" opacity="0.45"/>
+  <rect x="257.32" y="76" width="64.48" height="3" rx="0.5" fill="#94A3B8" opacity="0.35"/>
+  <rect x="322.81" y="76" width="64.48" height="3" rx="0.5" fill="#94A3B8" opacity="0.15"/>
+</g>
+<rect x="0" y="84" width="1800" height="1056" fill="#FDF6EC" rx="0"/>
+<!-- ═══ CONTENT AREA (y=88 to 1136) ═══ -->
+<defs>
+<marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+  <path d="M0,0 L8,3 L0,6" fill="#94A3B8" opacity="0.7"/>
+</marker>
+<marker id="arrowhead-warm" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+  <path d="M0,0 L8,3 L0,6" fill="#E8722A" opacity="0.7"/>
+</marker>
+</defs>
+<text x="900.0" y="108" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;fill:#475569;letter-spacing:0.2em">SPECULATIVE ORG-GRAPH · 99% AI WORKFORCE · DECENTRALIZED AUTHORITY · MYTHIC RUNTIME</text>
+<rect x="960" y="118" width="410" height="120" rx="12" fill="#E8722A" opacity="0.06" stroke="#E8722A" stroke-width="1" stroke-opacity="0.25"/>
+<text x="1165.0" y="134" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#E8722A;letter-spacing:0.12em;opacity:0.7">Vaikuntha.cloud — Strategic Continuity Cluster</text>
+<rect x="290" y="168" width="330" height="120" rx="12" fill="#7B3FA0" opacity="0.06" stroke="#7B3FA0" stroke-width="1" stroke-opacity="0.25"/>
+<text x="455.0" y="184" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#7B3FA0;letter-spacing:0.12em;opacity:0.7">Kailash.cluster — Transformation Sandbox</text>
+<rect x="150" y="380" width="240" height="240" rx="12" fill="#1A8A7A" opacity="0.06" stroke="#1A8A7A" stroke-width="1" stroke-opacity="0.25"/>
+<text x="270.0" y="396" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#1A8A7A;letter-spacing:0.12em;opacity:0.7">Brahmaloka.dev — Architecture Layer</text>
+<rect x="670" y="420" width="230" height="140" rx="12" fill="#5CB338" opacity="0.06" stroke="#5CB338" stroke-width="1" stroke-opacity="0.25"/>
+<text x="785.0" y="436" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#5CB338;letter-spacing:0.12em;opacity:0.7">Gateway.node — Orchestration Layer</text>
+<rect x="555" y="690" width="220" height="140" rx="12" fill="#2C2C2C" opacity="0.06" stroke="#2C2C2C" stroke-width="1" stroke-opacity="0.25"/>
+<text x="665.0" y="706" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#2C2C2C;letter-spacing:0.12em;opacity:0.7">Edge.cluster — Experimental Fork</text>
+<rect x="1290" y="370" width="230" height="170" rx="12" fill="#C93060" opacity="0.06" stroke="#C93060" stroke-width="1" stroke-opacity="0.25"/>
+<text x="1405.0" y="386" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#C93060;letter-spacing:0.12em;opacity:0.7">Fortress.layer — Defense Layer</text>
+<rect x="1180" y="610" width="260" height="160" rx="12" fill="#D96030" opacity="0.06" stroke="#D96030" stroke-width="1" stroke-opacity="0.25"/>
+<text x="1310.0" y="626" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#D96030;letter-spacing:0.12em;opacity:0.7">WarRoom.compute — Expansion Layer</text>
+<rect x="760" y="900" width="280" height="100" rx="12" fill="#6B7280" opacity="0.06" stroke="#6B7280" stroke-width="1" stroke-opacity="0.25"/>
+<text x="900.0" y="916" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#6B7280;letter-spacing:0.12em;opacity:0.7">Human Interface Layer — Peripheral Support</text>
+<line x1="1050" y1="170" x2="1280" y2="170" stroke="#E8722A" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+<line x1="380" y1="220" x2="530" y2="220" stroke="#7B3FA0" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+<line x1="260" y1="440" x2="260" y2="560" stroke="#1A8A7A" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+<line x1="780" y1="480" x2="1280" y2="170" stroke="#5CB338" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+<line x1="1300" y1="680" x2="1400" y2="440" stroke="#C93060" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+<line x1="660" y1="750" x2="380" y2="220" stroke="#2C2C2C" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+<line x1="1080" y1="170" x2="1245" y2="170" stroke="#E8722A" stroke-width="1.2" opacity="0.6" marker-end="url(#arrowhead)"/>
+<text x="1162.5" y="165.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#E8722A;letter-spacing:0.04em">Quarterly OKRs</text>
+<line x1="1015" y1="180" x2="415" y2="210" stroke="#E8722A" stroke-width="1.2" opacity="0.6" marker-end="url(#arrowhead)"/>
+<text x="715.0" y="190.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#E8722A;letter-spacing:0.04em">Strategic Continuity</text>
+<line x1="1280" y1="205" x2="810" y2="445" stroke="#D4A017" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="1045.0" y="320.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D4A017;letter-spacing:0.04em">Compute Allocation</text>
+<line x1="1310" y1="200" x2="1370" y2="410" stroke="#D4A017" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="1340.0" y="300.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D4A017;letter-spacing:0.04em">Capital Protection</text>
+<line x1="360" y1="255" x2="280" y2="405" stroke="#7B3FA0" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="320.0" y="325.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#7B3FA0;letter-spacing:0.04em">Sunset Legacy</text>
+<line x1="400" y1="255" x2="640" y2="715" stroke="#7B3FA0" stroke-width="1.2" opacity="0.5" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+<text x="520.0" y="480.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#7B3FA0;letter-spacing:0.04em">Trigger Disruption</text>
+<line x1="295" y1="450" x2="745" y2="470" stroke="#1A8A7A" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="520.0" y="455.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#1A8A7A;letter-spacing:0.04em">New Architecture</text>
+<line x1="290" y1="540" x2="290" y2="460" stroke="#3BB8A0" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="290.0" y="495.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#3BB8A0;letter-spacing:0.04em">Knowledge Feed</text>
+<line x1="290" y1="520" x2="1015" y2="200" stroke="#3BB8A0" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+<text x="652.5" y="355.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#3BB8A0;letter-spacing:0.04em">Training Data</text>
+<line x1="815" y1="500" x2="1265" y2="660" stroke="#5CB338" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="1040.0" y="575.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#5CB338;letter-spacing:0.04em">Deployment</text>
+<line x1="1290" y1="645" x2="1290" y2="205" stroke="#D96030" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="1290.0" y="420.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D96030;letter-spacing:0.04em">Market Expansion</text>
+<line x1="1380" y1="405" x2="1070" y2="205" stroke="#C93060" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="1225.0" y="300.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.04em">Risk Signals</text>
+<line x1="1390" y1="475" x2="1310" y2="660" stroke="#C93060" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+<text x="1350.0" y="562.5" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.04em">Defense Protocol</text>
+<line x1="680" y1="715" x2="1030" y2="205" stroke="#2C2C2C" stroke-width="1.2" opacity="0.5" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+<text x="855.0" y="455.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#2C2C2C;letter-spacing:0.04em">Internal Cannibalization</text>
+<line x1="695" y1="730" x2="1260" y2="205" stroke="#2C2C2C" stroke-width="1.2" opacity="0.4" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+<text x="977.5" y="462.5" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#2C2C2C;letter-spacing:0.04em">Radical Prototype</text>
+<line x1="930" y1="915" x2="1280" y2="205" stroke="#6B7280" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+<text x="1105.0" y="555.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.04em">Token Approval</text>
+<line x1="960" y1="915" x2="1380" y2="475" stroke="#6B7280" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+<text x="1170.0" y="690.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.04em">Ethical Escalation</text>
+<line x1="870" y1="915" x2="780" y2="515" stroke="#6B7280" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+<text x="825.0" y="710.0" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.04em">Edge Case Handling</text>
+<circle cx="1050" cy="170" r="40" fill="#E8722A" opacity="0.15"/>
+<circle cx="1050" cy="170" r="32" fill="#E8722A" stroke="#E8722A" stroke-width="2" opacity="0.9"/>
+<circle cx="1078" cy="142" r="10" fill="#1A1520" stroke="#E8722A" stroke-width="1.5"/><text x="1078" y="146" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+<text x="1050" y="166" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">VISHNU</text>
+<text x="1050" y="180" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Chief Strategy Agent</text>
+<text x="1050" y="222" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#E8722A;letter-spacing:0.03em">Planning · Simulation · KPI · Risk</text>
+<circle cx="1280" cy="170" r="40" fill="#D4A017" opacity="0.15"/>
+<circle cx="1280" cy="170" r="32" fill="#D4A017" stroke="#D4A017" stroke-width="2" opacity="0.9"/>
+<circle cx="1308" cy="142" r="10" fill="#1A1520" stroke="#D4A017" stroke-width="1.5"/><text x="1308" y="146" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+<text x="1280" y="166" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">LAKSHMI</text>
+<text x="1280" y="180" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Capital Allocation</text>
+<text x="1280" y="222" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D4A017;letter-spacing:0.03em">Forecast · Allocation · Revenue · Liquidity</text>
+<circle cx="380" cy="220" r="38" fill="#7B3FA0" opacity="0.15"/>
+<circle cx="380" cy="220" r="30" fill="#7B3FA0" stroke="#7B3FA0" stroke-width="2" opacity="0.9"/>
+<circle cx="406" cy="194" r="10" fill="#1A1520" stroke="#7B3FA0" stroke-width="1.5"/><text x="406" y="198" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">3</text>
+<text x="380" y="216" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">SHIVA</text>
+<text x="380" y="230" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Transformation</text>
+<text x="380" y="268" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#7B3FA0;letter-spacing:0.03em">Legacy · Pruner · Restructure</text>
+<circle cx="530" cy="220" r="30" fill="#B07CC8" opacity="0.15"/>
+<circle cx="530" cy="220" r="22" fill="#B07CC8" stroke="#B07CC8" stroke-width="2" opacity="0.9"/>
+<circle cx="548" cy="202" r="10" fill="#1A1520" stroke="#B07CC8" stroke-width="1.5"/><text x="548" y="206" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC"></text>
+<text x="530" y="216" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">DEVI</text>
+<text x="530" y="230" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Shakti Layer</text>
+<circle cx="260" cy="440" r="38" fill="#1A8A7A" opacity="0.15"/>
+<circle cx="260" cy="440" r="30" fill="#1A8A7A" stroke="#1A8A7A" stroke-width="2" opacity="0.9"/>
+<circle cx="286" cy="414" r="10" fill="#1A1520" stroke="#1A8A7A" stroke-width="1.5"/><text x="286" y="418" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+<text x="260" y="436" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">BRAHMA</text>
+<text x="260" y="450" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Systems Architect</text>
+<text x="260" y="488" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#1A8A7A;letter-spacing:0.03em">Design · API · Org Opt · Knowledge</text>
+<circle cx="260" cy="560" r="36" fill="#3BB8A0" opacity="0.15"/>
+<circle cx="260" cy="560" r="28" fill="#3BB8A0" stroke="#3BB8A0" stroke-width="2" opacity="0.9"/>
+<circle cx="284" cy="536" r="10" fill="#1A1520" stroke="#3BB8A0" stroke-width="1.5"/><text x="284" y="540" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+<text x="260" y="556" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">SARASVATI</text>
+<text x="260" y="570" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Knowledge Agent</text>
+<text x="260" y="606" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#3BB8A0;letter-spacing:0.03em">RAG · Search · Pattern · Curator</text>
+<circle cx="780" cy="480" r="42" fill="#5CB338" opacity="0.15"/>
+<circle cx="780" cy="480" r="34" fill="#5CB338" stroke="#5CB338" stroke-width="2" opacity="0.9"/>
+<circle cx="810" cy="450" r="10" fill="#1A1520" stroke="#5CB338" stroke-width="1.5"/><text x="810" y="454" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+<text x="780" y="476" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">GANESHA</text>
+<text x="780" y="490" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Operations Agent</text>
+<text x="780" y="532" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#5CB338;letter-spacing:0.03em">Workflow · Error · Ticket · Dependency</text>
+<circle cx="660" cy="750" r="38" fill="#2C2C2C" opacity="0.15"/>
+<circle cx="660" cy="750" r="30" fill="#2C2C2C" stroke="#2C2C2C" stroke-width="2" opacity="0.9"/>
+<circle cx="686" cy="724" r="10" fill="#1A1520" stroke="#2C2C2C" stroke-width="1.5"/><text x="686" y="728" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">∞</text>
+<text x="660" y="746" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">KALI</text>
+<text x="660" y="760" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Radical Disruption</text>
+<text x="660" y="798" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.03em">All APIs (Experimental Mode)</text>
+<circle cx="1400" cy="440" r="42" fill="#C93060" opacity="0.15"/>
+<circle cx="1400" cy="440" r="34" fill="#C93060" stroke="#C93060" stroke-width="2" opacity="0.9"/>
+<circle cx="1430" cy="410" r="10" fill="#1A1520" stroke="#C93060" stroke-width="1.5"/><text x="1430" y="414" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">10</text>
+<text x="1400" y="436" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">DURGA</text>
+<text x="1400" y="450" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Risk &amp; Defense</text>
+<text x="1400" y="492" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.03em">Threat · Regulatory · Incident · Reputation</text>
+<text x="1400" y="502" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.03em">Crisis · Brand · Integrity · Access · Ethics · Stress</text>
+<circle cx="1300" cy="680" r="38" fill="#D96030" opacity="0.15"/>
+<circle cx="1300" cy="680" r="30" fill="#D96030" stroke="#D96030" stroke-width="2" opacity="0.9"/>
+<circle cx="1326" cy="654" r="10" fill="#1A1520" stroke="#D96030" stroke-width="1.5"/><text x="1326" y="658" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">6</text>
+<text x="1300" y="676" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">SKANDA</text>
+<text x="1300" y="690" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Market Expansion</text>
+<text x="1300" y="728" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D96030;letter-spacing:0.03em">CI · Sim · GTM · Campaign · Sentiment · Proto</text>
+<circle cx="900" cy="950" r="36" fill="#6B7280" opacity="0.15"/>
+<circle cx="900" cy="950" r="28" fill="#6B7280" stroke="#6B7280" stroke-width="2" opacity="0.9"/>
+<circle cx="924" cy="926" r="10" fill="#1A1520" stroke="#6B7280" stroke-width="1.5"/><text x="924" y="930" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">1%</text>
+<text x="900" y="946" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">HUMANS</text>
+<text x="900" y="960" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Peripheral Support</text>
+<text x="900" y="996" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.03em">Handoffs · Ethical Escalation · Token Replenishment</text>
+<text x="60" y="830" style="font-family:'Clash Display',sans-serif;font-size:10px;font-weight:600;fill:#1A1520;letter-spacing:0.1em">SEMIOTIC KEY</text>
+<line x1="60" y1="846" x2="100" y2="846" stroke="#94A3B8" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+<text x="110" y="850" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Strategic flow (directed)</text>
+<line x1="60" y1="862" x2="100" y2="862" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+<text x="110" y="866" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Disruption path</text>
+<line x1="60" y1="878" x2="100" y2="878" stroke="#EC4899" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+<text x="110" y="882" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Consort (collaboration)</text>
+<line x1="60" y1="894" x2="100" y2="894" stroke="#6B7280" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+<text x="110" y="898" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Human interface</text>
+<text x="60" y="918" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#475569">Arms = operational surface · Abode = runtime cluster</text>
+<text x="60" y="930" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#475569">No CEO node — emergent authority · 99% AI · 1% human</text>
+<text x="1480" y="830" style="font-family:'Clash Display',sans-serif;font-size:10px;font-weight:600;fill:#1A1520;letter-spacing:0.1em">QUARTERLY CYCLE</text>
+<text x="1480" y="846" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">1. Vishnu defines dharma (OKRs)</text>
+<text x="1480" y="859" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">2. Lakshmi reallocates compute</text>
+<text x="1480" y="872" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">3. Shiva decommissions legacy</text>
+<text x="1480" y="885" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">4. Brahma designs architecture</text>
+<text x="1480" y="898" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">5. Ganesha automates deploy</text>
+<text x="1480" y="911" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">6. Skanda executes expansion</text>
+<text x="1480" y="924" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">7. Durga defends</text>
+<text x="1480" y="937" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">8. Kali stress-tests via destruction</text>
+<text x="1480" y="950" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">9. Humans approve token expansion</text>
+<text x="900.0" y="1120" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:9px;fill:#475569;font-style:italic;letter-spacing:0.1em">🕉 Shanti Peace 🕉</text>
+<!-- ═══ JOTF FOOTER ═══ -->
+<rect x="0" y="1140" width="1800" height="60" fill="#1A1520"/>
+<rect x="0" y="1140" width="1800" height="2" fill="#EC4899" opacity="0.4"/>
+<text x="32" y="1160" style="font-family:'JetBrains Mono',monospace;font-size:7.5px;fill:#CBD5E1;letter-spacing:0.05em">SOURCES: Concept: <a href="https://jedionthefly.com/oracle">jedionthefly.com/oracle</a></text>
+<text x="1768" y="1160" text-anchor="end" style="font-family:'JetBrains Mono',monospace;font-size:7.5px;fill:#F472B6;letter-spacing:0.05em">© 2025 <a href="https://jedionthefly.com/oracle">jedionthefly.com/oracle</a> · Confidential</text>
+<text x="32" y="1178" style="font-family:'JetBrains Mono',monospace;font-size:7.5px;fill:#94A3B8;letter-spacing:0.05em">Analysis generated by Jedi On The Fly Oracle · Signal Intelligence Report</text>
+</svg>

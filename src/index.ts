@@ -371,7 +371,8 @@ async function processGroupMessages(chatJid: string): Promise<boolean> {
       const text = raw.replace(/<internal>[\s\S]*?<\/internal>/g, '').trim();
       logger.info({ group: group.name }, `Agent output: ${raw.length} chars`);
       if (text) {
-        await channel.sendMessage(chatJid, text);
+        const formatted = formatOutbound(text, channel.name as ChannelType);
+        if (formatted) await channel.sendMessage(chatJid, formatted);
         outputSentToUser = true;
         let deliveryNote = `💬 ${group.name} — delivered ${text.length} chars (${Math.round((Date.now() - agentStartTime) / 1000)}s elapsed)`;
         const meter = contextMeter(result.inputTokens, result.contextWindow);

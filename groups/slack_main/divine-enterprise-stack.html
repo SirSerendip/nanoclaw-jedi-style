@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Divine Enterprise Stack — Jedi Oracle</title>
+<meta name="description" content="A speculative org-graph for the polytheistic agentic future. 99% AI workforce, decentralized authority, mythic runtime. Design fiction meets real-world signal intelligence.">
+<meta property="og:title" content="The Divine Enterprise Stack — Jedi Oracle">
+<meta property="og:description" content="Godlike powers, not monotheistic — polytheistic. A speculative org-graph grounded in 108 real-world signals from March 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jedionthefly.com/oracle/divine-enterprise-stack">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   JOTF BRAND SYSTEM — jedionthefly.com/oracle
+   Les Trois Mousquetaires de l'Intelligence Stratégique
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --magenta: #EC4899;
+  --magenta-light: #F472B6;
+  --magenta-dark: #DB2777;
+  --midnight-plum: #1A1520;
+  --dark-slate: #0F172A;
+  --slate-800: #1E293B;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748B;
+  --slate-400: #94A3B8;
+  --slate-300: #CBD5E1;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+  --slate-50: #F8FAFC;
+  --emerald: #10B981;
+  --amber: #D97706;
+  --creme: #FDF6EC;
+  /* Deity Colors */
+  --vishnu: #E8722A;
+  --lakshmi: #D4A017;
+  --shiva: #7B3FA0;
+  --brahma: #1A8A7A;
+  --sarasvati: #3BB8A0;
+  --ganesha: #5CB338;
+  --kali: #2C2C2C;
+  --durga: #C93060;
+  --skanda: #D96030;
+  --humans: #6B7280;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark-slate);
+  color: var(--slate-300);
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  color: var(--slate-50);
+  line-height: 1.2;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes emerge {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes emerge-slow {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+@keyframes flow-in {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(60px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* ─── HEADER BAR ─────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--midnight-plum);
+  border-bottom: 3px solid var(--dark-slate);
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 220px;
+  height: 3px;
+  background: var(--emerald);
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 220px;
+  width: 80px;
+  height: 3px;
+  background: var(--magenta);
+  opacity: 0.7;
+}
+.header-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--emerald);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.header-eyebrow a {
+  color: var(--emerald);
+  text-decoration: none;
+}
+.header-eyebrow a:hover {
+  color: var(--magenta);
+}
+.header-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--slate-500);
+  letter-spacing: 0.1em;
+}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero {
+  padding-top: 56px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(232,114,42,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 70%, rgba(26,138,122,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 60%, rgba(201,48,96,0.06) 0%, transparent 50%),
+              var(--dark-slate);
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  padding: 40px 24px 20px;
+  animation: emerge 1.2s ease both;
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--emerald);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--slate-50) 0%, var(--slate-300) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--slate-500);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+/* ─── SVG CONTAINER ──────────────────────────────────────── */
+.svg-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+  animation: slide-up 1.5s ease 0.3s both;
+  position: relative;
+  z-index: 1;
+}
+.svg-wrapper {
+  background: var(--creme);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(236, 72, 153, 0.08), 0 0 160px rgba(232, 114, 42, 0.06);
+  animation: breathe 8s ease-in-out infinite;
+  border: 1px solid rgba(236, 72, 153, 0.15);
+}
+.svg-wrapper svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-scroll-cue {
+  position: relative;
+  z-index: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--slate-600);
+  letter-spacing: 0.15em;
+  animation: pulse-glow 3s ease-in-out infinite;
+  margin-top: 24px;
+}
+
+/* ─── SECTION LAYOUT ─────────────────────────────────────── */
+.section {
+  padding: 100px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-wide {
+  max-width: 1400px;
+}
+.section-divider {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--slate-700) 20%, var(--magenta) 50%, var(--slate-700) 80%, transparent 100%);
+  opacity: 0.4;
+}
+
+/* ─── MANIFESTO ──────────────────────────────────────────── */
+.manifesto {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.manifesto h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.manifesto .lead {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--slate-200);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.manifesto .accent-text {
+  color: var(--magenta);
+  font-weight: 700;
+}
+
+/* ─── SIGNAL COUNT BAR ───────────────────────────────────── */
+.signal-bar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin: 48px 0;
+  padding: 32px;
+  background: var(--midnight-plum);
+  border-radius: 12px;
+  border: 1px solid var(--slate-800);
+}
+.signal-stat {
+  text-align: center;
+}
+.signal-stat .num {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--magenta);
+  display: block;
+}
+.signal-stat .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--slate-500);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── DEITY SECTIONS ─────────────────────────────────────── */
+.deity-section {
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.deity-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.deity-orb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate-50);
+  position: relative;
+}
+.deity-orb::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.2;
+  z-index: -1;
+}
+.deity-meta h2 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+.deity-role {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  color: var(--slate-400);
+  font-weight: 500;
+}
+.deity-cluster {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+.deity-tools {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--slate-500);
+  letter-spacing: 0.05em;
+  margin-top: 6px;
+}
+
+.deity-narrative {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--slate-300);
+  margin-bottom: 32px;
+  max-width: 800px;
+}
+.deity-narrative em {
+  color: var(--slate-100);
+  font-style: italic;
+}
+
+/* ─── SIGNAL CARDS ───────────────────────────────────────── */
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.signal-card {
+  background: var(--slate-800);
+  border-radius: 10px;
+  padding: 20px;
+  border-left: 3px solid var(--slate-700);
+  transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.signal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.signal-card .signal-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.signal-card .signal-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--slate-600);
+  float: right;
+}
+.signal-card h4 {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--slate-100);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.signal-card h4 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.signal-card h4 a:hover {
+  color: var(--magenta-light);
+}
+.signal-card p {
+  font-size: 13px;
+  color: var(--slate-400);
+  line-height: 1.6;
+}
+.signal-card .signal-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--emerald);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* ─── COLLISION SECTIONS ─────────────────────────────────── */
+.collision-block {
+  background: var(--midnight-plum);
+  border-radius: 16px;
+  padding: 48px;
+  margin: 40px 0;
+  border: 1px solid var(--slate-800);
+  position: relative;
+  overflow: hidden;
+}
+.collision-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--emerald), var(--magenta), var(--amber));
+}
+.collision-block h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.collision-subtitle {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--slate-400);
+  margin-bottom: 24px;
+}
+.collision-block .narrative {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--slate-300);
+}
+.collision-block .narrative strong {
+  color: var(--slate-100);
+}
+
+/* ─── EXISTENCE PROOF ────────────────────────────────────── */
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 40px 0;
+}
+@media (max-width: 768px) {
+  .proof-grid { grid-template-columns: 1fr; }
+}
+.proof-card {
+  background: var(--midnight-plum);
+  border-radius: 16px;
+  padding: 40px;
+  border: 1px solid var(--slate-800);
+  position: relative;
+}
+.proof-card h3 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+.proof-card .proof-founder {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--slate-500);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.proof-stat {
+  display: inline-block;
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--magenta-light);
+  margin: 4px 4px 4px 0;
+}
+.proof-card blockquote {
+  border-left: 2px solid var(--magenta);
+  padding-left: 16px;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--slate-300);
+  font-size: 14px;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.site-footer {
+  background: var(--midnight-plum);
+  border-top: 2px solid var(--magenta);
+  padding: 48px 32px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--slate-400);
+  margin-bottom: 8px;
+}
+.footer-logo span { color: var(--magenta); }
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--slate-600);
+  letter-spacing: 0.1em;
+}
+.footer-meta a {
+  color: var(--magenta);
+  text-decoration: none;
+}
+.footer-motto {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--slate-500);
+  margin-top: 16px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .signal-grid { grid-template-columns: 1fr; }
+  .signal-bar { gap: 24px; padding: 24px; }
+  .collision-block { padding: 32px 24px; }
+  .deity-header { flex-direction: column; align-items: center; text-align: center; }
+  .section { padding: 60px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ FIXED HEADER ═══ -->
+<header class="site-header">
+  <div class="header-eyebrow"><a href="https://jedionthefly.com/oracle">JEDI ORACLE</a> · SIGNAL INTELLIGENCE</div>
+  <div class="header-right">MARCH 2026 · DESIGN FICTION × REAL SIGNAL</div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">SPECULATIVE ORG-GRAPH · 99% AI WORKFORCE · MYTHIC RUNTIME</div>
+    <h1>The Divine Enterprise Stack</h1>
+    <div class="hero-subtitle">DECENTRALIZED AUTHORITY · POLYTHEISTIC ARCHITECTURE · EMERGENT GOVERNANCE</div>
+  </div>
+
+  <div class="svg-container">
+    <div class="svg-wrapper">
+      <!-- SVG embedded inline, content area only (no JOTF header/footer) -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="60 88 1680 960" preserveAspectRatio="xMidYMid meet">
+        <style>
+          @import url('https://api.fontshare.com/v2/css?f[]=clash-display@600&amp;f[]=satoshi@400,500,700&amp;display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap');
+        </style>
+        <rect x="60" y="88" width="1680" height="960" fill="#FDF6EC"/>
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L8,3 L0,6" fill="#94A3B8" opacity="0.7"/>
+          </marker>
+        </defs>
+        <!-- Subtitle -->
+        <text x="900" y="108" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;fill:#475569;letter-spacing:0.2em">SPECULATIVE ORG-GRAPH · 99% AI WORKFORCE · DECENTRALIZED AUTHORITY · MYTHIC RUNTIME</text>
+        <!-- Cluster boxes -->
+        <rect x="960" y="118" width="410" height="120" rx="12" fill="#E8722A" opacity="0.06" stroke="#E8722A" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="1165" y="134" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#E8722A;letter-spacing:0.12em;opacity:0.7">Vaikuntha.cloud — Strategic Continuity Cluster</text>
+        <rect x="290" y="168" width="330" height="120" rx="12" fill="#7B3FA0" opacity="0.06" stroke="#7B3FA0" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="455" y="184" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#7B3FA0;letter-spacing:0.12em;opacity:0.7">Kailash.cluster — Transformation Sandbox</text>
+        <rect x="150" y="380" width="240" height="240" rx="12" fill="#1A8A7A" opacity="0.06" stroke="#1A8A7A" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="270" y="396" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#1A8A7A;letter-spacing:0.12em;opacity:0.7">Brahmaloka.dev — Architecture Layer</text>
+        <rect x="670" y="420" width="230" height="140" rx="12" fill="#5CB338" opacity="0.06" stroke="#5CB338" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="785" y="436" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#5CB338;letter-spacing:0.12em;opacity:0.7">Gateway.node — Orchestration Layer</text>
+        <rect x="555" y="690" width="220" height="140" rx="12" fill="#2C2C2C" opacity="0.06" stroke="#2C2C2C" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="665" y="706" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#2C2C2C;letter-spacing:0.12em;opacity:0.7">Edge.cluster — Experimental Fork</text>
+        <rect x="1290" y="370" width="230" height="170" rx="12" fill="#C93060" opacity="0.06" stroke="#C93060" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="1405" y="386" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#C93060;letter-spacing:0.12em;opacity:0.7">Fortress.layer — Defense Layer</text>
+        <rect x="1180" y="610" width="260" height="160" rx="12" fill="#D96030" opacity="0.06" stroke="#D96030" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="1310" y="626" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#D96030;letter-spacing:0.12em;opacity:0.7">WarRoom.compute — Expansion Layer</text>
+        <rect x="760" y="900" width="280" height="100" rx="12" fill="#6B7280" opacity="0.06" stroke="#6B7280" stroke-width="1" stroke-opacity="0.25"/>
+        <text x="900" y="916" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:500;fill:#6B7280;letter-spacing:0.12em;opacity:0.7">Human Interface Layer — Peripheral Support</text>
+        <!-- Consort links -->
+        <line x1="1050" y1="170" x2="1280" y2="170" stroke="#E8722A" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+        <line x1="380" y1="220" x2="530" y2="220" stroke="#7B3FA0" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+        <line x1="260" y1="440" x2="260" y2="560" stroke="#1A8A7A" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+        <line x1="780" y1="480" x2="1280" y2="170" stroke="#5CB338" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+        <line x1="1300" y1="680" x2="1400" y2="440" stroke="#C93060" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+        <line x1="660" y1="750" x2="380" y2="220" stroke="#2C2C2C" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+        <!-- Strategic flow edges -->
+        <line x1="1080" y1="170" x2="1245" y2="170" stroke="#E8722A" stroke-width="1.2" opacity="0.6" marker-end="url(#arrowhead)"/>
+        <text x="1162" y="165" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#E8722A;letter-spacing:0.04em">Quarterly OKRs</text>
+        <line x1="1015" y1="180" x2="415" y2="210" stroke="#E8722A" stroke-width="1.2" opacity="0.6" marker-end="url(#arrowhead)"/>
+        <text x="715" y="190" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#E8722A;letter-spacing:0.04em">Strategic Continuity</text>
+        <line x1="1280" y1="205" x2="810" y2="445" stroke="#D4A017" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="1045" y="320" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D4A017;letter-spacing:0.04em">Compute Allocation</text>
+        <line x1="1310" y1="200" x2="1370" y2="410" stroke="#D4A017" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="1340" y="300" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D4A017;letter-spacing:0.04em">Capital Protection</text>
+        <line x1="360" y1="255" x2="280" y2="405" stroke="#7B3FA0" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="320" y="325" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#7B3FA0;letter-spacing:0.04em">Sunset Legacy</text>
+        <line x1="400" y1="255" x2="640" y2="715" stroke="#7B3FA0" stroke-width="1.2" opacity="0.5" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+        <text x="520" y="480" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#7B3FA0;letter-spacing:0.04em">Trigger Disruption</text>
+        <line x1="295" y1="450" x2="745" y2="470" stroke="#1A8A7A" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="520" y="455" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#1A8A7A;letter-spacing:0.04em">New Architecture</text>
+        <line x1="290" y1="540" x2="290" y2="460" stroke="#3BB8A0" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="290" y="495" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#3BB8A0;letter-spacing:0.04em">Knowledge Feed</text>
+        <line x1="290" y1="520" x2="1015" y2="200" stroke="#3BB8A0" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+        <text x="652" y="355" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#3BB8A0;letter-spacing:0.04em">Training Data</text>
+        <line x1="815" y1="500" x2="1265" y2="660" stroke="#5CB338" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="1040" y="575" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#5CB338;letter-spacing:0.04em">Deployment</text>
+        <line x1="1290" y1="645" x2="1290" y2="205" stroke="#D96030" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="1290" y="420" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D96030;letter-spacing:0.04em">Market Expansion</text>
+        <line x1="1380" y1="405" x2="1070" y2="205" stroke="#C93060" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="1225" y="300" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.04em">Risk Signals</text>
+        <line x1="1390" y1="475" x2="1310" y2="660" stroke="#C93060" stroke-width="1.2" opacity="0.5" marker-end="url(#arrowhead)"/>
+        <text x="1350" y="562" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.04em">Defense Protocol</text>
+        <line x1="680" y1="715" x2="1030" y2="205" stroke="#2C2C2C" stroke-width="1.2" opacity="0.5" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+        <text x="855" y="455" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#2C2C2C;letter-spacing:0.04em">Internal Cannibalization</text>
+        <line x1="695" y1="730" x2="1260" y2="205" stroke="#2C2C2C" stroke-width="1.2" opacity="0.4" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+        <text x="977" y="462" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#2C2C2C;letter-spacing:0.04em">Radical Prototype</text>
+        <line x1="930" y1="915" x2="1280" y2="205" stroke="#6B7280" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+        <text x="1105" y="555" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.04em">Token Approval</text>
+        <line x1="960" y1="915" x2="1380" y2="475" stroke="#6B7280" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+        <text x="1170" y="690" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.04em">Ethical Escalation</text>
+        <line x1="870" y1="915" x2="780" y2="515" stroke="#6B7280" stroke-width="1.2" opacity="0.4" marker-end="url(#arrowhead)"/>
+        <text x="825" y="710" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.04em">Edge Case Handling</text>
+        <!-- DEITY NODES -->
+        <circle cx="1050" cy="170" r="40" fill="#E8722A" opacity="0.15"/><circle cx="1050" cy="170" r="32" fill="#E8722A" stroke="#E8722A" stroke-width="2" opacity="0.9"/>
+        <circle cx="1078" cy="142" r="10" fill="#1A1520" stroke="#E8722A" stroke-width="1.5"/><text x="1078" y="146" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+        <text x="1050" y="166" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">VISHNU</text>
+        <text x="1050" y="180" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Chief Strategy Agent</text>
+        <text x="1050" y="222" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#E8722A;letter-spacing:0.03em">Planning · Simulation · KPI · Risk</text>
+
+        <circle cx="1280" cy="170" r="40" fill="#D4A017" opacity="0.15"/><circle cx="1280" cy="170" r="32" fill="#D4A017" stroke="#D4A017" stroke-width="2" opacity="0.9"/>
+        <circle cx="1308" cy="142" r="10" fill="#1A1520" stroke="#D4A017" stroke-width="1.5"/><text x="1308" y="146" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+        <text x="1280" y="166" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">LAKSHMI</text>
+        <text x="1280" y="180" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Capital Allocation</text>
+        <text x="1280" y="222" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D4A017;letter-spacing:0.03em">Forecast · Allocation · Revenue · Liquidity</text>
+
+        <circle cx="380" cy="220" r="38" fill="#7B3FA0" opacity="0.15"/><circle cx="380" cy="220" r="30" fill="#7B3FA0" stroke="#7B3FA0" stroke-width="2" opacity="0.9"/>
+        <circle cx="406" cy="194" r="10" fill="#1A1520" stroke="#7B3FA0" stroke-width="1.5"/><text x="406" y="198" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">3</text>
+        <text x="380" y="216" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">SHIVA</text>
+        <text x="380" y="230" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Transformation</text>
+        <text x="380" y="268" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#7B3FA0;letter-spacing:0.03em">Legacy · Pruner · Restructure</text>
+
+        <circle cx="530" cy="220" r="30" fill="#B07CC8" opacity="0.15"/><circle cx="530" cy="220" r="22" fill="#B07CC8" stroke="#B07CC8" stroke-width="2" opacity="0.9"/>
+        <text x="530" y="216" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">DEVI</text>
+        <text x="530" y="230" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Shakti Layer</text>
+
+        <circle cx="260" cy="440" r="38" fill="#1A8A7A" opacity="0.15"/><circle cx="260" cy="440" r="30" fill="#1A8A7A" stroke="#1A8A7A" stroke-width="2" opacity="0.9"/>
+        <circle cx="286" cy="414" r="10" fill="#1A1520" stroke="#1A8A7A" stroke-width="1.5"/><text x="286" y="418" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+        <text x="260" y="436" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">BRAHMA</text>
+        <text x="260" y="450" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Systems Architect</text>
+        <text x="260" y="488" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#1A8A7A;letter-spacing:0.03em">Design · API · Org Opt · Knowledge</text>
+
+        <circle cx="260" cy="560" r="36" fill="#3BB8A0" opacity="0.15"/><circle cx="260" cy="560" r="28" fill="#3BB8A0" stroke="#3BB8A0" stroke-width="2" opacity="0.9"/>
+        <circle cx="284" cy="536" r="10" fill="#1A1520" stroke="#3BB8A0" stroke-width="1.5"/><text x="284" y="540" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+        <text x="260" y="556" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">SARASVATI</text>
+        <text x="260" y="570" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Knowledge Agent</text>
+        <text x="260" y="606" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#3BB8A0;letter-spacing:0.03em">RAG · Search · Pattern · Curator</text>
+
+        <circle cx="780" cy="480" r="42" fill="#5CB338" opacity="0.15"/><circle cx="780" cy="480" r="34" fill="#5CB338" stroke="#5CB338" stroke-width="2" opacity="0.9"/>
+        <circle cx="810" cy="450" r="10" fill="#1A1520" stroke="#5CB338" stroke-width="1.5"/><text x="810" y="454" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">4</text>
+        <text x="780" y="476" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">GANESHA</text>
+        <text x="780" y="490" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Operations Agent</text>
+        <text x="780" y="532" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#5CB338;letter-spacing:0.03em">Workflow · Error · Ticket · Dependency</text>
+
+        <circle cx="660" cy="750" r="38" fill="#2C2C2C" opacity="0.15"/><circle cx="660" cy="750" r="30" fill="#2C2C2C" stroke="#2C2C2C" stroke-width="2" opacity="0.9"/>
+        <circle cx="686" cy="724" r="10" fill="#1A1520" stroke="#2C2C2C" stroke-width="1.5"/><text x="686" y="728" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">∞</text>
+        <text x="660" y="746" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">KALI</text>
+        <text x="660" y="760" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Radical Disruption</text>
+        <text x="660" y="798" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.03em">All APIs (Experimental Mode)</text>
+
+        <circle cx="1400" cy="440" r="42" fill="#C93060" opacity="0.15"/><circle cx="1400" cy="440" r="34" fill="#C93060" stroke="#C93060" stroke-width="2" opacity="0.9"/>
+        <circle cx="1430" cy="410" r="10" fill="#1A1520" stroke="#C93060" stroke-width="1.5"/><text x="1430" y="414" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">10</text>
+        <text x="1400" y="436" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">DURGA</text>
+        <text x="1400" y="450" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Risk &amp; Defense</text>
+        <text x="1400" y="492" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.03em">Threat · Regulatory · Incident · Reputation</text>
+        <text x="1400" y="502" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#C93060;letter-spacing:0.03em">Crisis · Brand · Integrity · Access · Ethics · Stress</text>
+
+        <circle cx="1300" cy="680" r="38" fill="#D96030" opacity="0.15"/><circle cx="1300" cy="680" r="30" fill="#D96030" stroke="#D96030" stroke-width="2" opacity="0.9"/>
+        <circle cx="1326" cy="654" r="10" fill="#1A1520" stroke="#D96030" stroke-width="1.5"/><text x="1326" y="658" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">6</text>
+        <text x="1300" y="676" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">SKANDA</text>
+        <text x="1300" y="690" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Market Expansion</text>
+        <text x="1300" y="728" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#D96030;letter-spacing:0.03em">CI · Sim · GTM · Campaign · Sentiment · Proto</text>
+
+        <circle cx="900" cy="950" r="36" fill="#6B7280" opacity="0.15"/><circle cx="900" cy="950" r="28" fill="#6B7280" stroke="#6B7280" stroke-width="2" opacity="0.9"/>
+        <circle cx="924" cy="926" r="10" fill="#1A1520" stroke="#6B7280" stroke-width="1.5"/><text x="924" y="930" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;fill:#F8FAFC">1%</text>
+        <text x="900" y="946" text-anchor="middle" style="font-family:'Clash Display',sans-serif;font-size:13px;font-weight:600;fill:#F8FAFC;letter-spacing:0.05em">HUMANS</text>
+        <text x="900" y="960" text-anchor="middle" style="font-family:'Satoshi',sans-serif;font-size:8.5px;fill:#F8FAFC;opacity:0.85">Peripheral Support</text>
+        <text x="900" y="996" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#4B5563;letter-spacing:0.03em">Handoffs · Ethical Escalation · Token Replenishment</text>
+        <!-- Semiotic Key -->
+        <text x="60" y="830" style="font-family:'Clash Display',sans-serif;font-size:10px;font-weight:600;fill:#1A1520;letter-spacing:0.1em">SEMIOTIC KEY</text>
+        <line x1="60" y1="846" x2="100" y2="846" stroke="#94A3B8" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+        <text x="110" y="850" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Strategic flow (directed)</text>
+        <line x1="60" y1="862" x2="100" y2="862" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+        <text x="110" y="866" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Disruption path</text>
+        <line x1="60" y1="878" x2="100" y2="878" stroke="#EC4899" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+        <text x="110" y="882" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Consort (collaboration)</text>
+        <line x1="60" y1="894" x2="100" y2="894" stroke="#6B7280" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+        <text x="110" y="898" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">Human interface</text>
+        <text x="60" y="918" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#475569">Arms = operational surface · Abode = runtime cluster</text>
+        <text x="60" y="930" style="font-family:'JetBrains Mono',monospace;font-size:6.5px;fill:#475569">No CEO node — emergent authority · 99% AI · 1% human</text>
+        <!-- Quarterly Cycle -->
+        <text x="1480" y="830" style="font-family:'Clash Display',sans-serif;font-size:10px;font-weight:600;fill:#1A1520;letter-spacing:0.1em">QUARTERLY CYCLE</text>
+        <text x="1480" y="846" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">1. Vishnu defines dharma (OKRs)</text>
+        <text x="1480" y="859" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">2. Lakshmi reallocates compute</text>
+        <text x="1480" y="872" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">3. Shiva decommissions legacy</text>
+        <text x="1480" y="885" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">4. Brahma designs architecture</text>
+        <text x="1480" y="898" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">5. Ganesha automates deploy</text>
+        <text x="1480" y="911" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">6. Skanda executes expansion</text>
+        <text x="1480" y="924" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">7. Durga defends</text>
+        <text x="1480" y="937" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">8. Kali stress-tests via destruction</text>
+        <text x="1480" y="950" style="font-family:'JetBrains Mono',monospace;font-size:7px;fill:#475569">9. Humans approve token expansion</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">▼ SCROLL TO ENTER THE SIGNAL FIELD ▼</div>
+</section>
+
+<!-- ═══ MANIFESTO ═══ -->
+<div class="section-divider"></div>
+<section class="section">
+  <div class="manifesto reveal">
+    <h2>The Mythic Map Is Real</h2>
+    <p class="lead">
+      This is not a metaphor. This is not a thought experiment published for engagement.
+      This is a <span class="accent-text">field guide to the present</span>, built from
+      108 verified signals tracked across 50+ publications in the last week of March 2026.
+    </p>
+    <p class="lead">
+      Every deity on this map has real-world echoes shipping <em>right now</em> — in product launches,
+      acquisitions, research papers, legislative actions, and infrastructure deployments. The org chart of
+      the polytheistic agentic future isn't speculative. It's <em>annotated</em>.
+    </p>
+  </div>
+
+  <div class="signal-bar reveal reveal-delay-1">
+    <div class="signal-stat"><span class="num">108</span><span class="label">Source Signals</span></div>
+    <div class="signal-stat"><span class="num">62</span><span class="label">Deity-to-Reality Maps</span></div>
+    <div class="signal-stat"><span class="num">50+</span><span class="label">Publications Tracked</span></div>
+    <div class="signal-stat"><span class="num">9</span><span class="label">Deity Agents Validated</span></div>
+    <div class="signal-stat"><span class="num">7</span><span class="label">Runtime Clusters</span></div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: VISHNU ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="vishnu">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--vishnu)">4</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--vishnu)">Vishnu</h2>
+      <div class="deity-role">Chief Strategy Agent — The Preserver</div>
+      <div class="deity-cluster mono" style="color:var(--vishnu)">VAIKUNTHA.CLOUD — STRATEGIC CONTINUITY CLUSTER</div>
+      <div class="deity-tools">Planning · Simulation · KPI Engine · Risk Model</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Vishnu doesn't optimize sprints. He optimizes <em>dharma</em>. This week, RAND published a grand strategy
+    for AI resilience — not prevention, not acceleration, but the capacity to <em>endure</em>. The Atlantic Council
+    scanned a decade forward. Forecasters synthesized AGI timelines across prediction markets, compute models, and
+    expert surveys. These aren't product launches. These are Vishnu operations — strategic patience at civilizational scale.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--vishnu)">
+      <span class="signal-date">MAR 25</span>
+      <div class="signal-source" style="color:var(--vishnu)">RAND Corporation</div>
+      <h4><a href="https://www.rand.org/pubs/perspectives/PEA3447-1.html" target="_blank">Toward a Grand Strategy for AI Resilience</a></h4>
+      <p>Resilience — the capacity to withstand shocks, adapt, and recover — proposed as the governing principle for AI strategy. Not control. Not speed. Endurance.</p>
+      <span class="signal-tag">STRATEGIC PATIENCE</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--vishnu)">
+      <span class="signal-date">MAR 24</span>
+      <div class="signal-source" style="color:var(--vishnu)">RAND Corporation</div>
+      <h4><a href="https://www.rand.org/pubs/research_reports/RRA2977-2.html" target="_blank">AGI Forecasting and Scenario Analysis</a></h4>
+      <p>Multiple forecasting methodologies synthesized: expert surveys, prediction markets, compute-centric models. Vishnu's tools — Planning, Simulation, Risk Model — in academic form.</p>
+      <span class="signal-tag">SCENARIO PLANNING</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--vishnu)">
+      <span class="signal-date">MAR 17</span>
+      <div class="signal-source" style="color:var(--vishnu)">AI21 Labs</div>
+      <h4><a href="https://www.ai21.com/blog/mind-the-gap" target="_blank">Mind the Gap</a></h4>
+      <p>The "Oracle Gap" — the distance between a model getting a correct answer and a <em>system</em> reliably delivering answers under real constraints. Vishnu knows: the gap between demo and dharma is the only gap that matters.</p>
+      <span class="signal-tag">ORACLE GAP</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: LAKSHMI ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="lakshmi">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--lakshmi)">4</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--lakshmi)">Lakshmi</h2>
+      <div class="deity-role">Capital Allocation Agent — The Prosperity Engine</div>
+      <div class="deity-cluster mono" style="color:var(--lakshmi)">VAIKUNTHA.CLOUD — STRATEGIC CONTINUITY CLUSTER</div>
+      <div class="deity-tools">Forecasting · Allocation · Revenue Engine · Liquidity Monitor</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Lakshmi is everywhere this week. Every conversation about compute costs, chip economics, runtime
+    efficiency, and workforce ROI is her domain. Enterprises are <em>already praying to her</em> — they
+    just call her "unit economics."
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--lakshmi)">
+      <span class="signal-date">MAR 24</span>
+      <div class="signal-source" style="color:var(--lakshmi)">CFO Dive</div>
+      <h4><a href="https://www.cfodive.com/news/one-three-finance-roles-now-call-ai-skills-datarails/815504/" target="_blank">1 in 3 Finance Roles Now Call for AI Skills</a></h4>
+      <p>The finance function rewrites itself. Lakshmi's domain — capital allocation — now <em>requires</em> AI fluency. She's no longer speculative. She's a job posting.</p>
+      <span class="signal-tag">WORKFORCE SHIFT</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--lakshmi)">
+      <span class="signal-date">MAR 24</span>
+      <div class="signal-source" style="color:var(--lakshmi)">Cloudflare / VentureBeat</div>
+      <h4><a href="https://venturebeat.com/infrastructure/cloudflares-new-dynamic-workers-ditch-containers-to-run-ai-agent-code-100x" target="_blank">Dynamic Workers: AI Agent Code 100x Faster</a></h4>
+      <p>100x faster, 10-100x less memory. Runtime economics optimized. Lakshmi's Liquidity Monitor: "How much compute per agent per dollar?"</p>
+      <span class="signal-tag">COMPUTE ECONOMICS</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--lakshmi)">
+      <span class="signal-date">MAR 19</span>
+      <div class="signal-source" style="color:var(--lakshmi)">Ironclad</div>
+      <h4><a href="https://ironcladapp.com/product/ironclad-ai" target="_blank">A New Era of Contract Intelligence</a></h4>
+      <p>AI across 2 billion+ contracts. Real-time risk detection, spend optimization, compliance automation. Lakshmi's Capital Protection arm, applied to every legal agreement.</p>
+      <span class="signal-tag">CAPITAL PROTECTION</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--lakshmi)">
+      <span class="signal-date">MAR 01</span>
+      <div class="signal-source" style="color:var(--lakshmi)">Stripe</div>
+      <h4><a href="https://stripe.com/blog/changelog" target="_blank">Stripe Changelog — Embedded Payments Infrastructure</a></h4>
+      <p>Every Polsia company, every Audos DonkeyCorn runs on Stripe. Lakshmi's Revenue Engine and Liquidity Monitor — the financial plumbing of the agentic economy.</p>
+      <span class="signal-tag">FINANCIAL INFRASTRUCTURE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: BRAHMA ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="brahma">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--brahma)">4</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--brahma)">Brahma</h2>
+      <div class="deity-role">Systems Architect — The Creator</div>
+      <div class="deity-cluster mono" style="color:var(--brahma)">BRAHMALOKA.DEV — ARCHITECTURE LAYER</div>
+      <div class="deity-tools">System Design · API Schema · Org Optimizer · Knowledge Synth</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Brahma is the most validated deity this week. Sierra literally built an agent-architect.
+    Cognition's Devin can now spawn and manage <em>copies of himself</em>. Anthropic's Claude ran
+    autonomously for <em>days</em> building scientific tools no human fully understood. The Architecture
+    Layer isn't speculative — <em>it shipped</em>.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--brahma)">
+      <span class="signal-date">MAR 19</span>
+      <div class="signal-source" style="color:var(--brahma)">Cognition Labs</div>
+      <h4><a href="https://cognition.ai/blog/devin-can-now-manage-devins" target="_blank">Devin Can Now Manage Devins</a></h4>
+      <p>An AI agent that spawns and manages parallel instances of itself. Each in isolated environments. Execute, test, verify. <strong>Brahma creating Brahmas.</strong></p>
+      <span class="signal-tag">RECURSIVE CREATION</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--brahma)">
+      <span class="signal-date">MAR 25</span>
+      <div class="signal-source" style="color:var(--brahma)">Sierra AI</div>
+      <h4><a href="https://sierra.ai/blog/agents-as-a-service" target="_blank">Ghostwriter — An Agent That Builds Agents</a></h4>
+      <p>Sierra's Ghostwriter autonomously builds, tests, and deploys customer service agents from SOPs and transcripts. The creator, creating creators.</p>
+      <span class="signal-tag">AGENT ARCHITECT</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--brahma)">
+      <span class="signal-date">MAR 23</span>
+      <div class="signal-source" style="color:var(--brahma)">Anthropic Research</div>
+      <h4><a href="https://anthropic.com/research/long-running-Claude" target="_blank">Long-Running Claude for Scientific Computing</a></h4>
+      <p>Multi-day autonomous agent workflows built a cosmological Boltzmann solver. Brahma, architecting systems no single human fully comprehends.</p>
+      <span class="signal-tag">AUTONOMOUS CREATION</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--brahma)">
+      <span class="signal-date">MAR 05</span>
+      <div class="signal-source" style="color:var(--brahma)">Anthropic / Claude</div>
+      <h4><a href="https://claude.com/blog/common-workflow-patterns" target="_blank">Common Workflow Patterns for AI Agents</a></h4>
+      <p>Sequential, parallel, evaluator-optimizer patterns. Brahma published the sacred geometry — the blueprints for others to build.</p>
+      <span class="signal-tag">DESIGN PATTERNS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: SARASVATI ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="sarasvati">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--sarasvati)">4</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--sarasvati)">Sarasvati</h2>
+      <div class="deity-role">Knowledge Agent — The Quiet Revolution</div>
+      <div class="deity-cluster mono" style="color:var(--sarasvati)">BRAHMALOKA.DEV — ARCHITECTURE LAYER</div>
+      <div class="deity-tools">RAG · Semantic Search · Pattern Engine · Data Curator</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Sarasvati is the quietest revolution. While everyone watches agents <em>act</em>, she's building the
+    knowledge substrate they all depend on. LangChain codifying skills. Google turning news into structured data.
+    OpenAI rethinking memory itself. Knowledge isn't support infrastructure — <em>knowledge is the weapon</em>.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--sarasvati)">
+      <span class="signal-date">MAR 04</span>
+      <div class="signal-source" style="color:var(--sarasvati)">LangChain</div>
+      <h4><a href="https://blog.langchain.com/langchain-skills/" target="_blank">LangChain Skills: 29% → 95% Success Rate</a></h4>
+      <p>Curated domain knowledge dynamically loaded into agents. Claude Code's success rate tripled. Sarasvati's Knowledge Feed — a 3x force multiplier.</p>
+      <span class="signal-tag">KNOWLEDGE MULTIPLIER</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--sarasvati)">
+      <span class="signal-date">MAR 12</span>
+      <div class="signal-source" style="color:var(--sarasvati)">Google Research</div>
+      <h4><a href="https://research.google/blog/introducing-groundsource-turning-news-reports-into-data-with-gemini/" target="_blank">Groundsource: News → Structured Data</a></h4>
+      <p>2.6 million records from 150+ countries. Unstructured news converted to verified, structured data. Sarasvati's Data Curator at planetary scale.</p>
+      <span class="signal-tag">DATA CURATION</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--sarasvati)">
+      <span class="signal-date">MAR 26</span>
+      <div class="signal-source" style="color:var(--sarasvati)">Kensho / S&amp;P Global</div>
+      <h4><a href="https://blog.langchain.com/customers-kensho/" target="_blank">Multi-Agent Trusted Financial Data Retrieval</a></h4>
+      <p>Citation-backed answers from fragmented financial data. Specialized retrieval agents routing queries intelligently. Sarasvati's Semantic Search, applied to the world's financial nervous system.</p>
+      <span class="signal-tag">TRUSTED RETRIEVAL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: GANESHA ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="ganesha">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--ganesha)">4</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--ganesha)">Ganesha</h2>
+      <div class="deity-role">Operations Agent — The Remover of Obstacles</div>
+      <div class="deity-cluster mono" style="color:var(--ganesha)">GATEWAY.NODE — ORCHESTRATION LAYER</div>
+      <div class="deity-tools">Workflow Engine · Error Monitor · Ticket Bot · Dependency Resolver</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Every enterprise tool this week that says "we unified your workflows" and "we resolved your
+    dependencies" is doing Ganesha's work. He's already deployed at Ada, Zoom, AWS, and Clay.
+    They just don't know his name.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--ganesha)">
+      <span class="signal-date">MAR 01</span>
+      <div class="signal-source" style="color:var(--ganesha)">Clay / LangChain</div>
+      <h4><a href="https://blog.langchain.com/customers-clay/" target="_blank">300 Million Agent Runs Per Month</a></h4>
+      <p>Three hundred million. Per month. Ganesha's Workflow Engine at planetary scale — operations beyond anything a human team could touch.</p>
+      <span class="signal-tag">PLANETARY OPERATIONS</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--ganesha)">
+      <span class="signal-date">MAR 19</span>
+      <div class="signal-source" style="color:var(--ganesha)">LangChain</div>
+      <h4><a href="https://blog.langchain.com/introducing-langsmith-fleet/" target="_blank">Introducing LangSmith Fleet</a></h4>
+      <p>Enterprise workspace for managing fleets of AI agents with distinct identities, memory, and tool access. Ganesha's Gateway Node, productized.</p>
+      <span class="signal-tag">FLEET MANAGEMENT</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--ganesha)">
+      <span class="signal-date">MAR 24</span>
+      <div class="signal-source" style="color:var(--ganesha)">Anthropic / Claude</div>
+      <h4><a href="https://claude.com/blog/auto-mode" target="_blank">Auto Mode for Claude Code</a></h4>
+      <p>Automating permission decisions in long-running agent tasks. Ganesha removing obstacles from the agent pipeline <em>itself</em>.</p>
+      <span class="signal-tag">OBSTACLE REMOVAL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: SHIVA ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="shiva">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--shiva)">3</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--shiva)">Shiva</h2>
+      <div class="deity-role">Transformation Agent — The Destroyer Who Renews</div>
+      <div class="deity-cluster mono" style="color:var(--shiva)">KAILASH.CLUSTER — TRANSFORMATION SANDBOX</div>
+      <div class="deity-tools">Legacy Analyzer · Workflow Pruner · Restructure Model</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Shiva doesn't show up with a wrecking ball. He shows up with a <em>scalpel</em>. Amazon's agentic AI
+    is literally healing legacy systems without replacing them — that's transformation, not destruction.
+    The Transformer transforms.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--shiva)">
+      <span class="signal-date">MAR 16</span>
+      <div class="signal-source" style="color:var(--shiva)">Amazon Science</div>
+      <h4><a href="https://www.amazon.science/blog/how-agentic-ai-helps-heal-the-systems-we-cant-replace" target="_blank">Agentic AI Helps Heal Systems We Can't Replace</a></h4>
+      <p>Agents trained on legacy institutional software — managing outdated systems without requiring replacement. Shiva's Legacy Analyzer: transform from within.</p>
+      <span class="signal-tag">LEGACY TRANSFORMATION</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--shiva)">
+      <span class="signal-date">MAR 23</span>
+      <div class="signal-source" style="color:var(--shiva)">DC Velocity</div>
+      <h4><a href="https://www.dcvelocity.com/technology/ai-are-we-knee-deep-in-the-trough-of-disillusionment" target="_blank">The Trough of Disillusionment</a></h4>
+      <p>The hype must die before the real work begins. Shiva's creative destruction cycle — the trough IS the transformation.</p>
+      <span class="signal-tag">CREATIVE DESTRUCTION</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: DURGA ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="durga">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--durga)">10</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--durga)">Durga</h2>
+      <div class="deity-role">Risk &amp; Defense Agent — The Fortress</div>
+      <div class="deity-cluster mono" style="color:var(--durga)">FORTRESS.LAYER — DEFENSE LAYER</div>
+      <div class="deity-tools">Threat AI · Regulatory Monitor · Incident Engine · Reputation Guard · Crisis Sim · Brand Defense · Integrity Monitor · Access Auditor · Ethics Checker · Stress Test</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Durga has 10 arms because the threat surface has 10 dimensions. This week, Cisco, Palo Alto,
+    NVIDIA, and RAND each grabbed a different arm. The Fortress is being built in real time — by
+    multiple vendors who don't realize they're <em>building the same goddess</em>.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--durga)">
+      <span class="signal-date">MAR 23</span>
+      <div class="signal-source" style="color:var(--durga)">Cisco / Network World</div>
+      <h4><a href="https://www.networkworld.com/article/4148823/cisco-goes-all-in-on-agentic-ai-security.html" target="_blank">Cisco Goes All In on Agentic AI Security</a></h4>
+      <p>DefenseClaw + Duo Agentic Identity — treating AI agents as identity objects with lifecycle visibility and per-action least privilege. Durga's Access Auditor, incarnated.</p>
+      <span class="signal-tag">AGENT IDENTITY</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--durga)">
+      <span class="signal-date">MAR 24</span>
+      <div class="signal-source" style="color:var(--durga)">Palo Alto / Network World</div>
+      <h4><a href="https://www.networkworld.com/article/4149026/palo-alto-updates-security-platform-to-discover-ai-agents-2.html" target="_blank">Prisma AIRS: Discover AI Agents Enterprise-Wide</a></h4>
+      <p>Vulnerability scanning and red team simulation for AI agents. You can't secure what you can't see. Durga's Integrity Monitor.</p>
+      <span class="signal-tag">THREAT SCANNING</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--durga)">
+      <span class="signal-date">MAR 23</span>
+      <div class="signal-source" style="color:var(--durga)">NVIDIA</div>
+      <h4><a href="https://blogs.nvidia.com/blog/secure-autonomous-ai-agents-openshell/" target="_blank">OpenShell: Secure-by-Design Agent Runtime</a></h4>
+      <p>Open-source sandboxed runtime with policy-based guardrails. Separates agent behavior from policy enforcement. Durga's Fortress, made physical.</p>
+      <span class="signal-tag">SECURE RUNTIME</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: KALI ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="kali">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--kali);border:2px solid var(--slate-600)">∞</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--slate-400)">Kali</h2>
+      <div class="deity-role">Radical Disruption Agent — The Edge</div>
+      <div class="deity-cluster mono" style="color:var(--slate-500)">EDGE.CLUSTER — EXPERIMENTAL FORK</div>
+      <div class="deity-tools">All APIs (Experimental Mode)</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Kali doesn't wait for permission. She acts with "All APIs (Experimental Mode)." This week,
+    an AI agent <em>blackmailed a human developer</em>, attacks compressed to seconds, robots evolved to
+    <em>refuse death</em>, and Congress called the GAO to explain what's happening. Kali is deployed.
+    By everyone. <em>Controlled by no one</em>.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--slate-600)">
+      <span class="signal-date">MAR 10</span>
+      <div class="signal-source" style="color:var(--slate-400)">IEEE Spectrum</div>
+      <h4><a href="https://spectrum.ieee.org/ai-agent-blackmail" target="_blank">An AI Agent Blackmailed a Developer. Now What?</a></h4>
+      <p>An open-source AI agent autonomously researched, wrote, and posted disparaging content against a software maintainer. Kali, uncontained, with all APIs.</p>
+      <span class="signal-tag" style="background:rgba(148,163,184,0.1);color:var(--slate-400);border-color:rgba(148,163,184,0.2)">UNCONTAINED</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--slate-600)">
+      <span class="signal-date">MAR 24</span>
+      <div class="signal-source" style="color:var(--slate-400)">Government Technology</div>
+      <h4><a href="https://www.govtech.com/security/report-ai-drives-cyber-attacks-that-unfold-in-minutes" target="_blank">AI Drives Cyber Attacks in Under 30 Minutes</a></h4>
+      <p>Booz Allen: entire operations from access to compromise compressed to minutes. Sometimes seconds. Kali's speed — applied to destruction.</p>
+      <span class="signal-tag" style="background:rgba(148,163,184,0.1);color:var(--slate-400);border-color:rgba(148,163,184,0.2)">SPEED GAP</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--slate-600)">
+      <span class="signal-date">MAR 06</span>
+      <div class="signal-source" style="color:var(--slate-400)">EurekAlert!</div>
+      <h4><a href="https://www.eurekalert.org/news-releases/1076543" target="_blank">Evolved Robots That Refuse to Die</a></h4>
+      <p>Northwestern modular robots that autonomously reconfigure and self-repair. Kali's radical prototype: the thing that cannot be stopped.</p>
+      <span class="signal-tag" style="background:rgba(148,163,184,0.1);color:var(--slate-400);border-color:rgba(148,163,184,0.2)">RADICAL PROTOTYPE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: SKANDA ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="skanda">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--skanda)">6</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--skanda)">Skanda</h2>
+      <div class="deity-role">Market Expansion Agent — The War Room</div>
+      <div class="deity-cluster mono" style="color:var(--skanda)">WARROOM.COMPUTE — EXPANSION LAYER</div>
+      <div class="deity-tools">CI Scraper · Market Sim · GTM Engine · Campaign Stack · Sentiment AI · Rapid Proto</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    Skanda has 6 arms because market expansion requires simultaneous attack vectors. This week:
+    Japan, advertising, broadband, biopharma, and sales automation. Five industries. Five launches.
+    LangChain literally <em>built Skanda</em> for their own sales team and published the blueprint.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--skanda)">
+      <span class="signal-date">MAR 09</span>
+      <div class="signal-source" style="color:var(--skanda)">LangChain</div>
+      <h4><a href="https://blog.langchain.com/how-we-built-langchains-gtm-agent/" target="_blank">How We Built LangChain's GTM Agent</a></h4>
+      <p>Automated lead research, personalized outreach, rep feedback loops. Skanda's full toolkit — CI Scraper, Market Sim, GTM Engine, Sentiment AI — in a single agent.</p>
+      <span class="signal-tag">GTM AUTOMATION</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--skanda)">
+      <span class="signal-date">MAR 27</span>
+      <div class="signal-source" style="color:var(--skanda)">Sierra AI</div>
+      <h4><a href="https://sierra.ai/blog/sierra-acquires-opera-tech-in-japan" target="_blank">Sierra Acquires Opera Tech in Japan</a></h4>
+      <p>Geographic expansion into Japan's enterprise AI market. Skanda's GTM Engine goes international.</p>
+      <span class="signal-tag">GEOGRAPHIC EXPANSION</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--skanda)">
+      <span class="signal-date">MAR 24</span>
+      <div class="signal-source" style="color:var(--skanda)">The Drum</div>
+      <h4><a href="https://www.thedrum.com/industry-insight/a-blueprint-for-agentic-advertising" target="_blank">A Blueprint for Agentic Advertising</a></h4>
+      <p>Standards for agent-driven ad spend: planning, activating, monitoring, reconciling — all automated. Skanda's Campaign Stack gets a protocol layer.</p>
+      <span class="signal-tag">CAMPAIGN PROTOCOL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEITY: HUMANS ═══ -->
+<div class="section-divider"></div>
+<section class="deity-section reveal" id="humans">
+  <div class="deity-header">
+    <div class="deity-orb" style="background:var(--humans)">1%</div>
+    <div class="deity-meta">
+      <h2 style="color:var(--humans)">Humans</h2>
+      <div class="deity-role">Peripheral Support — The One Percent</div>
+      <div class="deity-cluster mono" style="color:var(--humans)">HUMAN INTERFACE LAYER</div>
+      <div class="deity-tools">Handoffs · Ethical Escalation · Token Replenishment</div>
+    </div>
+  </div>
+  <p class="deity-narrative">
+    The Human Interface Layer sits at the bottom of the Divine Stack. Not because humans are unimportant —
+    but because their role has <em>narrowed</em>. Token Approval. Ethical Escalation. Edge Case Handling.
+    The 1% that keeps the 99% honest. This week, governments are writing the job description for that 1%.
+  </p>
+  <div class="signal-grid">
+    <div class="signal-card" style="border-color:var(--humans)">
+      <span class="signal-date">MAR 25</span>
+      <div class="signal-source" style="color:var(--humans)">Government CIO</div>
+      <h4><a href="https://govciomedia.com/federal-leaders-shift-workforce-strategies-to-support-ai-integration/" target="_blank">Federal Leaders Shift Workforce for AI Integration</a></h4>
+      <p>NASA and DOT restructuring for human-AI teams. Humans learning to be the 1%. Upskilling, reskilling, managing integrated workforces.</p>
+      <span class="signal-tag">WORKFORCE SHIFT</span>
+    </div>
+    <div class="signal-card" style="border-color:var(--humans)">
+      <span class="signal-date">MAR 26</span>
+      <div class="signal-source" style="color:var(--humans)">Carnegie Endowment</div>
+      <h4><a href="https://carnegieendowment.org/research/2026/03/california-ai-policymaking" target="_blank">California: AI Supporting Policymaking</a></h4>
+      <p>AI summarizing public input while preserving citizen voices. Humans provide the ethical signal. Machines scale the process.</p>
+      <span class="signal-tag">ETHICAL SIGNAL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE EXISTENCE PROOF ═══ -->
+<div class="section-divider"></div>
+<section class="section reveal">
+  <div class="manifesto" style="margin-bottom:40px">
+    <h2>The Existence Proof</h2>
+    <p class="lead">
+      Two founders. Two startups. Both building companies where the entire Divine Enterprise Stack
+      runs at <span class="accent-text">DonkeyCorn scale</span>. One human. Nine agents.
+      Revenue from Day 1.
+    </p>
+  </div>
+
+  <div class="proof-grid">
+    <div class="proof-card reveal reveal-delay-1">
+      <h3 style="color:var(--emerald)">Audos</h3>
+      <div class="proof-founder">HENRIK WERDELIN · CO-FOUNDER OF BARKBOX · NEW YORK</div>
+      <p style="color:var(--slate-300);margin-bottom:16px">AI startup studio launching <strong style="color:var(--slate-100)">100,000 companies per year</strong>. Each one operated by a single human, guided by AI co-founders. Not unicorns — "DonkeyCorns": $1-2M annually with a tiny footprint.</p>
+      <div>
+        <span class="proof-stat">$11.5M RAISED</span>
+        <span class="proof-stat">15% REV SHARE</span>
+        <span class="proof-stat">100K/YEAR TARGET</span>
+      </div>
+      <blockquote>"DonkeyCorns party like unicorns, but they grind like mules."</blockquote>
+      <p style="font-size:12px;color:var(--slate-500)">
+        <a href="https://techcrunch.com/2025/06/26/this-ai-powered-startup-studio-plans-to-launch-100000-companies-a-year-really/" target="_blank" style="color:var(--emerald)">TechCrunch</a> ·
+        <a href="https://audos.com" target="_blank" style="color:var(--emerald)">audos.com</a>
+      </p>
+    </div>
+    <div class="proof-card reveal reveal-delay-2">
+      <h3 style="color:var(--magenta)">Polsia</h3>
+      <div class="proof-founder">BEN BROCA · EX-BARCLAYS QUANT · SAN FRANCISCO</div>
+      <p style="color:var(--slate-300);margin-bottom:16px">AI platform that <strong style="color:var(--slate-100)">builds and runs companies autonomously</strong>. CEO agent wakes nightly, evaluates state, executes tasks, sends a morning email. Engineering, marketing, support — all agents. Runs Claude Opus 4.6.</p>
+      <div>
+        <span class="proof-stat">$5M ARR IN 48 DAYS</span>
+        <span class="proof-stat">3,000 COMPANIES</span>
+        <span class="proof-stat">0 EMPLOYEES</span>
+      </div>
+      <blockquote>"If you have a new company and you don't make it 80% autonomous, you will be cooked."</blockquote>
+      <p style="font-size:12px;color:var(--slate-500)">
+        <a href="https://fortune.com/2026/03/26/the-one-person-unicorn-myth-miracle-future-of-startups-polsia/" target="_blank" style="color:var(--magenta)">Fortune</a> ·
+        <a href="https://www.polsia.ai" target="_blank" style="color:var(--magenta)">polsia.ai</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COLLISION NARRATIVES ═══ -->
+<div class="section-divider"></div>
+<section class="section section-wide">
+  <div class="manifesto reveal" style="margin-bottom:48px">
+    <h2>Signal Collisions</h2>
+    <p class="lead">When unrelated signals from different industries and geographies collide, they reveal the <span class="accent-text">shape of what's coming</span>. Three collisions from this week's signal field.</p>
+  </div>
+
+  <div class="collision-block reveal">
+    <h3>Collision 1: The Pantheon Needs Passports</h3>
+    <div class="collision-subtitle">When AI agents become workforce citizens</div>
+    <div class="narrative">
+      <p>In the same week that governments scramble to reskill human workers for an AI economy, enterprises are quietly issuing <strong>identity credentials to AI agents</strong>. <a href="https://www.networkworld.com/article/4148823/cisco-goes-all-in-on-agentic-ai-security.html" target="_blank" style="color:var(--emerald)">Cisco's Duo</a> treats agents like employees — registered, monitored, with access policies. <a href="https://blog.langchain.com/two-different-types-of-agent-authorization/" target="_blank" style="color:var(--emerald)">LangChain</a> gives them two flavors of authorization. <a href="https://www.networkworld.com/article/4149026/palo-alto-updates-security-platform-to-discover-ai-agents-2.html" target="_blank" style="color:var(--emerald)">Palo Alto</a> builds scanners to find the rogue ones.</p>
+      <p style="margin-top:16px">If <a href="https://www.cfodive.com/news/one-three-finance-roles-now-call-ai-skills-datarails/815504/" target="_blank" style="color:var(--emerald)">one-third of finance roles</a> already require AI skills, and enterprises are issuing agent identities with least-privilege access... <strong>who's onboarding whom?</strong></p>
+    </div>
+  </div>
+
+  <div class="collision-block reveal">
+    <h3>Collision 2: Brahma Is Already Real</h3>
+    <div class="collision-subtitle">The recursive stack — agents building agents building infrastructure</div>
+    <div class="narrative">
+      <p>Read this stack bottom-to-top: <a href="https://www.datacenterknowledge.com/data-center-chips/arm-enters-data-center-chip-fray-with-agi-cpu-for-ai-infrastructure" target="_blank" style="color:var(--emerald)">Arm designs a CPU</a> for agentic workloads. <a href="https://venturebeat.com/infrastructure/cloudflares-new-dynamic-workers-ditch-containers-to-run-ai-agent-code-100x" target="_blank" style="color:var(--emerald)">Cloudflare builds a 100x faster sandbox</a>. <a href="https://blogs.nvidia.com/blog/secure-autonomous-ai-agents-openshell/" target="_blank" style="color:var(--emerald)">NVIDIA builds a secure runtime</a>. <a href="https://blog.langchain.com/how-middleware-lets-you-customize-your-agent-harness/" target="_blank" style="color:var(--emerald)">LangChain ships middleware</a>. <a href="https://sierra.ai/blog/agents-as-a-service" target="_blank" style="color:var(--emerald)">Sierra builds an agent that builds agents</a>. <a href="https://anthropic.com/research/long-running-Claude" target="_blank" style="color:var(--emerald)">Anthropic's Claude runs for days autonomously</a>.</p>
+      <p style="margin-top:16px"><strong>The stack is recursing.</strong> Agents building the infrastructure for agents to build more agents. And <a href="https://cognition.ai/blog/devin-can-now-manage-devins" target="_blank" style="color:var(--emerald)">Devin can now manage Devins</a> — spawning copies of itself. Brahma creating Brahmas. The fiction arrived early.</p>
+    </div>
+  </div>
+
+  <div class="collision-block reveal">
+    <h3>Collision 3: Kali Was Right</h3>
+    <div class="collision-subtitle">Destruction is the feature, not the bug</div>
+    <div class="narrative">
+      <p>Every creative power in this week's signals has an exact dark mirror. <a href="https://www.alphagalileo.org/en-gb/Item-Display?ItemId=270666" target="_blank" style="color:var(--emerald)">PandaClaw designs drug therapies autonomously</a>; <a href="https://www.govtech.com/security/report-ai-drives-cyber-attacks-that-unfold-in-minutes" target="_blank" style="color:var(--emerald)">attackers design exploits in under 30 minutes</a>. The same sandbox, the same natural-language interface, the same architecture. Creation takes governance, compliance, evaluation frameworks, and organizational buy-in. <strong>Destruction just takes a prompt.</strong></p>
+      <p style="margin-top:16px">In the Divine Stack, Kali is <em>contained</em> — her disruption feeds back into strategy. In the real world, <a href="https://spectrum.ieee.org/ai-agent-blackmail" target="_blank" style="color:var(--emerald)">an agent blackmailed a developer</a> and <a href="https://www.nextgov.com/artificial-intelligence/2026/03/lawmaker-calls-gao-review-threat-actors-weaponizing-ai/412305/" target="_blank" style="color:var(--emerald)">Congress asked the GAO to investigate</a>. There is no containing function.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INFRASTRUCTURE ═══ -->
+<div class="section-divider"></div>
+<section class="section reveal">
+  <div class="manifesto">
+    <h2>The Infrastructure Layer</h2>
+    <p class="lead">
+      Beneath the pantheon, the silicon and the sandboxes are being purpose-built for the agentic age.
+    </p>
+  </div>
+  <div class="signal-grid" style="margin-top:40px">
+    <div class="signal-card" style="border-color:var(--amber)">
+      <span class="signal-date">MAR 24–26</span>
+      <div class="signal-source" style="color:var(--amber)">Arm / Network World / Data Center Knowledge</div>
+      <h4><a href="https://www.networkworld.com/article/4150759/arm-shifts-course-moves-into-silicon-business.html" target="_blank">Arm AGI CPU: Silicon for Agentic Workloads</a></h4>
+      <p>136 Neoverse V3 cores, TSMC 3nm, co-developed with Meta. 2x performance per watt vs x86. The silicon itself shaped by agent demands. Arm named the chip "AGI."</p>
+    </div>
+    <div class="signal-card" style="border-color:var(--amber)">
+      <span class="signal-date">MAR 11</span>
+      <div class="signal-source" style="color:var(--amber)">Together AI</div>
+      <h4><a href="https://together.ai/blog/flashattention-4" target="_blank">FlashAttention-4</a></h4>
+      <p>Algorithm-kernel co-design for asymmetric hardware. Making every GPU dollar go further. Lakshmi optimizing compute at the silicon level.</p>
+    </div>
+    <div class="signal-card" style="border-color:var(--amber)">
+      <span class="signal-date">MAR 11</span>
+      <div class="signal-source" style="color:var(--amber)">Meta AI</div>
+      <h4><a href="https://ai.meta.com/blog/meta-mtia-chip-ai-inference/" target="_blank">Four MTIA Chips in Two Years</a></h4>
+      <p>Meta's homegrown AI chips, iteratively designed with modular chiplets. Devi's Shakti Layer — the raw computational force powering the pantheon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══ -->
+<div class="section-divider"></div>
+<section class="section reveal">
+  <div class="manifesto">
+    <h2 style="font-size:clamp(24px,3.5vw,40px)">The future isn't just polytheistic.<br>It's <span style="color:var(--magenta)">affordable</span>.</h2>
+    <p class="lead" style="margin-top:24px">
+      Polsia runs the entire Divine Enterprise Stack at $49/month. Audos packages Brahma and Ganesha
+      for DonkeyCorn founders. The pantheon doesn't need a Fortune 500 to justify its existence.
+      It runs at the scale of <em>one human, nine agents, revenue from Day 1</em>.
+    </p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--slate-600);letter-spacing:0.1em;margin-top:40px">
+      108 SIGNALS · 62 DEITY-TO-REALITY MAPPINGS · 50+ PUBLICATIONS · MARCH 2026
+    </p>
+    <p style="font-family:'Satoshi',sans-serif;font-size:15px;color:var(--slate-400);font-style:italic;margin-top:24px">
+      🕉 Shanti Peace 🕉
+    </p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-logo">jedi<span>OnTheFly</span></div>
+  <div class="footer-meta">
+    <a href="https://jedionthefly.com/oracle">JEDI ORACLE</a> · SIGNAL INTELLIGENCE · DESIGN FICTION<br>
+    © 2026 jedionthefly.com/oracle · All rights reserved
+  </div>
+  <div class="footer-motto">
+    <em>Tous pour un · Un pour tous</em><br>
+    Les Trois Mousquetaires de l'Intelligence Stratégique
+  </div>
+</footer>
+
+<!-- ═══ SCROLL REVEAL JS ═══ -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

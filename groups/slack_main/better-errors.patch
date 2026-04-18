@@ -1,0 +1,94 @@
+PATCH: Better error diagnostics for NanoClaw Slack channel
+Apply in: src/channels/slack.ts
+
+=== IMPROVEMENT 1: Scope validation at startup ===
+In connect(), replace:
+    const auth = await this.app.client.auth.test();
+    this.botUserId = auth.user_id as string;
+    logger.info({ botUserId: this.botUserId }, 'Connected to Slack');
+
+With:
+    const auth = await this.app.client.auth.test();
+    this.botUserId = auth.user_id as string;
+
+    // Validate token has all scopes needed for NanoClaw features
+    const grantedScopes = ((auth as Record<string, unknown>).scope as string ?? '').split(',');
+    const requiredScopes = ['chat:write', 'channels:history', 'files:read'];
+    const missingScopes = requiredScopes.filter(s => !grantedScopes.includes(s));
+    if (missingScopes.length > 0) {
+      logger.warn(
+        { missingScopes, grantedScopes },
+        `Slack bot token is MISSING required scopes: [${missingScopes.join(', ')}]. ` +
+        `Go to api.slack.com/apps → OAuth & Permissions → add scopes → Reinstall to Workspace → update SLACK_BOT_TOKEN in .env`,
+      );
+    } else {
+      logger.info({ botUserId: this.botUserId, scopeCount: grantedScopes.length }, 'Connected to Slack — all required scopes present');
+    }
+
+WHY: Would have told us IMMEDIATELY "token missing files:read" instead of
+     30 minutes of redirect debugging.
+
+=== IMPROVEMENT 2: Use files.info as fallback when stub lacks url_private_download ===
+In downloadSlackFiles(), replace:
+    if (!file.url_private_download || !file.name) continue;
+
+With:
+    if (!file.name) continue;
+
+    // Slack message events sometimes deliver file stubs without url_private_download.
+    // Fall back to files.info API to get the full file object.
+    let downloadUrl = file.url_private_download;
+    if (!downloadUrl && file.id) {
+      try {
+        const info = await this.app.client.files.info({ file: file.id });
+        downloadUrl = (info.file as Record<string, unknown>)?.url_private_download as string | undefined;
+        logger.info({ file: file.name, source: 'files.info' }, 'Got download URL via files.info fallback');
+      } catch (err) {
+        logger.warn({ file: file.name, err }, 'files.info fallback failed — skipping file');
+        continue;
+      }
+    }
+    if (!downloadUrl) {
+      logger.warn({ file: file.name, fileId: file.id }, 'No download URL available for Slack file — skipping');
+      continue;
+    }
+
+WHY: Silently skipping files with no URL caused total invisibility of the problem.
+
+=== IMPROVEMENT 3: Classify download failures clearly ===
+In downloadSlackFiles(), replace the contentType HTML check:
+    if (contentType.includes('text/html')) {
+      logger.warn(
+        { file: file.name, contentType, tokenSet: !!this.botToken },
+        'Slack file download returned HTML — likely auth failure or bad token',
+      );
+      continue;
+    }
+
+With:
+    if (contentType.includes('text/html')) {
+      const isAuthRedirect = downloadUrl.includes('slack.com/?redir=') ||
+        downloadUrl.includes('slack.com/sign');
+      logger.error(
+        {
+          file: file.name,
+          contentType,
+          tokenSet: !!this.botToken,
+          tokenPreview: this.botToken ? `${this.botToken.slice(0, 8)}...` : 'EMPTY',
+          downloadUrl,
+          diagnosis: isAuthRedirect
+            ? 'TOKEN_MISSING_SCOPE: Reinstall Slack app at api.slack.com/apps after adding files:read'
+            : 'AUTH_FAILURE: Check SLACK_BOT_TOKEN is valid and not expired',
+        },
+        'Slack file download blocked — received HTML instead of file content',
+      );
+      continue;
+    }
+
+WHY: "likely auth failure" is vague. The actionable fix should be IN the log line.
+
+=== AFTER APPLYING ===
+Rebuild: npm run build
+Restart NanoClaw
+Then check logs on next file share — scope issues will appear at startup,
+not buried in download attempts.

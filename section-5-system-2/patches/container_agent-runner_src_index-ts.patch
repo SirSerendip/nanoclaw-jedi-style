@@ -1,0 +1,115 @@
+diff --git a/container/agent-runner/src/index.ts b/container/agent-runner/src/index.ts
+index 7e739c7..4bbee94 100644
+--- a/container/agent-runner/src/index.ts
++++ b/container/agent-runner/src/index.ts
+@@ -16,7 +16,7 @@
+ 
+ import fs from 'fs';
+ import path from 'path';
+-import { execFile } from 'child_process';
++import { execFile, execSync } from 'child_process';
+ import {
+   query,
+   HookCallback,
+@@ -33,8 +33,19 @@ interface ContainerInput {
+   isScheduledTask?: boolean;
+   assistantName?: string;
+   script?: string;
++  imageAttachments?: Array<{ relativePath: string; mediaType: string }>;
+ }
+ 
++interface ImageContentBlock {
++  type: 'image';
++  source: { type: 'base64'; media_type: string; data: string };
++}
++interface TextContentBlock {
++  type: 'text';
++  text: string;
++}
++type ContentBlock = ImageContentBlock | TextContentBlock;
++
+ interface ContainerOutput {
+   status: 'success' | 'error';
+   result: string | null;
+@@ -157,7 +168,26 @@ function getSessionSummary(
+ }
+ 
+ /**
+- * Archive the full transcript to conversations/ before compaction.
++ * Detect the currently active project from the Perso multi-project system.
++ * Returns the slug of the active project, or null if none found.
++ */
++function detectActiveProject(): string | null {
++  const dbPath = '/workspace/group/projects/memory.db';
++  try {
++    if (!fs.existsSync(dbPath)) return null;
++    const result = execSync(
++      `sqlite3 "${dbPath}" "SELECT slug FROM projects WHERE status='active' LIMIT 1;"`,
++      { encoding: 'utf8', timeout: 3000 }
++    ).trim();
++    return result || null;
++  } catch {
++    return null;
++  }
++}
++
++/**
++ * Archive the full transcript to conversations/ before compaction,
++ * then write a re-injection marker so the agent reloads project context.
+  */
+ function createPreCompactHook(assistantName?: string): HookCallback {
+   return async (input, _toolUseId, _context) => {
+@@ -203,6 +233,32 @@ function createPreCompactHook(assistantName?: string): HookCallback {
+       );
+     }
+ 
++    // Git checkpoint — opt-in: only runs if the group folder has been git-initialized
++    try {
++      if (fs.existsSync('/workspace/group/.git')) {
++        execSync('bash /workspace/group/projects/project.sh git-checkpoint',
++          { timeout: 15000, encoding: 'utf8' });
++        log('Git checkpoint committed');
++      }
++    } catch (err) {
++      log(`Git checkpoint failed (non-fatal): ${err instanceof Error ? err.message : String(err)}`);
++    }
++
++    // Write re-injection marker for post-compaction context reload
++    try {
++      const activeProject = detectActiveProject();
++      const reinjectionPath = '/workspace/group/.needs-context-reload';
++      fs.writeFileSync(reinjectionPath, JSON.stringify({
++        reason: 'post-compaction',
++        active_project: activeProject,
++        timestamp: new Date().toISOString(),
++        instruction: 'Run project.sh context for the active project',
++      }));
++      log(`Wrote re-injection marker: active_project=${activeProject || 'none'}`);
++    } catch (err) {
++      log(`Failed to write re-injection marker: ${err instanceof Error ? err.message : String(err)}`);
++    }
++
+     return {};
+   };
+ }
+@@ -386,6 +442,11 @@ async function runQuery(
+   const stream = new MessageStream();
+   stream.push(prompt);
+ 
++  // Image attachments are already referenced in the prompt text as [Image: attachments/xxx.jpg]
++  // and available on disk at /workspace/group/attachments/. The agent can read them directly.
++  // Do NOT send as multimodal base64 content blocks — some API configurations reject them,
++  // and the agent doesn't need vision to work with images as files (e.g. embedding in PDFs).
++
+   // Poll IPC for follow-up messages and _close sentinel during the query
+   let ipcPolling = true;
+   let closedDuringQuery = false;
+@@ -625,7 +686,7 @@ async function main(): Promise<void> {
+   // No real secrets exist in the container environment.
+   const sdkEnv: Record<string, string | undefined> = {
+     ...process.env,
+-    CLAUDE_CODE_AUTO_COMPACT_WINDOW: '165000',
++    CLAUDE_CODE_AUTO_COMPACT_WINDOW: '300000',
+   };
+ 
+   const __dirname = path.dirname(fileURLToPath(import.meta.url));

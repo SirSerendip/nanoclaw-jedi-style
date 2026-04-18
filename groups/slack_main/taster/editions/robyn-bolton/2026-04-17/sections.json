@@ -1,0 +1,54 @@
+{
+  "edition_date": "2026-04-17",
+  "edition_title": "The Antibody Paradox",
+  "edition_subtitle": "When the immune system learns to innovate",
+  "thinkers_featured": ["Clayton Christensen", "Rita McGrath", "Amy Edmondson", "Alex Osterwalder", "Roger Martin"],
+  "sections": [
+    {
+      "number": 1,
+      "title": "The Immune System Is Learning",
+      "color": "--section-1",
+      "collision": "Corporate antibodies × CAR-T immunotherapy",
+      "signals": [25, 11],
+      "narrative_html": "<p><strong>Intel</strong> just proved something you've been saying for years: the corporate antibodies aren't the enemy — they're unrecruited allies. An R&D leader there didn't sneak innovation past Legal and Finance. She <em>invited them into the lab</em>. Built new contracting frameworks with Legal. Let Finance shape the decision criteria. The antibodies didn't just stop attacking — they started protecting the right things. <a href=\"https://www.innovationleader.com/on-demand-webcast/corporate-innovation-antibodies-intel-webcast/\" target=\"_blank\">Read more →</a></p><p>Now here's the collision that stopped me cold: biotech researchers are using <strong>CAR-T therapies</strong> — originally a cancer treatment — to <em>reset the immune system</em> in autoimmune disease patients. They're achieving durable remission in lupus by reprogramming the body's own defense mechanisms. <a href=\"https://www.atlantisbioscience.com/blog/2026-biotech-outlook-10-breakthrough-trends-scientists-need-to-watch/\" target=\"_blank\">Read more →</a></p><p>The metaphor writes itself. What if the next frontier in corporate innovation isn't defeating resistance — it's reprogramming it? <em>Amy Edmondson</em> would recognize this instantly: psychological safety isn't the absence of friction, it's the presence of <em>productive</em> friction. The Intel approach isn't kumbaya — it's inoculation.</p>"
+    },
+    {
+      "number": 2,
+      "title": "Portfolio as Operating System",
+      "color": "--section-2",
+      "collision": "Innovation portfolio governance × Strategy-as-bet",
+      "signals": [7, 21, 22],
+      "narrative_html": "<p>Two signals this week converge on the same uncomfortable truth: innovation isn't a department anymore — it's the operating system. <strong>WEF</strong> reports that leading companies now treat every major strategic decision as a <em>dynamic bet</em>, updated as signals shift. Meanwhile, innovation portfolio management is hardening into <em>formal governance</em> — quarterly reviews, stage-gates, standardized metrics. <a href=\"https://lindeninnovation.com/innovation-portfolio-management/\" target=\"_blank\">Read more →</a></p><p>And here's the quiet revolution underneath: <strong>strategic foresight</strong> is becoming a formal discipline. Companies are investing in weak-signal tracking tools — not as nice-to-haves but as core strategic infrastructure. <a href=\"https://www.imd.org/blog/innovation/strategic-innovation-tools/\" target=\"_blank\">Read more →</a></p><p><em>Roger Martin</em> has been arguing for decades that strategy is about making choices under uncertainty. The portfolio approach does something radical: it makes those choices <em>visible and governable</em> without pretending they're certain. <em>Alex Osterwalder's</em> business model canvas was the first sketch; portfolio governance is the production blueprint.</p>"
+    },
+    {
+      "number": 3,
+      "title": "The Operating Model Is the Innovation",
+      "color": "--section-3",
+      "collision": "AI as operating model shift × Agentic AI deployment",
+      "signals": [1, 6],
+      "narrative_html": "<p><strong>Microsoft</strong> dropped a phrase this week that deserves to be tattooed on every innovation leader's whiteboard: <em>\"AI is an operating model shift, not a technology upgrade.\"</em> They're arguing that AI transformation requires rethinking how work gets done at scale — with trust and people at the center. Not tools. Not pilots. The whole system. <a href=\"https://www.microsoft.com/en-us/industry/microsoft-in-business/thought-leadership/2026/04/14/why-ai-is-an-operating-model-shift-not-a-technology-upgrade/\" target=\"_blank\">Read more →</a></p><p>Now layer this on top: the <strong>agentic AI market</strong> is projected to hit $45 billion by 2030, and 74% of companies plan to deploy autonomous AI agents within two years. <a href=\"https://www.weforum.org/stories/2026/01/how-agentic-physical-and-sovereign-ai-are-rewriting-the-rules-of-enterprise-innovation/\" target=\"_blank\">Read more →</a></p><p>This is <em>Clayton Christensen's</em> disruption paradox playing out in real time. The sustaining innovation (better AI tools) is straightforward. The disruptive shift (autonomous agents making decisions without human gatekeepers) is where the corporate immune system will attack hardest. Because agentic AI doesn't just change processes — it threatens hierarchies. And hierarchies are what antibodies defend.</p>"
+    },
+    {
+      "number": 4,
+      "title": "The Valley of Manufacturing",
+      "color": "--section-4",
+      "collision": "Defense tech execution gap × Energy storage breakout",
+      "signals": [13, 15],
+      "narrative_html": "<p>Two sectors, same lesson: invention without manufacturing is just expensive theater. <strong>Defense tech startups</strong> raised $49.1 billion in 2025 — nearly double the prior year. Anduril sits at a $30.5B valuation. But the 2026 priority has shifted sharply: <em>manufacturing at scale</em>. Companies that can convert facilities into repeatable output will disproportionately capture capital. The valley of death isn't ideation anymore — it's production. <a href=\"https://www.defensenews.com/industry/2026/01/20/defense-tech-startups-had-their-best-funding-year-ever-in-2025/\" target=\"_blank\">Read more →</a></p><p>Same story in energy: <strong>Sungrow's</strong> storage systems revenue just surpassed inverter revenue for the first time — a 128% year-over-year explosion. Energy storage isn't disrupting power generation. It's enabling entirely new business models. <a href=\"https://www.enlit.world/library/top-100-energy-and-climate-tech-start-ups-for-2026\" target=\"_blank\">Read more →</a></p><p><em>Rita McGrath</em> calls these inflection points — moments when the assumptions undergirding a business shift fundamentally. For defense and energy alike, the inflection isn't the technology. It's the manufacturing infrastructure. The organizations that see themselves as platform operators, not product makers, will win this decade.</p>"
+    },
+    {
+      "number": 5,
+      "title": "When Disruption Becomes Optional",
+      "color": "--section-5",
+      "collision": "Nondisruptive creation × AI drug discovery × Geopolitical trade fragmentation",
+      "signals": [29, 10, 2],
+      "narrative_html": "<p>Here's a heresy for any Christensen disciple: what if disruption isn't necessary? The <strong>Blue Ocean Strategy</strong> team is pushing hard on <em>nondisruptive creation</em> — building new markets beyond existing industry boundaries, without the collateral damage of displacing incumbents. Growth without destruction. <a href=\"https://www.blueoceanstrategy.com/what-is-nondisruptive-creation/\" target=\"_blank\">Read more →</a></p><p>The evidence is showing up in unexpected places. <strong>AI-powered drug discovery</strong> is delivering Phase 1 success rates of 80-90% compared to the historical 40-65%. This isn't disruption — it's a fundamentally different methodology that creates value the old system <em>couldn't even attempt</em>. Billions of molecules designed in silico. The market didn't exist before. <a href=\"https://go.zageno.com/blog/whats-new-in-biotech-2026\" target=\"_blank\">Read more →</a></p><p>But there's a dark mirror: the <strong>IMF</strong> warns that trade fragmentation could reduce global GDP by up to 7% over a decade. When tariffs hit six-fold increases, innovation diffusion slows. The geography of who gets to innovate is being redrawn. <a href=\"https://www.imf.org/en/blogs/articles/2026/04/14/war-darkens-global-economic-outlook-and-reshapes-policy-priorities\" target=\"_blank\">Read more →</a></p><p><em>Clayton Christensen</em> gave us the disruption lens. <em>Roger Martin</em> would push further: the strategic choice isn't disruption vs. sustaining anymore. It's disruption vs. creation vs. constraint. And tariffs are a reminder that the playing field itself is a variable.</p>"
+    }
+  ],
+  "stats": {
+    "signals_mined": 40,
+    "signals_selected": 12,
+    "sections": 5,
+    "thinkers": 5
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "slug": "robyn-bolton",
+  "name": "Robyn Bolton",
+  "created": "2026-04-16",
+  "updated": "2026-04-16",
+
+  "intellectual_profile": {
+    "background": "Innovation strategy consultant. Former P&G brand innovator who crossed into consulting to help organizations actually execute on innovation — not just talk about it. Bridges academic innovation theory with corporate execution reality.",
+    "domains": ["innovation-strategy", "corporate-transformation", "design-thinking", "growth-strategy", "organizational-ambidexterity"],
+    "methodology": "Jobs-to-be-Done, portfolio innovation management, organizational ambidexterity. Believes innovation dies not from bad ideas but from corporate antibodies — the immune system that rejects the new.",
+    "signature_concepts": ["innovation portfolio management", "corporate antibodies", "the growth gap", "innovation theater vs. real innovation", "permission to innovate"],
+    "distinction": "Translates innovation theory into operational frameworks that survive first contact with corporate reality. Not an ivory-tower thinker — a practitioner who's shipped products at P&G scale and now coaches others through the messy middle."
+  },
+
+  "taster": {
+    "name": "MileZero",
+    "metaphor": "not just an endpoint, it's the beginning of the unknown",
+    "description": "A personalized intelligence brief for the innovation strategist who knows that the hardest mile is the start - mile zero.",
+    "mood": "confident, forward-leaning, intellectually rigorous but never stuffy"
+  },
+
+  "design_palette": {
+    "colors": {
+      "--bg": "#0f1923",
+      "--bg-card": "#162030",
+      "--bg-card-hover": "#1c2a3e",
+      "--accent": "#4ca6e8",
+      "--gold": "#e8b84c",
+      "--text": "#e8edf2",
+      "--text-muted": "#7a8b9e",
+      "--text-dim": "#4a5a6e",
+      "--link": "#4ce8c2",
+      "--link-hover": "#7af0d4",
+      "--border": "#243448",
+      "--section-1": "#4ca6e8",
+      "--section-2": "#4ce8c2",
+      "--section-3": "#e8b84c",
+      "--section-4": "#9b7adb",
+      "--section-5": "#e86c6c",
+      "--section-6": "#6cb8e8"
+    },
+    "typography": {
+      "heading": "Playfair Display",
+      "body": "Inter",
+      "mono": "JetBrains Mono"
+    },
+    "mood": "clean, authoritative, modern — midnight blue foundation with warm gold and cool teal accents"
+  },
+
+  "filter_lens": {
+    "domains": [
+      "innovation-strategy",
+      "corporate-transformation",
+      "organizational-design",
+      "technology-disruption",
+      "market-creation",
+      "design-thinking",
+      "growth-strategy"
+    ],
+    "blind_spots": [
+      "geopolitics",
+      "biotech-pharma",
+      "energy-transition",
+      "creative-arts",
+      "urban-economics",
+      "defense-technology"
+    ],
+    "complexity_level": "expert",
+    "thinker_preferences": [
+      "Clayton Christensen",
+      "Rita McGrath",
+      "Roger Martin",
+      "Amy Edmondson",
+      "Alex Osterwalder",
+      "Henry Chesbrough",
+      "Vijay Govindarajan",
+      "Dorothy Leonard"
+    ]
+  },
+
+  "voice_calibration": {
+    "tone": "Intellectually playful but substantive — like a sharp colleague over espresso who makes you laugh and then makes you think. Never condescending, never fluffy.",
+    "sentence_length": "Varied — punchy 5-word insights mixed with richer 20-word exposition. Let the rhythm breathe.",
+    "thinker_usage": "Weave 3-5 thinkers per edition. Rotate across editions to avoid staleness. Reference should feel like a friend dropping a name at dinner, not an academic footnote.",
+    "la_force_voice": "Confident curator who respects Robyn's deep expertise and pushes her thinking into adjacent territories she wouldn't naturally explore. The editorial voice says 'you already know innovation — let me show you where innovation meets something you weren't watching.'"
+  },
+
+  "delivery": {
+    "format": "email-inline",
+    "email": "robyn@milezero.io",
+    "cadence": "twice-weekly",
+    "channels": ["email"],
+    "subject_template": "MileZero · {edition_title} · {date}"
+  }
+}

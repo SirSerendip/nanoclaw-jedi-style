@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MileZero — The Antibody Paradox · April 17, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1923; --bg-card: #162030; --bg-card-hover: #1c2a3e;
+    --accent: #4ca6e8; --gold: #e8b84c; --text: #e8edf2; --text-muted: #7a8b9e;
+    --text-dim: #4a5a6e; --link: #4ce8c2; --link-hover: #7af0d4; --border: #243448;
+    --section-1: #4ca6e8; --section-2: #4ce8c2; --section-3: #e8b84c;
+    --section-4: #9b7adb; --section-5: #e86c6c; --section-6: #6cb8e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; font-weight: 300; line-height: 1.7; min-height: 100vh; }
+  .smoke-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 0%, rgba(76,166,232,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(76,232,194,0.05) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(232,184,76,0.03) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+  .container { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  header { text-align: center; padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .smoke-icon { font-size: 2.5rem; margin-bottom: 0.5rem; display: block; animation: drift 6s ease-in-out infinite; }
+  @keyframes drift { 0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.9; } 50% { transform: translateY(-6px) rotate(2deg); opacity: 1; } }
+  h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.3rem; background: linear-gradient(135deg, var(--text) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .subtitle { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: var(--text-dim); font-size: 0.95rem; margin-top: 0.8rem; }
+  .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; padding: 0.8rem 0; }
+  .stat { text-align: center; }
+  .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; color: var(--gold); font-weight: 600; }
+  .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-top: 0.15rem; }
+  .section { margin-bottom: 2.5rem; }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+  .section-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; }
+  .section-count { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); margin-left: auto; letter-spacing: 0.05em; }
+  .collision-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); margin-bottom: 1rem; display: block; letter-spacing: 0.03em; }
+  .signal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 0.8rem; transition: all 0.25s ease; border-left: 3px solid transparent; }
+  .signal:hover { background: var(--bg-card-hover); transform: translateX(3px); }
+  .s1 .signal { border-left-color: var(--section-1); }
+  .s2 .signal { border-left-color: var(--section-2); }
+  .s3 .signal { border-left-color: var(--section-3); }
+  .s4 .signal { border-left-color: var(--section-4); }
+  .s5 .signal { border-left-color: var(--section-5); }
+  .signal p { font-size: 0.92rem; line-height: 1.75; color: var(--text); margin-bottom: 0.6rem; }
+  .signal p:last-child { margin-bottom: 0; }
+  .signal strong { font-weight: 600; color: #fff; }
+  .signal a { color: var(--link); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .signal a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+  .signal em { font-family: 'Playfair Display', Georgia, serif; color: var(--gold); font-style: italic; }
+  footer { text-align: center; padding: 2rem 0 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+  .footer-tagline { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .footer-text { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.05em; }
+  .thinkers { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-dim); margin-top: 1rem; letter-spacing: 0.03em; }
+  @media (max-width: 600px) { .container { padding: 1rem 1rem 3rem; } h1 { font-size: 1.7rem; } h2 { font-size: 1.2rem; } .signal { padding: 1rem 1.1rem; } .stats { gap: 1.2rem; } }
+</style>
+</head>
+<body>
+<div class="smoke-overlay"></div>
+<div class="container">
+<header>
+  <span class="smoke-icon">&#127793;</span>
+  <h1>MileZero</h1>
+  <div class="date">April 17, 2026</div>
+  <div class="subtitle">"When the immune system learns to innovate."</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">40</div><div class="stat-label">Signals Mined</div></div>
+    <div class="stat"><div class="stat-value">12</div><div class="stat-label">Selected</div></div>
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Sections</div></div>
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Thinkers</div></div>
+  </div>
+</header>
+
+<div class="section s1">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-1);"></div>
+    <h2>The Immune System Is Learning</h2>
+    <span class="section-count">2 signals</span>
+  </div>
+  <span class="collision-tag">collision: corporate antibodies × CAR-T immunotherapy</span>
+  <div class="signal">
+    <p><strong>Intel</strong> just proved something you've been saying for years: the corporate antibodies aren't the enemy — they're unrecruited allies. An R&D leader there didn't sneak innovation past Legal and Finance. She <em>invited them into the lab</em>. Built new contracting frameworks with Legal. Let Finance shape the decision criteria. The antibodies didn't just stop attacking — they started protecting the right things. <a href="https://www.innovationleader.com/on-demand-webcast/corporate-innovation-antibodies-intel-webcast/" target="_blank">Read more →</a></p>
+    <p>Now here's the collision that stopped me cold: biotech researchers are using <strong>CAR-T therapies</strong> — originally a cancer treatment — to <em>reset the immune system</em> in autoimmune disease patients. They're achieving durable remission in lupus by reprogramming the body's own defense mechanisms. <a href="https://www.atlantisbioscience.com/blog/2026-biotech-outlook-10-breakthrough-trends-scientists-need-to-watch/" target="_blank">Read more →</a></p>
+    <p>The metaphor writes itself. What if the next frontier in corporate innovation isn't defeating resistance — it's reprogramming it? <em>Amy Edmondson</em> would recognize this instantly: psychological safety isn't the absence of friction, it's the presence of <em>productive</em> friction. The Intel approach isn't kumbaya — it's inoculation.</p>
+  </div>
+</div>
+
+<div class="section s2">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-2);"></div>
+    <h2>Portfolio as Operating System</h2>
+    <span class="section-count">3 signals</span>
+  </div>
+  <span class="collision-tag">collision: innovation portfolio governance × strategy-as-bet</span>
+  <div class="signal">
+    <p>Two signals this week converge on the same uncomfortable truth: innovation isn't a department anymore — it's the operating system. <strong>WEF</strong> reports that leading companies now treat every major strategic decision as a <em>dynamic bet</em>, updated as signals shift. Meanwhile, innovation portfolio management is hardening into <em>formal governance</em> — quarterly reviews, stage-gates, standardized metrics. <a href="https://lindeninnovation.com/innovation-portfolio-management/" target="_blank">Read more →</a></p>
+    <p>And here's the quiet revolution underneath: <strong>strategic foresight</strong> is becoming a formal discipline. Companies are investing in weak-signal tracking tools — not as nice-to-haves but as core strategic infrastructure. <a href="https://www.imd.org/blog/innovation/strategic-innovation-tools/" target="_blank">Read more →</a></p>
+    <p><em>Roger Martin</em> has been arguing for decades that strategy is about making choices under uncertainty. The portfolio approach does something radical: it makes those choices <em>visible and governable</em> without pretending they're certain. <em>Alex Osterwalder's</em> business model canvas was the first sketch; portfolio governance is the production blueprint.</p>
+  </div>
+</div>
+
+<div class="section s3">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-3);"></div>
+    <h2>The Operating Model Is the Innovation</h2>
+    <span class="section-count">2 signals</span>
+  </div>
+  <span class="collision-tag">collision: AI as operating model shift × agentic AI deployment</span>
+  <div class="signal">
+    <p><strong>Microsoft</strong> dropped a phrase this week that deserves to be tattooed on every innovation leader's whiteboard: <em>"AI is an operating model shift, not a technology upgrade."</em> They're arguing that AI transformation requires rethinking how work gets done at scale — with trust and people at the center. Not tools. Not pilots. The whole system. <a href="https://www.microsoft.com/en-us/industry/microsoft-in-business/thought-leadership/2026/04/14/why-ai-is-an-operating-model-shift-not-a-technology-upgrade/" target="_blank">Read more →</a></p>
+    <p>Now layer this on top: the <strong>agentic AI market</strong> is projected to hit $45 billion by 2030, and 74% of companies plan to deploy autonomous AI agents within two years. <a href="https://www.weforum.org/stories/2026/01/how-agentic-physical-and-sovereign-ai-are-rewriting-the-rules-of-enterprise-innovation/" target="_blank">Read more →</a></p>
+    <p>This is <em>Clayton Christensen's</em> disruption paradox playing out in real time. The sustaining innovation (better AI tools) is straightforward. The disruptive shift (autonomous agents making decisions without human gatekeepers) is where the corporate immune system will attack hardest. Because agentic AI doesn't just change processes — it threatens hierarchies. And hierarchies are what antibodies defend.</p>
+  </div>
+</div>
+
+<div class="section s4">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-4);"></div>
+    <h2>The Valley of Manufacturing</h2>
+    <span class="section-count">2 signals</span>
+  </div>
+  <span class="collision-tag">collision: defense tech execution gap × energy storage breakout</span>
+  <div class="signal">
+    <p>Two sectors, same lesson: invention without manufacturing is just expensive theater. <strong>Defense tech startups</strong> raised $49.1 billion in 2025 — nearly double the prior year. Anduril sits at a $30.5B valuation. But the 2026 priority has shifted sharply: <em>manufacturing at scale</em>. Companies that can convert facilities into repeatable output will disproportionately capture capital. The valley of death isn't ideation anymore — it's production. <a href="https://www.defensenews.com/industry/2026/01/20/defense-tech-startups-had-their-best-funding-year-ever-in-2025/" target="_blank">Read more →</a></p>
+    <p>Same story in energy: <strong>Sungrow's</strong> storage systems revenue just surpassed inverter revenue for the first time — a 128% year-over-year explosion. Energy storage isn't disrupting power generation. It's enabling entirely new business models. <a href="https://www.enlit.world/library/top-100-energy-and-climate-tech-start-ups-for-2026" target="_blank">Read more →</a></p>
+    <p><em>Rita McGrath</em> calls these inflection points — moments when the assumptions undergirding a business shift fundamentally. For defense and energy alike, the inflection isn't the technology. It's the manufacturing infrastructure. The organizations that see themselves as platform operators, not product makers, will win this decade.</p>
+  </div>
+</div>
+
+<div class="section s5">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-5);"></div>
+    <h2>When Disruption Becomes Optional</h2>
+    <span class="section-count">3 signals</span>
+  </div>
+  <span class="collision-tag">collision: nondisruptive creation × AI drug discovery × geopolitical trade fragmentation</span>
+  <div class="signal">
+    <p>Here's a heresy for any Christensen disciple: what if disruption isn't necessary? The <strong>Blue Ocean Strategy</strong> team is pushing hard on <em>nondisruptive creation</em> — building new markets beyond existing industry boundaries, without the collateral damage of displacing incumbents. Growth without destruction. <a href="https://www.blueoceanstrategy.com/what-is-nondisruptive-creation/" target="_blank">Read more →</a></p>
+    <p>The evidence is showing up in unexpected places. <strong>AI-powered drug discovery</strong> is delivering Phase 1 success rates of 80-90% compared to the historical 40-65%. This isn't disruption — it's a fundamentally different methodology that creates value the old system <em>couldn't even attempt</em>. Billions of molecules designed in silico. The market didn't exist before. <a href="https://go.zageno.com/blog/whats-new-in-biotech-2026" target="_blank">Read more →</a></p>
+    <p>But there's a dark mirror: the <strong>IMF</strong> warns that trade fragmentation could reduce global GDP by up to 7% over a decade. When tariffs hit six-fold increases, innovation diffusion slows. The geography of who gets to innovate is being redrawn. <a href="https://www.imf.org/en/blogs/articles/2026/04/14/war-darkens-global-economic-outlook-and-reshapes-policy-priorities" target="_blank">Read more →</a></p>
+    <p><em>Clayton Christensen</em> gave us the disruption lens. <em>Roger Martin</em> would push further: the strategic choice isn't disruption vs. sustaining anymore. It's disruption vs. creation vs. constraint. And tariffs are a reminder that the playing field itself is a variable.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-tagline">The hardest mile is the start.</div>
+  <div class="thinkers">Clayton Christensen · Rita McGrath · Roger Martin · Amy Edmondson · Alex Osterwalder</div>
+  <div class="footer-text" style="margin-top: 0.8rem;">MINED 40 SIGNALS · SELECTED 12 · SKIPPED 28</div>
+  <div class="footer-text" style="margin-top: 0.3rem;">Curated by La Force · April 17, 2026 · MileZero</div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 500" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="card-shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#90A4AE" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="740" height="500" fill="#FAFBFC" rx="6"/>
+
+  <!-- ========== AXES ========== -->
+
+  <!-- Y-axis line -->
+  <line x1="100" y1="430" x2="100" y2="20" stroke="#B0BEC5" stroke-width="2"/>
+  <polygon points="100,20 95,30 105,30" fill="#B0BEC5"/>
+
+  <!-- X-axis line -->
+  <line x1="100" y1="430" x2="720" y2="430" stroke="#B0BEC5" stroke-width="2"/>
+  <polygon points="720,430 710,425 710,435" fill="#B0BEC5"/>
+
+  <!-- Y-axis label -->
+  <text x="28" y="230" text-anchor="middle" fill="#37474F" font-size="14" font-weight="700" letter-spacing="2" transform="rotate(-90, 28, 230)">SELF-REPORT</text>
+  <text x="52" y="230" text-anchor="middle" fill="#90A4AE" font-size="9" transform="rotate(-90, 52, 230)">Composite Survey</text>
+
+  <!-- Y-axis HIGH / LOW -->
+  <text x="82" y="70" text-anchor="end" fill="#37474F" font-size="11" font-weight="600">HIGH</text>
+  <text x="82" y="400" text-anchor="end" fill="#37474F" font-size="11" font-weight="600">LOW</text>
+
+  <!-- X-axis label -->
+  <text x="410" y="475" text-anchor="middle" fill="#37474F" font-size="14" font-weight="700" letter-spacing="2">DEMONSTRATED BEHAVIOR</text>
+  <text x="410" y="493" text-anchor="middle" fill="#90A4AE" font-size="9">Engagement Sessions + SJT Analysis</text>
+
+  <!-- X-axis LOW / HIGH -->
+  <text x="240" y="452" text-anchor="middle" fill="#37474F" font-size="11" font-weight="600">LOW</text>
+  <text x="580" y="452" text-anchor="middle" fill="#37474F" font-size="11" font-weight="600">HIGH</text>
+
+  <!-- ========== QUADRANTS ========== -->
+
+  <!-- Q1: Top-Left — Over-Estimation (Orange) -->
+  <g filter="url(#card-shadow)">
+    <rect x="110" y="35" width="280" height="190" rx="10" fill="#FFF3E0" stroke="#FF9800" stroke-width="1.5"/>
+    <text x="135" y="65" fill="#BF360C" font-size="15" font-weight="700">Over-Estimation</text>
+    <line x1="125" y1="75" x2="375" y2="75" stroke="#FFCC80" stroke-width="1"/>
+    <text x="125" y="98" fill="#455A64" font-size="11" font-weight="600">High self-report, low demonstrated</text>
+    <text x="125" y="122" fill="#616161" font-size="10.5">Aspirational self-image or blind spot.</text>
+    <text x="125" y="140" fill="#616161" font-size="10.5">Perceives capacity they don't yet</text>
+    <text x="125" y="158" fill="#616161" font-size="10.5">display in practice.</text>
+    <rect x="125" y="178" width="248" height="18" rx="4" fill="#FF9800" opacity="0.12"/>
+    <text x="133" y="192" fill="#BF360C" font-size="10" font-weight="600">→ Targeted coaching on self-awareness</text>
+  </g>
+
+  <!-- Q2: Top-Right — Validated Strength (Green) -->
+  <g filter="url(#card-shadow)">
+    <rect x="400" y="35" width="280" height="190" rx="10" fill="#E8F5E9" stroke="#4CAF50" stroke-width="1.5"/>
+    <text x="425" y="65" fill="#1B5E20" font-size="15" font-weight="700">Validated Strength</text>
+    <line x1="415" y1="75" x2="665" y2="75" stroke="#A5D6A7" stroke-width="1"/>
+    <text x="415" y="98" fill="#455A64" font-size="11" font-weight="600">High self-report, high demonstrated</text>
+    <text x="415" y="122" fill="#616161" font-size="10.5">Accurate self-awareness combined</text>
+    <text x="415" y="140" fill="#616161" font-size="10.5">with strong demonstrated capacity.</text>
+    <text x="415" y="158" fill="#616161" font-size="10.5">These individuals know what they have.</text>
+    <rect x="415" y="178" width="248" height="18" rx="4" fill="#4CAF50" opacity="0.12"/>
+    <text x="423" y="192" fill="#1B5E20" font-size="10" font-weight="600">→ Leverage as peer leaders &amp; mentors</text>
+  </g>
+
+  <!-- Q3: Bottom-Left — Growth Area (Blue) -->
+  <g filter="url(#card-shadow)">
+    <rect x="110" y="235" width="280" height="185" rx="10" fill="#E3F2FD" stroke="#1976D2" stroke-width="1.5"/>
+    <text x="135" y="265" fill="#0D47A1" font-size="15" font-weight="700">Growth Area</text>
+    <line x1="125" y1="275" x2="375" y2="275" stroke="#90CAF9" stroke-width="1"/>
+    <text x="125" y="298" fill="#455A64" font-size="11" font-weight="600">Low self-report, low demonstrated</text>
+    <text x="125" y="322" fill="#616161" font-size="10.5">Accurate self-awareness of a genuine</text>
+    <text x="125" y="340" fill="#616161" font-size="10.5">developmental area. Individual knows</text>
+    <text x="125" y="358" fill="#616161" font-size="10.5">where they need to grow.</text>
+    <rect x="125" y="376" width="248" height="18" rx="4" fill="#1976D2" opacity="0.12"/>
+    <text x="133" y="390" fill="#0D47A1" font-size="10" font-weight="600">→ Structured developmental intervention</text>
+  </g>
+
+  <!-- Q4: Bottom-Right — Hidden Asset (Purple) -->
+  <g filter="url(#card-shadow)">
+    <rect x="400" y="235" width="280" height="185" rx="10" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="1.5"/>
+    <text x="425" y="265" fill="#4A148C" font-size="15" font-weight="700">Hidden Asset</text>
+    <line x1="415" y1="275" x2="665" y2="275" stroke="#CE93D8" stroke-width="1"/>
+    <text x="415" y="298" fill="#455A64" font-size="11" font-weight="600">Low self-report, high demonstrated</text>
+    <text x="415" y="322" fill="#616161" font-size="10.5">Under-recognition of own strength.</text>
+    <text x="415" y="340" fill="#616161" font-size="10.5">Demonstrates capacity they don't yet</text>
+    <text x="415" y="358" fill="#616161" font-size="10.5">claim or recognize in themselves.</text>
+    <rect x="415" y="376" width="248" height="18" rx="4" fill="#7B1FA2" opacity="0.12"/>
+    <text x="423" y="390" fill="#4A148C" font-size="10" font-weight="600">→ Build confidence; these are your assets</text>
+  </g>
+
+</svg>

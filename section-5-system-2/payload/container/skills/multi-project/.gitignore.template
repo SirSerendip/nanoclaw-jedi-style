@@ -1,0 +1,22 @@
+# Binary DB — replaced by memory.sql text dump
+projects/memory.db
+
+# Heavy binaries — not useful in checkpoint diffs
+attachments/*.jpg
+attachments/*.jpeg
+attachments/*.png
+attachments/*.gif
+attachments/*.webp
+attachments/*.pdf
+attachments/*.opus
+attachments/*.ogg
+*.mp4
+
+# Container runtime artifacts
+logs/
+.needs-context-reload
+
+# SQLite temp files
+*.db-wal
+*.db-shm
+*.db-journal

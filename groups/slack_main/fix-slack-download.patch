@@ -1,0 +1,49 @@
+Replace the downloadSlackFiles method body (the try block inside the for loop) with this:
+
+BEFORE:
+        const res = await fetch(file.url_private_download, {
+          headers: { Authorization: `Bearer ${this.botToken}` },
+        });
+        if (!res.ok) {
+          logger.warn({ file: file.name, status: res.status }, 'Failed to download Slack file');
+          continue;
+        }
+        const buffer = Buffer.from(await res.arrayBuffer());
+
+AFTER:
+        logger.info({ file: file.name, url: file.url_private_download }, 'Attempting Slack file download');
+
+        // Fetch with manual redirect handling — Node's fetch drops Authorization
+        // on cross-domain redirects (slack.com → files.slack.com), causing a 200 login page.
+        let res = await fetch(file.url_private_download, {
+          headers: { Authorization: `Bearer ${this.botToken}` },
+          redirect: 'manual',
+        });
+
+        // Follow redirect manually, re-attaching the Authorization header
+        if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
+          const location = res.headers.get('location');
+          logger.info({ file: file.name, location, status: res.status }, 'Following Slack file redirect');
+          if (location) {
+            res = await fetch(location, {
+              headers: { Authorization: `Bearer ${this.botToken}` },
+            });
+          }
+        }
+
+        if (!res.ok) {
+          logger.warn({ file: file.name, status: res.status }, 'Failed to download Slack file');
+          continue;
+        }
+
+        // Guard against receiving HTML (login page) instead of the actual file
+        const contentType = res.headers.get('content-type') ?? '';
+        if (contentType.includes('text/html')) {
+          logger.warn(
+            { file: file.name, contentType, tokenSet: !!this.botToken },
+            'Slack file download returned HTML — likely auth failure or bad token',
+          );
+          continue;
+        }
+
+        const buffer = Buffer.from(await res.arrayBuffer());

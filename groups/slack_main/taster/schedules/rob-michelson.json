@@ -1,0 +1,15 @@
+{
+  "persona_slug": "rob-michelson",
+  "persona_name": "Robert Michelson",
+  "cadence_preset": "mon-wed-fri",
+  "cron_expression": "0 8 * * 1,3,5",
+  "cron_local": "4:00 AM ET Monday, Wednesday, Friday",
+  "task_id": "task-1776460836220-3eyezz",
+  "status": "active",
+  "lookback_hours": 48,
+  "delivery_channels": ["email-inline"],
+  "recipient": "rmichelson@bwscampus.com",
+  "filter_mode": "substructure",
+  "created": "2026-04-17",
+  "notes": "Full 6-stage Taster pipeline with email delivery. Substructure-depth scoring (0-30) is primary filter dimension. Earthy palette with Cuban instrument dividers, 4 section tiers: The Equilibrium Break, The Power Ledger, The Bayesian Update, The Garden Note. Fewer signals, higher impact — 4-6 max per edition."
+}

@@ -1,0 +1,24 @@
+{
+  "edition": "The Antibody Paradox",
+  "date": "2026-04-17",
+  "profile": "robyn-bolton",
+  "recipient": "robyn@milezero.io",
+  "subject": "MileZero · The Antibody Paradox · April 17, 2026",
+  "sent_at": "2026-04-17T09:00:00Z",
+  "status": "delivered",
+  "pipeline": {
+    "raw_signals": 40,
+    "filtered_signals": 12,
+    "sections": 5,
+    "thinkers": ["Clayton Christensen", "Rita McGrath", "Roger Martin", "Amy Edmondson", "Alex Osterwalder"],
+    "blind_spot_signals": 4,
+    "domains_covered": 7
+  },
+  "files": {
+    "raw": "/workspace/group/taster/signals/raw-2026-04-17.json",
+    "filtered": "/workspace/group/taster/signals/filtered-robyn-bolton-2026-04-17.json",
+    "sections": "/workspace/group/taster/editions/robyn-bolton/2026-04-17/sections.json",
+    "web": "/workspace/group/taster/editions/robyn-bolton/2026-04-17/web.html",
+    "email": "/workspace/group/taster/editions/robyn-bolton/2026-04-17/email.html"
+  }
+}

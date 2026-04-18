@@ -586,6 +586,80 @@ describe('parseSignalStyles — snake_case guard', () => {
   });
 });
 
+describe('parseTextStyles — Markdown tables', () => {
+  it('converts a Markdown table to an aligned code block on slack', () => {
+    const input = '| Name | Age |\n| --- | --- |\n| Alice | 30 |\n| Bob | 25 |';
+    const result = parseTextStyles(input, 'slack');
+    expect(result).toContain('```');
+    expect(result).toContain('Alice');
+    expect(result).toContain('Bob');
+    // Should not contain pipe characters (outside of code fence markers)
+    const inside = result.replace(/```/g, '');
+    expect(inside).not.toContain('|');
+  });
+
+  it('pads columns for alignment', () => {
+    const input = '| Name | Age |\n| --- | --- |\n| Alice | 30 |\n| Bob | 25 |';
+    const result = parseTextStyles(input, 'slack');
+    // Both name cells should be padded to 5 chars ("Alice" length)
+    expect(result).toContain('Alice  30');
+    expect(result).toContain('Bob    25');
+  });
+
+  it('adds dash separator under header row', () => {
+    const input = '| H1 | H2 |\n| --- | --- |\n| c1 | c2 |';
+    const result = parseTextStyles(input, 'slack');
+    expect(result).toContain('--');
+    // Header and separator should be on consecutive lines
+    const lines = result.split('\n');
+    const headerIdx = lines.findIndex((l) => l.includes('H1'));
+    expect(lines[headerIdx + 1]).toMatch(/^-/);
+  });
+
+  it('works on whatsapp and telegram too', () => {
+    const input = '| A | B |\n| --- | --- |\n| 1 | 2 |';
+    expect(parseTextStyles(input, 'whatsapp')).toContain('```');
+    expect(parseTextStyles(input, 'telegram')).toContain('```');
+  });
+
+  it('does not convert tables on discord (passthrough)', () => {
+    const input = '| A | B |\n| --- | --- |\n| 1 | 2 |';
+    expect(parseTextStyles(input, 'discord')).toBe(input);
+  });
+
+  it('does not transform bold/italic inside the generated code block', () => {
+    const input =
+      '| **Header** | Value |\n| --- | --- |\n| **bold** | _italic_ |';
+    const result = parseTextStyles(input, 'slack');
+    // The bold markers inside the code block should survive (not be converted)
+    expect(result).toContain('**Header**');
+    expect(result).toContain('**bold**');
+  });
+
+  it('transforms text outside the table normally', () => {
+    const input =
+      '**Title**\n\n| A | B |\n| --- | --- |\n| 1 | 2 |\n\n*footer*';
+    const result = parseTextStyles(input, 'slack');
+    // Bold outside table should be converted
+    expect(result).toMatch(/^\*Title\*/);
+    // Italic outside table should be converted
+    expect(result).toContain('_footer_');
+    // Table should be in code block
+    expect(result).toContain('```');
+  });
+
+  it('handles header-only table (no data rows)', () => {
+    const input = '| H1 | H2 |\n| --- | --- |';
+    const result = parseTextStyles(input, 'slack');
+    expect(result).toContain('```');
+    expect(result).toContain('H1');
+    // No dash separator when there's only a header
+    const lines = result.split('\n');
+    const dashLines = lines.filter((l) => /^-+\s+-+$/.test(l.trim()));
+    expect(dashLines).toHaveLength(0);
+  });
+});
+
 describe('formatOutbound — channel-aware', () => {
   it('applies parseTextStyles when channel is provided', () => {
     expect(formatOutbound('**bold**', 'whatsapp')).toBe('*bold*');

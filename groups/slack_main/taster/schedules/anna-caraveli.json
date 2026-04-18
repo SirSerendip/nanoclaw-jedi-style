@@ -1,0 +1,15 @@
+{
+  "persona_slug": "anna-caraveli",
+  "persona_name": "Dr. Anna Caraveli",
+  "cadence_preset": "wed-fri",
+  "cron_expression": "0 7 * * 3,5",
+  "cron_local": "3:00 AM ET Wednesday + Friday",
+  "task_id": "task-1776394581388-bxgtc4",
+  "status": "active",
+  "lookback_hours": 24,
+  "delivery_channels": ["email-inline"],
+  "recipient": "caraveli.anna3@gmail.com",
+  "filter_mode": "reframe",
+  "created": "2026-04-16",
+  "notes": "Full 6-stage Taster pipeline with email delivery. Reframe-depth scoring (0-30) is primary filter dimension. Mediterranean palette, 4 section tiers: The Demand Perspective, The Question Behind the Question, The Anomaly File, Hidden Isomorphisms."
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamid's Smoke Break — {{DATE_DISPLAY}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1a1a2e; --bg-card: #16213e; --bg-card-hover: #1a2744;
+    --accent: #e94560; --gold: #f0c040; --text: #eee; --text-muted: #8892b0;
+    --text-dim: #5a6380; --link: #64ffda; --link-hover: #a0ffe0; --border: #233554;
+    --section-1: #e94560; --section-2: #64ffda; --section-3: #f0c040;
+    --section-4: #5b7db1; --section-5: #c792ea; --section-6: #ff9e64;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; font-weight: 300; line-height: 1.7; min-height: 100vh; }
+  .smoke-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 0%, rgba(233,69,96,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(100,255,218,0.05) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(240,192,64,0.03) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+  .container { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  header { text-align: center; padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .smoke-icon { font-size: 2.5rem; margin-bottom: 0.5rem; display: block; animation: drift 6s ease-in-out infinite; }
+  @keyframes drift { 0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.9; } 50% { transform: translateY(-6px) rotate(2deg); opacity: 1; } }
+  h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.3rem; background: linear-gradient(135deg, var(--text) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .subtitle { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: var(--text-dim); font-size: 0.95rem; margin-top: 0.8rem; }
+  .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; padding: 0.8rem 0; }
+  .stat { text-align: center; }
+  .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; color: var(--gold); font-weight: 600; }
+  .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-top: 0.15rem; }
+  .section { margin-bottom: 2.5rem; }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+  .section-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; }
+  .section-count { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); margin-left: auto; letter-spacing: 0.05em; }
+  .signal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 0.8rem; transition: all 0.25s ease; border-left: 3px solid transparent; }
+  .signal:hover { background: var(--bg-card-hover); transform: translateX(3px); }
+  .section:nth-child(1) .signal { border-left-color: var(--section-1); }
+  .section:nth-child(2) .signal { border-left-color: var(--section-2); }
+  .section:nth-child(3) .signal { border-left-color: var(--section-3); }
+  .section:nth-child(4) .signal { border-left-color: var(--section-4); }
+  .section:nth-child(5) .signal { border-left-color: var(--section-5); }
+  .section:nth-child(6) .signal { border-left-color: var(--section-6); }
+  .signal p { font-size: 0.92rem; line-height: 1.75; color: var(--text); }
+  .signal strong { font-weight: 600; color: #fff; }
+  .signal a { color: var(--link); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .signal a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+  .signal em { font-family: 'Playfair Display', Georgia, serif; color: var(--gold); font-style: italic; }
+  footer { text-align: center; padding: 2rem 0 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+  .footer-french { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .footer-text { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.05em; }
+  .thinkers { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-dim); margin-top: 1rem; letter-spacing: 0.03em; }
+  @media (max-width: 600px) { .container { padding: 1rem 1rem 3rem; } h1 { font-size: 1.7rem; } h2 { font-size: 1.2rem; } .signal { padding: 1rem 1.1rem; } .stats { gap: 1.2rem; } }
+</style>
+</head>
+<body>
+<div class="smoke-overlay"></div>
+<div class="container">
+<header>
+  <span class="smoke-icon">&#9749;</span>
+  <h1>Hamid's Smoke Break</h1>
+  <div class="date">{{DATE_DISPLAY}}</div>
+  <div class="subtitle">"Tu vas pas croire ce qui est tombé hier soir."</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">{{TOTAL_SIGNALS}}</div><div class="stat-label">Signals Mined</div></div>
+    <div class="stat"><div class="stat-value">{{SELECTED_SIGNALS}}</div><div class="stat-label">Selected</div></div>
+    <div class="stat"><div class="stat-value">{{SECTION_COUNT}}</div><div class="stat-label">Sections</div></div>
+  </div>
+</header>
+{{SECTIONS_HTML}}
+<footer>
+  <div class="footer-french">Bonne lecture, Hamid. À demain.</div>
+  <div class="thinkers">{{THINKERS_LINE}}</div>
+  <div class="footer-text" style="margin-top: 0.8rem;">MINED {{TOTAL_SIGNALS}} SIGNALS · SELECTED {{SELECTED_SIGNALS}} · SKIPPED {{SKIPPED_SIGNALS}}</div>
+  <div class="footer-text" style="margin-top: 0.3rem;">Curated by Jedi Signals · Brewed by NanoClaw</div>
+</footer>
+</div>
+</body>
+</html>

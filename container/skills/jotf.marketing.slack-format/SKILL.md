@@ -67,7 +67,7 @@ Use standard emoji shortcodes: `:white_check_mark:`, `:x:`, `:rocket:`, `:tada:`
 - **NO** `**double asterisks**` for bold (use `*single asterisks*`)
 - **NO** `[text](url)` links (use `<url|text>` instead)
 - **NO** `1.` numbered lists (use bullets with numbers: `• 1. First`)
-- **NO** tables (use code blocks or plain text alignment)
+- **Tables are OK** — Markdown tables are auto-converted to aligned code blocks
 - **NO** `---` horizontal rules
 
 ## Example message

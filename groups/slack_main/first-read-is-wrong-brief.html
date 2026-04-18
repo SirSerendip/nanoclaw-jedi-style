@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE FIRST READ IS WRONG &mdash; When the Data, the Headline, and Your Gut All Lie</title>
+<meta name="description" content="265 signals, one meta-pattern: the most dangerous satisfying answer is the one that arrives first. A signal collision analysis by JediOnTheFly.">
+<meta property="og:title" content="The First Read Is Wrong: When the Data, the Headline, and Your Gut All Lie">
+<meta property="og:description" content="265 signals, one meta-pattern: from phantom overdose spikes to vanishing trade deficits, April 8 reveals a world where first impressions are structurally wrong.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #1A1520;
+    --plum-deep: #0f0c12;
+    --canvas: #F5F3EF;
+    --card: #FFFFFF;
+    --border: #E8E4DD;
+    --border-strong: #D1CCC4;
+    --text-primary: #2D2A26;
+    --text-secondary: #4A4540;
+    --text-tertiary: #78736B;
+    --text-muted: #A39E96;
+    --emerald: #10B981;
+    --magenta: #EC4899;
+    --slate-50: #F8FAFC;
+    --slate-400: #94A3B8;
+    --slate-500: #64748B;
+    --red: #DC2626;
+    --orange: #D97706;
+    --yellow: #EAB308;
+    --blue: #3B82F6;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--plum);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  .page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header {
+    background: var(--plum);
+    padding: 40px 40px 0 40px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .header-text { flex: 1; min-width: 0; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 4px;
+  }
+  .sub-eyebrow {
+    font-size: 0.625rem;
+    font-style: italic;
+    color: var(--slate-500);
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .header-title {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 900;
+    color: var(--slate-50);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
+  }
+  .header-subtitle {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    color: var(--slate-400);
+    line-height: 1.5;
+    max-width: 640px;
+  }
+  .header-logo {
+    width: 140px;
+    flex-shrink: 0;
+    opacity: 0.85;
+    margin-top: 6px;
+  }
+  .accent-bars {
+    display: flex;
+    margin-top: 28px;
+  }
+  .accent-bars .bar { height: 3px; border-radius: 1px; }
+  .bar-emerald { width: 100px; background: var(--emerald); }
+  .bar-magenta { width: 100px; background: var(--magenta); opacity: 0.8; }
+  .bar-slate1 { width: 100px; background: var(--slate-400); opacity: 0.35; }
+  .bar-slate2 { width: 100px; background: var(--slate-400); opacity: 0.15; }
+
+  .meta-bar {
+    background: var(--plum-deep);
+    padding: 14px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 36px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--slate-500);
+  }
+  .meta-bar span { color: var(--slate-400); }
+
+  .canvas {
+    background: var(--canvas);
+    padding: 40px 40px 36px 40px;
+  }
+
+  .intro {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin-bottom: 40px;
+    border-left: 3px solid var(--magenta);
+    padding-left: 20px;
+  }
+  .intro strong { color: var(--text-primary); font-weight: 700; }
+
+  .tier { margin-bottom: 36px; }
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .tier-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .tier-meta { flex-shrink: 0; }
+  .tier-label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+  .tier-title {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+  .tier-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-strong);
+    min-width: 40px;
+  }
+
+  .signals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+  }
+  .signal-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+  .signal-card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .signal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    border-radius: 8px 0 0 8px;
+  }
+  .signal-card.red::before { background: var(--red); }
+  .signal-card.orange::before { background: var(--orange); }
+  .signal-card.yellow::before { background: var(--yellow); }
+  .signal-card.blue::before { background: var(--blue); }
+
+  .signal-number {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .signal-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .signal-source {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .signal-body {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .signal-body em {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .signal-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--magenta);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.15s ease;
+  }
+  .signal-link:hover {
+    color: var(--emerald);
+    text-decoration: underline;
+  }
+  .signal-link::before {
+    content: '\2192 ';
+  }
+
+  .synthesis {
+    background: var(--plum);
+    border-radius: 12px;
+    padding: 40px 36px;
+    margin: 40px 0 32px 0;
+  }
+  .synthesis-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 14px;
+  }
+  .synthesis-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--slate-50);
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .synthesis-quote {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--magenta);
+    line-height: 1.55;
+    border-left: 3px solid var(--magenta);
+    padding-left: 20px;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .drift-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 6px 32px;
+    margin-bottom: 28px;
+  }
+  .drift-item {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--slate-400);
+    padding: 7px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .drift-item .arrow {
+    color: var(--orange);
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+  }
+  .drift-item strong { color: var(--slate-50); font-weight: 600; }
+
+  .synthesis-insight {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #CBD5E1;
+    max-width: 760px;
+  }
+  .synthesis-insight strong { color: var(--slate-50); }
+
+  .stat-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 32px 0 12px 0;
+  }
+  .stat { text-align: center; }
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  .stat-value .unit {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+  }
+  .stat-label {
+    font-size: 0.625rem;
+    font-family: var(--font-mono);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .footer {
+    background: var(--plum);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-left {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--slate-500);
+    letter-spacing: 1px;
+  }
+  .footer-right {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--magenta);
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .header { padding: 28px 24px 0 24px; }
+    .header-logo { width: 100px; }
+    .header-subtitle { font-size: 0.9375rem; }
+    .meta-bar { padding: 12px 24px; }
+    .canvas { padding: 28px 24px 24px 24px; }
+    .signals-grid { grid-template-columns: 1fr; }
+    .drift-list { grid-template-columns: 1fr; }
+    .synthesis { padding: 28px 24px; }
+    .footer { padding: 16px 24px; }
+    .stat-bar { gap: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .header-top { flex-direction: column; }
+    .header-logo { width: 120px; order: -1; margin-bottom: 16px; }
+    .accent-bars .bar { width: 60px; }
+    .stat-value { font-size: 1.5rem; }
+  }
+
+  @media print {
+    body { background: white; }
+    .header, .meta-bar, .synthesis, .footer {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+<div class="header">
+  <div class="header-top">
+    <div class="header-text">
+      <div class="eyebrow">Auto-Poetic Intelligence Report</div>
+      <div class="sub-eyebrow">regenerating insight from raw noise</div>
+      <div class="header-title">THE FIRST READ IS WRONG</div>
+      <div class="header-subtitle">The overdose spike that wasn&rsquo;t. The trade deficit that just moved. The iconic car that died because its idea won. April 8 reveals a world where the most dangerous satisfying answer is the one that arrives first.</div>
+    </div>
+    <a href="https://jedionthefly.com" target="_blank" rel="noopener" style="display:block;flex-shrink:0;">
+    <svg class="header-logo" viewBox="0 0 400 82" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#94A3B8">
+        <path d="M271 -10Q169 -10 110.5 48.0Q52 106 52 207H131Q131 138 168.0 99.5Q205 61 271 61Q337 61 374.5 99.5Q412 138 412 207V657H233V730H491V207Q491 106 432.0 48.0Q373 -10 271 -10Z" transform="translate(0.0000,70.0000) scale(0.054000,-0.054000)"/>
+        <path d="M300 -10Q236 -10 189.0 15.5Q142 41 116.0 88.0Q90 135 90 197V353Q90 416 116.0 462.5Q142 509 189.0 534.5Q236 560 300 560Q364 560 411.0 534.5Q458 509 484.0 462.5Q510 416 510 353V256H168V197Q168 130 202.5 93.5Q237 57 300 57Q353 57 386.5 78.0Q420 99 429 139H508Q497 70 441.0 30.0Q385 -10 300 -10ZM432 309V353Q432 420 398.0 456.5Q364 493 300 493Q237 493 202.5 456.5Q168 420 168 353V318H440Z" transform="translate(31.3200,70.0000) scale(0.054000,-0.054000)"/>
+        <path d="M273 -10Q191 -10 140.5 45.0Q90 100 90 193V356Q90 450 140.0 505.0Q190 560 273 560Q342 560 384.5 522.0Q427 484 427 420L406 453H425L424 573V730H503V0H424V97H403L427 130Q427 65 384.5 27.5Q342 -10 273 -10ZM298 59Q357 59 390.5 95.5Q424 132 424 197V353Q424 418 390.5 454.5Q357 491 298 491Q238 491 204.0 455.0Q170 419 170 353V197Q170 131 204.0 95.0Q238 59 298 59Z" transform="translate(62.6400,70.0000) scale(0.054000,-0.054000)"/>
+        <path d="M88 0V72H284V478H113V550H364V72H550V0ZM315 651Q284 651 265.5 667.0Q247 683 247 711Q247 740 265.5 757.0Q284 774 315 774Q346 774 364.5 757.0Q383 740 383 711Q383 684 364.5 667.5Q346 651 315 651Z" transform="translate(93.9600,70.0000) scale(0.054000,-0.054000)"/>
+      </g>
+      <g fill="#EC4899">
+        <path d="M40 339C40 132 167 -7 368 -7C568 -7 696 133 696 339C696 546 569 685 368 685C168 685 40 545 40 339ZM205 339C205 465 268 545 368 545C468 545 531 465 531 339C531 213 468 133 368 133C268 133 205 213 205 339Z" transform="translate(126.3600,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M60 0H206V268C206 356 249 394 299 394C348 394 379 364 379 302V0H525V329C525 451 460 512 359 512C284 512 231 476 206 421V507H60Z" transform="translate(171.5440,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M195 0H350V550H514V674H30V550H195Z" transform="translate(206.7440,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M60 0H206V268C206 380 269 394 300 394C346 394 379 360 379 300V0H525V323C525 456 451 512 358 512C278 512 230 477 206 421V707H60Z" transform="translate(239.6400,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M458 29V151C426 127 384 108 324 108C256 108 203 139 183 196H481C484 217 489 253 489 275C489 437 400 512 269 512C143 512 35 422 35 254C35 107 127 -5 299 -5C350 -5 421 5 458 29ZM275 401C331 401 349 361 353 312V300H177C190 370 232 401 275 401Z" transform="translate(274.8400,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M65 0H220V254H443V377H220V551H476V674H65Z" transform="translate(307.0320,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M65 0H211V707H65Z" transform="translate(337.4960,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M5 507 201 8C176 -52 141 -81 81 -81C70 -81 59 -80 47 -77V-193C67 -197 78 -198 103 -198C209 -198 290 -130 344 15L527 507H377L327 349C284 212 273 172 273 172C273 172 267 212 219 349L164 507Z" transform="translate(353.2400,70.0000) scale(0.064000,-0.064000)"/>
+      </g>
+      <rect x="126.36" y="76" width="64.48" height="3" rx="0.5" fill="#EC4899" opacity="0.8"/>
+      <rect x="191.84" y="76" width="64.48" height="3" rx="0.5" fill="#EC4899" opacity="0.45"/>
+      <rect x="257.32" y="76" width="64.48" height="3" rx="0.5" fill="#94A3B8" opacity="0.35"/>
+      <rect x="322.81" y="76" width="64.48" height="3" rx="0.5" fill="#94A3B8" opacity="0.15"/>
+    </svg>
+    </a>
+  </div>
+  <div class="accent-bars">
+    <div class="bar bar-emerald"></div>
+    <div class="bar bar-magenta"></div>
+    <div class="bar bar-slate1"></div>
+    <div class="bar bar-slate2"></div>
+  </div>
+</div>
+
+<!-- ═══ META BAR ═══ -->
+<div class="meta-bar">
+  <div>Date: <span>April 8, 2026</span></div>
+  <div>Signals Analyzed: <span>265</span></div>
+  <div>Collision Hits: <span>13 (4.9%)</span></div>
+  <div>Classification: <span>Signal Collision</span></div>
+</div>
+
+<!-- ═══ CANVAS ═══ -->
+<div class="canvas">
+
+  <div class="intro">
+    We scanned 265 signals from the April 8 Jedi Signals feed and asked one question: <strong>where is the first read wrong?</strong> The answer showed up everywhere &mdash; in public health data, trade policy, automotive markets, paleontology, restaurants, and the music industry. The pattern is structural: <em>the narrative that arrives first is almost always incomplete, and the correction hides in the same data that produced the error.</em> Four tiers. Thirteen collisions. One uncomfortable conclusion: <strong>your gut is not your friend.</strong>
+  </div>
+
+  <!-- ═══ TIER 1: THE DATA MIRAGE ═══ -->
+  <div class="tier">
+    <div class="tier-header">
+      <div class="tier-dot" style="background: var(--red);"></div>
+      <div class="tier-meta">
+        <div class="tier-label">Tier 1</div>
+        <div class="tier-title">The Data Mirage</div>
+      </div>
+      <div class="tier-line"></div>
+    </div>
+    <div class="signals-grid">
+
+      <div class="signal-card red">
+        <div class="signal-number">#01</div>
+        <div class="signal-title">The Overdose Spike That Wasn&rsquo;t</div>
+        <div class="signal-source">EurekAlert! / Northwestern University &middot; Apr 8</div>
+        <div class="signal-body">A reported spike in U.S. drug overdose deaths in early 2025 was <em>a statistical artifact</em> &mdash; not a real increase. CDC provisional models struggled to adapt to rapidly changing trends after a prolonged peak, producing temporary overestimates. Overdose deaths have actually <em>continued to decline since August 2023.</em> The phantom crisis triggered real policy responses and conspiracy theories about data manipulation. The numbers lied, and nobody caught it in time.</div>
+        <a class="signal-link" href="https://www.eurekalert.org/news-releases/1123378" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card red">
+        <div class="signal-number">#02</div>
+        <div class="signal-title">The Trade Deficit That Just Moved</div>
+        <div class="signal-source">CSIS &middot; Apr 8</div>
+        <div class="signal-body">The U.S.-China trade war halved the bilateral deficit. Victory? Not quite. <em>The overall trade imbalance didn&rsquo;t shrink &mdash; it migrated</em> to Vietnam (+351%), Taiwan (+865%), Thailand, and India. Vietnam may surpass Mexico in bilateral deficit terms. The tariffs didn&rsquo;t fix the problem. They <em>relocated it</em> while eroding domestic industrial capacity in the process.</div>
+        <a class="signal-link" href="https://www.csis.org/analysis/us-trade-deficit-did-not-shrink-it-moved-vietnam-and-taiwan" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card red">
+        <div class="signal-number">#03</div>
+        <div class="signal-title">The Prius Died Because Its Idea Won</div>
+        <div class="signal-source">The Drive &middot; Apr 8</div>
+        <div class="signal-body">Toyota Prius sales are collapsing mid-lifecycle in Q2 2026. The first read: the iconic hybrid is failing. The second read: <em>Toyota made almost its entire lineup hybrid.</em> The Prius didn&rsquo;t lose the market &mdash; it <em>became the market.</em> Its &ldquo;failure&rdquo; is the most successful product strategy in automotive history, disguised as a sales decline on a spreadsheet.</div>
+        <a class="signal-link" href="https://www.thedrive.com/podcast/toyota-made-most-of-its-lineup-hybrids-now-prius-sales-are-collapsing" target="_blank" rel="noopener">Source</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ TIER 2: THE INVERTED HEADLINE ═══ -->
+  <div class="tier">
+    <div class="tier-header">
+      <div class="tier-dot" style="background: var(--orange);"></div>
+      <div class="tier-meta">
+        <div class="tier-label">Tier 2</div>
+        <div class="tier-title">The Inverted Headline</div>
+      </div>
+      <div class="tier-line"></div>
+    </div>
+    <div class="signals-grid">
+
+      <div class="signal-card orange">
+        <div class="signal-number">#04</div>
+        <div class="signal-title">Robots Take the Jobs Humans Don&rsquo;t Want</div>
+        <div class="signal-source">Automotive Dive &middot; Apr 8</div>
+        <div class="signal-body">Boston Dynamics&rsquo; Atlas humanoid robot is entering automotive factories. The headline writes itself: <em>robots replace workers.</em> The reality: traditional factory robots have never reduced total automotive employment. Humanoids are targeting tasks that are <em>dangerous, repetitive, and chronically unfilled.</em> The jobs nobody wanted are now the jobs nobody has to take.</div>
+        <a class="signal-link" href="https://www.wardsauto.com/news/taking-the-jobs-humans-dont-want-the-ironic-promise-of-the-humanoid-robot/815179/" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card orange">
+        <div class="signal-number">#05</div>
+        <div class="signal-title">Food Delivery Isn&rsquo;t for the Privileged &mdash; It&rsquo;s for the Squeezed</div>
+        <div class="signal-source">Restaurant Business &middot; Apr 8</div>
+        <div class="signal-body">The K-shaped economy narrative says delivery is a luxury. The data says the opposite: <em>lower-income consumers are increasing delivery orders</em> even as they cut restaurant visits. DoorDash is investing in EV startups to automate delivery further. The people everyone assumed were being left behind by the platform economy are actually <em>its fastest-growing users.</em></div>
+        <a class="signal-link" href="https://restaurantbusinessonline.com/technology/food-delivery-turns-k-shaped-economy-its-head" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card orange">
+        <div class="signal-number">#06</div>
+        <div class="signal-title">Closing Stores Is the New Growth Strategy</div>
+        <div class="signal-source">Restaurant Business &middot; Apr 8</div>
+        <div class="signal-body">Noodles &amp; Company and Jack in the Box report that <em>closing locations improved their same-store sales.</em> Meanwhile, a 59-unit Carl&rsquo;s Jr. franchisee that didn&rsquo;t shrink filed for bankruptcy, blaming California&rsquo;s $20 minimum wage. The first read: closures mean failure. The second read: <em>the ones who shrank survived. The ones who stayed big went under.</em></div>
+        <a class="signal-link" href="https://restaurantbusinessonline.com/financing/restaurant-chains-are-closing-their-way-sales-success" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card orange">
+        <div class="signal-number">#07</div>
+        <div class="signal-title">The $20 Wage That Killed a Franchise &mdash; or Did the Brand?</div>
+        <div class="signal-source">Restaurant Business &middot; Apr 8</div>
+        <div class="signal-body">Sun Gir, a major Carl&rsquo;s Jr. franchisee, filed Chapter 11 citing California&rsquo;s $20 fast-food minimum wage. First read: regulation killed the business. But the filing also reveals <em>declining brand performance, reduced marketing effectiveness, and multiple CEO changes</em> at the franchisor level. Was it the wage &mdash; or a brand that was already dying? <em>The bankruptcy blames the regulation. The data blames the company.</em></div>
+        <a class="signal-link" href="https://restaurantbusinessonline.com/financing/bankrupt-carls-jr-franchisee-blames-its-financial-problems-californias-20-wage" target="_blank" rel="noopener">Source</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ TIER 3: THE MISNAMED THING ═══ -->
+  <div class="tier">
+    <div class="tier-header">
+      <div class="tier-dot" style="background: var(--yellow);"></div>
+      <div class="tier-meta">
+        <div class="tier-label">Tier 3</div>
+        <div class="tier-title">The Misnamed Thing</div>
+      </div>
+      <div class="tier-line"></div>
+    </div>
+    <div class="signals-grid">
+
+      <div class="signal-card yellow">
+        <div class="signal-number">#08</div>
+        <div class="signal-title">The Oldest Octopus Is Not an Octopus</div>
+        <div class="signal-source">EurekAlert! &middot; Apr 8</div>
+        <div class="signal-body">For decades, the 300-million-year-old fossil <em>Pohlsepia mazonensis</em> was classified as the world&rsquo;s oldest octopus. Synchrotron imaging just revealed <em>tiny teeth hidden inside the rock</em> &mdash; proving it&rsquo;s actually a nautiloid relative. A foundational claim in cephalopod evolution was wrong. Not from fraud, not from negligence &mdash; from <em>insufficient resolution.</em> The truth was there the whole time. We just couldn&rsquo;t see it.</div>
+        <a class="signal-link" href="https://www.eurekalert.org/news-releases/1122545" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card yellow">
+        <div class="signal-number">#09</div>
+        <div class="signal-title">AI &ldquo;Helps&rdquo; Creativity &mdash; by Making Everything the Same</div>
+        <div class="signal-source">AdExchanger &middot; Apr 8</div>
+        <div class="signal-body">83% of ad executives now deploy AI in creative processes, up from 60% in 2024. The pitch: faster ideation, more output. The reality: studies show AI-assisted teams produce <em>strong but less diverse ideas.</em> Campaigns converge. Brands blur. The tool that was supposed to amplify creativity is <em>quietly flattening it</em> &mdash; and the industry is calling this progress.</div>
+        <a class="signal-link" href="https://www.adexchanger.com/data-driven-thinking/the-creativity-trade-off-what-marketers-risk-losing-in-the-age-of-ai/" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card yellow">
+        <div class="signal-number">#10</div>
+        <div class="signal-title">Streaming &ldquo;Democratized&rdquo; Music &mdash; Globally, the Same Paradox</div>
+        <div class="signal-source">EurekAlert! &middot; Apr 8</div>
+        <div class="signal-body">Survey of 1,200 musicians across five countries: 81% say streaming is important. 77% earn under &euro;10,000 annually from music. <em>83% are dissatisfied with royalties.</em> Nigerian artists report the most positive impact (83%). Dutch artists the least (14%). The &ldquo;democratization&rdquo; narrative assumed global access = global benefit. <em>It delivered global visibility and local poverty.</em></div>
+        <a class="signal-link" href="https://www.eurekalert.org/news-releases/1123042" target="_blank" rel="noopener">Source</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ TIER 4: THE SECOND READ ═══ -->
+  <div class="tier">
+    <div class="tier-header">
+      <div class="tier-dot" style="background: var(--blue);"></div>
+      <div class="tier-meta">
+        <div class="tier-label">Tier 4</div>
+        <div class="tier-title">The Second Read</div>
+      </div>
+      <div class="tier-line"></div>
+    </div>
+    <div class="signals-grid">
+
+      <div class="signal-card blue">
+        <div class="signal-number">#11</div>
+        <div class="signal-title">Nobody Teaches the Skill That Matters Most: Deciding</div>
+        <div class="signal-source">eSchool News &middot; Apr 8</div>
+        <div class="signal-body">41% of U.S. job postings require decision-making skills. In technical fields, 68%. Jobs demanding strong decision skills pay a <em>23% wage premium.</em> Yet almost no K&ndash;12 curriculum teaches decision-making as a discrete skill. Schools teach facts. They don&rsquo;t teach <em>how to weigh facts when the facts conflict</em> &mdash; which is exactly what the first read gets wrong.</div>
+        <a class="signal-link" href="https://www.eschoolnews.com/innovative-teaching/2026/04/08/career-readiness-starts-with-a-critical-undertaught-skill-decision-education/" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card blue">
+        <div class="signal-number">#12</div>
+        <div class="signal-title">Critical Thinking Outranks AI in the Supply Chain</div>
+        <div class="signal-source">Total Retail &middot; Apr 8</div>
+        <div class="signal-body">AI is transforming retail logistics &mdash; but the #1 asset isn&rsquo;t the algorithm. It&rsquo;s <em>the human who knows when the algorithm is wrong.</em> Critical thinking &mdash; the ability to evaluate, challenge, and override AI outputs &mdash; is now the top logistics skill. <em>The second read requires a reader who doesn&rsquo;t trust the first one.</em></div>
+        <a class="signal-link" href="https://www.mytotalretail.com/article/the-human-advantage-in-an-ai-driven-world-why-critical-thinking-is-the-ultimate-retail-logistics-asset/" target="_blank" rel="noopener">Source</a>
+      </div>
+
+      <div class="signal-card blue">
+        <div class="signal-number">#13</div>
+        <div class="signal-title">200,000 People, 22 Countries: The Flourishing Data Is Now Open</div>
+        <div class="signal-source">EurekAlert! &middot; Apr 8</div>
+        <div class="signal-body">The Global Flourishing Study &mdash; the largest empirical investigation of human well-being &mdash; just released its data publicly. 200,000 participants across 22 countries, measured across six domains: happiness, health, meaning, character, relationships, financial stability. Early findings: <em>wealth and purpose move in opposite directions. Youth are the least flourishing cohort.</em> The first read said progress is linear. The data says it&rsquo;s not.</div>
+        <a class="signal-link" href="https://www.eurekalert.org/news-releases/1123387" target="_blank" rel="noopener">Source</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ SYNTHESIS ═══ -->
+  <div class="synthesis">
+    <div class="synthesis-eyebrow">&#9889; The Meta-Pattern</div>
+    <div class="synthesis-title">First-Read Failure</div>
+    <div class="synthesis-quote">The most dangerous satisfying answer is the one that arrives first &mdash; because it stops you from looking for the real one. Every tier in this brief tells the same story: the correction was hiding in the same data that produced the error.</div>
+    <div class="drift-list">
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In public health</strong> &mdash; a statistical artifact created a phantom crisis that triggered real policy responses</div>
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In trade policy</strong> &mdash; a bilateral win masked a systemic loss that made the original problem worse</div>
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In automotive</strong> &mdash; a product&rsquo;s &ldquo;failure&rdquo; was the ultimate success of its own idea</div>
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In paleontology</strong> &mdash; 300 million years of misidentification, corrected by a better scanner</div>
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In food delivery</strong> &mdash; the &ldquo;luxury service&rdquo; is most used by those with the least</div>
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In restaurants</strong> &mdash; shrinking is growing, and the bankrupt blame the regulation while the data blames the brand</div>
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In creativity</strong> &mdash; the tool that accelerates ideas is quietly killing their diversity</div>
+      <div class="drift-item"><span class="arrow">&rarr;</span> <strong>In music</strong> &mdash; global access delivered global visibility and local poverty</div>
+    </div>
+    <div class="synthesis-insight">
+      The leaders who survive the next decade won&rsquo;t be the ones with the fastest reads. They&rsquo;ll be the ones who <strong>build in a second look</strong> &mdash; who treat every first impression as a hypothesis, not a conclusion. The signals are clear: <strong>the correction is always in the data.</strong> The question is whether you have the discipline, the tools, and the room to find it before the first read becomes policy, strategy, or a quarterly earnings call. Decision education, critical thinking, open empirical data &mdash; Tier 4 isn&rsquo;t the afterthought. <strong>It&rsquo;s the infrastructure that makes the second read possible.</strong>
+    </div>
+  </div>
+
+  <!-- ═══ STATS ═══ -->
+  <div class="stat-bar">
+    <div class="stat">
+      <div class="stat-value">265</div>
+      <div class="stat-label">Signals Scanned</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">13</div>
+      <div class="stat-label">Collision Hits</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">4.9<span class="unit">%</span></div>
+      <div class="stat-label">Hit Rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">4</div>
+      <div class="stat-label">Signal Tiers</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <div class="footer-left"><a href="https://jedionthefly.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">JOTF SIGNAL INTELLIGENCE &middot; THE FORCE &middot; APRIL 2026</a></div>
+  <div style="font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;letter-spacing:0.5px;"><a href="https://jedionthefly.com/oracle" target="_blank" rel="noopener" style="color:var(--emerald);text-decoration:none;transition:color 0.15s ease;">Explore More Jedi Signal Collections &rarr;</a></div>
+  <div class="footer-right"><a href="https://jedionthefly.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">&copy; JediOnTheFly 2026</a></div>
+</div>
+
+</div>
+</body>
+</html>

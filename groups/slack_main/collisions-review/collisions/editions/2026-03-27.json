@@ -1,0 +1,352 @@
+{
+  "slug": "enterprise-ai-march-2026",
+  "dateRange": "March 16-27, 2026",
+  "publishDate": "2026-03-27",
+  "metaTitle": "Enterprise+AI Signal Collisions — March 27, 2026 | Jedi On The Fly",
+  "metaDescription": "Signal collisions from 40+ Enterprise+AI stories. Where frontier science meets boardroom strategy. The Now and the Next for corporate innovation teams.",
+  "ogTitle": "Enterprise+AI Signal Collisions — March 27, 2026",
+  "ogDescription": "Cross-domain signal collisions revealing the shape of what's coming.",
+  "manifesto": "Here we explore seven 'collisions' we detected in the past two weeks of enterprise AI signal. Each one paints a picture of where we are, and where we're headed.",
+  "stats": [
+    { "number": "40+", "label": "Signals Tracked" },
+    { "number": "7", "label": "Collisions Detected" },
+    { "number": "12", "label": "Industries" },
+    { "number": "30+", "label": "Publications" },
+    { "number": "2 weeks", "label": "Signal Window" }
+  ],
+  "collisions": [
+    {
+      "number": "01",
+      "title": "The Invisible C-Suite",
+      "subtitle": "When AI fills the corner office before anyone notices",
+      "narrative": "<strong>Mastercard</strong> launched a Virtual CFO for small businesses — an AI that delivers executive-level financial insight to companies that could never afford a flesh-and-blood one. The same week, <strong>Workday</strong> started billing by <em>outcomes</em> (cases deflected, contracts analyzed) rather than subscription seats, effectively pricing AI by the strategic decision, not the tool. Meanwhile, <strong>Kensho</strong> (S&P Global's AI arm) deployed a multi-agent framework to unify decades of fragmented financial data into trusted answers. And the workforce data? <strong>Datarails</strong> reports nearly one in three finance job postings now require AI skills. Add it all up and you get a virtual executive class, scaling across every company too small to have ever hired one.",
+      "now": "<strong>AI agents are occupying executive-level functions</strong> — not just automating tasks, but making the kinds of strategic calls (cash flow forecasting, risk assessment, contract analysis) that used to require an MBA and 15 years of experience. Small businesses get virtual CFOs. Enterprises get outcome-based pricing. The strategic layer is being democratized.",
+      "next": "<strong>The virtual C-suite becomes table stakes.</strong> Within 18 months, every SMB platform will bundle AI executives as a feature. Enterprise vendors will compete on decision quality, not feature lists. The org chart gains a new species — virtual executives that never sleep, never politic, and never take PTO. The question for boards: <em>which human roles remain?</em>",
+      "signals": [
+        {
+          "source": "Banking Dive",
+          "title": "Mastercard launches AI-powered Virtual CFO for small businesses",
+          "url": "https://www.bankingdive.com/news/mastercard-bets-ai-can-fill-cfo-gap-small-businesses/815564/",
+          "summary": "First in Mastercard's virtual C-suite series — executive-level financial insights for businesses that can't afford a human CFO."
+        },
+        {
+          "source": "HR Executive",
+          "title": "Workday shifts to outcome-based billing for autonomous HR & finance agents",
+          "url": "https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/",
+          "summary": "No longer selling seats — Workday bills by cases deflected, contracts analyzed, processes completed. A business-model earthquake."
+        },
+        {
+          "source": "LangChain",
+          "title": "Kensho built a multi-agent framework for trusted financial data retrieval",
+          "url": "https://blog.langchain.com/customers-kensho/",
+          "summary": "S&P Global's AI arm unifies fragmented financial data through coordinated agent teams using LangGraph."
+        },
+        {
+          "source": "CFO Dive",
+          "title": "Nearly 1 in 3 finance roles now require AI skills",
+          "url": "https://www.cfodive.com/news/one-three-finance-roles-now-call-ai-skills-datarails/815504/",
+          "summary": "Datarails report shows AI literacy is becoming a baseline requirement, not a differentiator, in corporate finance."
+        }
+      ]
+    },
+    {
+      "number": "02",
+      "title": "The Agent Infrastructure Arms Race",
+      "subtitle": "The entire compute stack is being rebuilt for a workforce that doesn't breathe",
+      "narrative": "<strong>Cloudflare</strong> launched Dynamic Workers — ditching containers entirely to run AI agent code 100× faster. <strong>Arm</strong> entered the data center chip race with an AGI CPU co-developed with Meta, optimized specifically for agentic AI workloads. <strong>Palantir</strong> and <strong>NVIDIA</strong> partnered on an AI OS Reference Architecture to streamline deployment from silicon to application. NVIDIA also unveiled <strong>OpenShell</strong>, an open-source secure runtime purpose-built for autonomous agents. And underneath all of it, <strong>Emerald AI</strong> is working with power utilities to autonomously manage data center energy demand on the grid. None of this is a tune-up. The entire compute stack is being rebuilt from the silicon up for a workforce that runs on watts, not coffee.",
+      "now": "<strong>Every layer of the compute stack — silicon, runtime, orchestration, power — is being redesigned for agent workloads.</strong> Containers are too slow. General-purpose CPUs aren't enough. The power grid wasn't built for this. A parallel infrastructure is emerging specifically for non-human workers.",
+      "next": "<strong>\"Agent-native\" becomes the new \"cloud-native.\"</strong> Just as every company had to migrate from on-prem to cloud, the next migration is from cloud-native to agent-native infrastructure. Companies that don't architect for agent-density will hit walls — on latency, cost, and energy. <em>Your data center strategy is now your AI strategy.</em>",
+      "signals": [
+        {
+          "source": "VentureBeat",
+          "title": "Cloudflare's Dynamic Workers ditch containers — 100× faster for AI agent code",
+          "url": "https://venturebeat.com/infrastructure/cloudflares-new-dynamic-workers-ditch-containers-to-run-ai-agent-code-100x",
+          "summary": "New lightweight sandboxing designed from scratch for agent workloads. Containers are yesterday's abstraction."
+        },
+        {
+          "source": "Data Center Knowledge",
+          "title": "Arm enters data center chip race with AGI CPU for AI infrastructure",
+          "url": "https://www.datacenterknowledge.com/data-center-chips/arm-enters-data-center-chip-fray-with-agi-cpu-for-ai-infrastructure",
+          "summary": "Co-developed with Meta. Purpose-built for agentic workloads. Arm shifts from licensing designs to shipping silicon."
+        },
+        {
+          "source": "Network World",
+          "title": "Palantir + NVIDIA: AI OS Reference Architecture for data centers",
+          "url": "https://www.networkworld.com/article/4145858/palantir-partners-with-nvidia-to-streamline-ai-data-center-deployment.html",
+          "summary": "End-to-end operating system from hardware acquisition to application deployment. The full-stack AI play."
+        },
+        {
+          "source": "NVIDIA Blog",
+          "title": "NVIDIA OpenShell — secure-by-design runtime for autonomous agents",
+          "url": "https://blogs.nvidia.com/blog/secure-autonomous-ai-agents-openshell/",
+          "summary": "Open-source agent runtime with built-in security guardrails. Part of NVIDIA's Agent Toolkit at GTC 2026."
+        },
+        {
+          "source": "NVIDIA Blog",
+          "title": "Emerald AI + NVIDIA: autonomous grid energy management for AI factories",
+          "url": "https://blogs.nvidia.com/blog/power-flexible-ai-factories-energy-grid/",
+          "summary": "AI data centers autonomously adjusting their own power consumption to stabilize the grid. The infrastructure managing itself."
+        }
+      ]
+    },
+    {
+      "number": "03",
+      "title": "Security's New Client: The Machine",
+      "subtitle": "When your firewall needs to protect AI from AI",
+      "narrative": "<strong>Cisco</strong> went all-in on agentic AI security with DefenseClaw and AI Defense: Explorer Edition. <strong>Palo Alto Networks</strong> updated Prisma AIRS to discover and manage AI agents across the enterprise — not just monitor them, but identify rogue ones. <strong>Deutsche Telekom</strong> launched \"AI Agent Ready,\" a security initiative specifically for controlling agents within enterprise IT. <strong>LangChain</strong> published a framework for two distinct types of agent authorization. And in the shadows, <strong>No Jitter</strong> reported on how \"shadow AI\" — unauthorized AI tools used by employees — is leaking company knowledge into public models. Meanwhile, <strong>Booz Allen Hamilton</strong> warned that AI-powered cyberattacks now unfold in <em>minutes</em>, not hours. The security industry's fastest-growing client base now runs on GPUs.",
+      "now": "<strong>Security vendors are pivoting from protecting humans to policing AI agents.</strong> This isn't incremental — it's a category shift. Agents need identities, permissions, audit trails, and behavioral guardrails. Shadow AI is the new shadow IT, but faster and leakier. And on the offensive side, AI-powered attacks compress what used to take weeks into minutes.",
+      "next": "<strong>Agent governance becomes a board-level requirement.</strong> Every enterprise will need an \"agent identity layer\" — who is this agent, what can it access, who authorized it, and what did it do? Expect agent-specific compliance frameworks within 12 months. <em>The CISO's job just doubled — half the attack surface is now your own workforce of machines.</em>",
+      "signals": [
+        {
+          "source": "Network World",
+          "title": "Cisco goes all-in on agentic AI security",
+          "url": "https://www.networkworld.com/article/4148823/cisco-goes-all-in-on-agentic-ai-security.html",
+          "summary": "DefenseClaw and AI Defense: Explorer Edition — Cisco's new offerings built specifically for securing autonomous agent workloads."
+        },
+        {
+          "source": "Network World",
+          "title": "Palo Alto updates Prisma AIRS to discover and manage AI agents",
+          "url": "https://www.networkworld.com/article/4149026/palo-alto-updates-security-platform-to-discover-ai-agents-2.html",
+          "summary": "Not just monitoring — detecting and managing rogue AI agents, models, and data pipelines across the enterprise."
+        },
+        {
+          "source": "Light Reading",
+          "title": "Deutsche Telekom's \"AI Agent Ready\" security initiative",
+          "url": "https://www.lightreading.com/ai-machine-learning/dt-keeps-ai-agents-in-line-with-new-security-initiative",
+          "summary": "A telco building security protocols specifically for controlling AI agents within enterprise IT and network systems."
+        },
+        {
+          "source": "No Jitter",
+          "title": "How to respond when shadow AI leaks company knowledge",
+          "url": "https://www.nojitter.com/ai-automation/how-to-respond-when-shadow-ai-leaks-company-knowledge",
+          "summary": "Employees using unauthorized AI tools are inadvertently training public models on proprietary data. The new insider threat."
+        },
+        {
+          "source": "Government Technology",
+          "title": "Booz Allen: AI drives cyber attacks that unfold in minutes",
+          "url": "https://www.govtech.com/security/report-ai-drives-cyber-attacks-that-unfold-in-minutes",
+          "summary": "AI-powered attacks compressing timelines from weeks to minutes. The offense is accelerating faster than the defense."
+        },
+        {
+          "source": "LangChain",
+          "title": "Two different types of agent authorization",
+          "url": "https://blog.langchain.com/two-different-types-of-agent-authorization/",
+          "summary": "LangSmith Fleet introduces two authorization models for AI agents — the beginning of agent-level access control standards."
+        }
+      ]
+    },
+    {
+      "number": "04",
+      "title": "Healthcare's Autonomous Leap",
+      "subtitle": "From diagnosis to drug discovery, agents are scrubbing in",
+      "narrative": "<strong>Insilico Medicine</strong> launched PandaClaw — an AI agent that empowers biologists to run autonomous drug discovery workflows, not just analysis. <strong>IBM</strong> deployed Granite speech models on Royal Flying Doctor Service flights in remote Australia, transcribing patient care in noisy, constrained environments that would defeat most humans. <strong>Perplexity</strong> launched Perplexity Health, pulling electronic health records and wearable data into a consumer search engine for your own body. <strong>AWS</strong> introduced Amazon Connect Health at HIMSS 2026, deploying agentic AI to autonomously assist healthcare teams. <strong>Roche</strong> is scaling 3,500+ NVIDIA Blackwell GPUs for pharma AI. And researchers in China validated an AI clinical decision support system that autonomously analyzes stroke imaging and recommends treatment. The pilot phase is over. Healthcare went straight to production.",
+      "now": "<strong>Healthcare AI is moving from analytical assistance to autonomous clinical action.</strong> Agents aren't suggesting — they're discovering drugs, transcribing trauma care in-flight, recommending stroke treatment, and managing patient triage without human prompting. The shift from \"copilot\" to \"operator\" is happening fastest where the stakes are highest.",
+      "next": "<strong>The patient journey becomes agent-orchestrated end to end.</strong> From initial symptom search (Perplexity Health) to diagnostic imaging (stroke CDSS) to drug discovery (PandaClaw) to clinical documentation (IBM Granite) — each step is being handed to a specialist agent. Within 2 years, <em>the continuity of care will be maintained by machines, not shift schedules.</em>",
+      "signals": [
+        {
+          "source": "Alpha Galileo",
+          "title": "Insilico Medicine launches PandaClaw: agentic AI for drug discovery",
+          "url": "https://www.alphagalileo.org/en-gb/Item-Display?ItemId=270666",
+          "summary": "Not just analysis — autonomous therapeutic discovery workflows integrated into the PandaOmics platform."
+        },
+        {
+          "source": "IBM Research",
+          "title": "IBM Granite speech model transcribes care on Royal Flying Doctor flights",
+          "url": "https://research.ibm.com/blog/granite-speech-for-improved-patient-care",
+          "summary": "AI documentation in noisy, constrained environments — remote Australia's flying trauma response."
+        },
+        {
+          "source": "Modern Healthcare",
+          "title": "Perplexity Health: AI search engine for your own body",
+          "url": "https://www.modernhealthcare.com/health-tech/mh-perplexity-health-ai-ehr-wearable-data/",
+          "summary": "Consumer health search that consolidates EHRs, wearable data, and medical literature. Your health, searchable."
+        },
+        {
+          "source": "Healthcare Dive",
+          "title": "AWS launches Amazon Connect Health — agentic AI for healthcare teams",
+          "url": "https://www.healthcaredive.com/spons/beyond-the-hype-agentic-ai-takes-center-stage-at-himss-2026/814645/",
+          "summary": "Autonomous patient assistance at HIMSS 2026. The shift from chatbot to clinical agent."
+        },
+        {
+          "source": "NVIDIA Blog",
+          "title": "Roche scales 3,500+ Blackwell GPUs for pharma AI",
+          "url": "https://blogs.nvidia.com/blog/roche-ai-factories-omniverse/",
+          "summary": "Massive compute infrastructure deployed across hybrid cloud and on-prem for pharmaceutical AI research."
+        }
+      ]
+    },
+    {
+      "number": "05",
+      "title": "The Token Economy Arrives",
+      "subtitle": "When every company must answer: do we sell labor or tokens?",
+      "narrative": "<strong>China Telecom</strong> announced that AI tokens — not bandwidth, not data, not minutes — are becoming the core unit of its business model. Think about that: a telco that once sold bits now sells cognition. The same week, <strong>Workday</strong> abandoned per-seat pricing for outcome-based billing — you pay for contracts analyzed, not users logged in. <strong>EasyJet</strong> shifted from TV-led campaigns to AI-powered content creation and saw a 350% increase in output without increasing costs. And <strong>Sierra</strong> launched Ghostwriter, packaging AI agents as a service — agents-as-a-service, billed on delivery. Across all of it, the same pattern: the price tag is moving from what humans do to what AI produces.",
+      "now": "<strong>Business models are being repriced around AI outputs.</strong> Per-seat, per-user, per-minute — these metrics assumed human operators. When the operator is an agent, the value shifts to outcomes and tokens. A telco selling tokens. An HR platform billing by cases resolved. An airline producing 350% more content at flat cost. <em>The denominator of every business equation is changing.</em>",
+      "next": "<strong>Every company becomes a token company.</strong> CFOs will need to understand token economics the way they understand headcount today. Margins won't be measured in labor efficiency but in token efficiency — cost per insight, cost per decision, cost per creation. Companies that don't rethink their unit economics around AI output will be undercut by those that do. <em>Price per human hour is giving way to price per token.</em>",
+      "signals": [
+        {
+          "source": "Light Reading",
+          "title": "China Telecom launches into the token economy",
+          "url": "https://www.lightreading.com/ai-machine-learning/china-telecom-launches-into-the-token-economy",
+          "summary": "From traffic-based to token-value operations. A telecom giant pricing its future in AI tokens, not bandwidth."
+        },
+        {
+          "source": "Sierra AI",
+          "title": "Sierra: Agents as a Service — Ghostwriter launches",
+          "url": "https://sierra.ai/blog/agents-as-a-service",
+          "summary": "AI agent-builder that lets businesses deploy customer experience agents as a service. The agent marketplace opens."
+        },
+        {
+          "source": "Marketing Week",
+          "title": "EasyJet: 350% more content at flat cost with AI + creators",
+          "url": "https://www.marketingweek.com/easyjet-ad-creators-and-ai/",
+          "summary": "Shifted from TV-led campaigns to AI-powered creator content. Output exploded. Budget didn't."
+        },
+        {
+          "source": "HR Executive",
+          "title": "Workday bills by outcomes, not seats",
+          "url": "https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/",
+          "summary": "Cases deflected, contracts analyzed — outcome-based pricing signals the end of per-seat SaaS."
+        }
+      ]
+    },
+    {
+      "number": "06",
+      "title": "When Agents Go Kinetic",
+      "subtitle": "Autonomous systems are leaving the screen and entering the physical world",
+      "narrative": "<strong>Shield AI</strong> and Swiss startup <strong>Destinus</strong> wrapped a two-month autonomous drone test campaign in Spain — military-grade AI pilots making decisions at flight speed. <strong>Halliburton</strong> and <strong>ExxonMobil</strong> executed the industry's first fully automated digital well offshore Guyana — a closed-loop drilling system that steered a drill bit within reservoir boundaries with no human hand on the stick. <strong>Schneider Electric</strong> reports the energy sector is targeting 50% full automation by 2030. And <strong>Anthropic</strong> announced that Claude can now use your computer — navigating screens, clicking buttons, filling forms. Drilling, flying, managing power grids, clicking through your desktop. The software left the screen.",
+      "now": "<strong>Autonomous agents are entering physical reality.</strong> Drilling wells. Flying combat drones. Managing power grids. Operating computer interfaces. The digital-physical boundary is dissolving as agents gain the ability to act on the world, not just analyze it. These aren't prototypes — Halliburton's well is offshore Guyana, right now.",
+      "next": "<strong>The \"embodied agent\" becomes the default deployment model.</strong> Every industrial process with a human operator loop becomes a candidate for autonomous handoff. Within 3 years, the distinction between \"AI software\" and \"robotics\" collapses — they're the same agent, just with different actuators. <em>The question isn't whether agents can operate in the real world. It's which real-world domains they'll reach last.</em>",
+      "signals": [
+        {
+          "source": "Breaking Defense",
+          "title": "Shield AI + Destinus: autonomous drone tests in Europe",
+          "url": "https://breakingdefense.com/2026/03/swiss-destinus-shield-ai-wrap-european-drone-autonomy-test-campaign/",
+          "summary": "Two-month flight campaign in Spain integrating AI-driven autonomous decision-making for military drone operations."
+        },
+        {
+          "source": "JPT (SPE)",
+          "title": "Halliburton + ExxonMobil: first fully automated digital well",
+          "url": "https://jpt.spe.org/halliburton-reports-fully-automated-well-placement-offshore-guyana",
+          "summary": "Closed-loop drilling system steering within reservoir boundaries, zero human intervention. Offshore Guyana, operational now."
+        },
+        {
+          "source": "Gas Processing News",
+          "title": "Schneider Electric: energy sector targeting 50% autonomy by 2030",
+          "url": "https://gasprocessingnews.com/news/2026/03/schneider-electric-global-study-shows-energy-industry-ramping-up-investment-in-autonomous-operations-by-2030-as-ai-reshapes-performance/",
+          "summary": "Global study shows energy and chemicals sector accelerating toward autonomous operations at industrial scale."
+        },
+        {
+          "source": "Computerworld",
+          "title": "Claude Code can now use your computer",
+          "url": "https://www.computerworld.com/article/4149568/now-claude-code-and-cowork-can-use-your-computer.html",
+          "summary": "Anthropic's Claude navigates screens, clicks buttons, fills forms. The agent leaves the chat window and enters your desktop."
+        }
+      ]
+    },
+    {
+      "number": "07",
+      "title": "The Agentic Enterprise Is Already Here",
+      "subtitle": "From agent teams at Thermo Fisher to 911 dispatch in Richmond — it's operational",
+      "narrative": "Every example here is already in production. <strong>Thermo Fisher Scientific</strong> is deploying coordinated teams of specialized agents, entire agent organizations. <strong>Ada</strong> launched a unified Reasoning Engine that lets businesses deploy parallel AI agents for customer service. <strong>Thomson Reuters</strong> built CoCounsel Legal, an AI legal research tool woven natively into attorney workflows. The <strong>City of Richmond, Virginia</strong> deployed Amazon Connect for 911 calls — AI routing emergencies and deflecting non-emergencies to reduce dispatcher workload. <strong>U.S. Bank</strong> built an in-house Design Assistant that reviews, flags, and improves designer work. And <strong>Zoom</strong> is positioning human conversation itself as its strategic edge, using meeting data to power an agentic layer. Nobody at these companies is still asking \"should we deploy agents?\" The live question is how many, how fast, and who manages them.",
+      "now": "<strong>Enterprises aren't piloting agents — they're deploying agent teams.</strong> Thermo Fisher has agent organizations. Ada runs parallel agents. Thomson Reuters has an AI co-counsel. Richmond uses AI for 911 dispatch. This is not a technology evaluation phase. This is rollout. The companies in this collision aren't asking \"if\" — they're solving \"how fast.\"",
+      "next": "<strong>The \"agent headcount\" becomes a real line item.</strong> Enterprises will measure and manage their AI workforce the same way they manage human teams — roles, performance metrics, authorization levels, collaboration patterns. HR won't just manage people. IT won't just manage tools. <em>A new function emerges: Agent Operations — the management of your non-human workforce.</em>",
+      "signals": [
+        {
+          "source": "VentureBeat",
+          "title": "Thermo Fisher: coordinated agent teams move the needle for enterprises",
+          "url": "https://venturebeat.com/orchestration/the-consequential-ai-work-that-actually-moves-the-needle-for-enterprises",
+          "summary": "Shift from single-task assistants to building coordinated teams of specialized agents. Agent organizations, not tools."
+        },
+        {
+          "source": "No Jitter",
+          "title": "Ada's AI agents work in parallel to get more done",
+          "url": "https://www.nojitter.com/ai-automation/ada-ai-agents-work-in-parallel-to-get-more-done",
+          "summary": "Unified Reasoning Engine enables businesses to build, manage, and optimize parallel customer-facing AI agents."
+        },
+        {
+          "source": "Thomson Reuters",
+          "title": "Thomson Reuters CoCounsel Legal: AI research you can trust",
+          "url": "https://legal.thomsonreuters.com/blog/beyond-chatbots-how-cocounsel-legal-delivers-ai-legal-research-you-can-trust/",
+          "summary": "Westlaw + Practical Law content powers an AI legal research agent integrated natively into attorney workflows."
+        },
+        {
+          "source": "StateTech Magazine",
+          "title": "Richmond deploys AI for 911 emergency dispatch",
+          "url": "https://statetechmagazine.com/article/2026/03/richmond-reclaims-precious-seconds-911-calls-amazon-connect",
+          "summary": "Amazon Connect routes calls, handles non-emergencies, reduces dispatcher workload. AI in life-or-death operations."
+        },
+        {
+          "source": "Banking Dive",
+          "title": "U.S. Bank's AI Design Assistant reviews and improves designer work",
+          "url": "https://www.bankingdive.com/news/us-bank-designers-ai-tool-digital-banking/815640/",
+          "summary": "In-house AI that flags issues, suggests improvements, and augments the design process. The creative copilot is real."
+        },
+        {
+          "source": "Computerworld",
+          "title": "Zoom: human conversation as its edge in the agentic AI era",
+          "url": "https://www.computerworld.com/article/4149428/zoom-sees-human-conversation-as-its-edge-in-the-agentic-ai-era.html",
+          "summary": "Leveraging meeting and conversation data to power an agentic layer. The company that captured talk now deploys agents that listen."
+        }
+      ]
+    }
+  ],
+  "frontier": {
+    "description": "The research signals underneath the enterprise news. These breakthroughs — in compression, compute, cognition, and drug discovery — are the tectonic plates on which the business stories above are riding.",
+    "cards": [
+      {
+        "category": "Compute Efficiency",
+        "title": "Google's TurboQuant: extreme compression for AI vectors",
+        "url": "https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/",
+        "summary": "Novel algorithm drastically reduces memory footprint of high-dimensional vectors in AI key-value caches. Making big models run small."
+      },
+      {
+        "category": "Local AI Hardware",
+        "title": "Tenstorrent's QuietBox 2: run LLMs locally, not in the cloud",
+        "url": "https://spectrum.ieee.org/ai-workstation-looks-like-pcs",
+        "summary": "AI workstation with higher memory and efficiency than typical PCs. The infrastructure decentralizes — from data center to desktop."
+      },
+      {
+        "category": "Quantum + Classical",
+        "title": "Cleveland Clinic + IBM: quantum-classical protein simulation",
+        "url": "https://research.ibm.com/blog/cleveland-clinic-protein-qcsc",
+        "summary": "Hybrid quantum-classical workflow simulates the 303-atom Trp-cage miniprotein. Quantum computing meets drug discovery."
+      },
+      {
+        "category": "Semantic Calibration",
+        "title": "Apple: base LLMs develop semantic confidence beyond token prediction",
+        "url": "https://machinelearning.apple.com/research/trained-on-tokens",
+        "summary": "LLMs trained on next-token prediction inherently develop meaning-level calibration. They know what they don't know — without being taught."
+      },
+      {
+        "category": "AI Safety",
+        "title": "NC State identifies critical safety components in LLMs",
+        "url": "https://www.alphagalileo.org/en-gb/Item-Display?ItemId=270607",
+        "summary": "Researchers pinpoint specific components inside large language models that influence response safety. Controllable guardrails, from the inside out."
+      },
+      {
+        "category": "Autonomous Science",
+        "title": "Anthropic: long-running Claude for multi-day scientific computing",
+        "url": "https://anthropic.com/research/long-running-Claude",
+        "summary": "Multi-day autonomous AI agent workflows applied to scientific research. The lab assistant that runs experiments while you sleep."
+      },
+      {
+        "category": "Efficient Fine-tuning",
+        "title": "Amazon Science: optimizing LoRA placement for efficient fine-tuning",
+        "url": "https://www.amazon.science/blog/optimizing-lora-target-module-selection-for-efficient-fine-tuning",
+        "summary": "Smarter placement of low-rank adapters inside LLMs — more performance from less compute. Fine-tuning gets surgical."
+      },
+      {
+        "category": "Legacy Systems",
+        "title": "Amazon AGI Lab: agentic AI to manage legacy software",
+        "url": "https://www.amazon.science/blog/how-agentic-ai-helps-heal-the-systems-we-cant-replace",
+        "summary": "AI agents trained on simulations of legacy institutional software — managing outdated systems without replacing them. The digital archaeologist."
+      },
+      {
+        "category": "Human Intelligence",
+        "title": "Microsoft Research: will machines ever be truly intelligent?",
+        "url": "https://www.microsoft.com/en-us/research/podcast/will-machines-ever-be-intelligent/",
+        "summary": "Comparing transformer architectures with biological intelligence. The question isn't if machines think — it's whether they think like us."
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+34a726af074871e9d1fa27ec2ebd90f9429730266fb445c8256e8a7a959161f3  ./install-bootstrap.sh
+eb5733bc3c6bbe94c327659f2a0653db8da3d1cb1b5a7c793073378460201793  ./INSTALL.md
+68b4b899c83187c851e2b96f1b2b264ee83a8ba982fe074a2068a3279c76362d  ./package-manifest.json
+c284bd6683b7f9bfa61a467512634a3715ffeb33054452b79621f6aa7c0acb76  ./patches/container_agent-runner_src_index-ts.patch
+5f6639a7d4fdca795112712abd657cea9dbb205a6d7713d933fd2b7f69451a5e  ./payload/.claude/skills/export/SKILL.md
+121259bb8e3fe6380e8cad74121af7d3ae79e9849a6b2c20895c7bb4d9f153f5  ./payload/.claude/skills/install-package/SKILL.md
+4e5e2dd27e16897a62ce39b9d1b5368f30155673a423438b5afac349c7fd3452  ./payload/container/skills/multi-project/claude-md.template
+8bc5f3f9efef28ef5afccd6c9db60b7d11467513446b7e46b0df2db08aec53bb  ./payload/container/skills/multi-project/.gitignore.template
+0565e694c9e611b561154c1d12c2085d8842311ddc8918cbf7f82d69ee195078  ./payload/container/skills/multi-project/init.sh
+af435078a1d215a10257ca52945f6faf6ca387fc2e8abdeef04df47a9b056b69  ./payload/container/skills/multi-project/project.sh
+93959e1590790b6611d40aa19da69b79bfb8ebae6eca8ba686db082ba859f9b9  ./payload/container/skills/multi-project/schema.sql
+23a3bd9644a79f9ccb18f398b1461cf73c180dadf9a2aeed62f0a22977fc66fc  ./payload/container/skills/multi-project/SKILL.md
+b0252decbcfaf2b2a5db9676c4041ee9d5084bc44da1479d5dddb8a738dd85b4  ./payload/scripts/export/assemble.sh
+b69070739b2b7e81e7357c7ce43b7b93028cffd8725c7d6963c04b73fa9c2843  ./payload/scripts/export/extract-claude-md.sh
+19b9d7579811c9d7ce8a050c4ea8f72b08125206faa6ed6518d6c0051ee34857  ./payload/scripts/export/generate-patches.sh
+7e754580b53e1bd6d867316c2216c7b58c69450f0eb543d0c601d76369972231  ./payload/scripts/export/registry.sh
+5644115bd39763581691e059e1af9fc52133688d46945ebaa7b2798f320fa14b  ./payload/src_ref/index.ts

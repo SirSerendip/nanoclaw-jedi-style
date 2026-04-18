@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise+AI Signal Collisions — March 27, 2026 | Jedi On The Fly</title>
+<meta name="description" content="Signal collisions from 40+ Enterprise+AI stories. Where frontier science meets boardroom strategy. The Now and the Next for corporate innovation teams.">
+<meta property="og:title" content="Enterprise+AI Signal Collisions — March 27, 2026">
+<meta property="og:description" content="Cross-domain signal collisions revealing the shape of what's coming.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jedionthefly.com/oracle/enterprise-ai-march-2026">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   JOTF BRAND SYSTEM — Enterprise+AI Signal Collisions
+   "Je transforme le bruit en décision" — PORTHOS
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --magenta: #EC4899;
+  --magenta-light: #F472B6;
+  --magenta-dark: #DB2777;
+  --midnight-plum: #1A1520;
+  --dark-slate: #0F172A;
+  --slate-800: #1E293B;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748B;
+  --slate-400: #94A3B8;
+  --slate-300: #CBD5E1;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+  --slate-50: #F8FAFC;
+  --emerald: #10B981;
+  --amber: #D97706;
+  --creme: #FDF6EC;
+  /* Collision accent colors */
+  --collision-1: #EC4899; /* magenta — invisible c-suite */
+  --collision-2: #10B981; /* emerald — infrastructure */
+  --collision-3: #7B3FA0; /* violet — security */
+  --collision-4: #3BB8A0; /* teal — healthcare */
+  --collision-5: #D97706; /* amber — token economy */
+  --collision-6: #E8722A; /* orange — kinetic agents */
+  --collision-7: #5CB338; /* green — workforce */
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark-slate);
+  color: var(--slate-300);
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  color: var(--slate-50);
+  line-height: 1.2;
+}
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+}
+a { color: var(--magenta-light); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--magenta); text-decoration: underline; }
+
+/* ─── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes emerge {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes count-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+
+/* ─── SITE HEADER ────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--midnight-plum);
+  border-bottom: 2px solid var(--emerald);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header .brand {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--slate-50);
+}
+.site-header .brand span.jedi { color: var(--slate-400); }
+.site-header .brand span.otf { color: var(--magenta); }
+.site-header .oracle-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  border: 1px solid var(--emerald);
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+.header-accents {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  display: flex;
+}
+.header-accents .emerald-bar { flex: 3; background: var(--emerald); }
+.header-accents .magenta-bar { flex: 1; background: var(--magenta); }
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero {
+  margin-top: 56px;
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(236,72,153,0.08) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 50% at 20% 60%, rgba(16,185,129,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 50% at 80% 60%, rgba(217,119,6,0.06) 0%, transparent 60%),
+              var(--dark-slate);
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 1.2rem;
+  animation: emerge 0.8s ease both;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  color: var(--slate-50);
+  margin-bottom: 0.6rem;
+  animation: emerge 0.8s ease 0.15s both;
+}
+.hero h1 .accent { color: var(--magenta); }
+.hero .subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: var(--slate-400);
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  animation: emerge 0.8s ease 0.3s both;
+}
+.hero .edition-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--slate-500);
+  border: 1px solid var(--slate-700);
+  padding: 6px 16px;
+  border-radius: 4px;
+  animation: emerge 0.8s ease 0.45s both;
+}
+
+/* ─── STATS BAR ──────────────────────────────────────────── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 900px;
+}
+.stat-item {
+  text-align: center;
+}
+.stat-number {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--magenta);
+  display: block;
+}
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--slate-500);
+}
+
+/* ─── MANIFESTO ──────────────────────────────────────────── */
+.manifesto {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+}
+.manifesto p {
+  font-size: 1.15rem;
+  color: var(--slate-300);
+  line-height: 1.8;
+}
+.manifesto p strong { color: var(--slate-50); font-weight: 700; }
+.manifesto .highlight { color: var(--magenta-light); }
+
+/* ─── DIVIDER ────────────────────────────────────────────── */
+.section-divider {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-divider .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--slate-700), transparent);
+}
+.section-divider .diamond {
+  width: 8px; height: 8px;
+  transform: rotate(45deg);
+  background: var(--magenta);
+  flex-shrink: 0;
+}
+
+/* ─── COLLISION SECTION ──────────────────────────────────── */
+.collision-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.collision-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.collision-number {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.25;
+}
+.collision-title-block {
+  flex: 1;
+}
+.collision-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.collision-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.5rem;
+}
+.collision-subtitle {
+  font-size: 0.95rem;
+  color: var(--slate-400);
+  font-style: italic;
+}
+
+/* Now / What's Next blocks */
+.now-next-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+@media (max-width: 700px) {
+  .now-next-grid { grid-template-columns: 1fr; }
+}
+.now-block, .next-block {
+  border-radius: 8px;
+  padding: 1.8rem;
+  position: relative;
+}
+.now-block {
+  background: var(--slate-800);
+  border-left: 3px solid var(--emerald);
+}
+.next-block {
+  background: var(--slate-800);
+  border-left: 3px solid var(--magenta);
+}
+.block-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.now-block .block-label { color: var(--emerald); }
+.next-block .block-label { color: var(--magenta); }
+.now-block p, .next-block p {
+  font-size: 0.95rem;
+  color: var(--slate-300);
+  line-height: 1.7;
+}
+.now-block p strong, .next-block p strong { color: var(--slate-50); }
+
+/* Narrative body */
+.collision-narrative {
+  font-size: 1.05rem;
+  color: var(--slate-300);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.collision-narrative strong { color: var(--slate-100); }
+
+/* Signal cards grid */
+.signal-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.signal-card {
+  background: rgba(30,41,59,0.7);
+  border: 1px solid var(--slate-700);
+  border-radius: 6px;
+  padding: 1.2rem;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.signal-card:hover {
+  border-color: var(--slate-500);
+  transform: translateY(-2px);
+}
+.signal-card .source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate-500);
+  margin-bottom: 0.4rem;
+}
+.signal-card .card-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--slate-100);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+.signal-card .card-title a {
+  color: var(--slate-100);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.signal-card .card-title a:hover {
+  color: var(--magenta-light);
+}
+.signal-card .card-summary {
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  line-height: 1.5;
+}
+.signal-card .card-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Color-coded card accents by collision */
+.collision-1 .signal-card { border-top: 2px solid var(--collision-1); }
+.collision-2 .signal-card { border-top: 2px solid var(--collision-2); }
+.collision-3 .signal-card { border-top: 2px solid var(--collision-3); }
+.collision-4 .signal-card { border-top: 2px solid var(--collision-4); }
+.collision-5 .signal-card { border-top: 2px solid var(--collision-5); }
+.collision-6 .signal-card { border-top: 2px solid var(--collision-6); }
+.collision-7 .signal-card { border-top: 2px solid var(--collision-7); }
+
+.collision-1 .collision-number { color: var(--collision-1); }
+.collision-2 .collision-number { color: var(--collision-2); }
+.collision-3 .collision-number { color: var(--collision-3); }
+.collision-4 .collision-number { color: var(--collision-4); }
+.collision-5 .collision-number { color: var(--collision-5); }
+.collision-6 .collision-number { color: var(--collision-6); }
+.collision-7 .collision-number { color: var(--collision-7); }
+
+.collision-1 .collision-eyebrow { color: var(--collision-1); }
+.collision-2 .collision-eyebrow { color: var(--collision-2); }
+.collision-3 .collision-eyebrow { color: var(--collision-3); }
+.collision-4 .collision-eyebrow { color: var(--collision-4); }
+.collision-5 .collision-eyebrow { color: var(--collision-5); }
+.collision-6 .collision-eyebrow { color: var(--collision-6); }
+.collision-7 .collision-eyebrow { color: var(--collision-7); }
+
+/* ─── FRONTIER SCIENCE ───────────────────────────────────── */
+.frontier-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.frontier-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.frontier-intro h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 0.6rem;
+}
+.frontier-intro p {
+  color: var(--slate-400);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.frontier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+}
+.frontier-card {
+  background: var(--slate-800);
+  border: 1px solid var(--slate-700);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: border-color 0.3s, transform 0.2s;
+  border-left: 3px solid var(--amber);
+}
+.frontier-card:hover {
+  border-color: var(--slate-500);
+  transform: translateY(-2px);
+}
+.frontier-card .card-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+.frontier-card .card-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--slate-100);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+.frontier-card .card-title a { color: var(--slate-100); }
+.frontier-card .card-title a:hover { color: var(--amber); }
+.frontier-card .card-summary {
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  line-height: 1.5;
+}
+
+/* ─── NEWSLETTER CTA ─────────────────────────────────────── */
+.newsletter-cta {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.cta-box {
+  background: linear-gradient(135deg, rgba(236,72,153,0.08), rgba(16,185,129,0.06));
+  border: 1px solid var(--slate-700);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+}
+.cta-box h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+.cta-box p {
+  color: var(--slate-400);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+}
+.cta-box .cta-link {
+  display: inline-block;
+  background: var(--magenta);
+  color: #fff;
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+.cta-box .cta-link:hover {
+  background: var(--magenta-dark);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.site-footer {
+  background: var(--midnight-plum);
+  border-top: 2px solid var(--emerald);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.footer-motto {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--slate-400);
+  margin-bottom: 0.3rem;
+}
+.footer-motto .magenta { color: var(--magenta); }
+.footer-musketeers {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--slate-600);
+  margin-bottom: 1rem;
+}
+.footer-pillars {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.footer-pillar {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.footer-pillar.athos { color: var(--emerald); }
+.footer-pillar.porthos { color: var(--magenta); }
+.footer-pillar.aramis { color: var(--amber); }
+.footer-copyright {
+  font-size: 0.75rem;
+  color: var(--slate-600);
+}
+.footer-copyright a { color: var(--magenta); }
+
+/* ─── UTILITIES ──────────────────────────────────────────── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+.spacer-sm { height: 2rem; }
+.spacer-md { height: 4rem; }
+.spacer-lg { height: 6rem; }
+
+@media (max-width: 600px) {
+  .collision-header { flex-direction: column; gap: 0.5rem; }
+  .collision-number { font-size: 2.5rem; }
+  .stats-bar { gap: 1.2rem; }
+  .stat-number { font-size: 1.5rem; }
+  .hero { padding: 3rem 1.5rem 2.5rem; }
+  .collision-section { padding: 3rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SITE HEADER
+     ═══════════════════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="brand">
+    <span class="jedi">jedi</span><span class="otf">OnTheFly</span>
+  </div>
+  <span class="oracle-badge">Jedi Signal + Oracle · Strategic Foresight</span>
+  <div class="header-accents">
+    <div class="emerald-bar"></div>
+    <div class="magenta-bar"></div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow mono">Enterprise+AI · Signal Collisions March 16-27, 2026</div>
+  <h1>The Now <span class="accent">&</span> the Next</h1>
+  <p class="subtitle">
+    Breaking science meets boardroom strategy. 40+ stories suggesting the shape of what's coming for corporate innovation teams.
+  </p>
+  <span class="edition-tag mono"><b><em>Edition — March 16-27, 2026 · Bi-weekly Intelligence</em></b></span>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     STATS BAR
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="stats-bar reveal">
+  <div class="stat-item">
+    <span class="stat-number">40+</span>
+    <span class="stat-label mono">Signals Tracked</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">7</span>
+    <span class="stat-label mono">Collisions Detected</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">12</span>
+    <span class="stat-label mono">Industries</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">30+</span>
+    <span class="stat-label mono">Publications</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">2 weeks</span>
+    <span class="stat-label mono">Signal Window</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     MANIFESTO
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="manifesto reveal">
+  <p>
+    When telcos start selling AI tokens instead of bandwidth, a security vendor builds tools to police AI agents, and an oil company drills autonomous wells — these are more than just random headlines. Here we explore seven 'collisions' we detected in the past two weeks of enterprise AI signal. Each one paints a picture of where we are, and where we're headed.
+  </p>
+</div>
+
+<div class="section-divider reveal">
+  <div class="line"></div>
+  <div class="diamond"></div>
+  <div class="line"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     COLLISION 1 — THE INVISIBLE C-SUITE
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="collision-section collision-1 reveal">
+  <div class="collision-header">
+    <div class="collision-number">01</div>
+    <div class="collision-title-block">
+      <div class="collision-eyebrow mono">Signal Collision</div>
+      <h2 class="collision-title">The Invisible C-Suite</h2>
+      <p class="collision-subtitle">When AI fills the corner office before anyone notices</p>
+    </div>
+  </div>
+
+  <p class="collision-narrative">
+    <strong>Mastercard</strong> launched a Virtual CFO for small businesses — an AI that delivers executive-level financial insight to companies that could never afford a flesh-and-blood one. The same week, <strong>Workday</strong> started billing by <em>outcomes</em> (cases deflected, contracts analyzed) rather than subscription seats, effectively pricing AI by the strategic decision, not the tool. Meanwhile, <strong>Kensho</strong> (S&P Global's AI arm) deployed a multi-agent framework to unify decades of fragmented financial data into trusted answers. And the workforce data? <strong>Datarails</strong> reports nearly one in three finance job postings now require AI skills. The C-suite isn't getting replaced. It's getting <em>cloned</em> — at scale, across every company too small to have one.
+  </p>
+
+  <div class="now-next-grid">
+    <div class="now-block">
+      <span class="block-label">⚡ The Now</span>
+      <p><strong>AI agents are occupying executive-level functions</strong> — not just automating tasks, but making the kinds of strategic calls (cash flow forecasting, risk assessment, contract analysis) that used to require an MBA and 15 years of experience. Small businesses get virtual CFOs. Enterprises get outcome-based pricing. The strategic layer is being democratized.</p>
+    </div>
+    <div class="next-block">
+      <span class="block-label">→ What's Next</span>
+      <p><strong>The virtual C-suite becomes table stakes.</strong> Within 18 months, every SMB platform will bundle AI executives as a feature. Enterprise vendors will compete on decision quality, not feature lists. The org chart gains a new species — virtual executives that never sleep, never politic, and never take PTO. The question for boards: <em>which human roles remain?</em></p>
+    </div>
+  </div>
+
+  <div class="signal-cards">
+    <div class="signal-card">
+      <div class="source mono">Banking Dive</div>
+      <div class="card-title"><a href="https://www.bankingdive.com/news/mastercard-bets-ai-can-fill-cfo-gap-small-businesses/815564/" target="_blank">Mastercard launches AI-powered Virtual CFO for small businesses</a></div>
+      <div class="card-summary">First in Mastercard's virtual C-suite series — executive-level financial insights for businesses that can't afford a human CFO.</div>
+      <a class="card-link" href="https://www.bankingdive.com/news/mastercard-bets-ai-can-fill-cfo-gap-small-businesses/815564/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">HR Executive</div>
+      <div class="card-title"><a href="https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/" target="_blank">Workday shifts to outcome-based billing for autonomous HR & finance agents</a></div>
+      <div class="card-summary">No longer selling seats — Workday bills by cases deflected, contracts analyzed, processes completed. A business-model earthquake.</div>
+      <a class="card-link" href="https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">LangChain</div>
+      <div class="card-title"><a href="https://blog.langchain.com/customers-kensho/" target="_blank">Kensho built a multi-agent framework for trusted financial data retrieval</a></div>
+      <div class="card-summary">S&P Global's AI arm unifies fragmented financial data through coordinated agent teams using LangGraph.</div>
+      <a class="card-link" href="https://blog.langchain.com/customers-kensho/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">CFO Dive</div>
+      <div class="card-title"><a href="https://www.cfodive.com/news/one-three-finance-roles-now-call-ai-skills-datarails/815504/" target="_blank">Nearly 1 in 3 finance roles now require AI skills</a></div>
+      <div class="card-summary">Datarails report shows AI literacy is becoming a baseline requirement, not a differentiator, in corporate finance.</div>
+      <a class="card-link" href="https://www.cfodive.com/news/one-three-finance-roles-now-call-ai-skills-datarails/815504/" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider reveal"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     COLLISION 2 — THE AGENT INFRASTRUCTURE ARMS RACE
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="collision-section collision-2 reveal">
+  <div class="collision-header">
+    <div class="collision-number">02</div>
+    <div class="collision-title-block">
+      <div class="collision-eyebrow mono">Signal Collision</div>
+      <h2 class="collision-title">The Agent Infrastructure Arms Race</h2>
+      <p class="collision-subtitle">The entire compute stack is being rebuilt for a workforce that doesn't breathe</p>
+    </div>
+  </div>
+
+  <p class="collision-narrative">
+    <strong>Cloudflare</strong> launched Dynamic Workers — ditching containers entirely to run AI agent code 100× faster. <strong>Arm</strong> entered the data center chip race with an AGI CPU co-developed with Meta, optimized specifically for agentic AI workloads. <strong>Palantir</strong> and <strong>NVIDIA</strong> partnered on an AI OS Reference Architecture to streamline deployment from silicon to application. NVIDIA also unveiled <strong>OpenShell</strong>, an open-source secure runtime purpose-built for autonomous agents. And underneath all of it, <strong>Emerald AI</strong> is working with power utilities to autonomously manage data center energy demand on the grid. The message is clear: we aren't tuning the old infrastructure for agents — we're building a new one from scratch.
+  </p>
+
+  <div class="now-next-grid">
+    <div class="now-block">
+      <span class="block-label">⚡ The Now</span>
+      <p><strong>Every layer of the compute stack — silicon, runtime, orchestration, power — is being redesigned for agent workloads.</strong> Containers are too slow. General-purpose CPUs aren't enough. The power grid wasn't built for this. A parallel infrastructure is emerging specifically for non-human workers.</p>
+    </div>
+    <div class="next-block">
+      <span class="block-label">→ What's Next</span>
+      <p><strong>"Agent-native" becomes the new "cloud-native."</strong> Just as every company had to migrate from on-prem to cloud, the next migration is from cloud-native to agent-native infrastructure. Companies that don't architect for agent-density will hit walls — on latency, cost, and energy. <em>Your data center strategy is now your AI strategy.</em></p>
+    </div>
+  </div>
+
+  <div class="signal-cards">
+    <div class="signal-card">
+      <div class="source mono">VentureBeat</div>
+      <div class="card-title"><a href="https://venturebeat.com/infrastructure/cloudflares-new-dynamic-workers-ditch-containers-to-run-ai-agent-code-100x" target="_blank">Cloudflare's Dynamic Workers ditch containers — 100× faster for AI agent code</a></div>
+      <div class="card-summary">New lightweight sandboxing designed from scratch for agent workloads. Containers are yesterday's abstraction.</div>
+      <a class="card-link" href="https://venturebeat.com/infrastructure/cloudflares-new-dynamic-workers-ditch-containers-to-run-ai-agent-code-100x" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Data Center Knowledge</div>
+      <div class="card-title"><a href="https://www.datacenterknowledge.com/data-center-chips/arm-enters-data-center-chip-fray-with-agi-cpu-for-ai-infrastructure" target="_blank">Arm enters data center chip race with AGI CPU for AI infrastructure</a></div>
+      <div class="card-summary">Co-developed with Meta. Purpose-built for agentic workloads. Arm shifts from licensing designs to shipping silicon.</div>
+      <a class="card-link" href="https://www.datacenterknowledge.com/data-center-chips/arm-enters-data-center-chip-fray-with-agi-cpu-for-ai-infrastructure" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Network World</div>
+      <div class="card-title"><a href="https://www.networkworld.com/article/4145858/palantir-partners-with-nvidia-to-streamline-ai-data-center-deployment.html" target="_blank">Palantir + NVIDIA: AI OS Reference Architecture for data centers</a></div>
+      <div class="card-summary">End-to-end operating system from hardware acquisition to application deployment. The full-stack AI play.</div>
+      <a class="card-link" href="https://www.networkworld.com/article/4145858/palantir-partners-with-nvidia-to-streamline-ai-data-center-deployment.html" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">NVIDIA Blog</div>
+      <div class="card-title"><a href="https://blogs.nvidia.com/blog/secure-autonomous-ai-agents-openshell/" target="_blank">NVIDIA OpenShell — secure-by-design runtime for autonomous agents</a></div>
+      <div class="card-summary">Open-source agent runtime with built-in security guardrails. Part of NVIDIA's Agent Toolkit at GTC 2026.</div>
+      <a class="card-link" href="https://blogs.nvidia.com/blog/secure-autonomous-ai-agents-openshell/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">NVIDIA Blog</div>
+      <div class="card-title"><a href="https://blogs.nvidia.com/blog/power-flexible-ai-factories-energy-grid/" target="_blank">Emerald AI + NVIDIA: autonomous grid energy management for AI factories</a></div>
+      <div class="card-summary">AI data centers autonomously adjusting their own power consumption to stabilize the grid. The infrastructure managing itself.</div>
+      <a class="card-link" href="https://blogs.nvidia.com/blog/power-flexible-ai-factories-energy-grid/" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider reveal"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     COLLISION 3 — SECURITY'S NEW CLIENT: THE MACHINE
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="collision-section collision-3 reveal">
+  <div class="collision-header">
+    <div class="collision-number">03</div>
+    <div class="collision-title-block">
+      <div class="collision-eyebrow mono">Signal Collision</div>
+      <h2 class="collision-title">Security's New Client: The Machine</h2>
+      <p class="collision-subtitle">When your firewall needs to protect AI from AI</p>
+    </div>
+  </div>
+
+  <p class="collision-narrative">
+    <strong>Cisco</strong> went all-in on agentic AI security with DefenseClaw and AI Defense: Explorer Edition. <strong>Palo Alto Networks</strong> updated Prisma AIRS to discover and manage AI agents across the enterprise — not just monitor them, but identify rogue ones. <strong>Deutsche Telekom</strong> launched "AI Agent Ready," a security initiative specifically for controlling agents within enterprise IT. <strong>LangChain</strong> published a framework for two distinct types of agent authorization. And in the shadows, <strong>No Jitter</strong> reported on how "shadow AI" — unauthorized AI tools used by employees — is leaking company knowledge into public models. Meanwhile, <strong>Booz Allen Hamilton</strong> warned that AI-powered cyberattacks now unfold in <em>minutes</em>, not hours. The security industry just got a new client. It isn't human.
+  </p>
+
+  <div class="now-next-grid">
+    <div class="now-block">
+      <span class="block-label">⚡ The Now</span>
+      <p><strong>Security vendors are pivoting from protecting humans to policing AI agents.</strong> This isn't incremental — it's a category shift. Agents need identities, permissions, audit trails, and behavioral guardrails. Shadow AI is the new shadow IT, but faster and leakier. And on the offensive side, AI-powered attacks compress what used to take weeks into minutes.</p>
+    </div>
+    <div class="next-block">
+      <span class="block-label">→ What's Next</span>
+      <p><strong>Agent governance becomes a board-level requirement.</strong> Every enterprise will need an "agent identity layer" — who is this agent, what can it access, who authorized it, and what did it do? Expect agent-specific compliance frameworks within 12 months. <em>The CISO's job just doubled — half the attack surface is now your own workforce of machines.</em></p>
+    </div>
+  </div>
+
+  <div class="signal-cards">
+    <div class="signal-card">
+      <div class="source mono">Network World</div>
+      <div class="card-title"><a href="https://www.networkworld.com/article/4148823/cisco-goes-all-in-on-agentic-ai-security.html" target="_blank">Cisco goes all-in on agentic AI security</a></div>
+      <div class="card-summary">DefenseClaw and AI Defense: Explorer Edition — Cisco's new offerings built specifically for securing autonomous agent workloads.</div>
+      <a class="card-link" href="https://www.networkworld.com/article/4148823/cisco-goes-all-in-on-agentic-ai-security.html" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Network World</div>
+      <div class="card-title"><a href="https://www.networkworld.com/article/4149026/palo-alto-updates-security-platform-to-discover-ai-agents-2.html" target="_blank">Palo Alto updates Prisma AIRS to discover and manage AI agents</a></div>
+      <div class="card-summary">Not just monitoring — detecting and managing rogue AI agents, models, and data pipelines across the enterprise.</div>
+      <a class="card-link" href="https://www.networkworld.com/article/4149026/palo-alto-updates-security-platform-to-discover-ai-agents-2.html" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Light Reading</div>
+      <div class="card-title"><a href="https://www.lightreading.com/ai-machine-learning/dt-keeps-ai-agents-in-line-with-new-security-initiative" target="_blank">Deutsche Telekom's "AI Agent Ready" security initiative</a></div>
+      <div class="card-summary">A telco building security protocols specifically for controlling AI agents within enterprise IT and network systems.</div>
+      <a class="card-link" href="https://www.lightreading.com/ai-machine-learning/dt-keeps-ai-agents-in-line-with-new-security-initiative" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">No Jitter</div>
+      <div class="card-title"><a href="https://www.nojitter.com/ai-automation/how-to-respond-when-shadow-ai-leaks-company-knowledge" target="_blank">How to respond when shadow AI leaks company knowledge</a></div>
+      <div class="card-summary">Employees using unauthorized AI tools are inadvertently training public models on proprietary data. The new insider threat.</div>
+      <a class="card-link" href="https://www.nojitter.com/ai-automation/how-to-respond-when-shadow-ai-leaks-company-knowledge" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Government Technology</div>
+      <div class="card-title"><a href="https://www.govtech.com/security/report-ai-drives-cyber-attacks-that-unfold-in-minutes" target="_blank">Booz Allen: AI drives cyber attacks that unfold in minutes</a></div>
+      <div class="card-summary">AI-powered attacks compressing timelines from weeks to minutes. The offense is accelerating faster than the defense.</div>
+      <a class="card-link" href="https://www.govtech.com/security/report-ai-drives-cyber-attacks-that-unfold-in-minutes" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">LangChain</div>
+      <div class="card-title"><a href="https://blog.langchain.com/two-different-types-of-agent-authorization/" target="_blank">Two different types of agent authorization</a></div>
+      <div class="card-summary">LangSmith Fleet introduces two authorization models for AI agents — the beginning of agent-level access control standards.</div>
+      <a class="card-link" href="https://blog.langchain.com/two-different-types-of-agent-authorization/" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider reveal"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     COLLISION 4 — HEALTHCARE'S AUTONOMOUS LEAP
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="collision-section collision-4 reveal">
+  <div class="collision-header">
+    <div class="collision-number">04</div>
+    <div class="collision-title-block">
+      <div class="collision-eyebrow mono">Signal Collision</div>
+      <h2 class="collision-title">Healthcare's Autonomous Leap</h2>
+      <p class="collision-subtitle">From diagnosis to drug discovery, agents are scrubbing in</p>
+    </div>
+  </div>
+
+  <p class="collision-narrative">
+    <strong>Insilico Medicine</strong> launched PandaClaw — an AI agent that empowers biologists to run autonomous drug discovery workflows, not just analysis. <strong>IBM</strong> deployed Granite speech models on Royal Flying Doctor Service flights in remote Australia, transcribing patient care in noisy, constrained environments that would defeat most humans. <strong>Perplexity</strong> launched Perplexity Health, pulling electronic health records and wearable data into a consumer search engine for your own body. <strong>AWS</strong> introduced Amazon Connect Health at HIMSS 2026, deploying agentic AI to autonomously assist healthcare teams. <strong>Roche</strong> is scaling 3,500+ NVIDIA Blackwell GPUs for pharma AI. And researchers in China validated an AI clinical decision support system that autonomously analyzes stroke imaging and recommends treatment. Healthcare isn't experimenting with AI anymore. It's operationalizing it.
+  </p>
+
+  <div class="now-next-grid">
+    <div class="now-block">
+      <span class="block-label">⚡ The Now</span>
+      <p><strong>Healthcare AI is moving from analytical assistance to autonomous clinical action.</strong> Agents aren't suggesting — they're discovering drugs, transcribing trauma care in-flight, recommending stroke treatment, and managing patient triage without human prompting. The shift from "copilot" to "operator" is happening fastest where the stakes are highest.</p>
+    </div>
+    <div class="next-block">
+      <span class="block-label">→ What's Next</span>
+      <p><strong>The patient journey becomes agent-orchestrated end to end.</strong> From initial symptom search (Perplexity Health) to diagnostic imaging (stroke CDSS) to drug discovery (PandaClaw) to clinical documentation (IBM Granite) — each step is being handed to a specialist agent. Within 2 years, <em>the continuity of care will be maintained by machines, not shift schedules.</em></p>
+    </div>
+  </div>
+
+  <div class="signal-cards">
+    <div class="signal-card">
+      <div class="source mono">Alpha Galileo</div>
+      <div class="card-title"><a href="https://www.alphagalileo.org/en-gb/Item-Display?ItemId=270666" target="_blank">Insilico Medicine launches PandaClaw: agentic AI for drug discovery</a></div>
+      <div class="card-summary">Not just analysis — autonomous therapeutic discovery workflows integrated into the PandaOmics platform.</div>
+      <a class="card-link" href="https://www.alphagalileo.org/en-gb/Item-Display?ItemId=270666" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">IBM Research</div>
+      <div class="card-title"><a href="https://research.ibm.com/blog/granite-speech-for-improved-patient-care" target="_blank">IBM Granite speech model transcribes care on Royal Flying Doctor flights</a></div>
+      <div class="card-summary">AI documentation in noisy, constrained environments — remote Australia's flying trauma response.</div>
+      <a class="card-link" href="https://research.ibm.com/blog/granite-speech-for-improved-patient-care" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Modern Healthcare</div>
+      <div class="card-title"><a href="https://www.modernhealthcare.com/health-tech/mh-perplexity-health-ai-ehr-wearable-data/" target="_blank">Perplexity Health: AI search engine for your own body</a></div>
+      <div class="card-summary">Consumer health search that consolidates EHRs, wearable data, and medical literature. Your health, searchable.</div>
+      <a class="card-link" href="https://www.modernhealthcare.com/health-tech/mh-perplexity-health-ai-ehr-wearable-data/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Healthcare Dive</div>
+      <div class="card-title"><a href="https://www.healthcaredive.com/spons/beyond-the-hype-agentic-ai-takes-center-stage-at-himss-2026/814645/" target="_blank">AWS launches Amazon Connect Health — agentic AI for healthcare teams</a></div>
+      <div class="card-summary">Autonomous patient assistance at HIMSS 2026. The shift from chatbot to clinical agent.</div>
+      <a class="card-link" href="https://www.healthcaredive.com/spons/beyond-the-hype-agentic-ai-takes-center-stage-at-himss-2026/814645/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">NVIDIA Blog</div>
+      <div class="card-title"><a href="https://blogs.nvidia.com/blog/roche-ai-factories-omniverse/" target="_blank">Roche scales 3,500+ Blackwell GPUs for pharma AI</a></div>
+      <div class="card-summary">Massive compute infrastructure deployed across hybrid cloud and on-prem for pharmaceutical AI research.</div>
+      <a class="card-link" href="https://blogs.nvidia.com/blog/roche-ai-factories-omniverse/" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider reveal"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     COLLISION 5 — THE TOKEN ECONOMY
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="collision-section collision-5 reveal">
+  <div class="collision-header">
+    <div class="collision-number">05</div>
+    <div class="collision-title-block">
+      <div class="collision-eyebrow mono">Signal Collision</div>
+      <h2 class="collision-title">The Token Economy Arrives</h2>
+      <p class="collision-subtitle">When every company must answer: do we sell labor or tokens?</p>
+    </div>
+  </div>
+
+  <p class="collision-narrative">
+    <strong>China Telecom</strong> announced that AI tokens — not bandwidth, not data, not minutes — are becoming the core unit of its business model. Think about that: a telco that once sold bits now sells cognition. The same week, <strong>Workday</strong> abandoned per-seat pricing for outcome-based billing — you pay for contracts analyzed, not users logged in. <strong>EasyJet</strong> shifted from TV-led campaigns to AI-powered content creation and saw a 350% increase in output without increasing costs. And <strong>Sierra</strong> launched Ghostwriter, packaging AI agents as a service — agents-as-a-service, billed on delivery. The unit economics of every industry are being repriced around what AI produces, not what humans do.
+  </p>
+
+  <div class="now-next-grid">
+    <div class="now-block">
+      <span class="block-label">⚡ The Now</span>
+      <p><strong>Business models are being repriced around AI outputs.</strong> Per-seat, per-user, per-minute — these metrics assumed human operators. When the operator is an agent, the value shifts to outcomes and tokens. A telco selling tokens. An HR platform billing by cases resolved. An airline producing 350% more content at flat cost. <em>The denominator of every business equation is changing.</em></p>
+    </div>
+    <div class="next-block">
+      <span class="block-label">→ What's Next</span>
+      <p><strong>Every company becomes a token company.</strong> CFOs will need to understand token economics the way they understand headcount today. Margins won't be measured in labor efficiency but in token efficiency — cost per insight, cost per decision, cost per creation. Companies that don't rethink their unit economics around AI output will be undercut by those that do. <em>Price per human hour is giving way to price per token.</em></p>
+    </div>
+  </div>
+
+  <div class="signal-cards">
+    <div class="signal-card">
+      <div class="source mono">Light Reading</div>
+      <div class="card-title"><a href="https://www.lightreading.com/ai-machine-learning/china-telecom-launches-into-the-token-economy" target="_blank">China Telecom launches into the token economy</a></div>
+      <div class="card-summary">From traffic-based to token-value operations. A telecom giant pricing its future in AI tokens, not bandwidth.</div>
+      <a class="card-link" href="https://www.lightreading.com/ai-machine-learning/china-telecom-launches-into-the-token-economy" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Sierra AI</div>
+      <div class="card-title"><a href="https://sierra.ai/blog/agents-as-a-service" target="_blank">Sierra: Agents as a Service — Ghostwriter launches</a></div>
+      <div class="card-summary">AI agent-builder that lets businesses deploy customer experience agents as a service. The agent marketplace opens.</div>
+      <a class="card-link" href="https://sierra.ai/blog/agents-as-a-service" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Marketing Week</div>
+      <div class="card-title"><a href="https://www.marketingweek.com/easyjet-ad-creators-and-ai/" target="_blank">EasyJet: 350% more content at flat cost with AI + creators</a></div>
+      <div class="card-summary">Shifted from TV-led campaigns to AI-powered creator content. Output exploded. Budget didn't.</div>
+      <a class="card-link" href="https://www.marketingweek.com/easyjet-ad-creators-and-ai/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">HR Executive</div>
+      <div class="card-title"><a href="https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/" target="_blank">Workday bills by outcomes, not seats</a></div>
+      <div class="card-summary">Cases deflected, contracts analyzed — outcome-based pricing signals the end of per-seat SaaS.</div>
+      <a class="card-link" href="https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider reveal"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     COLLISION 6 — WHEN AGENTS GO KINETIC
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="collision-section collision-6 reveal">
+  <div class="collision-header">
+    <div class="collision-number">06</div>
+    <div class="collision-title-block">
+      <div class="collision-eyebrow mono">Signal Collision</div>
+      <h2 class="collision-title">When Agents Go Kinetic</h2>
+      <p class="collision-subtitle">Autonomous systems are leaving the screen and entering the physical world</p>
+    </div>
+  </div>
+
+  <p class="collision-narrative">
+    <strong>Shield AI</strong> and Swiss startup <strong>Destinus</strong> wrapped a two-month autonomous drone test campaign in Spain — military-grade AI pilots making decisions at flight speed. <strong>Halliburton</strong> and <strong>ExxonMobil</strong> executed the industry's first fully automated digital well offshore Guyana — a closed-loop drilling system that steered a drill bit within reservoir boundaries with no human hand on the stick. <strong>Schneider Electric</strong> reports the energy sector is targeting 50% full automation by 2030. And <strong>Anthropic</strong> announced that Claude can now use your computer — navigating screens, clicking buttons, filling forms. Agents aren't just thinking anymore. They're drilling, flying, operating, and using your mouse.
+  </p>
+
+  <div class="now-next-grid">
+    <div class="now-block">
+      <span class="block-label">⚡ The Now</span>
+      <p><strong>Autonomous agents are entering physical reality.</strong> Drilling wells. Flying combat drones. Managing power grids. Operating computer interfaces. The digital-physical boundary is dissolving as agents gain the ability to act on the world, not just analyze it. These aren't prototypes — Halliburton's well is offshore Guyana, right now.</p>
+    </div>
+    <div class="next-block">
+      <span class="block-label">→ What's Next</span>
+      <p><strong>The "embodied agent" becomes the default deployment model.</strong> Every industrial process with a human operator loop becomes a candidate for autonomous handoff. Within 3 years, the distinction between "AI software" and "robotics" collapses — they're the same agent, just with different actuators. <em>The question isn't whether agents can operate in the real world. It's which real-world domains they'll reach last.</em></p>
+    </div>
+  </div>
+
+  <div class="signal-cards">
+    <div class="signal-card">
+      <div class="source mono">Breaking Defense</div>
+      <div class="card-title"><a href="https://breakingdefense.com/2026/03/swiss-destinus-shield-ai-wrap-european-drone-autonomy-test-campaign/" target="_blank">Shield AI + Destinus: autonomous drone tests in Europe</a></div>
+      <div class="card-summary">Two-month flight campaign in Spain integrating AI-driven autonomous decision-making for military drone operations.</div>
+      <a class="card-link" href="https://breakingdefense.com/2026/03/swiss-destinus-shield-ai-wrap-european-drone-autonomy-test-campaign/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">JPT (SPE)</div>
+      <div class="card-title"><a href="https://jpt.spe.org/halliburton-reports-fully-automated-well-placement-offshore-guyana" target="_blank">Halliburton + ExxonMobil: first fully automated digital well</a></div>
+      <div class="card-summary">Closed-loop drilling system steering within reservoir boundaries, zero human intervention. Offshore Guyana, operational now.</div>
+      <a class="card-link" href="https://jpt.spe.org/halliburton-reports-fully-automated-well-placement-offshore-guyana" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Gas Processing News</div>
+      <div class="card-title"><a href="https://gasprocessingnews.com/news/2026/03/schneider-electric-global-study-shows-energy-industry-ramping-up-investment-in-autonomous-operations-by-2030-as-ai-reshapes-performance/" target="_blank">Schneider Electric: energy sector targeting 50% autonomy by 2030</a></div>
+      <div class="card-summary">Global study shows energy and chemicals sector accelerating toward autonomous operations at industrial scale.</div>
+      <a class="card-link" href="https://gasprocessingnews.com/news/2026/03/schneider-electric-global-study-shows-energy-industry-ramping-up-investment-in-autonomous-operations-by-2030-as-ai-reshapes-performance/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Computerworld</div>
+      <div class="card-title"><a href="https://www.computerworld.com/article/4149568/now-claude-code-and-cowork-can-use-your-computer.html" target="_blank">Claude Code can now use your computer</a></div>
+      <div class="card-summary">Anthropic's Claude navigates screens, clicks buttons, fills forms. The agent leaves the chat window and enters your desktop.</div>
+      <a class="card-link" href="https://www.computerworld.com/article/4149568/now-claude-code-and-cowork-can-use-your-computer.html" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider reveal"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     COLLISION 7 — THE AGENTIC ENTERPRISE IS ALREADY HERE
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="collision-section collision-7 reveal">
+  <div class="collision-header">
+    <div class="collision-number">07</div>
+    <div class="collision-title-block">
+      <div class="collision-eyebrow mono">Signal Collision</div>
+      <h2 class="collision-title">The Agentic Enterprise Is Already Here</h2>
+      <p class="collision-subtitle">From agent teams at Thermo Fisher to 911 dispatch in Richmond — it's operational</p>
+    </div>
+  </div>
+
+  <p class="collision-narrative">
+    This isn't a forecast. <strong>Thermo Fisher Scientific</strong> is deploying coordinated teams of specialized agents — not a single chatbot, but agent <em>organizations</em>. <strong>Ada</strong> launched a unified Reasoning Engine that lets businesses deploy parallel AI agents for customer service. <strong>Thomson Reuters</strong> built CoCounsel Legal, an AI legal research tool woven natively into attorney workflows. The <strong>City of Richmond, Virginia</strong> deployed Amazon Connect for 911 calls — AI routing emergencies and deflecting non-emergencies to reduce dispatcher workload. <strong>U.S. Bank</strong> built an in-house Design Assistant that reviews, flags, and improves designer work. And <strong>Zoom</strong> is positioning human conversation itself as its strategic edge, using meeting data to power an agentic layer. The question has shifted from "should we deploy agents?" to "how many do we need, and who's managing them?"
+  </p>
+
+  <div class="now-next-grid">
+    <div class="now-block">
+      <span class="block-label">⚡ The Now</span>
+      <p><strong>Enterprises aren't piloting agents — they're deploying agent teams.</strong> Thermo Fisher has agent organizations. Ada runs parallel agents. Thomson Reuters has an AI co-counsel. Richmond uses AI for 911 dispatch. This is not a technology evaluation phase. This is rollout. The companies in this collision aren't asking "if" — they're solving "how fast."</p>
+    </div>
+    <div class="next-block">
+      <span class="block-label">→ What's Next</span>
+      <p><strong>The "agent headcount" becomes a real line item.</strong> Enterprises will measure and manage their AI workforce the same way they manage human teams — roles, performance metrics, authorization levels, collaboration patterns. HR won't just manage people. IT won't just manage tools. <em>A new function emerges: Agent Operations — the management of your non-human workforce.</em></p>
+    </div>
+  </div>
+
+  <div class="signal-cards">
+    <div class="signal-card">
+      <div class="source mono">VentureBeat</div>
+      <div class="card-title"><a href="https://venturebeat.com/orchestration/the-consequential-ai-work-that-actually-moves-the-needle-for-enterprises" target="_blank">Thermo Fisher: coordinated agent teams move the needle for enterprises</a></div>
+      <div class="card-summary">Shift from single-task assistants to building coordinated teams of specialized agents. Agent organizations, not tools.</div>
+      <a class="card-link" href="https://venturebeat.com/orchestration/the-consequential-ai-work-that-actually-moves-the-needle-for-enterprises" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">No Jitter</div>
+      <div class="card-title"><a href="https://www.nojitter.com/ai-automation/ada-ai-agents-work-in-parallel-to-get-more-done" target="_blank">Ada's AI agents work in parallel to get more done</a></div>
+      <div class="card-summary">Unified Reasoning Engine enables businesses to build, manage, and optimize parallel customer-facing AI agents.</div>
+      <a class="card-link" href="https://www.nojitter.com/ai-automation/ada-ai-agents-work-in-parallel-to-get-more-done" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Thomson Reuters</div>
+      <div class="card-title"><a href="https://legal.thomsonreuters.com/blog/beyond-chatbots-how-cocounsel-legal-delivers-ai-legal-research-you-can-trust/" target="_blank">Thomson Reuters CoCounsel Legal: AI research you can trust</a></div>
+      <div class="card-summary">Westlaw + Practical Law content powers an AI legal research agent integrated natively into attorney workflows.</div>
+      <a class="card-link" href="https://legal.thomsonreuters.com/blog/beyond-chatbots-how-cocounsel-legal-delivers-ai-legal-research-you-can-trust/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">StateTech Magazine</div>
+      <div class="card-title"><a href="https://statetechmagazine.com/article/2026/03/richmond-reclaims-precious-seconds-911-calls-amazon-connect" target="_blank">Richmond deploys AI for 911 emergency dispatch</a></div>
+      <div class="card-summary">Amazon Connect routes calls, handles non-emergencies, reduces dispatcher workload. AI in life-or-death operations.</div>
+      <a class="card-link" href="https://statetechmagazine.com/article/2026/03/richmond-reclaims-precious-seconds-911-calls-amazon-connect" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Banking Dive</div>
+      <div class="card-title"><a href="https://www.bankingdive.com/news/us-bank-designers-ai-tool-digital-banking/815640/" target="_blank">U.S. Bank's AI Design Assistant reviews and improves designer work</a></div>
+      <div class="card-summary">In-house AI that flags issues, suggests improvements, and augments the design process. The creative copilot is real.</div>
+      <a class="card-link" href="https://www.bankingdive.com/news/us-bank-designers-ai-tool-digital-banking/815640/" target="_blank">Read →</a>
+    </div>
+    <div class="signal-card">
+      <div class="source mono">Computerworld</div>
+      <div class="card-title"><a href="https://www.computerworld.com/article/4149428/zoom-sees-human-conversation-as-its-edge-in-the-agentic-ai-era.html" target="_blank">Zoom: human conversation as its edge in the agentic AI era</a></div>
+      <div class="card-summary">Leveraging meeting and conversation data to power an agentic layer. The company that captured talk now deploys agents that listen.</div>
+      <a class="card-link" href="https://www.computerworld.com/article/4149428/zoom-sees-human-conversation-as-its-edge-in-the-agentic-ai-era.html" target="_blank">Read →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider reveal"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     FRONTIER SCIENCE — THE RESEARCH UNDERNEATH
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="frontier-section reveal">
+  <div class="frontier-intro">
+    <div class="mono" style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--amber); margin-bottom:0.8rem;">From the Lab Bench</div>
+    <h2>Frontier Science Feeding the Machine</h2>
+    <p>The research signals underneath the enterprise news. These breakthroughs — in compression, compute, cognition, and drug discovery — are the tectonic plates on which the business stories above are riding.</p>
+  </div>
+
+  <div class="frontier-grid">
+    <div class="frontier-card reveal reveal-delay-1">
+      <div class="card-category">Compute Efficiency</div>
+      <div class="card-title"><a href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/" target="_blank">Google's TurboQuant: extreme compression for AI vectors</a></div>
+      <div class="card-summary">Novel algorithm drastically reduces memory footprint of high-dimensional vectors in AI key-value caches. Making big models run small.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-2">
+      <div class="card-category">Local AI Hardware</div>
+      <div class="card-title"><a href="https://spectrum.ieee.org/ai-workstation-looks-like-pcs" target="_blank">Tenstorrent's QuietBox 2: run LLMs locally, not in the cloud</a></div>
+      <div class="card-summary">AI workstation with higher memory and efficiency than typical PCs. The infrastructure decentralizes — from data center to desktop.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-3">
+      <div class="card-category">Quantum + Classical</div>
+      <div class="card-title"><a href="https://research.ibm.com/blog/cleveland-clinic-protein-qcsc" target="_blank">Cleveland Clinic + IBM: quantum-classical protein simulation</a></div>
+      <div class="card-summary">Hybrid quantum-classical workflow simulates the 303-atom Trp-cage miniprotein. Quantum computing meets drug discovery.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-1">
+      <div class="card-category">Semantic Calibration</div>
+      <div class="card-title"><a href="https://machinelearning.apple.com/research/trained-on-tokens" target="_blank">Apple: base LLMs develop semantic confidence beyond token prediction</a></div>
+      <div class="card-summary">LLMs trained on next-token prediction inherently develop meaning-level calibration. They know what they don't know — without being taught.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-2">
+      <div class="card-category">AI Safety</div>
+      <div class="card-title"><a href="https://www.alphagalileo.org/en-gb/Item-Display?ItemId=270607" target="_blank">NC State identifies critical safety components in LLMs</a></div>
+      <div class="card-summary">Researchers pinpoint specific components inside large language models that influence response safety. Controllable guardrails, from the inside out.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-3">
+      <div class="card-category">Autonomous Science</div>
+      <div class="card-title"><a href="https://anthropic.com/research/long-running-Claude" target="_blank">Anthropic: long-running Claude for multi-day scientific computing</a></div>
+      <div class="card-summary">Multi-day autonomous AI agent workflows applied to scientific research. The lab assistant that runs experiments while you sleep.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-1">
+      <div class="card-category">Efficient Fine-tuning</div>
+      <div class="card-title"><a href="https://www.amazon.science/blog/optimizing-lora-target-module-selection-for-efficient-fine-tuning" target="_blank">Amazon Science: optimizing LoRA placement for efficient fine-tuning</a></div>
+      <div class="card-summary">Smarter placement of low-rank adapters inside LLMs — more performance from less compute. Fine-tuning gets surgical.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-2">
+      <div class="card-category">Legacy Systems</div>
+      <div class="card-title"><a href="https://www.amazon.science/blog/how-agentic-ai-helps-heal-the-systems-we-cant-replace" target="_blank">Amazon AGI Lab: agentic AI to manage legacy software</a></div>
+      <div class="card-summary">AI agents trained on simulations of legacy institutional software — managing outdated systems without replacing them. The digital archaeologist.</div>
+    </div>
+    <div class="frontier-card reveal reveal-delay-3">
+      <div class="card-category">Human Intelligence</div>
+      <div class="card-title"><a href="https://www.microsoft.com/en-us/research/podcast/will-machines-ever-be-intelligent/" target="_blank">Microsoft Research: will machines ever be truly intelligent?</a></div>
+      <div class="card-summary">Comparing transformer architectures with biological intelligence. The question isn't if machines think — it's whether they think like us.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SCROLL REVEAL
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>

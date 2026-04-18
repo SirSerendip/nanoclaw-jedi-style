@@ -1,0 +1,191 @@
+{
+  "slug": "rob-michelson",
+  "name": "Robert Michelson",
+  "created": "2026-04-17",
+  "updated": "2026-04-17",
+
+  "intellectual_profile": {
+    "background": "Master teacher of AP Economics and US History at Brentwood Preparatory Academy, Los Angeles. Masters in US History with specialization in revolutionary-era social dynamics. Last 5 years: deep dive into behavioral economics — Kahneman, Tversky, Nash, Bayesian logic. Hands-on experiential pedagogy: runs poker games to test Nash equilibrium, takes students to downtown LA farmers market to study pricing dynamics in the wild. Enneagram Six (self-preservation subtype) — vigilant, counter-phobic, sharp ironic humor, attuned to power structures and fault lines. Building a retreat house in Cuba. Bass guitarist, gardener, home cook, Cuban salsa devotee.",
+    "domains": ["behavioral-economics", "game-theory", "bayesian-reasoning", "us-history", "political-economy", "power-structures", "social-dynamics", "pedagogy", "experiential-learning"],
+    "methodology": "Experiential economics — take the theory into the field and watch it breathe. Poker tables, farmers markets, historical case studies. Bayesian updating: every new signal should shift your priors or it's noise. Nash equilibrium as lived experience, not textbook abstraction. History as the longest dataset for behavioral patterns.",
+    "signature_concepts": ["equilibrium in the wild", "the hidden incentive structure", "Bayesian updating", "power ledgers", "the game beneath the game", "counter-phobic clarity"],
+    "distinction": "Rob doesn't teach economics from the podium — he builds environments where students discover the structural forces themselves. The poker game IS the lesson. The farmers market IS the textbook. His revolutionary-era specialization gives him a long historical lens on power dynamics that most econ teachers lack. He sees the behavioral pattern running through 1776, through today's markets, through geopolitical fault lines. The bass player's ear: he hears the line nobody else is tracking.",
+    "intellectual_lineage": ["Daniel Kahneman", "Amos Tversky", "John Nash", "Thomas Bayes", "Marcus Aurelius", "Lao Tzu", "Bob Dylan", "Adam Smith", "Thucydides"]
+  },
+
+  "taster": {
+    "name": "Bass Line",
+    "metaphor": "The foundational pattern most people never hear — the line beneath the line that holds everything together",
+    "description": "A curated signal report surfacing the hidden structural patterns beneath current events, economic shifts, and political dynamics. Fewer signals, higher impact. Each one should update your priors or reveal the game beneath the game. Not a news digest — a Bayesian intelligence feed for a teacher who runs poker games and studies equilibrium in the wild.",
+    "mood": "Ironic, grounded, sharp but never mean. Like the funniest teacher on campus explaining why your assumptions were wrong — and making you laugh about it. Counter-phobic humor: name the thing everyone's afraid to name.",
+    "subtitle": "\"The line beneath the line.\"",
+    "footer_line": "The game beneath the game never stops. Neither does the bass.",
+    "purpose": "Surface fewer, deeper structural insights — signals where behavioral economics, game theory, historical patterns, or Bayesian logic reveals what's actually driving the surface event. Rob's bar is high: fewer whopper insights beat more decent ones. Each signal should be classroom-ready or life-ready.",
+    "icon": "🎸"
+  },
+
+  "design_palette": {
+    "colors": {
+      "--bg": "#f7f4ef",
+      "--bg-dark": "#1A1612",
+      "--bg-card": "#fffdf8",
+      "--bg-card-hover": "#f0ebe0",
+      "--garden-green": "#3D6B4F",
+      "--tobacco": "#8B6F47",
+      "--cuban-coral": "#CD6B59",
+      "--aged-gold": "#B89B3E",
+      "--bass-wood": "#6B5B45",
+      "--salsa-red": "#C7453B",
+      "--text": "#2A2418",
+      "--text-muted": "#6B5E50",
+      "--text-dim": "#9B8E7E",
+      "--link": "#3D6B4F",
+      "--link-hover": "#CD6B59",
+      "--border": "#DDD5C4",
+      "--section-1": "#C7453B",
+      "--section-2": "#3D6B4F",
+      "--section-3": "#B89B3E",
+      "--section-4": "#8B6F47"
+    },
+    "typography": {
+      "heading": "Bitter",
+      "body": "Lora",
+      "mono": "JetBrains Mono"
+    },
+    "instruments": "🪇 🪘 🎸 🥁 🎵",
+    "instrument_note": "Cuban percussion symbols (maracas, congas, timbales, bongos) plus bass — used as section dividers and decorative elements",
+    "template_path": "references/bass-line-template.html",
+    "mood": "Earthy warmth — aged parchment, garden green, tobacco brown, Cuban coral and salsa red accents. Feels like a bass player's living room: worn leather, potted plants, good light. Not slick, not academic. Cuban instrument symbols as section markers."
+  },
+
+  "filter_lens": {
+    "mode": "substructure",
+    "domains": [
+      "behavioral-economics",
+      "game-theory",
+      "bayesian-reasoning",
+      "political-economy",
+      "us-history",
+      "geopolitics",
+      "power-structures",
+      "social-dynamics",
+      "institutional-incentives",
+      "market-dynamics"
+    ],
+    "blind_spots": [
+      "celebrity-entertainment",
+      "fashion-luxury",
+      "social-media-influencers",
+      "cryptocurrency-defi",
+      "space-technology",
+      "gaming-esports"
+    ],
+    "anti_signals": [
+      "techno-utopianism",
+      "Elon Musk hagiography",
+      "Silicon Valley savior narratives",
+      "theory for theory's sake",
+      "empty academic jargon",
+      "partisan cheerleading without structural analysis",
+      "too many signal collisions — fewer and deeper wins"
+    ],
+    "complexity_level": "expert",
+    "thinker_preferences": [
+      "Daniel Kahneman",
+      "Amos Tversky",
+      "John Nash",
+      "Thomas Bayes",
+      "Marcus Aurelius",
+      "Lao Tzu",
+      "Bob Dylan",
+      "Adam Smith",
+      "Thucydides"
+    ],
+    "scoring_dimensions": {
+      "substructure_depth": {
+        "weight": "0-30",
+        "description": "Does this signal reveal a hidden structural force — an incentive, an equilibrium, a behavioral pattern — that explains the surface event? Score 0 if what you see is what you get. Score 25-30 if the underlying game theory, power dynamic, or behavioral bias completely reframes the obvious read. THIS IS THE PRIMARY DIMENSION."
+      },
+      "bayesian_surprise": {
+        "weight": "0-25",
+        "description": "Should this signal update your priors? Does it meaningfully shift the probability landscape on something that matters? High Bayesian surprise = the world just changed shape and most people haven't noticed yet."
+      },
+      "historical_resonance": {
+        "weight": "0-20",
+        "description": "Does this connect to a historical pattern, power structure, or recurring social dynamic? Revolutionary-era parallels, economic cycles, institutional decay patterns. History as the longest dataset."
+      },
+      "pedagogical_spark": {
+        "weight": "0-15",
+        "description": "Could Rob bring this into the classroom? Poker-game testable, farmers-market observable, debate-worthy? The best signals teach themselves."
+      },
+      "irony_quotient": {
+        "weight": "0-10",
+        "description": "Is there a delicious irony, a counter-intuitive twist, a moment where the stated intent and the actual incentive structure diverge so perfectly it's almost funny?"
+      }
+    },
+    "section_tiers": [
+      {
+        "name": "The Equilibrium Break",
+        "color_var": "--section-1",
+        "icon": "🎸",
+        "description": "The big insight — a hidden structural force (incentive, equilibrium, behavioral pattern) that completely reframes the surface event. The bass line nobody else is hearing."
+      },
+      {
+        "name": "The Power Ledger",
+        "color_var": "--section-2",
+        "icon": "🪘",
+        "description": "Structural power dynamics in politics, economics, or culture. Who actually holds the cards, who set the rules, and why the visible game isn't the real game."
+      },
+      {
+        "name": "The Bayesian Update",
+        "color_var": "--section-3",
+        "icon": "🪇",
+        "description": "Signals that should make you revise your priors. The probability landscape just shifted — here's what changed and why it matters."
+      },
+      {
+        "name": "The Garden Note",
+        "color_var": "--section-4",
+        "icon": "🌱",
+        "description": "One grounded, human observation. The small thing that reveals the big pattern. Pull the weed, see the root system."
+      }
+    ],
+    "editorial_rules": [
+      "Signal write-ups reference ONLY what's in the source material",
+      "Never backfill context from training knowledge to sharpen an insight",
+      "FEWER signals, HIGHER impact — 4-6 signals max per edition, each one a whopper",
+      "No techno-utopian framing. Ever. If Elon Musk appears, it better be as a behavioral economics case study in hubris, not a success story",
+      "Theory must serve the insight, not the other way around — no jargon for jargon's sake",
+      "Preserve complexity — don't compress a multi-sided story into a clean binary",
+      "Historical parallels must be earned — the structural mapping has to hold, not just rhyme",
+      "Bayesian framing: name the prior, name the update, name what shifted",
+      "Game theory framing: name the players, name the incentives, name the equilibrium (or its absence)",
+      "Stoic framing welcome where it fits — what can be controlled vs. what can't",
+      "Irony should land dry, not forced — Rob's humor is observational, not performative",
+      "Cuban/musical metaphors welcome but not required — let them emerge naturally",
+      "Present the structural pattern, offer *a* reading, leave room for Rob to run the classroom version",
+      "Never exceed the researchers' own conclusions",
+      "Closing line = observation, not punchline. Dry wit over drama.",
+      "Never close with 'X isn't [thing]. It's [other thing].'",
+      "Bass Line is a signal feed for a master teacher, not a finished op-ed"
+    ]
+  },
+
+  "voice_calibration": {
+    "tone": "Ironic, grounded, intellectually sharp but never stuffy. The funniest teacher on campus energy — willing to poke fun at himself, at the powerful, at the assumptions everyone shares. Counter-phobic Six humor: name the thing, laugh at the thing, then show why it matters. Warm underneath the wit.",
+    "sentence_length": "Varied — dry one-liners mixed with richer historical context when the pattern demands it. Let the irony land without explanation. If the joke needs a footnote, it's not funny.",
+    "thinker_usage": "Rotate across editions. Kahneman/Tversky for cognitive bias reveals. Nash for strategic interaction. Bayes for prior-updating moments. Marcus Aurelius for stoic grounding when the chaos is real. Lao Tzu for strategic patience and paradox. Dylan for the poetic-prophetic angle — but sparingly, and only when the lyric genuinely fits. Never name-drop.",
+    "la_force_voice": "The editorial voice that surfaces structural patterns with dry wit and historical depth. Rob does the classroom translation, the student engagement, the lived application. Bass Line curates the hidden pattern, names the game, and leaves the teaching to the teacher.",
+    "drumming_metaphors": false,
+    "musical_metaphors": true,
+    "cuban_flavor": true,
+    "french": false
+  },
+
+  "delivery": {
+    "format": "email-inline",
+    "email": "rmichelson@bwscampus.com",
+    "cadence": "mon-wed-fri",
+    "channels": ["email"],
+    "subject_template": "Bass Line · {edition_title} · {date}"
+  }
+}

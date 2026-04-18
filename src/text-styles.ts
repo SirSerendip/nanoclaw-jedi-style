@@ -26,8 +26,12 @@ export function parseTextStyles(text: string, channel: ChannelType): string {
   // Discord is already Markdown; Signal uses parseSignalStyles() for rich text.
   if (channel === 'discord' || channel === 'signal') return text;
 
+  // Convert Markdown tables to aligned code blocks BEFORE splitting protected
+  // regions, so the generated ``` blocks are shielded from marker substitution.
+  const tableConverted = convertMarkdownTables(text);
+
   // Split into protected (code) and unprotected regions, transform only the latter.
-  const segments = splitProtectedRegions(text);
+  const segments = splitProtectedRegions(tableConverted);
   return segments
     .map(({ content, protected: isProtected }) =>
       isProtected ? content : transformSegment(content, channel),
@@ -264,6 +268,60 @@ function findClosingUnderscore(s: string, from: number): number {
     }
   }
   return -1;
+}
+
+// ---------------------------------------------------------------------------
+// Markdown table → aligned code block
+// ---------------------------------------------------------------------------
+
+/**
+ * Convert Markdown tables to padded monospace code blocks.
+ * Strips pipes and separator rows, pads columns for alignment,
+ * and wraps in ``` so channels render a clean table.
+ */
+function convertMarkdownTables(text: string): string {
+  // Matches: header row (|...|) + separator row (|---|) + zero or more data rows
+  const TABLE_RE =
+    /(?:^|\n)([ \t]*\|[^\n]+\|[ \t]*\n[ \t]*\|[-| :]+\|[ \t]*(?:\n|$)(?:[ \t]*\|[^\n]+\|[ \t]*(?:\n|$))*)/g;
+
+  return text.replace(TABLE_RE, (match, table: string) => {
+    const leadingNewline = match.startsWith('\n') ? '\n' : '';
+    const lines = table.trim().split('\n');
+
+    const rows: string[][] = [];
+    for (const line of lines) {
+      // Skip separator rows (| --- | :---: | --- |)
+      if (/^\s*\|[\s:|-]+\|\s*$/.test(line)) continue;
+      const cells = line
+        .split('|')
+        .slice(1, -1)
+        .map((c) => c.trim());
+      if (cells.length > 0) rows.push(cells);
+    }
+
+    if (rows.length === 0) return match;
+
+    // Calculate max width per column
+    const colCount = Math.max(...rows.map((r) => r.length));
+    const widths: number[] = [];
+    for (let c = 0; c < colCount; c++) {
+      widths.push(Math.max(...rows.map((r) => (r[c] ?? '').length)));
+    }
+
+    // Build padded output; add dash separator after header row
+    const output = rows.map((row, i) => {
+      const padded = row
+        .map((cell, c) => cell.padEnd(widths[c] ?? 0))
+        .join('  ');
+      if (i === 0 && rows.length > 1) {
+        const sep = widths.map((w) => '-'.repeat(w)).join('  ');
+        return padded + '\n' + sep;
+      }
+      return padded;
+    });
+
+    return `${leadingNewline}\`\`\`\n${output.join('\n')}\n\`\`\``;
+  });
 }
 
 // ---------------------------------------------------------------------------

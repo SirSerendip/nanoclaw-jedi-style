@@ -1,0 +1,32 @@
+{
+  "format_version": "1.0",
+  "exported_at": "20260410-135035",
+  "nanoclaw_version": "pre-update-20260327-230336-373-g451f153",
+  "notes": "Multi-project system for testing by colleagues",
+  "capabilities": [
+    {
+      "id": "multi-project",
+      "label": "Multi-Project Management System",
+      "version": "1.0.0",
+      "depends": [],
+      "exportable_paths": {
+        "scripts": [],
+        "claude_skills": [],
+        "container_skills": [
+          "container/skills/multi-project/"
+        ],
+        "src_files": [
+          "container/agent-runner/src/index.ts"
+        ]
+      },
+      "env_keys": [],
+      "config_questions": [
+        {
+          "key": "target_group",
+          "prompt": "Which group folder should have the multi-project system? (e.g. whatsapp_personal)",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

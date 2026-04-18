@@ -1,0 +1,18 @@
+{
+  "persona_slug": "robyn-bolton",
+  "persona_name": "Robyn Bolton",
+  "cadence_preset": "twice-weekly",
+  "cron_expression": "0 2 * * 3,5",
+  "task_id": "task-1776373950083-zrqh97",
+  "status": "active",
+  "lookback_rules": {
+    "3": 48,
+    "5": 72
+  },
+  "delivery_channels": ["email-inline"],
+  "recipient": "robyn@milezero.io",
+  "created_at": "2026-04-16T17:11:00-04:00",
+  "updated_at": "2026-04-16T17:11:00-04:00",
+  "last_run": null,
+  "run_count": 0
+}

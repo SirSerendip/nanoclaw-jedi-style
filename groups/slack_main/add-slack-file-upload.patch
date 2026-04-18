@@ -1,0 +1,123 @@
+## Patch: Native Slack File Upload via IPC
+## Apply to: /workspace/project/src/
+## Purpose: Allow the agent container to upload files directly to Slack
+##           without any external hosting service.
+## Author: The Force 🥐
+
+---
+
+### STEP 1 — src/ipc.ts
+### Add `sendFile` to IpcDeps and handle `type: 'file_upload'` messages
+
+In the IpcDeps interface (around line 14), add:
+
+```typescript
+sendFile?: (jid: string, filePath: string, caption?: string) => Promise<void>;
+```
+
+After the existing `type === 'message'` block (around line 84), add:
+
+```typescript
+} else if (data.type === 'file_upload' && data.chatJid && data.filePath) {
+  // Security: only allow files within /workspace/ipc/ or /tmp/
+  const allowedPrefixes = ['/workspace/ipc/', '/tmp/'];
+  const isAllowed = allowedPrefixes.some((p) => (data.filePath as string).startsWith(p));
+  if (!isAllowed) {
+    logger.warn({ filePath: data.filePath, sourceGroup }, 'File upload rejected: path outside allowed dirs');
+  } else if (deps.sendFile) {
+    await deps.sendFile(data.chatJid, data.filePath as string, data.caption as string | undefined);
+    logger.info({ chatJid: data.chatJid, filePath: data.filePath }, 'File uploaded to Slack via IPC');
+  } else {
+    logger.warn({ sourceGroup }, 'file_upload IPC message received but sendFile not implemented');
+  }
+```
+
+---
+
+### STEP 2 — src/channels/slack.ts
+### Add sendFile method using Slack's v2 upload API
+
+After the `sendMessage` method (around line 212), add:
+
+```typescript
+async sendFile(jid: string, filePath: string, caption?: string): Promise<void> {
+  const channelId = jid.replace(/^slack:/, '');
+  const fs = await import('fs');
+  const path = await import('path');
+
+  if (!fs.existsSync(filePath)) {
+    logger.error({ filePath }, 'sendFile: file does not exist');
+    return;
+  }
+
+  const filename = path.basename(filePath);
+  const fileBuffer = fs.readFileSync(filePath);
+  const fileSize = fileBuffer.length;
+
+  try {
+    // Step 1: Get upload URL
+    const urlRes = await this.app.client.files.getUploadURLExternal({
+      filename,
+      length: fileSize,
+      token: this.botToken,
+    });
+
+    if (!urlRes.upload_url || !urlRes.file_id) {
+      logger.error({ urlRes }, 'sendFile: failed to get upload URL');
+      return;
+    }
+
+    // Step 2: Upload the file content to the upload URL
+    await fetch(urlRes.upload_url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/octet-stream' },
+      body: fileBuffer,
+    });
+
+    // Step 3: Complete the upload and post to channel
+    await this.app.client.files.completeUploadExternal({
+      files: [{ id: urlRes.file_id, title: caption ?? filename }],
+      channel_id: channelId,
+      initial_comment: caption ?? '',
+      token: this.botToken,
+    });
+
+    logger.info({ filePath, channelId }, 'File uploaded to Slack successfully');
+  } catch (err) {
+    logger.error({ filePath, channelId, err }, 'sendFile: upload failed');
+  }
+}
+```
+
+---
+
+### STEP 3 — Wire sendFile into the channel registry
+### In src/channels/registry.ts or wherever IpcDeps is constructed,
+### pass sendFile from the SlackChannel instance:
+
+```typescript
+sendFile: slackChannel.sendFile.bind(slackChannel),
+```
+
+---
+
+### STEP 4 — Required Slack OAuth scope
+### Add to your Slack app manifest:
+```
+files:write
+```
+Then reinstall the app to workspace and update SLACK_BOT_TOKEN in .env
+
+---
+
+### STEP 5 — After applying patch, the mermaid-render skill can write:
+```bash
+# Write upload request to IPC messages dir
+echo '{
+  "type": "file_upload",
+  "chatJid": "slack:C0AMR0DRDFG",
+  "filePath": "/tmp/my-diagram.png",
+  "caption": "🗺️ Wardley Map: Golden Dome Technology Landscape"
+}' > /workspace/ipc/messages/upload-$(date +%s%N).json
+```
+The host picks this up within ~1 second and uploads as a native Slack file. No external services. 🥐

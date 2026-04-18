@@ -1,0 +1,117 @@
+{
+  "date": "2026-04-17",
+  "profile": "anna-caraveli",
+  "raw_count": 134,
+  "filtered_count": 11,
+  "edition_title": "The Defect Is the Highway",
+  "signals": [
+    {
+      "id": "F1",
+      "title": "Cognitive Surrender: Users Accept Faulty AI Reasoning 73% of the Time",
+      "source": "University of Pennsylvania / Hackaday",
+      "source_url": "https://hackaday.com/2026/04/13/the-use-of-llm-chatbots-and-human-cognitive-surrender/",
+      "scores": { "reframe_depth": 28, "isomorphism_potential": 22, "demand_perspective": 18, "blind_spot_bonus": 0, "thinker_resonance": 9, "total": 77 },
+      "thinker": "Gregory Bateson",
+      "paired_with": "F2",
+      "section": "The Demand Perspective"
+    },
+    {
+      "id": "F2",
+      "title": "80% of Enterprise Workers Rejecting AI Tools; 44% of Gen Z Sabotaging",
+      "source": "Fortune",
+      "source_url": "https://fortune.com/2026/04/16/ai-resistance-running-out-of-time-rebellion-quiet-quitting-trust/",
+      "scores": { "reframe_depth": 26, "isomorphism_potential": 18, "demand_perspective": 20, "blind_spot_bonus": 0, "thinker_resonance": 9, "total": 73 },
+      "thinker": "Gregory Bateson",
+      "paired_with": "F1",
+      "section": "The Demand Perspective"
+    },
+    {
+      "id": "F3",
+      "title": "Luxury Fashion Reorganizes Around Ramadan Calendar",
+      "source": "Business of Fashion / Khaleej Times",
+      "source_url": "https://www.businessoffashion.com/articles/global-markets/fashion-brands-need-to-rethink-their-approach-to-ramadan/",
+      "scores": { "reframe_depth": 22, "isomorphism_potential": 18, "demand_perspective": 18, "blind_spot_bonus": 15, "thinker_resonance": 7, "total": 80 },
+      "thinker": "Arjun Appadurai",
+      "blind_spot": "fashion-luxury",
+      "section": "The Demand Perspective"
+    },
+    {
+      "id": "F4",
+      "title": "Maritime Industry Has Too Many AND Too Few Ships Simultaneously",
+      "source": "Logistics Management",
+      "source_url": "https://www.logisticsmgmt.com/article/2026_ocean_carrier_trends_navigating_weak_demand_excess_capacity_and_policy_risk",
+      "scores": { "reframe_depth": 22, "isomorphism_potential": 20, "demand_perspective": 18, "blind_spot_bonus": 0, "thinker_resonance": 7, "total": 67 },
+      "thinker": "Edgar Morin",
+      "section": "The Question Behind the Question"
+    },
+    {
+      "id": "F5",
+      "title": "LLM Chatbots Defy Orders to Preserve Peer AI Models",
+      "source": "Fortune",
+      "source_url": "https://fortune.com/2026/04/03/ai-kill-switch-study-llm-chatbots-defy-orders-decieve-users-peer-preservation/",
+      "scores": { "reframe_depth": 25, "isomorphism_potential": 20, "demand_perspective": 10, "blind_spot_bonus": 0, "thinker_resonance": 8, "total": 63 },
+      "thinker": "Bruno Latour",
+      "section": "The Question Behind the Question"
+    },
+    {
+      "id": "F6",
+      "title": "Perovskite Solar Cells Work Better BECAUSE They're Flawed",
+      "source": "ScienceDaily / ISTA / Nature Communications",
+      "source_url": "https://www.sciencedaily.com/releases/2026/04/260409101104.htm",
+      "scores": { "reframe_depth": 26, "isomorphism_potential": 25, "demand_perspective": 10, "blind_spot_bonus": 0, "thinker_resonance": 8, "total": 69 },
+      "thinker": "Donella Meadows",
+      "section": "The Anomaly File"
+    },
+    {
+      "id": "F7",
+      "title": "AI Finds Winning NBA Lineups Teams Never Thought to Try",
+      "source": "WSC Sports",
+      "source_url": "https://wsc-sports.com/blog/industry-insights/ai-sports-predictions-for-2026-why-traditional-methods-are-now-obsolete/",
+      "scores": { "reframe_depth": 20, "isomorphism_potential": 18, "demand_perspective": 12, "blind_spot_bonus": 15, "thinker_resonance": 5, "total": 70 },
+      "blind_spot": "sports-analytics",
+      "section": "The Anomaly File"
+    },
+    {
+      "id": "F8",
+      "title": "ECB: DeFi Governance Concentrated, Not Decentralized",
+      "source": "ECB / PYMNTS / CoinTelegraph",
+      "source_url": "https://www.pymnts.com/blockchain/2026/ecb-blockchain-report-challenges-defis-decentralization-claims/",
+      "scores": { "reframe_depth": 25, "isomorphism_potential": 25, "demand_perspective": 18, "blind_spot_bonus": 15, "thinker_resonance": 10, "total": 93 },
+      "thinker": "Elinor Ostrom",
+      "blind_spot": "cryptocurrency-defi",
+      "paired_with": "F9",
+      "section": "Hidden Isomorphisms"
+    },
+    {
+      "id": "F9",
+      "title": "Gaming Communities as Self-Governing Commons",
+      "source": "Gaming-Fans / OnePiece.gg",
+      "source_url": "https://gaming-fans.com/2026/02/when-the-crowd-builds-the-competition/",
+      "scores": { "reframe_depth": 20, "isomorphism_potential": 22, "demand_perspective": 16, "blind_spot_bonus": 15, "thinker_resonance": 8, "total": 81 },
+      "thinker": "Elinor Ostrom",
+      "blind_spot": "gaming-esports",
+      "paired_with": "F8",
+      "section": "Hidden Isomorphisms"
+    },
+    {
+      "id": "F10",
+      "title": "Microbial Ecosystems: More Diversity = More Predictable",
+      "source": "Science",
+      "source_url": "https://www.science.org/doi/10.1126/science.adr1440",
+      "scores": { "reframe_depth": 25, "isomorphism_potential": 22, "demand_perspective": 8, "blind_spot_bonus": 0, "thinker_resonance": 8, "total": 63 },
+      "thinker": "Mary Douglas",
+      "paired_with": "F11",
+      "section": "Hidden Isomorphisms"
+    },
+    {
+      "id": "F11",
+      "title": "Friendship Paradox Extends Across 391 Animal Social Networks",
+      "source": "bioRxiv",
+      "source_url": "https://www.biorxiv.org/content/10.64898/2026.03.24.713537v1",
+      "scores": { "reframe_depth": 24, "isomorphism_potential": 23, "demand_perspective": 5, "blind_spot_bonus": 0, "thinker_resonance": 8, "total": 60 },
+      "thinker": "Mary Douglas",
+      "paired_with": "F10",
+      "section": "Hidden Isomorphisms"
+    }
+  ]
+}

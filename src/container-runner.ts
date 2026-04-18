@@ -196,14 +196,50 @@ function buildVolumeMounts(
 
   // Sync skills from container/skills/ into each group's .claude/skills/
   // If allowedSkills is set, only those skills are synced.
-  // Always clear first to remove stale skills from prior runs.
+  // Agent-created skills (those not in container/skills/) are preserved.
   const skillsSrc = path.join(process.cwd(), 'container', 'skills');
   const skillsDst = path.join(groupSessionsDir, 'skills');
   const allowedSkills = group.containerConfig?.allowedSkills;
+
+  // Identify agent-created skills before clearing — these don't exist in
+  // the canonical container/skills/ source and would be lost on restart.
+  const canonicalSkills = new Set(
+    fs.existsSync(skillsSrc)
+      ? fs
+          .readdirSync(skillsSrc)
+          .filter((s) => fs.statSync(path.join(skillsSrc, s)).isDirectory())
+      : [],
+  );
+  const agentCreatedSkills: string[] = [];
+  if (fs.existsSync(skillsDst)) {
+    for (const skillDir of fs.readdirSync(skillsDst)) {
+      const fullPath = path.join(skillsDst, skillDir);
+      if (
+        fs.statSync(fullPath).isDirectory() &&
+        !canonicalSkills.has(skillDir)
+      ) {
+        agentCreatedSkills.push(skillDir);
+      }
+    }
+  }
+
+  // Back up agent-created skills, clear, then restore
+  const tmpBackup = path.join(groupSessionsDir, '.skills-backup');
+  if (agentCreatedSkills.length > 0) {
+    fs.mkdirSync(tmpBackup, { recursive: true });
+    for (const skill of agentCreatedSkills) {
+      fs.cpSync(path.join(skillsDst, skill), path.join(tmpBackup, skill), {
+        recursive: true,
+      });
+    }
+  }
+
   if (fs.existsSync(skillsDst)) {
     fs.rmSync(skillsDst, { recursive: true, force: true });
   }
   fs.mkdirSync(skillsDst, { recursive: true });
+
+  // Copy canonical skills
   if (fs.existsSync(skillsSrc)) {
     for (const skillDir of fs.readdirSync(skillsSrc)) {
       if (allowedSkills && !allowedSkills.includes(skillDir)) continue;
@@ -212,6 +248,18 @@ function buildVolumeMounts(
       const dstDir = path.join(skillsDst, skillDir);
       fs.cpSync(srcDir, dstDir, { recursive: true });
     }
+  }
+
+  // Restore agent-created skills
+  if (fs.existsSync(tmpBackup)) {
+    for (const skill of agentCreatedSkills) {
+      const src = path.join(tmpBackup, skill);
+      const dst = path.join(skillsDst, skill);
+      if (!fs.existsSync(dst)) {
+        fs.cpSync(src, dst, { recursive: true });
+      }
+    }
+    fs.rmSync(tmpBackup, { recursive: true, force: true });
   }
   mounts.push({
     hostPath: groupSessionsDir,

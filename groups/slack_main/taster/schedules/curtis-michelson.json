@@ -1,0 +1,15 @@
+{
+  "persona_slug": "curtis-michelson",
+  "cadence_preset": "daily",
+  "cron_expression": "0 5 * * *",
+  "cron_local": "1:00 AM ET daily",
+  "task_id": "task-1776388099995-cdj2ic",
+  "old_task_id": "task-1776209171237-a3pofj",
+  "status": "active",
+  "lookback_hours": 24,
+  "delivery_channels": ["email-inline"],
+  "recipient": "me@curtismichelson.com",
+  "filter_mode": "inversion",
+  "created": "2026-04-16",
+  "notes": "Migrated from monolithic Slack DM task to full 6-stage Taster pipeline with email delivery. Inversion-strength scoring (0-30) is primary filter dimension."
+}

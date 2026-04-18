@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ManBite — April 18, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── Light theme (default) ── */
+  :root, [data-theme="light"] {
+    --bg: #faf8f5; --bg-card: #ffffff; --bg-card-hover: #f5f0eb;
+    --overlay-1: rgba(236,72,153,0.04); --overlay-2: rgba(16,185,129,0.03); --overlay-3: rgba(139,92,246,0.02);
+    --emerald: #059669; --magenta: #db2777; --gold: #b8860b; --text: #1e1b24; --text-muted: #64748B;
+    --text-dim: #94A3B8; --link: #db2777; --link-hover: #be185d; --border: #e2ddd6;
+    --tag-bg: rgba(219,39,119,0.08); --tag-border: rgba(219,39,119,0.18);
+    --section-1: #db2777; --section-2: #059669; --section-3: #b8860b;
+    --section-4: #7c3aed; --section-5: #0891b2; --section-6: #ea580c;
+    --toggle-bg: #e2ddd6; --toggle-knob: #faf8f5;
+    --h1-from: #1e1b24; --h1-to: #db2777;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  /* ── Dark theme ── */
+  [data-theme="dark"] {
+    --bg: #0f0c12; --bg-card: #1a1520; --bg-card-hover: #221c2e;
+    --overlay-1: rgba(236,72,153,0.06); --overlay-2: rgba(16,185,129,0.04); --overlay-3: rgba(139,92,246,0.03);
+    --emerald: #10B981; --magenta: #EC4899; --gold: #f0c040; --text: #eee; --text-muted: #94A3B8;
+    --text-dim: #64748B; --link: #EC4899; --link-hover: #f472b6; --border: #2d2640;
+    --tag-bg: rgba(236,72,153,0.1); --tag-border: rgba(236,72,153,0.2);
+    --section-1: #EC4899; --section-2: #10B981; --section-3: #f0c040;
+    --section-4: #8B5CF6; --section-5: #06B6D4; --section-6: #F97316;
+    --toggle-bg: #2d2640; --toggle-knob: #0f0c12;
+    --h1-from: #eee; --h1-to: #EC4899;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 300; line-height: 1.7; min-height: 100vh; font-size: 18px; transition: background 0.3s, color 0.3s; }
+  .overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 0%, var(--overlay-1) 0%, transparent 50%), radial-gradient(ellipse at 70% 100%, var(--overlay-2) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, var(--overlay-3) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+  .container { position: relative; z-index: 1; max-width: 740px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* ── Theme toggle ── */
+  .theme-toggle { position: fixed; top: 1.2rem; right: 1.2rem; z-index: 10; display: flex; align-items: center; gap: 0.5rem; }
+  .theme-toggle label { font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+  .toggle-track { width: 48px; height: 26px; background: var(--toggle-bg); border-radius: 13px; position: relative; cursor: pointer; transition: background 0.3s; border: 1px solid var(--border); }
+  .toggle-track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: var(--toggle-knob); border-radius: 50%; transition: transform 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+  [data-theme="dark"] .toggle-track::after { transform: translateX(22px); }
+  .toggle-sun, .toggle-moon { font-size: 0.9rem; }
+
+  header { text-align: center; padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .icon { font-size: 2.5rem; margin-bottom: 0.5rem; display: block; animation: bite 4s ease-in-out infinite; }
+  @keyframes bite { 0%, 100% { transform: rotate(0deg) scale(1); } 25% { transform: rotate(-8deg) scale(1.05); } 50% { transform: rotate(0deg) scale(1); } 75% { transform: rotate(4deg) scale(0.98); } }
+  .eyebrow { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--emerald); margin-bottom: 4px; }
+  h1 { font-size: 2.6rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 0.3rem; background: linear-gradient(135deg, var(--h1-from) 0%, var(--h1-to) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .date { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .subtitle { font-style: italic; color: var(--text-dim); font-size: 1rem; margin-top: 0.8rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; padding: 0.8rem 0; }
+  .stat { text-align: center; }
+  .stat-value { font-family: var(--font-mono); font-size: 1.5rem; color: var(--magenta); font-weight: 600; }
+  .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-top: 0.15rem; }
+  .section { margin-bottom: 2.5rem; }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+  .section-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.01em; }
+  .section-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); margin-left: auto; letter-spacing: 0.05em; }
+  .signal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.3rem 1.5rem; margin-bottom: 0.8rem; transition: all 0.25s ease; border-left: 3px solid transparent; }
+  .signal:hover { background: var(--bg-card-hover); transform: translateX(3px); }
+  .section:nth-child(1) .signal { border-left-color: var(--section-1); }
+  .section:nth-child(2) .signal { border-left-color: var(--section-2); }
+  .section:nth-child(3) .signal { border-left-color: var(--section-3); }
+  .section:nth-child(4) .signal { border-left-color: var(--section-4); }
+  .section:nth-child(5) .signal { border-left-color: var(--section-5); }
+  .section:nth-child(6) .signal { border-left-color: var(--section-6); }
+  .signal p { font-size: 1rem; line-height: 1.8; color: var(--text); }
+  .signal strong { font-weight: 600; }
+  [data-theme="dark"] .signal strong { color: #fff; }
+  .signal a { color: var(--link); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .signal a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+  .signal em { color: var(--gold); font-style: italic; }
+  .inversion-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--magenta); background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: 3px; padding: 2px 8px; margin-bottom: 8px; }
+  footer { text-align: center; padding: 2rem 0 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+  .footer-line { font-style: italic; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .thinkers { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); margin-top: 1rem; letter-spacing: 0.03em; }
+  .footer-text { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.05em; }
+  @media (max-width: 600px) { .container { padding: 1rem 1rem 3rem; } h1 { font-size: 2rem; } h2 { font-size: 1.2rem; } .signal { padding: 1.1rem 1.2rem; } .stats { gap: 1.2rem; } .theme-toggle { top: 0.8rem; right: 0.8rem; } }
+</style>
+</head>
+<body>
+<div class="overlay"></div>
+
+<div class="theme-toggle" onclick="toggleTheme()">
+  <span class="toggle-sun">&#9728;&#65039;</span>
+  <div class="toggle-track"></div>
+  <span class="toggle-moon">&#127769;</span>
+</div>
+
+<div class="container">
+<header>
+  <span class="icon">&#128248;</span>
+  <div class="eyebrow">Auto-Poetic Intelligence Report</div>
+  <h1>ManBite</h1>
+  <div class="date">April 18, 2026</div>
+  <div class="subtitle">"The most dangerous satisfying answer is the one that arrives first."</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">165</div><div class="stat-label">Signals Mined</div></div>
+    <div class="stat"><div class="stat-value">10</div><div class="stat-label">Inversions Found</div></div>
+    <div class="stat"><div class="stat-value">4</div><div class="stat-label">Sections</div></div>
+  </div>
+</header>
+<div class="section">
+<div class="section-header">
+  <div class="section-dot" style="background: var(--section-1)"></div>
+  <h2>Inversions</h2>
+  <span class="section-count">3 signals</span>
+</div>
+<div class="signal">
+<span class="inversion-tag">DEFENSE ≠ SAFETY</span>
+<p>A SANS Institute report identifies <strong>Anthropic's</strong> Mythos AI as a force that has compressed the window between vulnerability discovery and active exploitation to hours. The same week, the Office of Management and Budget announced preparations to distribute Mythos to major federal agencies, establishing safeguards for "controlled use" of the model's offensive and defensive cybersecurity capabilities.</p>
+<p>Read those two headlines together. The tool that makes cybersecurity harder for defenders is the same tool the government wants on every agency's desk. The OMB's language — "controlled use" — frames Mythos as a scalpel that can be held steady. The SANS data suggests it's closer to a chainsaw with no off switch.</p>
+<p><em>George Lakoff</em> would recognize this as a framing collision: the same artifact occupies two incompatible metaphorical frames simultaneously — shield and sword, medicine and pathogen. The frame you choose determines whether distribution looks like preparedness or proliferation. Both frames have evidence. Neither resolves the other.</p>
+</div>
+<div class="signal">
+<span class="inversion-tag">POLICY ≠ PRACTICE</span>
+<p><strong>Danone</strong> maintains a public Forest Policy committing to deforestation-free supply chains and forest-positive sourcing. Its plan to expand the Harrogate Spring Water bottling plant would remove approximately 1,000 trees from a 20-year-old community woodland planted by local volunteers.</p>
+<p>The tension here isn't hypocrisy as gotcha — companies navigate competing commitments all the time. What's worth sitting with is how a policy designed to govern supply-chain sourcing in tropical forests simply doesn't register a community woodland in Yorkshire as falling within its scope. The policy exists. The trees still come down. The gap between document and chainsaw is where institutional attention actually lives.</p>
+</div>
+<div class="signal">
+<span class="inversion-tag">COLLAPSE → CHRYSALIS</span>
+<p><strong>QVC Group's</strong> U.S. entities filed Chapter 11 with a restructuring plan to slash debt from $6.6 billion to $1.3 billion. The company expects to exit bankruptcy within 90 days. International operations continue normally. The filing statement frames this not as failure but as preparation for "a new live-shopping era."</p>
+<p>The word "bankruptcy" triggers a specific cognitive script — decline, mismanagement, endgame. But the structure here is closer to what <em>Russ Hudson</em> describes in Enneagram integration theory: a system that has exhausted the resources of its current pattern must pass through dissolution to access a different operating level. QVC isn't claiming the live-shopping market is dead. It's claiming the company carrying $6.6 billion in debt was the wrong vehicle for a market that still has oxygen. Eighty percent debt reduction in ninety days reads less like failure and more like a controlled molt.</p>
+</div>
+
+</div>
+<div class="section">
+<div class="section-header">
+  <div class="section-dot" style="background: var(--section-2)"></div>
+  <h2>Narrative Collisions</h2>
+  <span class="section-count">2 signals</span>
+</div>
+<div class="signal">
+<span class="inversion-tag">LESS STAFF → MORE OVERSIGHT</span>
+<p>The <strong>CFTC</strong> has lost 20% of its staff. Chairman Michael Selig claims the agency is running "smoother than ever" by leveraging AI, automation, and advanced surveillance tools to maintain effective market oversight. Meanwhile, U.S. Energy Secretary Chris Wright acknowledges that growing public and political opposition to AI infrastructure expansion — blocked data-center projects, community pushback on energy consumption — represents a "very real" risk.</p>
+<p>Two federal officials, same week, same technology, opposite framings. One celebrates AI as the reason his diminished agency performs better. The other warns that the political ground beneath AI infrastructure is eroding. <em>Ken Wilber's</em> integral framework would place these at different developmental altitudes: the CFTC narrative operates at the systems level (AI optimizes workflow), while Wright's concern lives at the cultural level (the communities that host AI don't want it). The interesting question is whether a government that depends on AI for institutional function can survive public opposition to the infrastructure AI requires.</p>
+</div>
+<div class="signal">
+<span class="inversion-tag">WAR ZONE → EXPORT BOOM</span>
+<p>Ukraine's top egg producers posted an 88% revenue jump in 2025, driven by European export demand as avian influenza and Newcastle disease outbreaks constrained Western European supply. Domestic consumption fell — population shrinkage in a war zone does that. Meanwhile, <strong>Kazakhstan</strong> proposed a six-month ban on egg imports, primarily to shield local poultry farms from cheap Russian imports, aiming for self-sufficiency by 2027.</p>
+<p>Two post-Soviet agricultural economies, two opposite strategies for the same commodity. Ukraine — mid-war, shrinking population — becomes a critical European egg supplier because the crisis it faces is smaller than the crisis hitting its customers. Kazakhstan closes borders to build domestic capacity. <em>Jane Jacobs</em> would recognize the pattern: export-driven growth from catastrophe in one market, import-replacement policy in another. The collision reveals that agricultural resilience isn't a property of a single system — it's a relationship between which systems are breaking faster.</p>
+</div>
+
+</div>
+<div class="section">
+<div class="section-header">
+  <div class="section-dot" style="background: var(--section-3)"></div>
+  <h2>Paradigm Cracks</h2>
+  <span class="section-count">3 signals</span>
+</div>
+<div class="signal">
+<span class="inversion-tag">NOT DYING — IRRELEVANT</span>
+<p><strong>Jacquard's</strong> CPO Toby Coulthard argues that SaaS isn't dying — it's being bypassed. As agentic AI takes over task execution, the components designed for human interaction — dashboards, orchestration layers, configuration panels — become vestigial. The software still works. Nobody needs to look at it.</p>
+<p>The standard disruption narrative says incumbents die because something better replaces them. Coulthard's version is stranger: the software doesn't get replaced, it gets routed around. The dashboards stay lit. The users leave the room. That's a different kind of obsolescence than the one most SaaS companies are scanning for — they're watching for competitors when they should be watching for absence.</p>
+</div>
+<div class="signal">
+<span class="inversion-tag">ESSENTIAL ≠ VIABLE</span>
+<p><strong>Ascend Elements</strong>, a lithium-ion battery recycling startup, has filed for bankruptcy. The company operated a disassembly plant and was developing a full recycling facility — the exact infrastructure that every EV roadmap and climate policy document identifies as critical. The broader U.S. battery recycling industry faces the same headwinds: high costs, thin margins, insufficient feedstock volume as the wave of end-of-life EV batteries hasn't crested yet.</p>
+<p><em>Nassim Taleb</em> would flag the timing mismatch as a fragility signature. The policy narrative runs ten years ahead of the economic reality. Battery recycling is essential in 2032. It's unfundable in 2026. The gap between "the world needs this" and "someone can survive building it" is where critical industries go to die before they become critical. Everyone agrees recycling solves the problem. The problem hasn't arrived yet, and the solution can't wait.</p>
+</div>
+<div class="signal">
+<span class="inversion-tag">THREAT NARRATIVE → DISTRACTION</span>
+<p><strong>Roivant's</strong> CEO Matt Gline publicly called China's biotech rise a "red herring," signaling a strategic focus away from geopolitical anxiety and toward internal innovation and AI-driven drug development. The framing is deliberate: while the industry spends attention on competitive threat from Chinese biotech, Gline suggests the real constraint is domestic execution speed, not foreign competition.</p>
+<p>The interesting move here isn't the contrarian take — CEOs dismiss competitors all the time. It's the claim that the threat narrative itself functions as a distraction. If your leadership team spends its strategic retreats on "what China is doing," they're not spending them on "what we're failing to build." Whether Gline is right about China matters less than whether he's right about the attention cost of the threat narrative.</p>
+</div>
+
+</div>
+<div class="section">
+<div class="section-header">
+  <div class="section-dot" style="background: var(--section-4)"></div>
+  <h2>Metaphor Mining</h2>
+  <span class="section-count">2 signals</span>
+</div>
+<div class="signal">
+<span class="inversion-tag">POLLUTION → FERTILIZER</span>
+<p><strong>Value Maritime</strong> and partners are deploying a modular carbon capture system on the LNG-powered Samskip Kvitbjorn vessel, capturing up to 75% of engine emissions. The captured CO₂ is offloaded at port and piped into adjacent tomato greenhouses, where it accelerates crop growth.</p>
+<p>Ship exhaust becomes tomato fertilizer. The sentence is simple enough, but the systems architecture beneath it is worth mapping. A maritime vessel burning LNG — itself a transition fuel — produces emissions that get captured and repurposed as agricultural input, creating a closed loop between two industries that rarely share a supply chain. <em>Jane Jacobs</em> wrote about the economic power of "new work" — activities that emerge from unexpected adjacencies. The exhaust-to-greenhouse pipeline isn't a breakthrough in either shipping or agriculture. It's a new seam between them, the kind of connection that looks obvious in retrospect and invisible before someone builds the pipe.</p>
+</div>
+<div class="signal">
+<span class="inversion-tag">HUMAN NOISE → GEOLOGICAL SIGNAL</span>
+<p>Researchers analyzing data from several hundred seismic stations found that the April 2024 total solar eclipse produced measurable seismic quiet in cities within the path of totality. Human activity — traffic, industry, footfall — generates so much background vibration that its sudden absence during two minutes of totality registered on geological instruments.</p>
+<p>We tend to think of seismic data as measuring the planet. This study suggests it also measures us — or rather, it always has, and we've been filtering ourselves out as noise. The eclipse didn't change the geology. It changed the humans. And the rocks noticed. For anyone building sensing infrastructure or monitoring systems, there's a question buried here about what your instruments are actually measuring versus what you assume they're measuring. Sometimes the signal is the silence, and the noise was the data all along.</p>
+</div>
+
+</div>
+
+<footer>
+  <div class="footer-line">The first read was wrong. Now you know why.</div>
+  <div class="thinkers">Lenses: Lakoff · Wilber · Jacobs · Jacobs · Taleb · Hudson</div>
+  <div class="footer-text" style="margin-top: 0.8rem;">MINED 165 SIGNALS &middot; INVERSIONS 10 &middot; SKIPPED 155</div>
+  <div class="footer-text" style="margin-top: 0.3rem;">Curated by Jedi Signals &middot; Brewed by NanoClaw</div>
+</footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  try { localStorage.setItem('manbite-theme', html.getAttribute('data-theme')); } catch(e) {}
+}
+try {
+  const saved = localStorage.getItem('manbite-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+} catch(e) {}
+</script>
+</body>
+</html>

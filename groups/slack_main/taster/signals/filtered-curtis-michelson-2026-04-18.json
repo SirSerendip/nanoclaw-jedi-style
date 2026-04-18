@@ -1,0 +1,277 @@
+{
+  "date": "2026-04-18",
+  "total_raw": 165,
+  "selected": 10,
+  "signals": [
+    {
+      "indices": [
+        50,
+        52
+      ],
+      "type": "collision",
+      "title": "The Shield That Sharpens the Sword",
+      "sources": [
+        {
+          "title": "New Report Details How Mythos AI Makes Cybersecurity Harder",
+          "company": "Government Technology",
+          "source_url": ""
+        },
+        {
+          "title": "White House May Give Federal Agencies Anthropic Mythos AI",
+          "company": "Government Technology",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 28,
+        "collision_potential": 25,
+        "domain_match": 12,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 12
+      },
+      "total_score": 77,
+      "thinker_lens": "Lakoff",
+      "section": "Inversions",
+      "inversion_tag": "DEFENSE \u2260 SAFETY"
+    },
+    {
+      "indices": [
+        62,
+        63
+      ],
+      "type": "collision",
+      "title": "The Government's AI Paradox",
+      "sources": [
+        {
+          "title": "AI helping downsized CFTC run smoother than ever, chairman claims",
+          "company": "FedScoop",
+          "source_url": ""
+        },
+        {
+          "title": "Energy secretary sees 'growing' opposition to AI as 'very real' risk",
+          "company": "FedScoop",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 25,
+        "collision_potential": 22,
+        "domain_match": 13,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 12
+      },
+      "total_score": 72,
+      "thinker_lens": "Wilber",
+      "section": "Narrative Collisions",
+      "inversion_tag": "LESS STAFF \u2192 MORE OVERSIGHT"
+    },
+    {
+      "indices": [
+        131,
+        128
+      ],
+      "type": "collision",
+      "title": "The Egg Equation",
+      "sources": [
+        {
+          "title": "Ukraine's top egg producers post 88% revenue jump on export boom",
+          "company": "Poultry World",
+          "source_url": ""
+        },
+        {
+          "title": "Kazakhstan moves to shield egg market with 6-month import ban",
+          "company": "Poultry World",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 20,
+        "collision_potential": 22,
+        "domain_match": 5,
+        "blind_spot_bonus": 15,
+        "thinker_resonance": 8
+      },
+      "total_score": 70,
+      "thinker_lens": "Jacobs",
+      "section": "Narrative Collisions",
+      "inversion_tag": "WAR ZONE \u2192 EXPORT BOOM",
+      "blind_spot": true
+    },
+    {
+      "indices": [
+        93
+      ],
+      "type": "single",
+      "title": "Exhaust Into Harvest",
+      "sources": [
+        {
+          "title": "From captured GHG emissions to promoting crop growth",
+          "company": "Seatrade Maritime News",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 20,
+        "collision_potential": 15,
+        "domain_match": 8,
+        "blind_spot_bonus": 15,
+        "thinker_resonance": 10
+      },
+      "total_score": 68,
+      "thinker_lens": "Jacobs",
+      "section": "Metaphor Mining",
+      "inversion_tag": "POLLUTION \u2192 FERTILIZER",
+      "blind_spot": true
+    },
+    {
+      "indices": [
+        23
+      ],
+      "type": "single",
+      "title": "The SaaS Bypass",
+      "sources": [
+        {
+          "title": "Saaspocalypse Watch: Jacquard's Toby Coulthard says SaaS isn't dying \u2013 it's being bypassed",
+          "company": "The Drum",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 22,
+        "collision_potential": 18,
+        "domain_match": 14,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 12
+      },
+      "total_score": 66,
+      "thinker_lens": null,
+      "section": "Paradigm Cracks",
+      "inversion_tag": "NOT DYING \u2014 IRRELEVANT"
+    },
+    {
+      "indices": [
+        83
+      ],
+      "type": "single",
+      "title": "The Critical Industry Nobody Can Fund",
+      "sources": [
+        {
+          "title": "Battery recycling still isn't easy. Just ask Ascend Elements.",
+          "company": "Canary Media",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 24,
+        "collision_potential": 18,
+        "domain_match": 10,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 10
+      },
+      "total_score": 62,
+      "thinker_lens": "Taleb",
+      "section": "Paradigm Cracks",
+      "inversion_tag": "ESSENTIAL \u2260 VIABLE"
+    },
+    {
+      "indices": [
+        151
+      ],
+      "type": "single",
+      "title": "The Forest Policy That Felled a Forest",
+      "sources": [
+        {
+          "title": "Danone faces 'forest policy' backlash as Harrogate expansion threatens 1,000-tree community woodland",
+          "company": "Manufacturer (The)",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 26,
+        "collision_potential": 15,
+        "domain_match": 8,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 10
+      },
+      "total_score": 59,
+      "thinker_lens": null,
+      "section": "Inversions",
+      "inversion_tag": "POLICY \u2260 PRACTICE"
+    },
+    {
+      "indices": [
+        104
+      ],
+      "type": "single",
+      "title": "Bankruptcy as Business Plan",
+      "sources": [
+        {
+          "title": "QVC Group follows through on bankruptcy, readies itself for a new live-shopping era",
+          "company": "Retail Dive",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 20,
+        "collision_potential": 15,
+        "domain_match": 10,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 10
+      },
+      "total_score": 55,
+      "thinker_lens": "Hudson",
+      "section": "Inversions",
+      "inversion_tag": "COLLAPSE \u2192 CHRYSALIS"
+    },
+    {
+      "indices": [
+        70
+      ],
+      "type": "single",
+      "title": "The Sound of Watching",
+      "sources": [
+        {
+          "title": "Total solar eclipse led to seismic quiet for cities within its path",
+          "company": "EurekAlert!",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 22,
+        "collision_potential": 12,
+        "domain_match": 8,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 10
+      },
+      "total_score": 52,
+      "thinker_lens": null,
+      "section": "Metaphor Mining",
+      "inversion_tag": "HUMAN NOISE \u2192 GEOLOGICAL SIGNAL"
+    },
+    {
+      "indices": [
+        39
+      ],
+      "type": "single",
+      "title": "The Red Herring in the Dragon's Mouth",
+      "sources": [
+        {
+          "title": "Roivant's CEO thinks China is a 'red herring'",
+          "company": "Fierce Biotech",
+          "source_url": ""
+        }
+      ],
+      "scores": {
+        "inversion_strength": 18,
+        "collision_potential": 15,
+        "domain_match": 10,
+        "blind_spot_bonus": 0,
+        "thinker_resonance": 8
+      },
+      "total_score": 51,
+      "thinker_lens": null,
+      "section": "Paradigm Cracks",
+      "inversion_tag": "THREAT NARRATIVE \u2192 DISTRACTION"
+    }
+  ]
+}

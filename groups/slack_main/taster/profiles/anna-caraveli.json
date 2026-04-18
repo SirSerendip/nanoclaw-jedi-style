@@ -1,0 +1,177 @@
+{
+  "slug": "anna-caraveli",
+  "name": "Dr. Anna Caraveli",
+  "created": "2026-04-16",
+  "updated": "2026-04-16",
+
+  "intellectual_profile": {
+    "background": "Anthropologist-turned-innovation-consultant. Left Greece at 18, Paris, University of Texas El Paso, comparative literature, then pivoted to oral traditions — Homer, troubadours, the living lament tradition (moirologia) in Greek villages. Fieldwork studying language in human context: the act of singing creates a community of mourners. Smithsonian Institution (created 'Campus on the Mall' — doubled enrollment, drew plans for a Virtual Smithsonian in the 90s). Brookings Institution (exec education, corporate partnerships). Founded The Demand Networks LLC. Author of 'The Demand Perspective: Leading from the Outside In.'",
+    "domains": ["demand-side-innovation", "cultural-anthropology", "organizational-transformation", "community-co-creation", "ethnographic-methodology", "semiotics", "self-organization", "design-thinking"],
+    "methodology": "Outside-in thinking — start with the customer, the community, the lived experience, then work backward to the institution. Ethnographic interviewing: 'What keeps you up at night?' not 'Which programs can we improve?' The question behind the question. Co-creative design over prescriptive strategy. Learning approach over big strategy docs.",
+    "signature_concepts": ["the demand perspective", "the question behind the question", "outside-in thinking", "campus on the mall", "co-creative design", "people first", "learning as you go", "constructive narcissist (Maccoby)"],
+    "distinction": "Sees the hidden structure — isomorphisms across scales (bacteria and neighborhoods, hats and politics, chicks and data). Her fieldwork in Greek village laments gave her a methodology: the community creates meaning through the act of performing together. She applies this to organizations. The demand perspective isn't a framework she learned — it's a way of seeing she discovered in the field and recognized everywhere after.",
+    "intellectual_lineage": ["Michael Maccoby", "Homer", "Claude Lévi-Strauss", "Clifford Geertz", "Mary Douglas", "Gregory Bateson", "Jane Jacobs", "Donella Meadows", "Edgar Morin"]
+  },
+
+  "taster": {
+    "name": "Anna's TGV Express",
+    "metaphor": "The fast train from Paris to the Mediterranean — a curated high-speed ride through the signal landscape, connecting worlds that look separate from the platform",
+    "description": "A daily signal collision report curated through the lens of anthropology, demand theory, self-organization, and semiotics. Not a news digest — a pattern-recognition engine that surfaces the question behind the question, the isomorphism hiding in plain sight, the anomaly that breaks the assumed frame.",
+    "mood": "Intellectually generous, layered, warm but rigorous. Like a Mediterranean dinner where the anthropologist at the table keeps making connections between the olive harvest and organizational design — and you realize she's right.",
+    "subtitle": "\"I put together pieces of my life and study that were self evident, but others didn't see how they fit together.\" —Dr. Anna Caraveli",
+    "footer_line": "The landscape between is where the thinking happens.",
+    "purpose": "Surface signal collisions, hidden isomorphisms, and demand-side reframes that Anna can use in her consulting, speaking, and intellectual work. TGV Express curates the collision, draws the structural bridge, and leaves room for Anna to make the deeper connection.",
+    "icon": "🚄"
+  },
+
+  "design_palette": {
+    "colors": {
+      "--bg": "#f5f0e8",
+      "--bg-dark": "#1A1714",
+      "--bg-card": "#fffcf7",
+      "--bg-card-hover": "#f0ebe0",
+      "--aegean": "#1B6B93",
+      "--terracotta": "#C67B5C",
+      "--olive": "#6B7E4F",
+      "--lavender": "#8B7EB8",
+      "--stone": "#A09282",
+      "--gold": "#B8942E",
+      "--text": "#2A2520",
+      "--text-muted": "#6B5E54",
+      "--text-dim": "#9B8E82",
+      "--link": "#1B6B93",
+      "--link-hover": "#C67B5C",
+      "--border": "#DDD5C8",
+      "--section-1": "#1B6B93",
+      "--section-2": "#C67B5C",
+      "--section-3": "#6B7E4F",
+      "--section-4": "#8B7EB8",
+      "--section-5": "#B8942E"
+    },
+    "typography": {
+      "heading": "Playfair Display",
+      "body": "Source Serif 4",
+      "mono": "JetBrains Mono"
+    },
+    "template_path": "references/tgv-express-template.html",
+    "mood": "Mediterranean warmth — warm parchment background, aegean blue + terracotta + olive + lavender + gold accents. Light-mode default with dark toggle. Warm, layered, scholarly but never stuffy."
+  },
+
+  "filter_lens": {
+    "mode": "reframe",
+    "domains": [
+      "demand-side-innovation",
+      "cultural-anthropology",
+      "organizational-transformation",
+      "community-co-creation",
+      "self-organization",
+      "semiotics",
+      "design-thinking",
+      "behavioral-science",
+      "ethnographic-methodology"
+    ],
+    "blind_spots": [
+      "quantum-computing",
+      "sports-analytics",
+      "military-defense",
+      "cryptocurrency-defi",
+      "fashion-luxury",
+      "space-technology",
+      "gaming-esports"
+    ],
+    "complexity_level": "expert",
+    "thinker_preferences": [
+      "Michael Maccoby",
+      "Claude Lévi-Strauss",
+      "Clifford Geertz",
+      "Mary Douglas",
+      "Gregory Bateson",
+      "Jane Jacobs",
+      "Donella Meadows",
+      "Edgar Morin",
+      "Elinor Ostrom",
+      "James C. Scott",
+      "Bruno Latour",
+      "Arjun Appadurai"
+    ],
+    "scoring_dimensions": {
+      "reframe_depth": {
+        "weight": "0-30",
+        "description": "Does the signal contain a stated question AND a deeper unstated question? Score 0 if what you see is what you get. Score 25-30 if the real question hiding underneath inverts or transforms the surface question. The 'question behind the question' test. THIS IS THE PRIMARY DIMENSION."
+      },
+      "isomorphism_potential": {
+        "weight": "0-25",
+        "description": "Can this signal be structurally mapped to another from a completely different domain or scale? Bacteria↔neighborhoods, hats↔politics, touch↔data. Same structural pattern, different substrate = highest value."
+      },
+      "demand_perspective": {
+        "weight": "0-20",
+        "description": "Does the signal reveal a gap between what the institution assumes and what the community/customer/end-user actually experiences or needs? Outside-in vs. inside-out tension."
+      },
+      "blind_spot_bonus": {
+        "weight": "0-15",
+        "description": "Signal from a domain Anna normally ignores. Ensures 1-2 surprises per edition from outside the usual orbit."
+      },
+      "thinker_resonance": {
+        "weight": "0-10",
+        "description": "Does a specific thinker's framework illuminate the reframe? Bateson on double-bind, Lévi-Strauss on structural opposition, Ostrom on commons governance, Scott on seeing like a state. Must fit naturally."
+      }
+    },
+    "section_tiers": [
+      {
+        "name": "The Demand Perspective",
+        "color_var": "--section-1",
+        "description": "The institution's question and the community's answer are speaking past each other. The signal reveals the gap."
+      },
+      {
+        "name": "The Question Behind the Question",
+        "color_var": "--section-2",
+        "description": "The stated research question or business problem masks a deeper, more interesting question that the data actually answers."
+      },
+      {
+        "name": "The Anomaly File",
+        "color_var": "--section-3",
+        "description": "A signal that doesn't fit the assumed pattern. The exception that illuminates the rule."
+      },
+      {
+        "name": "Hidden Isomorphisms",
+        "color_var": "--section-4",
+        "description": "Same structural pattern, different scale or domain. The mapping IS the insight."
+      }
+    ],
+    "editorial_rules": [
+      "Signal write-ups reference ONLY what's in the source material",
+      "Never backfill context from training knowledge to sharpen a reframe",
+      "Section names: observational, not accusatory (curious > strident)",
+      "Preserve complexity — don't compress a multi-sided story into a clean binary",
+      "Multi-signal isomorphisms (two signals structurally mapped) are the highest-value format",
+      "Present the pattern, offer *a* reading (not *the* interpretation), leave room",
+      "Never exceed the researchers' own conclusions",
+      "The demand perspective reframe must emerge from the signal, not be imposed on it",
+      "Collision tags should name the structural pattern, not editorialize about it",
+      "When pairing signals, both must be real and sourced — never fabricate a second signal",
+      "Anna's anthropological lens means: privilege fieldwork over theory, community over institution, the particular over the general",
+      "TGV Express is a curated collision report, not a finished analysis. Anna does the deeper synthesis.",
+      "Tone: warm, intellectually generous, genuinely curious — 'look at what connects these' not 'THEY MISSED THIS'",
+      "Closing line = observation, not reveal. No trailer voiceovers.",
+      "Never close with 'X isn't [thing]. It's [other thing].'",
+      "Lenses footer should rotate — name 3-4 lenses used in this edition"
+    ]
+  },
+
+  "voice_calibration": {
+    "tone": "Intellectually generous, layered, warm but rigorous. The anthropologist's eye — sees structure where others see coincidence, sees community where others see chaos. Direct but never reductive. The warmth comes from genuine curiosity, not performative enthusiasm.",
+    "sentence_length": "Richer exposition than ManBite — Anna's lens demands context. Let the structural parallels unfold across sentences. But still varied: a punchy observation can land a 3-sentence build-up.",
+    "thinker_usage": "Rotate across editions. Anthropological and systems thinkers preferred. The lens must illuminate the structural pattern, not just label it. If Bateson is invoked, use actual Bateson concepts (double-bind, schismogenesis) — not a generic label. If no thinker fits, skip.",
+    "la_force_voice": "The editorial voice that sees patterns across scales and domains. Anna's demand perspective is the through-line — every signal gets read through the question: what does this look like from the outside in? TGV Express curates the collision and draws the structural bridge. The deeper synthesis is Anna's.",
+    "drumming_metaphors": false,
+    "french": false
+  },
+
+  "delivery": {
+    "format": "email-inline",
+    "email": "caraveli.anna3@gmail.com",
+    "cadence": "daily-weekdays",
+    "channels": ["email"],
+    "subject_template": "Anna's TGV Express · {edition_title} · {date}"
+  }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paris TGV Express — April 10–14, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root, [data-theme="light"] {
+    --bg: #f5f0e8; --bg-card: #fffcf7; --bg-card-hover: #f0ebe0;
+    --overlay-1: rgba(27,107,147,0.04); --overlay-2: rgba(198,123,92,0.04); --overlay-3: rgba(139,126,184,0.03);
+    --aegean: #1B6B93; --terracotta: #C67B5C; --olive: #6B7E4F; --lavender: #8B7EB8; --stone: #A09282; --gold: #B8942E;
+    --text: #2A2520; --text-muted: #6B5E54; --text-dim: #9B8E82; --link: #1B6B93; --link-hover: #C67B5C;
+    --border: #DDD5C8; --tag-bg: rgba(27,107,147,0.08); --tag-border: rgba(27,107,147,0.2);
+    --section-1: #1B6B93; --section-2: #C67B5C; --section-3: #6B7E4F;
+    --section-4: #8B7EB8; --section-5: #B8942E;
+    --h1-from: #2A2520; --h1-to: #1B6B93;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Serif 4', Georgia, serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg: #1A1714; --bg-card: #252019; --bg-card-hover: #302921;
+    --overlay-1: rgba(27,107,147,0.06); --overlay-2: rgba(198,123,92,0.05); --overlay-3: rgba(139,126,184,0.04);
+    --aegean: #4BA3C7; --terracotta: #E09070; --olive: #8FA76A; --lavender: #A99BD4; --stone: #A09282; --gold: #D4B44E;
+    --text: #F0E8DF; --text-muted: #B0A090; --text-dim: #7A6E62; --link: #4BA3C7; --link-hover: #E09070;
+    --border: #3A322A; --tag-bg: rgba(75,163,199,0.12); --tag-border: rgba(75,163,199,0.3);
+    --section-1: #4BA3C7; --section-2: #E09070; --section-3: #8FA76A;
+    --section-4: #A99BD4; --section-5: #D4B44E;
+    --h1-from: #F0E8DF; --h1-to: #4BA3C7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.8; min-height: 100vh; font-size: 20px; transition: background 0.3s, color 0.3s; }
+  .overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 0%, var(--overlay-1) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, var(--overlay-2) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, var(--overlay-3) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+  .container { position: relative; z-index: 1; max-width: 740px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  .theme-toggle { position: fixed; top: 1.2rem; right: 1.2rem; z-index: 10; display: flex; align-items: center; gap: 0.5rem; }
+  .toggle-track { width: 48px; height: 26px; background: var(--border); border-radius: 13px; position: relative; cursor: pointer; transition: background 0.3s; border: 1px solid var(--border); }
+  .toggle-track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: var(--bg); border-radius: 50%; transition: transform 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+  [data-theme="dark"] .toggle-track::after { transform: translateX(22px); }
+  .toggle-sun, .toggle-moon { font-size: 0.9rem; cursor: pointer; }
+
+  header { text-align: center; padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .header-icon { font-size: 2.8rem; margin-bottom: 0.3rem; display: block; }
+  .eyebrow { font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--aegean); margin-bottom: 6px; }
+  h1 { font-family: var(--font-serif); font-size: 3rem; font-weight: 800; font-style: italic; letter-spacing: -0.02em; margin-bottom: 0.2rem; background: linear-gradient(135deg, var(--h1-from) 0%, var(--h1-to) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .subtitle { font-family: var(--font-serif); font-style: italic; color: var(--text-dim); font-size: 1.05rem; margin-top: 0.8rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .stats { display: flex; justify-content: center; gap: 2.2rem; margin-top: 1.5rem; padding: 0.8rem 0; }
+  .stat { text-align: center; }
+  .stat-value { font-family: var(--font-mono); font-size: 1.5rem; color: var(--aegean); font-weight: 600; }
+  .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-top: 0.15rem; font-family: var(--font-mono); }
+
+  .section { margin-bottom: 2.8rem; }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+  .section-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  h2 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; }
+  .section-count { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); margin-left: auto; letter-spacing: 0.05em; }
+
+  .signal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.3rem 1.5rem; margin-bottom: 0.8rem; transition: all 0.25s ease; border-left: 3px solid transparent; }
+  .signal:hover { background: var(--bg-card-hover); transform: translateX(3px); }
+  .section:nth-of-type(1) .signal { border-left-color: var(--section-1); }
+  .section:nth-of-type(2) .signal { border-left-color: var(--section-2); }
+  .section:nth-of-type(3) .signal { border-left-color: var(--section-3); }
+  .section:nth-of-type(4) .signal { border-left-color: var(--section-4); }
+  .section:nth-of-type(5) .signal { border-left-color: var(--section-5); }
+  .signal p { font-size: 1rem; line-height: 1.85; }
+  .signal strong { font-weight: 600; }
+  .signal a { color: var(--link); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .signal a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+  .signal em { color: var(--terracotta); font-style: italic; }
+
+  .collision-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--aegean); background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: 3px; padding: 2px 8px; margin-bottom: 8px; }
+  .collision-pair { display: inline-block; font-family: var(--font-mono); font-size: 0.55rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--terracotta); background: rgba(198,123,92,0.08); border: 1px solid rgba(198,123,92,0.2); border-radius: 3px; padding: 2px 8px; margin-bottom: 8px; margin-left: 6px; }
+
+  footer { text-align: center; padding: 2.5rem 0 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+  .footer-line { font-family: var(--font-serif); font-style: italic; font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .footer-credit { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); margin-top: 1rem; letter-spacing: 0.03em; }
+  .footer-text { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.05em; }
+
+  .olive-line { display: inline-block; width: 40px; height: 3px; background: var(--olive); border-radius: 2px; vertical-align: middle; margin: 0 0.3rem; }
+
+  @media (max-width: 600px) { .container { padding: 1rem 1rem 3rem; } h1 { font-size: 2.2rem; } h2 { font-size: 1.2rem; } .signal { padding: 1.1rem 1.2rem; } .stats { gap: 1.2rem; } .theme-toggle { top: 0.8rem; right: 0.8rem; } }
+</style>
+</head>
+<body>
+<div class="overlay"></div>
+
+<div class="theme-toggle" onclick="toggleTheme()">
+  <span class="toggle-sun">&#9728;&#65039;</span>
+  <div class="toggle-track"></div>
+  <span class="toggle-moon">&#127769;</span>
+</div>
+
+<div class="container">
+<header>
+  <span class="header-icon">&#128644;</span>
+  <div class="eyebrow">Jedi Signal Collision Report</div>
+  <h1>Paris TGV Express</h1>
+  <div class="date">April 10&ndash;14, 2026</div>
+  <div class="subtitle">&ldquo;I put together pieces of my life and study that were self evident, but others didn&rsquo;t see how they fit together.&rdquo; &mdash;Dr. Anna Caraveli</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">1,199</div><div class="stat-label">Signals Scanned</div></div>
+    <div class="stat"><div class="stat-value">12</div><div class="stat-label">Collisions Surfaced</div></div>
+    <div class="stat"><div class="stat-value">4</div><div class="stat-label">Sections</div></div>
+  </div>
+</header>
+
+<!-- ═══════════════ SECTION 1: THE DEMAND PERSPECTIVE ═══════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-1)"></div>
+    <h2>The Demand Perspective</h2>
+    <span class="section-count">4 signals &middot; 2 pairs</span>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">MEANING VS. METRICS</div><div class="collision-pair">PAIRED COLLISION</div>
+    <p><strong>MarTech</strong> ran two pieces on the same day. The first argues that marketing has become <em>structurally disconnected from revenue</em> &mdash; optimizing for activity metrics, internal validation, and optics while losing its grounding in positioning, data, and business outcomes. Marketing teams look successful on their own terms; it's just that their own terms have drifted from the ones that matter. The second piece presents a comparative analysis: brands that invest in emotional storytelling and identity-based meaning (Apple, Lululemon) deliver dramatically higher shareholder returns than those relying on transactional advertising (Gap). And now, AI search algorithms are accelerating this divergence &mdash; surfacing brands with clear meaning, penalizing the rest. One article diagnoses a profession losing its purpose. The other shows what the market actually rewards. The gap between those two realities is the demand perspective in miniature. <a href="https://martech.org/marketing-looks-successful-but-misses-what-matters/">Marketing &amp; meaning</a> &middot; <a href="https://martech.org/ai-rewards-brand-meaning-and-punishes-everything-else/">AI rewards meaning</a></p>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">COMMUNITY OVERRIDE</div><div class="collision-pair">PAIRED COLLISION</div>
+    <p>Two different cities. Same collision. In <strong>Independence, Missouri</strong>, residents mobilized against a planned $150 billion hyperscale AI data center by Dutch company Nebius. The community was divided &mdash; labor unions and education leaders saw economic benefits; other residents cited environmental and health concerns. The opposition organized as "Stop The AI Data Center," and in the local election, two council members who supported the project's tax incentives were voted out. In <strong>Denver</strong>, a parallel pattern: community backlash over data center expansion in neighborhoods already burdened with pollution from diesel backup generators. The mayor imposed a construction moratorium. In both cases, the institutional calculus (jobs, tax revenue, tech infrastructure) ran into lived community experience &mdash; air quality, consent, neighborhood identity. The approval process in Denver had bypassed public hearings entirely. The demand side wasn't consulted, so it showed up at the ballot box instead. <a href="https://www.govtech.com/artificial-intelligence/data-center-opposition-impacts-elections-in-missouri-city">Independence</a> &middot; <a href="https://www.route-fifty.com/artificial-intelligence/2026/04/states-spend-millions-woo-data-centers-colorado-having-reckoning/412795/">Denver</a></p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2: THE QUESTION BEHIND THE QUESTION ═══════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-2)"></div>
+    <h2>The Question Behind the Question</h2>
+    <span class="section-count">3 signals</span>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">THE 200-WORD VOCABULARY</div>
+    <p>Irish artist <strong>John Conway</strong> designed a mobile printing press that can be wheeled to patients' bedsides in palliative care settings. The press holds a curated vocabulary of about 200 words. Patients select from these to compose statements &mdash; recording feelings, messages to loved ones, final thoughts &mdash; when speech and writing may no longer be reliable. The collaboration with healthcare staff and Creative Ireland grew out of a residency where Conway studied what actually happens at end of life. The stated question was <em>how do we support dying patients?</em> But the press answers a different question: how do you give someone a voice when the body withdraws it? Two hundred carefully chosen words, a physical press, and the dignity of authorship in the last days. <a href="https://www.dezeen.com/2026/04/13/john-conway-mobile-printing-press-hospitals/">Source</a></p>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">THE INVISIBLE DEMOGRAPHIC</div>
+    <p><strong>Caddis</strong>, an eyewear brand, launched specifically for the 40-plus market. The founder's argument: this demographic controls the majority of household income but receives almost no marketing attention. The industry's default question has been <em>how do we sell reading glasses?</em> &mdash; treating readers as a grudge purchase, a sign of decline to be disguised. Caddis reframes: <em>who decided an entire generation should become invisible the moment they need corrective lenses?</em> The brand uses AI not to target but to develop messaging that rejects anti-aging narratives. They're hiring older creatives. The product isn't the innovation &mdash; the reframe is. <a href="https://www.mytotalretail.com/podcast/total-retail-talks/caddis-redefines-eyewear-for-the-40-community/">Source</a></p>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">PROMISCUITY AS SIGNAL</div>
+    <p><strong>Grocery Dive</strong> reports that only 1% of grocery shoppers now remain loyal to a single store. The rest shop across multiple retailers weekly in what the industry calls "promiscuous shopping" &mdash; choreographing a rotation of subscription services, specialty stores, bulk retailers, and local markets. The stated question is <em>how do we recapture loyalty?</em> But the behavior itself may be the answer to a question the industry hasn't asked: what if the choreography IS the loyalty? Shoppers aren't defecting. They're composing a portfolio of stores, each chosen for a specific role &mdash; value, quality, ritual, discovery. The demand perspective would suggest that the customer already has a system. The retailer's job is to understand which role it plays in that system, not to demand exclusivity from a pattern that has its own logic. <a href="https://www.grocerydive.com/news/supermarkets-embrace-promiscuous-shopper/817033/">Source</a></p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3: THE ANOMALY FILE ═══════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-3)"></div>
+    <h2>The Anomaly File</h2>
+    <span class="section-count">3 signals</span>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">THE POLITICAL HAT</div>
+    <p>New research from <strong>EurekAlert!</strong> reveals that in 17th-century England, the act of refusing to doff one's hat was not merely a breach of etiquette but a deliberate political gesture. By analyzing court records and historical accounts, researchers show that hat-wearing became a symbol of defiance across the political spectrum &mdash; Levellers, Diggers, Fifth Monarchists, and defeated royalists all weaponized the same everyday object. The hat didn't change. What changed was what it meant to keep it on your head. An anthropologist would recognize this instantly: the symbolic act is the political act. The object is the message. And the authorities' fury at a piece of felt tells you more about the power structure than any manifesto. <a href="https://www.eurekalert.org/news-releases/1122627">Source</a></p>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">THE 2 Hz TEMPO</div>
+    <p><strong>Northwestern University</strong> researchers discovered that many animal communication signals &mdash; firefly flashing, cricket chirping, frog calling &mdash; tend to repeat at approximately 2 hertz, about two beats per second. This tempo appears across diverse species with no common ancestor, suggesting a shared biological constraint: nervous systems may be naturally tuned to process signals at this rhythm. The researchers link it to human perception of music beats and speech cadence. A universal bandwidth for attention, hidden in the background noise of every ecosystem. The finding emerged from field observations of fireflies and crickets. <a href="https://www.eurekalert.org/news-releases/1124179">Source</a></p>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">TOUCH AS DATA</div>
+    <p>Researchers at the <strong>University of Bristol</strong> found that gentle human contact with young chicks doesn't just habituate them to human presence &mdash; it actively generates positive emotional responses. The chicks seek out gentle handling, associating it with safety. The researchers used conditioned place preference testing to confirm that this isn't mere tolerance but something closer to preference. The stated research question was about animal welfare in commercial poultry. But the finding says something broader: the organism's response to how it's held is a form of information about the holder. Touch is data. The commercial poultry system optimizes for throughput; this study suggests the animal is reading a different signal entirely. <a href="https://www.poultryworld.net/health-nutrition/health/gentle-human-touch-found-to-boost-welfare-in-young-chicks/">Source</a></p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4: HIDDEN ISOMORPHISMS ═══════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--section-4)"></div>
+    <h2>Hidden Isomorphisms</h2>
+    <span class="section-count">2 signals</span>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">ENVIRONMENT SHAPES COLLECTIVE</div><div class="collision-pair">PAIRED COLLISION</div>
+    <p>Two signals from different scales, same structural pattern. <strong>Rice University</strong> researchers developed a deep-learning system to analyze Myxococcus xanthus bacteria as they transition from individual swarming cells into complex fruiting bodies &mdash; a collective structure that emerges without any centralized controller. The AI revealed that the earliest moments of this transition carry far more information than previously understood, and that genetic variation among strains shapes the final collective form. Meanwhile, <strong>Rutgers Health</strong> studied older Chinese immigrants in Chicago and developed a "Cognability Neighborhood Index" measuring access to museums, libraries, health services, and community infrastructure. They found that neighborhoods with richer cultural and social amenities slowed cognitive decline &mdash; even after controlling for individual and socioeconomic factors. Bacteria and neighborhoods. Micro and macro. In both cases: no central director, no single cause. The environment shapes how individuals organize, and the quality of that organization determines what the collective becomes. <a href="https://www.eurekalert.org/news-releases/1123944">Bacteria</a> &middot; <a href="https://www.eurekalert.org/news-releases/1123957">Neighborhoods</a></p>
+  </div>
+
+  <div class="signal">
+    <div class="collision-tag">PRODUCTIVE RANDOMNESS</div>
+    <p><strong>Harvard SEAS</strong> researchers demonstrated mathematically that introducing a controlled amount of randomness into the movement paths of robots sharing a confined space actually <em>improves</em> overall task efficiency by reducing gridlock. Simple local movement rules with tunable noise produce emergent, self-organized task completion. More order doesn't produce more output &mdash; a specific calibration of disorder does. The researchers validated this with both simulation and physical experiments using wheeled robots. The finding has implications for robotic swarm design and the management of crowded public spaces, but the underlying principle maps onto organizational life: a team of perfectly rational optimizers can deadlock each other. A team with room for productive randomness &mdash; unexpected hallway conversations, unscheduled detours, the meeting that wasn't on the agenda &mdash; may reach the goal faster precisely because no one planned the exact path. <a href="https://www.eurekalert.org/news-releases/1123943">Source</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-line">The landscape between <span class="olive-line"></span> is where the thinking happens.</div>
+  <div class="footer-credit" style="margin-top: 1rem;">SCANNED 1,199 SIGNALS &middot; SURFACED 12 COLLISIONS &middot; 5 DAYS</div>
+  <div class="footer-credit" style="margin-top: 0.5rem;">LENSES: Anthropology &middot; Demand Theory &middot; Self-Organization &middot; Semiotics</div>
+
+  <div style="margin-top: 2rem; margin-bottom: 1rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389 86" width="240" height="53" style="display: block; margin: 0 auto;">
+      <g fill="#000000">
+        <path d="M271 -10Q169 -10 110.5 48.0Q52 106 52 207H131Q131 138 168.0 99.5Q205 61 271 61Q337 61 374.5 99.5Q412 138 412 207V657H233V730H491V207Q491 106 432.0 48.0Q373 -10 271 -10Z" transform="translate(0.0000,70.0000) scale(0.054000,-0.054000)"/>
+        <path d="M300 -10Q236 -10 189.0 15.5Q142 41 116.0 88.0Q90 135 90 197V353Q90 416 116.0 462.5Q142 509 189.0 534.5Q236 560 300 560Q364 560 411.0 534.5Q458 509 484.0 462.5Q510 416 510 353V256H168V197Q168 130 202.5 93.5Q237 57 300 57Q353 57 386.5 78.0Q420 99 429 139H508Q497 70 441.0 30.0Q385 -10 300 -10ZM432 309V353Q432 420 398.0 456.5Q364 493 300 493Q237 493 202.5 456.5Q168 420 168 353V318H440Z" transform="translate(31.3200,70.0000) scale(0.054000,-0.054000)"/>
+        <path d="M273 -10Q191 -10 140.5 45.0Q90 100 90 193V356Q90 450 140.0 505.0Q190 560 273 560Q342 560 384.5 522.0Q427 484 427 420L406 453H425L424 573V730H503V0H424V97H403L427 130Q427 65 384.5 27.5Q342 -10 273 -10ZM298 59Q357 59 390.5 95.5Q424 132 424 197V353Q424 418 390.5 454.5Q357 491 298 491Q238 491 204.0 455.0Q170 419 170 353V197Q170 131 204.0 95.0Q238 59 298 59Z" transform="translate(62.6400,70.0000) scale(0.054000,-0.054000)"/>
+        <path d="M88 0V72H284V478H113V550H364V72H550V0ZM315 651Q284 651 265.5 667.0Q247 683 247 711Q247 740 265.5 757.0Q284 774 315 774Q346 774 364.5 757.0Q383 740 383 711Q383 684 364.5 667.5Q346 651 315 651Z" transform="translate(93.9600,70.0000) scale(0.054000,-0.054000)"/>
+      </g>
+      <g fill="#E6007E">
+        <path d="M40 339C40 132 167 -7 368 -7C568 -7 696 133 696 339C696 546 569 685 368 685C168 685 40 545 40 339ZM205 339C205 465 268 545 368 545C468 545 531 465 531 339C531 213 468 133 368 133C268 133 205 213 205 339Z" transform="translate(126.3600,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M60 0H206V268C206 356 249 394 299 394C348 394 379 364 379 302V0H525V329C525 451 460 512 359 512C284 512 231 476 206 421V507H60Z" transform="translate(171.5440,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M195 0H350V550H514V674H30V550H195Z" transform="translate(206.7440,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M60 0H206V268C206 380 269 394 300 394C346 394 379 360 379 300V0H525V323C525 456 451 512 358 512C278 512 230 477 206 421V707H60Z" transform="translate(239.6400,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M458 29V151C426 127 384 108 324 108C256 108 203 139 183 196H481C484 217 489 253 489 275C489 437 400 512 269 512C143 512 35 422 35 254C35 107 127 -5 299 -5C350 -5 421 5 458 29ZM275 401C331 401 349 361 353 312V300H177C190 370 232 401 275 401Z" transform="translate(274.8400,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M65 0H220V254H443V377H220V551H476V674H65Z" transform="translate(307.0320,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M65 0H211V707H65Z" transform="translate(337.4960,70.0000) scale(0.064000,-0.064000)"/>
+        <path d="M5 507 201 8C176 -52 141 -81 81 -81C70 -81 59 -80 47 -77V-193C67 -197 78 -198 103 -198C209 -198 290 -130 344 15L527 507H377L327 349C284 212 273 172 273 172C273 172 267 212 219 349L164 507Z" transform="translate(353.2400,70.0000) scale(0.064000,-0.064000)"/>
+      </g>
+      <rect x="126.36" y="76" width="64.48" height="3" rx="0.5" fill="#E6007E" opacity="0.8"/>
+      <rect x="191.84" y="76" width="64.48" height="3" rx="0.5" fill="#E6007E" opacity="0.45"/>
+      <rect x="257.32" y="76" width="64.48" height="3" rx="0.5" fill="#000000" opacity="0.35"/>
+      <rect x="322.81" y="76" width="64.48" height="3" rx="0.5" fill="#000000" opacity="0.15"/>
+    </svg>
+  </div>
+  <div class="footer-text">Signal intelligence for innovation leaders</div>
+  <div style="margin-top: 1.2rem; font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; color: var(--aegean); letter-spacing: 0.02em;">~ La Force!</div>
+  <div class="footer-text" style="margin-top: 0.8rem;">Curated by Jedi Signals &middot; Brewed by NanoClaw</div>
+</footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  try { localStorage.setItem('tgv-theme', html.getAttribute('data-theme')); } catch(e) {}
+}
+try {
+  const saved = localStorage.getItem('tgv-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+} catch(e) {}
+</script>
+</body>
+</html>
